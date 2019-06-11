@@ -1,10 +1,12 @@
 \documentclass[12pt]{book}
 
-\title{Think Data Structures}
+\title{Piensa en Estructuras de Datos}
 \author{Allen B. Downey}
 
-\newcommand{\thetitle}{Think Data Structures}
-\newcommand{\thesubtitle}{Algorithms and Information Retrieval in Java}
+\renewcommand{\contentsname}{Contenidos}% E. Aguilar, 20190611
+
+\newcommand{\thetitle}{Piensa en Estructuras de Datos}
+\newcommand{\thesubtitle}{Algoritmos y Recuperación de Información en Java}
 \newcommand{\theauthors}{Allen B. Downey}
 \newcommand{\theversion}{1.0.1}
 
@@ -107,7 +109,7 @@
 
 \vspace{0.25in}
 
-Version \theversion
+Versión \theversion
 
 \vfill
 \end{flushright}
@@ -132,11 +134,13 @@ Version \theversion
 
 \vspace{0.25in}
 
-Version \theversion
+Versión \theversion
 
 \vspace{1in}
 
 {\Large \theauthors}
+
+{\small Traducido por: Ernesto A. Aguilar}
 
 \vspace{0.5in}
 
@@ -161,16 +165,16 @@ Green Tea Press \\
 Needham, MA 02492
 \end{flushleft}
 
-Permission is granted to copy, distribute, and/or modify this work
-under the terms of the Creative Commons
-Attribution-NonCommercial-ShareAlike 3.0 Unported License, which is
-available at \url{http://thinkdast.com/cc30}.
+Se permite copiar, distribuir, y/o modificar este documento
+bajo los términos de la Creative Commons
+Attribution-NonCommercial-ShareAlike 3.0 Unported License,
+disponible en \url{http://thinkdast.com/cc30}.
 
-The original form of this book is \LaTeX\ source code.  Compiling this
-code has the effect of generating a device-independent representation
-of the book, which can be converted to other formats and printed.
+El formato original de este libro es código fuente \LaTeX\ . La compilación de este
+código tiene el efecto de generar una representación del libro independiente del
+dispositivo, que puede convertirse a otros formatos e imprimirse.
 
-The \LaTeX\ source for this book is available from
+El fuente \LaTeX\ de este libro está disponible en
 \url{http://thinkdast.com/repo}.
 
 %--table of contents------------------------------------------
@@ -191,7 +195,7 @@ The \LaTeX\ source for this book is available from
 
 {\large \theauthors}
 
-Version \theversion
+Versión \theversion
 
 \vspace{1em}
 
@@ -212,192 +216,185 @@ available at \url{http://thinkdast.com/cc30}.
 \fi
 
 
-\chapter*{Preface}
-\label{preface}
+\chapter*{Prefacio}
+\label{prefacio}
 
-\markboth{PREFACE}{PREFACE}
-\addcontentsline{toc}{chapter}{Preface}
+\markboth{PREFACIO}{PREFACIO}
+\addcontentsline{toc}{chapter}{Prefacio}
 
 
-\section*{The philosophy behind the book}
+\section*{La filosofía tras este libro}
 
-Data structures and algorithms are among the most important inventions
-of the last 50 years, and they are fundamental tools software
-engineers need to know.  But in my opinion, most of the books on these
-topics are too theoretical, too big, and too ``bottom up'':
+Las estructuras de datos y los algoritmos están entre las invenciones más importantes
+de los últimos 50 años, y son herramientas fundamentales que los ingenieros de
+software necesitan conocer. Pero en mi opinión, la mayoría de los libros sobre
+el tema son muy teóricos, muy grandes y muy ``detallados'':
 
 \begin{description}
 
-\item[Too theoretical]  Mathematical analysis of algorithms is based
-on simplifying assumptions that limit its usefulness in practice.
-Many presentations of this topic gloss over the simplifications and
-focus on the math.  In this book I present the most practical subset
-of this material and omit or de-emphasize the rest.
+\item[Muy teóricos]  El análisis matemático de los algoritmos se base en
+simplificar supuestos, lo que limita su utilidad en la práctica.
+La mayoría de exposiciones sobre el tema apenas cubren las simplificaciones y
+se enfocan en la matemática. En este libro presento el subconjunto más práctico
+de este material y omito o quito importancia al resto.
 
-\item[Too big] Most books on these topics are at least 500 pages,
-and some are more than 1000.  By focusing on the topics I think are
-most useful for software engineers, I kept this book under
-200 pages.
+\item[Muy grandes] La mayoría de libros sobre el tema tienen al menos 500 páginas,
+y algunos más de 1000. Al enfocarme en los temas que considero más útiles
+para los ingenieros de software, mantuve este libro por debajo de las 200 páginas.
 
-\item[Too ``bottom up''] Many data structures books focus on how data
-  structures work (the implementations), with less about how to use
-  them (the interfaces).  In this book, I go ``top down'', starting
-  with the interfaces.  Readers learn to use the structures in the
-  Java Collections Framework before getting into the details of how
-  they work.
+\item[Muy ``detallados''] Muchos libros de estructuras de datos se enfocan más 
+en cómo funcionan las estructuras de datos (las implementaciones) y menos
+en cómo usarlas (las interfaces). En este libro, proveo una ``visión general'',
+al iniciar con las interfaces. Los lectores aprenderán a usar las estructuras del
+Java Collections Framework antes de adentrarse en los detalles de cómo funcionan.
 
 \end{description}
 
-Finally, some books present this material out of context and without
-motivation: it's just one damn data structure after another!
-I try to liven it up by organizing the topics around an
-application --- web search --- that uses data structures extensively,
-and is an interesting and important topic in its own right.
+Finalmente, algunos libros presentan este material fuera de contexto y sin
+motivación alguna: ¡es sólo una estructura de datos tras otra!
+Trato de volverlo más ameno al organizar los temas alrededor de una
+aplicación -- la búsqueda web -- que usa estructuras de datos
+ampliamente, y es una tema interesante e importante por sus propios méritos.
 
-\index{web search}
+\index{búsqueda web}
 
-This application motivates some topics that are not usually
-covered in an introductory data structures class, including persistent
-data structures with Redis.
+Esta aplicación motiva algunos temas que generalmente no se cubren
+en una curso introductorio de estructuras de datos, incluyendo estructuras
+de datos persistentes con Redis.
 
 \index{Redis}
 
-I have made difficult decisions about what to leave out, but 
-I have made some compromises.  I include a few topics
-that most readers will never use, but that they might be expected to
-know, possibly in a technical interview.  For these topics, I
-present both the conventional wisdom as well as my reasons to be
-skeptical. 
+He tomado algunas decisiones difíciles con relación a qué dejar fuera,
+pero he hecho algunas concesiones. Incluyo algunos temas que la
+mayoría de los lectores nunca usarán, pero que podría esperarse
+que conozcan, posiblemente en una entrevista técnica. Para estos
+temas, presento tanto la sabiduría convencional como mis razones
+para ser escéptico al respecto.
 
-This book also presents basic aspects of software engineering practice,
-including version control and unit testing.  Most chapters include
-an exercise that allows readers to apply what they have learned.
-Each exercise provides automated tests that check the solution.
-And for most exercises, I present my solution at the beginning of
-the next chapter.
+Este libro también presenta aspectos básicos de la ingeniería de software
+en la práctica, incluyendo control de versiones y pruebas unitarias. La mayoría
+de los capítulos incluyen un ejercicio que permite a los lectores aplicar lo
+que han aprendido. Cada ejercicio provee pruebas automáticas para comprobar
+la solución. Y para la mayoría de ejercicios, presento mi solución al principio
+del siguiente capítulo.
 
-\index{unit testing}
-\index{version control}
+\index{pruebas unitarias}
+\index{control de versiones}
 
 
-\section{Prerequisites}
-\label{prerequisites}
+\section{Prerrequisitos}
+\label{prerrequisitos}
 
-This book is intended for college students in computer science and
-related fields, as well as professional software engineers, people
-training in software engineering, and people preparing for technical
-interviews.
+Este libro está dirigido a estudiantes de ciencias de la computación
+y ramas afines, así como a ingenieros de software profesionales,
+personas capacitándose en ingeniería de software y personas
+personas preparándose para entrevistas técnicas.
 
-Before you start this book, you should know Java pretty well; in
-particular, you should know how to define a new class that extends an
-existing class or implements an \java{interface}. If your Java is rusty, 
-here are two books you might start with:
+Antes de comenzar este libro, deberías conocer Java bastante bien;
+en particular, deberías saber como definir una nueva clase que extienda
+una clase existente o implemente una \java{interface}. Si tu Java está
+oxidado, aquí están dos libros con los que podrías empezar:
 
 \begin{itemize}
 
-\item Downey and Mayfield, {\it Think Java} (O'Reilly Media, 2016),
-which is intended for people who have never programmed before.
+\item Downey and Mayfield, {\it Think Java} (O'Reilly Media, 2016, en inglés),
+pensado para personas que nunca antes han programado.
 
-\item Sierra and Bates, {\it Head First Java} (O'Reilly Media, 2005),
-which is appropriate for people who already know another programming
-language.
+\item Sierra and Bates, {\it Head First Java} (O'Reilly Media, 2005, en inglés),
+apropiado para personas que ya conocen otro lenguaje de programación.
 
 \end{itemize}
 
-If you are not familiar with interfaces in Java, you might want to
-work through the tutorial called ``What Is an Interface?'' at
+Si no estás familiarizado con las interfaces en Java, podrías revisar
+el tutorial llamado ``What Is an Interface?'' en
 \url{http://thinkdast.com/interface}.
 
+\index{interfaz}
 \index{interface}
 
-One vocabulary note: the word ``interface'' can be confusing. In the
-context of an {\bf application programming interface} (API), it refers
-to a set of classes and methods that provide certain capabilities.
+Una nota de vocabulario: la palabra ``interfaz'' (o ``interface'', en inglés) puede resultar
+confusa. En el contexto de una {\bf interfaz de programación de aplicaciones} (API, de 
+{\bf application programming interface}), se refiere a un conjunto de clases y métodos
+que proveen ciertas funcionalidades.
 
+\index{interfaz de programación de aplicaciones}
 \index{application programming interface}
 \index{API}
 
-In the context of Java, it also refers to a language feature, similar to
-a class, that specifies a set of methods. To help avoid confusion,
-I'll use ``interface'' in the normal typeface for the general idea of
-an interface, and \java{interface} in the code typeface for the Java
-language feature.
+En el caso de Java, también se refiere a una característica del lenguaje,
+similar a una clase, que especifica un conjunto de métodos. Para evitar
+confusiones, usaré ``interfaz'' en un tipo de fuente normal y en español, para la
+idea general de una interfaz, e \java{interface} in una fuente monoespaciada y en inglés,
+para la característica del lenguaje Java.
 
-You should also be familiar with type parameters and generic types.
-For example, you should know how create an object with a type
-parameter, like \java{ArrayList<Integer>}.  If not, you can read about
-type parameters at \url{http://thinkdast.com/types}.
+También deberías estar familiarizado con los parámetros de tipo y los tipos genéricos.
+Por ejemplo, deberías saber cómo crear un objeto con un parámetro de tipo, 
+como \java{ArrayList<Integer>}.  Si no, puedes leer sobre los parámetros de tipo
+en \url{http://thinkdast.com/types}.
 
 \index{type parameter}
 
-You should be familiar with the Java Collections Framework
-(JCF), which you can read about at
+Deberías estar familiarizado con el Java Collections Framework
+(JCF), sobre el que puedes leer en
 \url{http://thinkdast.com/collections}.
-In particular, you should know about the \java{List} \java{interface}
-and the classes \java{ArrayList} and \java{LinkedList}.
+En particular, deberías conocer la \java{interface} \java{List}
+y las clases \java{ArrayList} y \java{LinkedList}.
 
 \index{Java Collections Framework}
 \index{JCF}
 
-Ideally you should be familiar with Apache Ant, which is an automated
-build tool for Java.  You can read more about Ant at
-\url{http://thinkdast.com/anttut}.
+Idealmente deberías estar familiarizado con Apache Ant, una herramienta autormatizada de
+de construcción para Java.  Puedes leer más sobre Ant en \url{http://thinkdast.com/anttut}.
 
 \index{Apache Ant}
 \index{Ant}
 
-And you should be familiar with {\tt JUnit}, which is a unit testing
-framework for Java.  You can read more about it at
-\url{http://thinkdast.com/junit}.
+Y deberías estar familiarizado con {\tt JUnit}, un \textit{framework} para Java. Puedes
+leer más sobre él en \url{http://thinkdast.com/junit}.
 
 \index{JUnit}
 
 
-\section*{Working with the code}
-\label{code}
+\section*{Trabajando con el código}
+\label{codigo}
 
-The code for this book is in a Git repository at
+El código para este libro está en un repositorio de Git en
 \url{http://thinkdast.com/repo}.
 
 \index{Git}
-\index{version control}
+\index{control de versiones}
 
-Git is a ``version control system'' that allows you to keep track of
-the files that make up a project.  A collection of files under Git's
-control is called a ``repository''.
+Git es un ``sistema de control de versiones'' que te permite dar seguimiento a los
+archivos que conforman un proyecto. Una colección de archivos bajo el control
+de Git es llamada un ``repositorio''.
 
-\index{repository}
+\index{repositorio}
 \index{GitHub}
 
-GitHub is a hosting service that provides storage for Git repositories
-and a convenient web interface.  It provides several ways to work with
-the code:
+GitHub es un servicio de alojamiento que provee almacenamiento para repositorios
+de Git y una interfaz web conveniente. Provee varias formas de trabajar con el código:
 
 \begin{itemize}
 
-\item You can create a copy of the repository on GitHub by pressing
-  the {\sf Fork} button.  If you don't already have a GitHub account,
-  you'll need to create one.  After forking, you'll have your own
-  repository on GitHub that you can use to keep track of code you
-  write.  Then you can ``clone'' the repository, which downloads a
-  copy of the files to your computer.
+\item Puedes crear una copia del repositorio en GitHub presionando el botón {\sf Fork}. 
+Si no tienes una cuenta en GitHub, necesitarás crear una. Después de crear el fork, 
+tendrás tu propio repositorio en GitHub que puedes usar para dar seguimiento al código
+que escribes. Luego puedes ``clonar'' (``clone'', en inglés) el repositorio, para descargar una
+copia de los archivos a tu computadora.
 
 \index{fork}
 \index{clone}
 
-\item Alternatively, you could clone the repository without forking.
-  If you choose this option, you don't need a GitHub account, but you
-  won't be able to save your changes on GitHub.
+\item Alternativamente, puedes clonar el repositorio sin crear un fork. Si eliges esta opción,
+no necesitas una cuenta de GitHub, pero no podrás guardar tus cambios en GitHub.
 
-\item If you don't want to use Git at all, you can download the code
-  in a ZIP archive using the {\sf Download} button on the GitHub
-  page, or this link: \url{http://thinkdast.com/zip}.
+\item Si no quieres usar Git en lo absoluto, puedes descargar el código en un archivo ZIP usando el
+botón {\sf Download} en la página de GitHub, o este enlace: \url{http://thinkdast.com/zip}.
 
 \end{itemize}
 
-After you clone the repository or unzip the ZIP file, you should have
-a directory called {\tt ThinkDataStructures} with a subdirectory
-called {\tt code}.
+Después de clonar el repositorio o descomprimir el archivo ZIP, tendrás un directorio llamado {\tt ThinkDataStructures},
+que es el título del libro en inglés, con un subdirectorio {\tt code}.
 
 The examples in this book were developed and tested using Java SE
 Development Kit 7.  If you are using an older version, some examples
@@ -743,7 +740,7 @@ remember that you will not have these tools during the interview, so
 you might also want to practice writing code without them.
 
 If you have not already downloaded the code for this book, see the
-instructions in Section~\ref{code}.
+instructions in Section~\ref{codigo}.
 
 In the directory named {\tt code}, you should find these files and
 directories:
@@ -1095,7 +1092,7 @@ algorithms.
 The exercise for this chapter is to implement a \java{List} that
 uses a Java array to store the elements. 
 
-In the code repository for this book (see Section~\ref{code}),
+In the code repository for this book (see Section~\ref{codigo}),
 you'll find the source files you'll need:
 
 \index{MyArrayList}
