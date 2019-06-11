@@ -4,6 +4,8 @@
 \author{Allen B. Downey}
 
 \renewcommand{\contentsname}{Contenidos}% E. Aguilar, 20190611
+\renewcommand{\chaptername}{Capítulo}% E. Aguilar, 20190611
+
 
 \newcommand{\thetitle}{Piensa en Estructuras de Datos}
 \newcommand{\thesubtitle}{Algoritmos y Recuperación de Información en Java}
@@ -217,7 +219,7 @@ available at \url{http://thinkdast.com/cc30}.
 
 
 \chapter*{Prefacio}
-\label{prefacio}
+\label{preface}
 
 \markboth{PREFACIO}{PREFACIO}
 \addcontentsline{toc}{chapter}{Prefacio}
@@ -236,7 +238,7 @@ el tema son muy teóricos, muy grandes y muy ``detallados'':
 simplificar supuestos, lo que limita su utilidad en la práctica.
 La mayoría de exposiciones sobre el tema apenas cubren las simplificaciones y
 se enfocan en la matemática. En este libro presento el subconjunto más práctico
-de este material y omito o quito importancia al resto.
+de este material y omito o enfatizo menos el resto.
 
 \item[Muy grandes] La mayoría de libros sobre el tema tienen al menos 500 páginas,
 y algunos más de 1000. Al enfocarme en los temas que considero más útiles
@@ -283,7 +285,7 @@ del siguiente capítulo.
 
 
 \section{Prerrequisitos}
-\label{prerrequisitos}
+\label{prerequisites}
 
 Este libro está dirigido a estudiantes de ciencias de la computación
 y ramas afines, así como a ingenieros de software profesionales,
@@ -356,7 +358,7 @@ leer más sobre él en \url{http://thinkdast.com/junit}.
 
 
 \section*{Trabajando con el código}
-\label{codigo}
+\label{code}
 
 El código para este libro está en un repositorio de Git en
 \url{http://thinkdast.com/repo}.
@@ -377,7 +379,7 @@ de Git y una interfaz web conveniente. Provee varias formas de trabajar con el c
 \begin{itemize}
 
 \item Puedes crear una copia del repositorio en GitHub presionando el botón {\sf Fork}. 
-Si no tienes una cuenta en GitHub, necesitarás crear una. Después de crear el fork, 
+Si no tienes una cuenta en GitHub, necesitarás crear una. Tras crear el fork, 
 tendrás tu propio repositorio en GitHub que puedes usar para dar seguimiento al código
 que escribes. Luego puedes ``clonar'' (``clone'', en inglés) el repositorio, para descargar una
 copia de los archivos a tu computadora.
@@ -396,42 +398,41 @@ botón {\sf Download} en la página de GitHub, o este enlace: \url{http://thinkd
 Después de clonar el repositorio o descomprimir el archivo ZIP, tendrás un directorio llamado {\tt ThinkDataStructures},
 que es el título del libro en inglés, con un subdirectorio {\tt code}.
 
-The examples in this book were developed and tested using Java SE
-Development Kit 7.  If you are using an older version, some examples
-will not work.  If you are using a more recent version, they should
-all work.
+Los ejemplos en este libro fueron desarrollados y probados usando el Java SE
+Development Kit 7.  Si estás usando una versión más antigua, algunos ejemplos
+no funcionarán. Si estás usando una versión más reciente, todos deberían funcionar.
 
 \index{Java SDK}
 
-\section*{Contributors}
+\section*{Colaboradores}
 
-This book is an adapted version of a curriculum I wrote for the
-Flatiron School in New York City, which offers a variety of online
-classes related to programming and web development.  They offer a
-class based on this material, which provides an online development
-environment, help from instructors and other students, and a
-certificate of completion.  You can find more information at
+Este libro es una adaptación de la currícula que escribí para la
+Flatiron School en New York City, que ofrece varias clases en línea
+relacionadas con programación y desarrollo web. Ellos ofrecen una
+clase basada en este material, que provee un entorno de desarrollo
+en línea, ayuda de instructores y otros estudiantes, así como un
+certificado de finalización. Puedes encontrar más información en
 \url{http://flatironschool.com}.
 
 
 \begin{itemize}
 
-\item At the Flatiron School, Joe Burgess, Ann John, and Charles
-  Pletcher provided guidance, suggestions, and corrections from the
-  initial specification all the way through implementation and
-  testing.  Thank you all!
+\item En la Flatiron School, Joe Burgess, Ann John y Charles
+  Pletcher brindaron orientación, sugerencias y correcciones desde la
+  especificación inicial hasta la implementación y las pruebas. ¡Muchas
+  gracias a todos ustedes!
 
-\item I am very grateful to my technical reviewers, Barry Whitman,
-  Patrick White, and Chris Mayfield, who made many helpful suggestions
-  and caught many errors.  Of course, any remaining errors are my
-  fault, not theirs!
+\item Estoy muy agradecido con mis revisores técnicos, Barry Whitman,
+  Patrick White y Chris Mayfield, que dieron muchas sugerencias útiles
+  y detectaron muchos errores. Por supuesto, ¡cualquier error restante
+  es mi responsabilidad, no la de ellos!
 
-\item Thanks to the instructors and students in Data Structures and
-  Algorithms at Olin College, who read this book and provided useful
-  feedback.
+\item Gracias a los instructores y estudiantes de Estructuras de Datos y
+  Algoritmos en Olin College, que leyeron este libro y brindaron realimentación
+  útil.
 
-\item Charles Roumeliotis copyedited the book for O'Reilly Media
-and made many improvements.
+\item Charles Roumeliotis editó y corrigió el libro para O'Reilly Media
+y realizó muchas mejoras.
 
 % ENDCONTRIB
 
@@ -440,124 +441,120 @@ and made many improvements.
 
 % Additional contributors who found one or more typos: coming soon, I'm sure.
 
-If you have comments or ideas about the text, please send
-them to: {\tt feedback@greenteapress.com}.
-
+Si tienes comentarios o ideas sobre el texto, por favor envíalas a:\linebreak
+{\tt feedback@greenteapress.com}.
 
 \mainmatter
 
 \chapter{Interfaces}
 \label{cs-lists-programming-to-an-interface-readme}
 
-This book presents three topics:
+Este libro presenta tres temas:
 
 \begin{itemize}
 
-\item Data structures: Starting with the structures in the Java
-Collections Framework (JCF), you will learn how to use data structures
-like lists and maps, and you will see how they work.
+\item Estructuras de datos: Iniciando con las estructuras en el Java
+Collections Framework (JCF), aprenderás cómo usar estructuras de datos
+como listas and mapas y verás cómo trabajan.
 
-\index{data structures}
+\index{estructuras de datos}
 
-\item Analysis of algorithms: I present techniques for analyzing
-code and predicting how fast it will run and how much space (memory) it
-will require.
+\item Análisis de algoritmos: Presento técnicas para analizar código y
+predecir qué tan rápido se ejecutará y cuánto espacio (memoria) requerirá.
 
-\index{analysis of algorithms}
+\index{análisis de algoritmos}
 
-\item Information retrieval: To motivate the first two topics, and to
-make the exercises more interesting, we will use data structures and
-algorithms to build a simple web search engine.
+\item Recuperación de información: Para motivar el estudio de los primeros
+dos temas y hacer los ejercicios más interesantes, usaremos estructuras de
+datos y algoritmos para construir un motor simple de búsqueda en la web.
 
-\index{information retrieval}
-\index{search engine}
+\index{recuperación de información}
+\index{motor de búsqueda}
 
 \end{itemize}
 
-Here's an outline of the order of topics:
+Aquí está una descripción general del orden de los temas:
 
 \begin{itemize}
 
-\item We'll start with the {\tt List} interface and you will write
-classes that implement this interface two different ways.  Then we'll
-compare your implementations with the Java classes {\tt ArrayList} and
+\item Iniciaremos con la interfaz {\tt List} y escribirás clases que
+implementarán esta interfaz de dos formas diferentes. Luego, vamos a
+comparar tus implementaciones con las clases de Java {\tt ArrayList} y
 {\tt LinkedList}.
 
 \index{List}
 \index{ArrayList}
 \index{LinkedList}
 
-\item Next I'll introduce tree-shaped data structures and you will
-work on the first application: a program that reads pages from Wikipedia,
-parses the contents, and navigates the resulting tree to find links
-and other features.  We'll use these tools to test the ``Getting
-to Philosophy'' conjecture (you can get a preview by reading
-\url{http://thinkdast.com/getphil}).
+\item A continuación, introduciré tres estructuras de datos en forma de árbol, y
+trabajarás en la primera aplicación: un programa que lea páginas de Wikipedia,
+interprete sus contenidos y navegue por el árbol resultante para encontrar enlaces
+y otras características. Usaremos estas herramientas para comprobar la conjetura
+``Llegando a la Filosofía'' (puedes anticiparte leyendo \url{http://thinkdast.com/getphil}).
 
-\index{tree}
-\index{Getting to Philosophy}
+\index{árbol}
+\index{Llegando a la Filosofía}
 
-\item We'll learn about the {\tt Map} interface and Java's
-{\tt HashMap} implementation.  Then you'll write classes that implement
-this interface using a hash table and a binary search tree.
+\item Aprenderemos sobre la interfaz {\tt Map} y la implementación
+{\tt HashMap} de Java. Luego escribiremos clases que implementen
+esta interfaz usando una tabla hash y un árbol binario de búsqueda.
 
 \index{Map}
 \index{HashMap}
-\index{hash table}
-\index{binary search tree}
+\index{tabla hash}
+\index{árbol binario de búsqueda}
 
-\item Finally, you will use these classes (and a few others I'll present
-along the way) to implement a web search engine, including: a crawler that
-finds and reads pages, an indexer that stores the contents of Web
-pages in a form that can be searched efficiently, and a retriever
-that takes queries from a user and returns relevant results.
+\item Finalmente, usarás estas clases (y unas cuantas más que presentaré en
+el camino) para implementar un motor de búsqueda en la web, incluyendo: un \textit{rastreador} que
+encuentra y lee páginas, un indexador que guarda los contenidos de las páginas Web de forma que puedan
+realizarse búsquedas en ellas eficientemente, y un recuperador que toma las consultas de un usuario
+y devuelve resultados relevantes.
 
-\index{web search}
-\index{crawler}
-\index{indexer}
-\index{retriever}
-
+\index{búsqueda web}
+\index{rastreador}
+\index{indexador}
+\index{recuperador}
 
 \end{itemize}
 
-Let's get started.
+Comencemos.
 
 
-\section{Why are there two kinds of \java{List}?}
+\section{¿Por qué hay dos tipos de \java{List}?}
 \label{why-are-there-two-kinds-of-list}
 
-When people start working with the Java Collections Framework, they
-are sometimes confused about \java{ArrayList} and
-\java{LinkedList}.  Why does Java provide two implementations of
-the \java{List} \java{interface}?  And how should you choose which one to
-use?  We will answer these questions in the next few chapters.
+Cuando las personas comienzan a trabajar con el Java Collections
+Framework, a veces se confunden entre \java{ArrayList} y
+\java{LinkedList}.  ¿Por qué Java provee dos implementaciones de
+la \java{interface} \java{List}? ¿Y cómo deberías elegir cuál usar?
+Responderemos estas preguntas en los siguientes capítulos.
 
 \index{List}
 \index{ArrayList}
 \index{LinkedList}
 
-I'll start by reviewing \java{interface}s and the classes that
-implement them, and I'll present the idea of ``programming to an
-interface''.
+Comenzaré por revisar las \java{interface}s y las clases que las
+implementan y presentará la idea de ``programar con base en
+una interfaz''.
 
 \index{interface}
 
-In the first few exercises, you'll implement classes
-similar to \java{ArrayList} and \java{LinkedList}, so you'll know how
-they work, and we'll see that each of them has pros and cons.  Some
-operations are faster or use less space with \java{ArrayList}; others
-are faster or smaller with \java{LinkedList}.  Which one is better for
-a particular application depends on which operations it performs most
-often.
+En los primeros ejercicos a continuación, implementarás clases similares 
+a \java{ArrayList} y \java{LinkedList}, para entender cómo funcionan
+y veremos que cada una de ellas tiene pros y contras. Algunas operaciones
+son más rápidas o usan menos espacio con una \java{ArrayList}; otras
+son más rápidas o más pequeñas con una \java{LinkedList}.  Cuál de ellas
+es mejor para una aplicación particular depende de las operaciones que
+se realizan con más frecuencia.
 
 
-\section{Interfaces in Java}
+\section{Interfaces en Java}
 \label{interfaces-in-java}
 
-A Java \java{interface} specifies a set of methods; any class that
-implements this \java{interface} has to provide these methods. For
-example, here is the source code for \java{Comparable}, which is an
-\java{interface} defined in the package \java{java.lang}:
+Una \java{interface} de Java especifica un conjunto de métodos; cualquier clase
+que implemente esta \java{interface} tiene que proveer estos métodos. Por
+ejemplo, aquí está el código fuente para \java{Comparable}, que es una
+\java{interface} definida en el paquete \java{java.lang}:
 
 \index{Comparable}
 
@@ -567,19 +564,18 @@ public interface Comparable<T> {
 }
 \end{verbatim}
 
-\index{generic type}
+\index{tipo genérico}
 
-This \java{interface} definition uses a type parameter, \java{T}, which
-makes \java{Comparable} a {\bf generic type}.  
-In order to implement this \java{interface}, a class has to
+Esta definición de \java{interface} usa un parámetro de tipo, \java{T}, lo que
+hace a \java{Comparable} un {\bf tipo genérico}.  
+Para implementar esta \java{interface}, una clase tiene que
 
 \begin{itemize}
 
-\item Specify the type \java{T} refers to, and
+\item Especificar el tipo al que \java{T} se refiere y
 
-\item Provide a method
-named \java{compareTo} that takes an object as a parameter and returns
-an \java{int}.
+\item Proveer un método llamado \java{compareTo} que tome un objeto como
+parámetro y devuelva un \java{int}.
 
 \end{itemize}
 
@@ -740,7 +736,7 @@ remember that you will not have these tools during the interview, so
 you might also want to practice writing code without them.
 
 If you have not already downloaded the code for this book, see the
-instructions in Section~\ref{codigo}.
+instructions in Section~\ref{code}.
 
 In the directory named {\tt code}, you should find these files and
 directories:
@@ -1092,7 +1088,7 @@ algorithms.
 The exercise for this chapter is to implement a \java{List} that
 uses a Java array to store the elements. 
 
-In the code repository for this book (see Section~\ref{codigo}),
+In the code repository for this book (see Section~\ref{code}),
 you'll find the source files you'll need:
 
 \index{MyArrayList}
