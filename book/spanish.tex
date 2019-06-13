@@ -5,6 +5,7 @@
 
 \renewcommand{\contentsname}{Contenidos}% E. Aguilar, 20190611
 \renewcommand{\chaptername}{Capítulo}% E. Aguilar, 20190611
+\renewcommand{\figurename}{Figura}% E. Aguilar, 20190612
 
 
 \newcommand{\thetitle}{Piensa en Estructuras de Datos}
@@ -534,8 +535,7 @@ Responderemos estas preguntas en los siguientes capítulos.
 \index{LinkedList}
 
 Comenzaré por revisar las \java{interface}s y las clases que las
-implementan y presentará la idea de ``programar con base en
-una interfaz''.
+implementan y presentará la idea de ``programar para una interfaz''.
 
 \index{interface}
 
@@ -582,7 +582,7 @@ parámetro y devuelva un \java{int}.
 \index{compareTo}
 \index{Integer}
 
-For example, here's the source code for \java{java.lang.Integer}:
+Por ejemplo, aquí está el código fuente para \java{java.lang.Integer}:
 
 \begin{verbatim}
 public final class Integer extends Number implements Comparable<Integer> {
@@ -593,54 +593,53 @@ public final class Integer extends Number implements Comparable<Integer> {
         return (thisVal<anotherVal ? -1 : (thisVal==anotherVal ? 0 : 1));
     }
 
-    // other methods omitted
+    // otros métodos omitidos
 }
 \end{verbatim}
 
-This class extends \java{Number}, so it inherits the methods and
-instance variables of \java{Number}; and it implements
-\java{Comparable<Integer>}, so it provides a
-method named \java{compareTo} that takes an \java{Integer} and
-returns an \java{int}.
+Esta clase extiende \java{Number}, por lo que hereda los métodos y
+variables de instancia de \java{Number}; e implementa
+\java{Comparable<Integer>}, así que provee un método con el nombre
+\java{compareTo} que toma un \java{Integer} y devuelve
+un \java{int}.
 
 \index{Number}
 \index{Comparable}
 
-When a class declares that it implements an \java{interface}, the compiler
-checks that it provides all methods defined by the
-\java{interface}.
+Cuando una clase declara que implementa una \java{interface}, el compilador
+verifica que provea todos los métodos definidos por la \java{interface}.
 
-\index{ternary operator}
+\index{operador ternario}
 
-As an aside, this implementation of \java{compareTo} uses the
-``ternary operator'', sometimes written \java{?:}.  If you are not
-familiar with it, you can read about it at
+Al margen, esta implementación de \java{compareTo} usa el
+``operador ternario'', que a veces se escribe \java{?:}.  Si no estás
+familiarizado con él, puedes leer al respecto en
 \url{http://thinkdast.com/ternary}.
 
 
-\section{The List interface}
+\section{La interfaz List}
 \label{the-list-interface}
 
-The Java Collections Framework (JCF) defines an \java{interface} called
-\java{List} and provides two implementations, \java{ArrayList} and
+El Java Collections Framework (JCF) define una \java{interface} llamada
+\java{List} y provee dos implementaciones, \java{ArrayList} y
 \java{LinkedList}.
 
 \index{List}
 
-The \java{interface} defines what it means to be a \java{List}; any
-class that implements this \java{interface} has to provide a
-particular set of methods, including \java{add}, \java{get},
-\java{remove}, and about 20 more.
+La \java{interface} define lo que implica ser una \java{List}; cualquier
+clase que implemente esta \java{interface} tiene que proveer un
+conjunto particular de métodos, que incluyen \java{add}, \java{get},
+\java{remove} y alrededor de 20 más.
 
-\java{ArrayList} and \java{LinkedList} provide these methods, so
-they can be used interchangeably. A method written to work with a
-\java{List} will work with an \java{ArrayList}, \java{LinkedList},
-or any other object that implements \java{List}.
+\java{ArrayList} y \java{LinkedList} proveen estos métodos, así que
+ambas pueden ser usadas de forma intercambiable. Un método escrito
+para funcionar con una \java{List} funcionará con una \java{ArrayList}, \java{LinkedList},
+o cualquier otro objeto que implemente \java{List}.
 
 \index{ArrayList}
 \index{LinkedList}
 
-Here's a contrived example that demonstrates the point:
+Aquí está un ejemplo artificial para demostrar el punto:
 
 \begin{verbatim}
 public class ListClientExample {
@@ -663,277 +662,276 @@ public class ListClientExample {
 \end{verbatim}
 
 \index{ListClientExample}
-\index{encapsulate}
+\index{encapsular}
 
-\java{ListClientExample} doesn't do anything useful, but it has the
-essential elements of a class that {\bf encapsulates} a
-\java{List}; that is, it contains a \java{List} as an instance
-variable.  I'll use this class to make a point, and then you'll work
-with it in the first exercise.
+\java{ListClientExample} no hace nada útil, pero contiene los
+elementos esenciales de una clase que {\bf encapsula} una
+\java{List}; es decir, contiene una \java{List} como una variable
+de instancia. Usaré esta clase para ilustrar un punto y luego
+trabajarás con ella en el primer ejercicio.
 
-\index{instantiate}
+\index{instanciar}
 
-The \java{ListClientExample} constructor initializes \java{list} by
-{\bf instantiating} (that is, creating) a new \java{LinkedList}; the
-getter method called \java{getList} returns a reference to the
-internal \java{List} object; and \java{main} contains a few lines of
-code to test these methods.
+El constructor \java{ListClientExample} initializa una \java{list} al
+{\bf instanciar} (es decir, crear) una nueva \java{LinkedList}; el
+método getter \java{getList} devuelve una referencia al objeto
+interno \java{List}; y \java{main} contiene unas pocas líneas
+de código para probar estos métodos.
 
-The important thing about this example is that it uses \java{List}
-whenever possible and avoids specifying \java{LinkedList} or
-\java{ArrayList} unless it is necessary. For example, the instance
-variable is declared to be a \java{List}, and \java{getList} returns
-a \java{List}, but neither specifies which kind of list.
+Lo importante de este ejemplo es que usa \java{List}
+cuando es posible y evita especificar \java{LinkedList} o
+\java{ArrayList} a menos que sea necesario. Por ejemplo, la variable
+de instancia es declarada como una \java{List} y \java{getList} devuelve
+una \java{List}, pero ninguno especifica qué tipo de lista.
 
-If you change your mind and decide to use an \java{ArrayList}, you
-only have to change the constructor; you don't have to make any other
-changes.
+Si cambias de opinión y decides usar una \java{ArrayList}, solo tienes
+que cambiar el constructor; no tienes que hacer ninguna modificación
+adicional.
 
-\index{interface-based programming}
-\index{programming to an interface}
+\index{programación basada en interfaces}
+\index{programar para una interfaz}
 
-This style is called {\bf interface-based programming},
-or more casually, ``programming to an interface''
+Este estilo es llamado {\bf programación basada en interfaces},
+o de forma más casual, ``programar para una interfaz''
 (see \url{http://thinkdast.com/interbaseprog}).
-Here we are talking about the general idea of an interface,
-not a Java \java{interface}.
+De lo que hablamos es de la idea general de una interfaz, no de
+una \java{interface} de Java.
 
-When you use a library, your code should only depend on the interface,
-like \java{List}.  It should not depend on a specific
-implementation, like \java{ArrayList}. That way, if the implementation
-changes in the future, the code that uses it will still work.
+Cuando usas una biblioteca, tu código debería depender únicamente de
+la interfaz, como \java{List}.  No debería depender de implementaciones
+específicas, como \java{ArrayList}. De esa forma, si la implementación
+cambia en el futuro, el código que la usa seguirá funcionando.
 
-On the other hand, if the interface changes, the code that depends on
-it has to change, too.  That's why library developers avoid changing
-interfaces unless absolutely necessary.
+Por otro lado, si la interfaz cambia, el código que depende de ella también
+tiene que cambiar. Es por eso que los desarrolladores de bibliotecas
+evitan cambiar las interfaces a menos que sea absolutemente necesario.
 
 
-\section{Exercise 1}
+\section{Ejercicio 1}
 \label{warming-up}
 
-Since this is the first exercise, we'll keep it simple. You will take
-the code from the previous section and {\bf swap the implementation};
-that is, you will replace the \java{LinkedList} with an
-\java{ArrayList}.  Because the code programs to an interface, you will
-be able to swap the implementation by changing a single line and
-adding an \java{import} statement.
+Dado que este es el primer ejercicio, lo mantendremos simple. Tomarás
+el código de la sección anterior e {\bf intercambiarás la implementación};
+es decir, reemplazarás la \java{LinkedList} con una \java{ArrayList}.  
+Debido a que el código programa para una interfaz, serás capaz de
+intercambiar la implementación cambiando una sola línea de código y
+agregando una instrucción \java{import}.
 
-Start by setting up your development environment. For all of the
-exercises, you will need to be able to compile and run Java code.  I
-developed the examples using Java SE Development Kit 7.  If you are
-using a more recent version, everything should still work.  If you are
-using an older version, you might find some incompatibilities.
+Comienza configurando tu entorno de desarrollo. Para todos los
+ejercicios, necesitarás poder compilar y ejecutar código de Java.
+Desarrollé los ejemplo usando el Java SE Development Kit 7.  Si estás
+usando una versión más reciente, todo debería funcionar. Si estás
+usando una versión más antigua, puede que encuentres algunas
+incompatibilidades.
 
 \index{Java SDK}
-\index{interactive development environment}
+\index{entorno de desarrollo integrado}
 \index{IDE}
 
-I recommend using an interactive development environment (IDE) that
-provides syntax checking, auto-completion, and source code
-refactoring.  These features help you avoid errors or find them
-quickly.  However, if you are preparing for a technical interview,
-remember that you will not have these tools during the interview, so
-you might also want to practice writing code without them.
+Recomiendo usar un entorno de desarrollo integrado (IDE) que
+provea comprobación de sintaxis, autocompletado y refactorización
+de código fuente. Estas características te ayudan a prevenir errores o
+a encontrarlos rápidamente. Sin embargo, si estás preparándote para
+una entrevista técnica, recuerda que no tendrás a tu disposición estas
+herramientas durante la entrevista, por lo que podrías querer practicar
+escribiendo código sin ellas.
 
-If you have not already downloaded the code for this book, see the
-instructions in Section~\ref{code}.
+Si aun no has descargado el código para este libro, revisa las
+instrucciones en la Sección~\ref{code}.
 
-In the directory named {\tt code}, you should find these files and
-directories:
+En el directorio llamado {\tt code}, encontrarás estos archivos y
+directorios:
 
 \begin{itemize}
   \item
-    \java{build.xml} is an Ant file that makes it easier to compile
-    and run the code.
+    \java{build.xml} es un archivo Ant que facilita compilar y
+    ejecutar el código.
 
   \item
-    \java{lib} contains the libraries you'll need (for this
-    exercise, just JUnit).
+    \java{lib} contiene las bibliotecas que necesitarás (para este
+    ejercicio, solo JUnit).
 
   \item
-    \java{src} contains the source code.
+    \java{src} contiene el código fuente.
 
 \end{itemize}
 
-If you navigate into \java{src/com/allendowney/thinkdast},
-you'll find the source code for this exercise:
+Si navegas a \java{src/com/allendowney/thinkdast},
+encontrarás el código fuente para este ejercicio:
 
 \begin{itemize}
 
   \item
-    \java{ListClientExample.java} contains the code from the previous
-    section.
+    \java{ListClientExample.java} contiene el código de la sección
+    anterior.
 
   \item
-    \java{ListClientExampleTest.java} contains a JUnit test for
+    \java{ListClientExampleTest.java} contiene un test de JUnit para
     \java{ListClientExample}.
 
 
 \end{itemize}
 
-Review \java{ListClientExample} and make sure you understand what it
-does. Then compile and run it. If you use Ant, you can navigate to the
-{\tt code} directory and run {\tt ant ListClientExample}.
+Revisa \java{ListClientExample} y asegúrate de entender lo que
+hace. Luego, compílalo y ejecútalo. Si usas Ant, puedes navegar al
+directorio {\tt code} y ejecutar {\tt ant ListClientExample}.
 
 \index{Ant}
 
-You might get a warning like
+Puede ser que obtengas una advertencia como:
 
 \begin{verbatim}
 List is a raw type. References to generic type List<E> 
 should be parameterized.
 \end{verbatim}
 
-To keep the example simple, I didn't bother to specify the type of
-the elements in the list.  If this warning bothers you, you can
-fix it by replacing each \java{List} or \java{LinkedList} with
-\java{List<Integer>} or \java{LinkedList<Integer>}.
+Para mantener este ejemplo simple, no me preocupé por especificar el tipo de
+los elementos en la lista.  Si esta advertencia te molesta, puedes
+arreglarla reemplazando \java{List} o \java{LinkedList} con
+\java{List<Integer>} o \java{LinkedList<Integer>}.
 
 \index{raw type}
 
-Review \java{ListClientExampleTest}. It runs one test, which creates a
-\java{ListClientExample}, invokes \java{getList}, and then checks
-whether the result is an \java{ArrayList}. Initially, this test will
-fail because the result is a \java{LinkedList}, not an
-\java{ArrayList}. Run this test and confirm that it fails.
+Revisa \java{ListClientExampleTest}. Ejecuta solo un prueba, que crea un
+\java{ListClientExample}, invoca \java{getList}, y luego comprueba
+si el resultado es una \java{ArrayList}. Inicialmente, este test fallará
+porque el resultado es una \java{LinkedList}, no una
+\java{ArrayList}. Ejecuta el test y confirma que falla.
 
-NOTE: This test makes sense for this exercise, but it is not a good
-example of a test. Good tests should check whether the class under
-test satisfies the requirements of the \emph{interface}; they should
-not depend on the details of the \emph{implementation}.
+NOTA: Este test tiene sentido para este ejercicio, pero no es un buen
+ejemplo de un test. Los buenos tests deberían comprobar si la clase
+que está siendo probada satisface los requerimientos de la \emph{interfaz}; 
+no deberían depender de los detalles de la \emph{implementación}.
 
-\index{unit testing}
-\index{interface}
-\index{implementation}
+\index{}
+\index{interfaz}
+\index{implementación}
 
-In the \java{ListClientExample}, replace \java{LinkedList} with
-\java{ArrayList}.  You might have to add an \java{import}
-statement. Compile and run \java{ListClientExample}. Then run the test
-again. With this change, the test should now pass.
+En la \java{ListClientExample}, reemplaza \java{LinkedList} con
+\java{ArrayList}.  Podrías tener que agregar una instrucción \java{import}. 
+Compila y ejecuta \java{ListClientExample}. Entonces ejecuta el test
+de nuevo. Con este cambio, el test debería pasar.
 
-To make this test pass, you only had to change \java{LinkedList} in
-the constructor; you did not have to change any of the places where
-\java{List} appears. What happens if you do?  Go ahead and replace one
-or more appearances of \java{List} with \java{ArrayList}. The program
-should still work correctly, but now it is ``overspecified''. If you
-change your mind in the future and want to swap the interface again,
-you would have to change more code.
+Para lograr que se pase el test, tuviste que cambiar \java{LinkedList} en
+el constructor; no tuviste que cambiar nada en el resto de lugares donde
+\java{List} aparece. ¿Qué sucedería si lo haces?  Adelante, reemplaza una
+o más apariciones de \java{List} con \java{ArrayList}. El programa
+debería seguir funcionando correctamente, pero ahora está
+``sobreespecificado''. Si cambias de idea en el futuro y quieres intercambiar
+la interfaz de neuvo, tendrías que cambiar más código.
 
-In the \java{ListClientExample} constructor, what happens if you
-replace \java{ArrayList} with \java{List}? Why can't you instantiate a
-\java{List}?
+En el constructor de \java{ListClientExample}, ¿qué sucede si reemplazas
+\java{ArrayList} con \java{List}? ¿Por qué no puedes instanciar una \java{List}?
 
 \index{constructor}
 
 
-\chapter{Analysis of Algorithms}
+\chapter{Análisis de Algoritmos}
 \label{cs-analysis-of-algorithms-readme}
 
-As we saw in the previous chapter, Java provides two
-implementations of the \java{List} interface, \java{ArrayList} and
-\java{LinkedList}. For some applications \java{LinkedList} is faster;
-for other applications \java{ArrayList} is faster.
+Como vimos en el capítulo anterior, Java provee dos
+implementaciones de la interfaz \java{List}, \java{ArrayList} y
+\java{LinkedList}. Para algunas aplicaciones, \java{LinkedList} es más rápida;
+para otras, \java{ArrayList} es más rápida.
 
-\index{analysis of algorithms}
-\index{profiling}
+\index{análisis de algoritmos}
+\index{perfilado}
 
-To decide which one is better for a particular application, one approach
-is to try them both and see how long they take. This approach, which is
-called ``profiling'', has a few problems:
-
-\begin{enumerate}
-
-\item Before you can compare the algorithms, you have to implement
-  them both.
-
-\item The results might depend on what kind of computer you use. One
-  algorithm might be better on one machine; the other might be better on
-  a different machine.
-
-\item The results might depend on the size of the problem or the data
-  provided as input.
-
-\end{enumerate}
-
-We can address some of these problems using {\bf analysis of
-  algorithms}. When it works, algorithm analysis makes it possible to
-compare algorithms without having to implement them. But we have to
-make some assumptions:
+Para decidir cuál es mejor para una aplicación particular, una aproximación
+es probar ambas y ver cuánto se tardan. Esta aproximación, que se conoce
+como ``perfilado'', tiene algunos problemas:
 
 \begin{enumerate}
 
-\item To avoid dealing with the details of computer hardware, we
-  usually identify the basic operations that make up an algorithm ---
-  like addition, multiplication, and comparison of numbers --- and
-  count the number of operations each algorithm requires.
+\item Antes de comparar los algoritmos, tienes que implementar ambos.
 
-\item To avoid dealing with the details of the input data, the best
-  option is to analyze the average performance for the inputs we
-  expect. If that's not possible, a common alternative is to analyze
-  the worst case scenario.
+\item Los resultados podrían depender de qué tipo de computadora uses. Un 
+  algoritmo podría ser mejor en una máquina; el otro podría ser mejor
+  en una máquina diferente.
 
-\item Finally, we have to deal with the possibility that one algorithm
-  works best for small problems and another for big ones. In that
-  case, we usually focus on the big ones, because for small problems
-  the difference probably doesn't matter, but for big problems the
-  difference can be huge.
+\item Los resultados podrían depender del tamaño del problema o de los datos
+  que se proporcionaron como entrada.
 
 \end{enumerate}
 
-This kind of analysis lends itself to simple classification of
-algorithms. For example, if we know that the runtime of Algorithm A
-tends to be proportional to the size of the input, $n$, and Algorithm
-B tends to be proportional to $n^2$, we expect A to be faster than B,
-at least for large values of $n$.
+Podemos superar algunos de estos problemas al realizar un {\bf análisis de
+algoritmos}. Cuando funciona, el análisis de algoritmos hace posible
+comparar algoritmos sin tener que implementarlos. Pero tenemos que
+asumir algunos supuestos:
 
-\index{constant time}
-\index{linear time}
-\index{quadratic time}
+\begin{enumerate}
 
-Most simple algorithms fall into just a few categories.
+\item Para no lidiar con los detalles del hardware de computadoras, 
+  usualmente identificamos las operaciones básicas que conforman un
+  algoritmo ---como suma, multiplicación y comparación de números--- y
+  contamos el número de operaciones que cada algoritmo requiere.
+
+\item Para no lidiar con los detalles de los datos de entrada, la mejor
+  opción es analizar el desempeño promedio para las entradas que
+  esperamos. Si eso no es posible, una alternativa común es analizar
+  el peor escenario.
+
+\item Finalmente, tenemos que lidiar con la posibilidad que un algoritmo
+  funcione mejor para problemas pequeños y otro para los grandes. En ese
+  caso, usualmente nos enfocamos en los grandes, porque para problemas
+  pequeños la diferencia probablemente no importe, pero para problemas
+  grandes la diferencia puede ser enorme.
+
+\end{enumerate}
+
+Esta clase de análisis concude a una clasificación simple de los
+algoritmos. Por ejemplo, si sabemos que el tiempo de ejecución del Algoritmo
+A tiende a ser proporcional al tamaño de las entradas, $n$, y el Algoritmo
+B tiende a ser proporcional a $n^2$, esperaríamos que A sea más rápido que B,
+al menos para valores grandes de $n$.
+
+\index{tiempo constante}
+\index{tiempo lineal}
+\index{tiempo cuadrático}
+
+La mayoría de algoritmos simples pueden agruparse en unas pocas categorías.
 
 \begin{itemize}
 
-\item Constant time: An algorithm is ``constant time'' if the runtime
-  does not depend on the size of the input. For example, if you have
-  an array of $n$ elements and you use the bracket operator
-  (\java{[]}) to access one of the elements, this operation takes
-  the same number of operations regardless of how big the array
-  is.
+\item Tiempo constante: Un algoritmo es de ``tiempo constante'' si el tiempo de ejecución
+  no depende del tamaño de las entradas. Por ejemplo, si tienes un
+  arreglo de $n$ elementos y usas el operador de corchetes
+  (\java{[]}) para acceder a uno de los elementos, esta operación requiere el mismo
+  número de operaciones independientemente de qué tan grande sea el arreglo.
 
-\item Linear: An algorithm is ``linear'' if the runtime is
-  proportional to the size of the input. For example, if you add up the
-  elements of an array, you have to access $n$ elements and
-  perform $n-1$ additions. The total number of operations
-  (element accesses and additions) is $2n-1$, which is
-  proportional to $n$.
+\item Lineal: Un algoritmo es ``lineal'' si el tiempo de ejecución es
+  proporcional al tamaño de la entrada. Por ejemplo, si sumas todos los
+  elementos de un arreglo, tienes que acceder a $n$ elementos y
+  realizar $n-1$ sumas. El número total de operaciones
+  (accesos a elementos y sumas) es $2n-1$, que es proporcional
+  a $n$.
 
-\item Quadratic: An algorithm is ``quadratic'' if the runtime is
-  proportional to $n^2$.  For example, suppose you want to check whether
-  any element in a list appears more than once.  A simple algorithm
-  is to compare each element to all of the others.  If there are
-  $n$ elements and each is compared to $n-1$ others, the total
-  number of comparisons is $n^2 -n$, which is proportional to
-  $n^2$ as $n$ grows.
+\item Cuadrático: Un algoritmo es ``cuadrático'' si el tiempo de ejecución es
+  proporcional a $n^2$.  Por ejemplo, supón que quieres comprobar si cualquiera
+  de los elementos en una lista aparece más de una vez. Un algoritmo simple
+  es comparar cada elemento con todos los demás. Si hay
+  $n$ elementos y cada se compara a los $n-1$ restantes, el número
+  total de comparaciones es $n^2 -n$, que es proporcional a
+  $n^2$ conforme $n$ crece.
 
 \end{itemize}
 
 
-\section{Selection sort}
+\section{Ordenamiento por selección}
 \label{selection-sort}
 
-\index{selection sort}
-\index{sorting}
+\index{ordenamiento por selección}
+\index{ordenamiento}
 
-For example, here's an implementation of a simple algorithm called
-{\bf selection sort}
-(see \url{http://thinkdast.com/selectsort}):
+Por ejemplo, aquí está una implementación de un algoritmo simple llamado
+{\bf ordenamiento por selección}
+(véase \url{http://thinkdast.com/selectsort}):
 
 \begin{verbatim}
 public class SelectionSort {
 
     /**
-     * Swaps the elements at indexes i and j.
+     * Intercambia los elementos en los índices i y j.
      */
     public static void swapElements(int[] array, int i, int j) {
         int temp = array[i];
@@ -942,9 +940,9 @@ public class SelectionSort {
     }
 
     /**
-     * Finds the index of the lowest value
-     * starting from the index at start (inclusive)
-     * and going to the end of the array.
+     * Encuentra el índice del valor más bajo
+     * comenzando desde el índice al principio (inclusive)
+     * y continuando hasta el final del arreglo.
      */
     public static int indexLowest(int[] array, int start) {
         int lowIndex = start;
@@ -957,7 +955,7 @@ public class SelectionSort {
     }
 
     /**
-     * Sorts the elements (in place) using selection sort.
+     * Ordena los elementos (en sitio) por selección.
      */
     public static void selectionSort(int[] array) {
         for (int i = 0; i < array.length; i++) {
@@ -968,165 +966,161 @@ public class SelectionSort {
 }
 \end{verbatim}
 
-The first method, \java{swapElements}, swaps two elements of the
-array. Reading and writing elements are constant time operations,
-because if we know the size of the elements and the location of
-the first, we can compute the location of any other element
-with one multiplication and one addition, and
-those are constant time operations. Since everything in
-\java{swapElements} is constant time, the whole method is constant
-time.
+El primer método, \java{swapElements}, intercambia (del inglés \emph{swap}) dos elementos del
+arreglo. Leer y escribir elementos son operaciones de tiempo constante,
+porque si conocemos el número de elementos y la ubicación del primero,
+podemos calcular la ubicación de cualquier otro elemento con una multiplicación
+y una suma, y estas son operaciones de tiempo constante. Dado que todo en
+\java{swapElements} es de tiempo constante, el método completo es de tiempo constante.
 
-\index{constant time}
-
-The second method, \java{indexLowest}, finds the index of the smallest
-element of the array starting at a given index, \java{start}. Each
-time through the loop, it accesses two elements of the array and
-performs one comparison. Since these are all constant time operations,
-it doesn't really matter which ones we count. To keep it simple, let's
-count the number of comparisons.
+\index{tiempo constante}
+El segundo método, \java{indexLowest}, encuentra el índice del elemento más
+pequeño del arreglo comenzando en un índice dado, \java{start}. Cada vez,
+en todas las repeticiones, accede a dos elementos del arreglo y
+realiza una comparación. Dado que estas son todas operaciones de tiempo
+constante, realmente no importa cuáles contemos. Para mantenerlo simple,
+contemos el número de comparaciones.
 
 \begin{enumerate}
 
-\item If \java{start} is 0, \java{indexLowest} traverses the entire
-  array, and the total number of comparisons is the length of
-  the array, which I'll call $n$.
+\item Si \java{start} es 0, \java{indexLowest} recorre el arreglo
+  completo, y el número total de comparacioones es la longitud del
+  arreglo, a la que llamaré $n$.
 
-\item If \java{start} is 1, the number of comparisons is $n-1$.
+\item Si \java{start} es 1, el número de comparaciones es $n-1$.
 
-\item In general, the number of comparisons is $n$ - \java{start}, so 
-  \java{indexLowest} is linear.
+\item En general, el número de comparaciones es $n$ - \java{start}, así que 
+  \java{indexLowest} es lineal.
 
 \end{enumerate}
 
-The third method, \java{selectionSort}, sorts the array. It loops from
-0 to $n-1$, so the loop executes $n$ times. Each
-time, it calls \java{indexLowest} and then performs a constant time
-operation, \java{swapElements}.
+El tercer método, \java{selectionSort}, orderna el arreglo. Se repite desde
+0 hasta $n-1$, así que el bucle se ejecuta $n$ veces. Cada vez, llama
+a \java{indexLowest} y luego realiza una operación de tiempo constante,
+\java{swapElements}.
 
-\index{linear time}
+\index{tiempo lineal}
 
-The first time \java{indexLowest} is called, it
-performs $n$ comparisons. The second time, it performs
-$n-1$ comparisons, and so on. The total number of comparisons is
+La primera vez que se llama a \java{indexLowest}, éste lleva
+a cabo $n$ comparaciones. La segunda vez, se llevan a cabo
+$n-1$ comparaciones, y así sucesivamente. El número total de comparaciones es
 
 \[ n + n-1 + n-2 + ... + 1 + 0 \]
 
-The sum of this series is $n(n+1)/2$, which is
-proportional to $n^2$; and that means that \java{selectionSort}
-is quadratic.
+La suma de esta serie es $n(n+1)/2$, que es proporcional a
+$n^2$; eso implica que \java{selectionSort} es cuadrático.
 
-\index{quadratic time}
+\index{tiempo lineal}
 
-To get to the same result a different way, we can think of
-\java{indexLowest} as a nested loop. Each time we call
-\java{indexLowest}, the number of operations is proportional
-to $n$. We call it $n$ times, so the total number of
-operations is proportional to $n^2$.
+Para obtener el mismo resultado de forma diferente, podemos pensar en
+\java{indexLowest} como un bucle anidado. Cada vez que llamamos a
+\java{indexLowest}, el número de operaciones es proporcional
+a $n$. Lo llamamos $n$ veces, así que el número total de
+operaciones es proporcional a $n^2$.
 
 
-\section{Big O notation}
+\section{Notación Big O}
 \label{big-o-notation}
 
-\index{big O notation}
+\index{notación Big O}
 
-All constant time algorithms belong to a set called $O(1)$. So another way
-to say that an algorithm is constant time is to say that it is in $O(1)$.
-Similarly, all linear algorithms belong to $O(n)$, and all quadratic
-algorithms belong to $O(n^2)$. This way of classifying algorithms is called
-``big O notation''.
+Todos los algoritmos de tiempo constante pertenecen a un conjunto
+llamado $O(1)$. Así que otra manera de decir que un algoritmo es de
+tiempo constante es decir que está en $O(1)$. De forma similar, todos
+los algoritmos lineales pertenecen a $O(n)$, y todos los algoritmos
+cuadráticos pertenecen a $O(n^2)$. A esta forma de clasificar algoritmos
+se la conoce como ``notación big O''.
 
-NOTE: I am providing a casual definition of big O notation. For a more
-mathematical treatment, see
+NOTA: Esta es un definición informal de la notación big O. Para un
+tratamiento más formal, véase
 \url{http://thinkdast.com/bigo}.
 
-This notation provides a convenient way to write general rules about how
-algorithms behave when we compose them. For example, if you perform a
-linear time algorithm followed by a constant algorithm, the total run
-time is linear. Using $\in$ to mean ``is a member of'':
+Esta notación provee una manera conveniente de escribir reglas generales
+acerca de cómo se comportan los algoritmos cuando los combinamos. Por
+ejemplo, si se lleva a cabo un algoritmo de tiempo lineal seguido de un
+algoritmo constante, el tiempo total de ejecución es lineal. Al usar $\in$
+con el significado ``pertenece a'':
 
-If $f \in O(n)$ and $g \in O(1)$, $f+g \in O(n)$.
+Si $f \in O(n)$ u $g \in O(1)$, $f+g \in O(n)$.
 
-If you perform two linear operations, the total is still linear:
+Si se llevan a cabo dos operaciones lineales, el total sigue siendo lineal.
 
-If $f \in O(n)$ and $g \in O(n)$, $f+g \in O(n)$.
+Si $f \in O(n)$ y $g \in O(n)$, $f+g \in O(n)$.
 
-In fact, if you perform a linear operation any number of times,
-$k$, the total is linear, as long as $k$ is a constant
-that does not depend on $n$.
+De hecho, si se lleva a cabo una operación lineal cualquier número
+de veces, $k$, el total es lineal, siempre qye $k$ sea una constante
+que no dependa de $n$.
 
-If $f \in O(n)$ and $k$ is a constant, $kf \in O(n)$.
+Si $f \in O(n)$ y $k$ es una constante, $kf \in O(n)$.
 
-But if you perform a linear operation $n$ times, the result is
-quadratic:
+Pero si llevas a cabo una operación lineal $n$ veces, el resultado
+es cuadrático:
 
-If $f \in O(n)$, $nf \in O(n^2)$.
+Si $f \in O(n)$, $nf \in O(n^2)$.
 
-In general, we only care about the largest exponent of $n$. So if
-the total number of operations is $2n + 1$, it belongs to
-$O(n)$. The leading constant, 2, and the additive term, 1, are
-not important for this kind of analysis. Similarly, $n^2 + 100n + 1000$ is
-in $O(n^2)$.  Don't be distracted by the big numbers!
+En general, sólo nos interesa el exponente mayor de $n$. Así que si
+el número total de operaciones es $2n + 1$, pertenece a
+$O(n)$. El coeficiente, 2, y el término aditivo, 1, no son importantes
+para este tipo de análisis. De forma similar, $n^2 + 100n + 1000$ está
+en $O(n^2)$.  ¡Que no te distraigan los números grandes!
 
-``Order of growth'' is another name for the same idea.  An order of
-growth is a set of algorithms whose runtimes are in the same big O
-category; for example, all linear algorithms belong to the same order
-of growth because their runtimes are in $O(n)$.
+``Orden de crecimiento'' es otro nombre para la misma idea. Una orden de
+crecimiento es un conjunto de algoritmos cuyos tiempos de ejecución están
+en la misma categoría de big O; por ejemplo, todos los algoritmos lineales
+pertenecen a la misma orden de crecimiento porque sus tiempos de ejecución
+están en $O(n)$.
 
-\index{order of growth}
+\index{orden de crecimiento}
 
-In this context, an ``order'' is a group, like the \emph{Order of
-the Knights of the Round Table}, which is a group of knights, not a way
-of lining them up. So you can imagine the \emph{Order of Linear
-Algorithms} as a set of brave, chivalrous, and particularly efficient
-algorithms.
+En este contexto, una``orden'' es un grupo, como la \emph{Orden de
+los Caballeros de la Mesa Redonda}, que es un grupo de caballeros, no una forma
+de alinearlos. Así que puedes imaginarte a la \emph{Orden de los Algoritmos
+Lineales} como un conjunto de algoritmos valientes, galantes y particularmente eficientes.
 
 
-\section{Exercise 2}
+\section{Ejercicio 2}
 \label{exercise2}
 
-The exercise for this chapter is to implement a \java{List} that
-uses a Java array to store the elements. 
+El ejercio para este capítulo es implementar una \java{List} que
+use un arreglo de Java para guardar sus elementos. 
 
-In the code repository for this book (see Section~\ref{code}),
-you'll find the source files you'll need:
+En el repositorio de código para este libro (véase la Sección~\ref{code}),
+encontrarás los archivos de código fuente que necesitarás:
 
 \index{MyArrayList}
 
 \begin{itemize}
-\item \java{MyArrayList.java} contains a partial implementation of the
- \java{List} interface.  Four of the methods are incomplete; your job
- is to fill them in.
+\item \java{MyArrayList.java} contiene una implementación parcial de la interfaz de
+ \java{List}. Cuatro de los métodos están incompletos, tu trabajo es agregar las partes faltantes.
 
-\item \java{MyArrayListTest.java} contains JUnit tests you can use to
-check your work.
+\item \java{MyArrayListTest.java} contiene tests de JUnit que puedes usar para comprobar tu trabajo.
 
 \end{itemize}
 
-You'll also find the Ant build file \java{build.xml}.  From the {\tt
-  code} directory, you should be able to run \java{ant MyArrayList} to
-run \java{MyArrayList.java}, which contains a few simple tests. Or you
-can run \java{ant MyArrayListTest} to run the JUnit test.
+También encontrarás el archivo de construcción Ant \java{build.xml}.  Desde el
+directorio {\tt code}, deberías poder ejecutar \java{ant MyArrayList} para
+ejecutar \java{MyArrayList.java}, que contiene unos pocos tests simples. O puedes
+ejecutar \java{ant MyArrayListTest} para ejecutar los tests de JUnit.
 
 \index{Ant}
 %TODO: either make the build step automatic or add instructions
 
-When you run the tests, several of them should fail. If you examine the
-source code, you'll find four \java{TODO} comments indicating the
-methods you should fill in.
+Cuando ejecutes los tests, varios de ellos deberían fallar. Si examinas el
+código fuente, verás cuatro comentarios \java{TODO} (cosas por hacer)
+indicando los métodos que deberías completar.
 
-Before you start filling in the missing methods, let's walk through
-some of the code. Here are the class definition, instance variables,
-and constructor.
+Antes de comenzar a agregar el código en los métodos incompletos, revisemos
+una porción del código. Aquí esta la definición de la clase, variables de instancia
+y el constructor.
 
-\index{instance variable}
+\index{variable de instancia}
 \index{constructor}
 
 
 \begin{verbatim}
 public class MyArrayList<E> implements List<E> {
-    int size;                    // keeps track of the number of elements
-    private E[] array;           // stores the elements
+    int size;                    // lleva un registro del número de elementos
+    private E[] array;           // guarda los elementos
     
     public MyArrayList() {
         array = (E[]) new Object[10];
@@ -1135,36 +1129,36 @@ public class MyArrayList<E> implements List<E> {
 }
 \end{verbatim}
 
-As the comments indicate, \java{size} keeps track of how many elements
-are in \java{MyArrayList}, and \java{array} is the array that
-actually contains the elements.
+Como indican los comentarios, \java{size} registra cuántos elementos
+están en \java{MyArrayList}, y \java{array} es el arreglo que, de hecho,
+contiene los elementos.
 
-\index{element}
+\index{elemento}
 
-The constructor creates an array of 10 elements, which are initially
-\java{null}, and sets \java{size} to 0. Most of the time, the length
-of the array is bigger than \java{size}, so there are unused slots in
-the array.
+El constructor crea un arreglo de 10 elementos, que inicialmente son
+\java{null}, y establece el \java{size} en 0. La mayor parte del tiempo, la
+longitud del arreglo es mayor que \java{size}, así que hay muchos espacios
+sin utilizar en el arreglo.
 
-\index{type parameter}
+\index{parámetro de tipo}
 
-One detail about Java: you can't instantiate an array using a type
-parameter; for example, the following will not work:
+Un detalle sobre Java: no puedes instanciar  un arreglo usando un parámetro
+de tipo; por ejemplo, lo siguiente no funcionará:
 
 \begin{verbatim}
         array = new E[10];
 \end{verbatim}
 
-To work around this limitation, you have to instantiate an array of
-\java{Object} and then typecast it. You can read more about this issue
-at \url{http://thinkdast.com/generics}.
+Para superar esta limitante, tendrás que instanciar un arreglo de
+\java{Object} y después forzar la conversión de tipo. Puedes leer más al respecto
+en \url{http://thinkdast.com/generics}.
 
-Next we'll look at the method that adds elements to the list:
+A continuación examinaremos el método que agrega elementos a la lista:
 
 \begin{verbatim}
     public boolean add(E element) {
         if (size >= array.length) {
-            // make a bigger array and copy over the elements
+            // crear un arreglo más grande y copiar los elementos
             E[] bigger = (E[]) new Object[array.length * 2];
             System.arraycopy(array, 0, bigger, 0, array.length);
             array = bigger;
@@ -1175,26 +1169,26 @@ Next we'll look at the method that adds elements to the list:
     }
 \end{verbatim}
 
-If there are no unused spaces in the array, we have to create a bigger
-array and copy over the elements. Then we can store the element in the
-array and increment \java{size}.
+Si no hay espacios sin utilizar en el arreglo, tenemos que crear un arreglo
+más grande y copiar los elementos a éste. Luego ya podemos guardar el
+elemento en el arreglo e incrementar el \java{size}.
 
-\index{boolean}
+\index{booleano}
 
-It might not be obvious why this method returns a boolean, since it
-seems like it always returns \java{true}. As always, you can find the
-answer in the documentation:
+Puede que no sea obvio por qué este método devuelve un booleano, dado
+que siempre devuelve \java{true}. Como siempre, puedes encontrar la
+respuesta en la documentación:
 \url{http://thinkdast.com/colladd}.
-It's also not obvious how to analyze the performance of this
-method. In the normal case, it's constant time, but if we have to
-resize the array, it's linear. I'll explain how to handle this in
-Section~\ref{classifying-add}.
+Tampoco es obvio cómo analizar el desempeño de este
+método. En el caso normal, es de tiempo constante, pero si tenemos
+que redimensionar el arreglo, es lineal. Explicaré cómo manejar esto en la
+Sección~\ref{classifying-add}.
 
-\index{constant time}
-\index{linear time}
+\index{tiempo constante}
+\index{tiempo lineal}
 
-Finally, let's look at \java{get}; then you can get started on the
-exercises.
+Finalmente, demos una mirada a \java{get}; y luego ya puedes empezar con
+los ejercicios.
 
 \begin{verbatim}
     public T get(int index) {
@@ -1205,16 +1199,16 @@ exercises.
     }
 \end{verbatim}
 
-Actually, \java{get} is pretty simple:
-if the index is out of bounds, it throws an exception; otherwise it
-reads and returns an element of the array. Notice that it checks whether
-the index is less than \java{size}, not \java{array.length}, so it's
-not possible to access the unused elements of the array.
+De hecho, \java{get} es bastante simple:
+si el índice está fuera de rango, lanza una excepción; de lo contrario
+lee y devuelve un elemento del arreglo. Nota que se comprueba si
+el índice es menor que \java{size}, no \java{array.length}, así que
+no es posible acceder a los elementos sin utilizar del arreglo.
 
 \index{get}
 
-In \java{MyArrayList.java}, you'll find a stub for \java{set} that
-looks like this:
+En \java{MyArrayList.java}, encontrarás código de relleno para \java{set} que
+se ve como esto:
 
 \begin{verbatim}
     public T set(int index, T element) {
@@ -1223,56 +1217,55 @@ looks like this:
     }
 \end{verbatim}
 
-Read the documentation of \java{set} at
-\url{http://thinkdast.com/listset}, then fill in the body of this
-method. If you run \java{MyArrayListTest} again, \java{testSet} should
-pass.
+Lee la documentación de \java{set} en
+\url{http://thinkdast.com/listset}, luego llena el cuerpo de este
+método. Si ejecutas \java{MyArrayListTest} de nuevo, \java{testSet} debería
+pasar.
 
 \index{set}
 
-HINT: Try to avoid repeating the index-checking code.
+PISTA: Trata de no repetir el código que comprueba el índice.
 
-Your next mission is to fill in \java{indexOf}. As usual, you should
-read the documentation at \url{http://thinkdast.com/listindof} so you
-know what it's supposed to do. In particular, notice how it is
-supposed to handle \java{null}.
+Tu siguiente misión es llenar \java{indexOf}. Como es usual, debería
+leer la documentación en \url{http://thinkdast.com/listindof} así ya
+sabes lo que se supone que haga. En particular, nota cómo se supone
+que maneje \java{null}.
 
 \index{indexOf}
-\index{helper method}
+\index{método auxiliar}
 
-I've provided a helper method called
-\java{equals} that compares an element from the array to a target
-value and returns \java{true} if they are equal (and it handles
-\java{null} correctly). Notice that this method is private because it
-is only used inside this class; it is not part of the \java{List}
-interface.
+He provisto un método auxiliar llamado
+\java{equals} que compara un elementos del arreglo con un valor
+objetivo y devuelve \java{true} si son iguales (y que maneja los
+\java{null} correctamente). Nota que este método es privado porque solo
+se usa dentro de la clase; no es parte de la interfaz \java{List}.
 
 \index{equals}
 
-When you are done, run \java{MyArrayListTest} again;
-\java{testIndexOf} should pass now, as well as the other tests that
-depend on it.
+Cuando termines, ejecuta \java{MyArrayListTest} de nuevo;
+\java{testIndexOf} debería pasar ahora, así como el otro test que
+depende de él.
 
-Only two more methods to go, and you'll be done with this
-exercise. The next one is an overloaded version of \java{add} that
-takes an index and stores the new value at the given index, shifting
-the other elements to make room, if necessary.
+Sólo dos métodos más para terminar, y habrás finalizado este
+ejercicio. El siguiente es una versión sobrecargada de \java{add} que
+toma un entero y guarda el nuevo valor en un índice dado, desplazando
+los otros elementos para hacer espacio, de ser necesario.
 
 \index{add}
 
-Again, read the documentation at \url{http://thinkdast.com/listadd},
-write an implementation, and run the tests for confirmation.
+De nuevo, lee la documentación en \url{http://thinkdast.com/listadd},
+escribe una implementación, y ejecuta los tests para confirmar.
 
-HINT: Avoid repeating the code that makes the array bigger.
+PISTA: Evita repetir el código que hace al array más grande.
 
-Last one: fill in the body of \java{remove}.  The documentation is at
-\url{http://thinkdast.com/listrem}. When you finish this one, all
-tests should pass.
+El último: llena el cuerpo de \java{remove}.  La documentación está en
+\url{http://thinkdast.com/listrem}. Cuando finalices este útlimo, todos
+los tests deberían pasar.
 
 \index{remove}
 
-Once you have your implementation working, compare it to mine, which
-you can read at \url{http://thinkdast.com/myarraylist}.
+Una vez que tus implementaciones funcionen, compáralas con la mía,
+la cual puedes leer en \url{http://thinkdast.com/myarraylist}.
 
 
 \chapter{ArrayList}
@@ -1280,18 +1273,18 @@ you can read at \url{http://thinkdast.com/myarraylist}.
 
 \index{ArrayList}
 
-This chapter kills two birds with one stone: I present solutions to
-the previous exercise and demonstrate a way to classify
-algorithms using {\bf amortized analysis}.
+Este capítulo mata dos pájaros de un tiro: presento las soluciones
+al ejercicio anterior y demuestro una forma de clasificar
+algoritmos utilizando el {\bf análisis amortizado}.
 
-\index{amortized analysis}
+\index{análisis amortizado}
 
 
-\section{Classifying MyArrayList methods}
+\section{Clasificación de métodos de MyArrayList}
 \label{classifying-myarraylist-methods}
 
-For many methods, we can identify the order of growth by examining the
-code. For example, here's the implementation of \java{get} from
+Para muchos métodos, podemos identificar la orden de crecimiento al
+examinar el código. Por ejemplo, aquí está la implementación de \java{get} de
 \java{MyArrayList}:
 
 \begin{verbatim}
@@ -1303,15 +1296,15 @@ code. For example, here's the implementation of \java{get} from
     }
 \end{verbatim}
 
-Everything in \java{get} is constant time, so \java{get} is constant
-time. No problem.
+Todo en \java{get} es de tiempo constante, así que \java{get} es de tiempo
+constante. Sin problemas.
 
-\index{constant time}
+\index{tiempo constante}
 \index{get}
 
-Now that we've classified \java{get}, we can classify \java{set},
-which uses it. Here is our implementation of \java{set} from the
-previous exercise:
+Ahora que hemos clasificado \java{get}, podemos clasificar \java{set},
+que lo usa. Aquí está nuestra implementación de \java{set} del
+ejercicio anterior:
 
 \begin{verbatim}
     public E set(int index, E element) {
@@ -1321,21 +1314,21 @@ previous exercise:
     }
 \end{verbatim}
 
-One slightly clever part of this solution is that it does not check the
-bounds of the array explicitly; it takes advantage of \java{get},
-which raises an exception if the index is invalid.
+Una parte ligeramente astuta de esta solución es que no comprueba los
+límites del arreglo de forma explítica, sino que se aprovecha de \java{get},
+que lanza una excepción si el índice es inválido.
 
-\index{exception}
+\index{excepción}
 \index{set}
 
-Everything in \java{set}, including the invocation of \java{get}, is
-constant time, so \java{set} is also constant time.
+Todo en \java{set}, incluso la invocación de \java{get}, es de
+tiempo constante, así que \java{set} también es de tiempo constante.
 
 \index{indexOf}
-\index{linear time}
+\index{tiempo lineal}
 
-Next we'll look at some linear methods. For example, here's my
-implementation of \java{indexOf}:
+Luego examinaremos algunos métodos lineales. Por ejemplo, aquí esta mi
+implementación de \java{indexOf}:
 
 \begin{verbatim}
     public int indexOf(Object target) {
@@ -1348,8 +1341,8 @@ implementation of \java{indexOf}:
     }
 \end{verbatim}
 
-Each time through the loop, \java{indexOf} invokes \java{equals}, so
-we have to classify \java{equals} first. Here it is:
+En cada repetición del bucle, \java{indexOf} invoca a \java{equals}, así que
+tenemos que clasificar a \java{equals} primero. Aquí está:
 
 \begin{verbatim}
     private boolean equals(Object target, Object element) {
@@ -1361,28 +1354,29 @@ we have to classify \java{equals} first. Here it is:
     }
 \end{verbatim}
 
-This method invokes \java{target.equals}; the runtime of this method
-might depend on the size of \java{target} or \java{element}, but it
-probably doesn't depend on the size of the array, so we consider it
-constant time for purposes of analyzing \java{indexOf}.
+Este método invoca a \java{target.equals}; el tiempo de ejecución de este
+método podría depender del tamaño de \java{target} o de \java{element}, pero
+probablemente no depende del tamaño del arreglo, así que lo consideraremos
+de tiempo constante para el propósito de de analizar \java{indexOf}.
 
-\index{constant time}
-\index{linear time}
+\index{tiempo constante}
+\index{tiempo lineal}
 \index{equals}
 
-Getting back to \java{indexOf}, everything inside the loop is constant
-time, so the next question we have to consider is: how many times does
-the loop execute?
+Regresando a \java{indexOf}, todo dentro del bucle es de tiempo constante, 
+así que la siguiente pregunta que tenemos que considerar es: ¿cuántas veces
+se repite el bucle?
 
-If we get lucky, we might find the target object right away and return
-after testing only one element. If we are unlucky, we might have to test
-all of the elements. On average, we expect to test half of the elements,
-so this method is considered linear (except in the unlikely case that
-we know the target element is at the beginning of the array).
+Si tenemos suerte, podríamos encontrar que el valor objetivo (target) al
+principio y devolverlo después de comprobar sólo un elemento. Si somos
+desafortunados, podríamos tener que comprobar todos los elementos. En
+promedio, esperaríamos comprobar la mitad de los elementos, así que este
+método es considerado lineal (excepto en el improbable caso que
+sepamos que el elemento objetivo está al principio del arreglo).
 
 \index{remove}
 
-The analysis of \java{remove} is similar. Here's my implementation:
+El análisis de \java{remove} es similar. Aquí está mi implementación:
 
 \begin{verbatim}
     public E remove(int index) {
@@ -1395,47 +1389,46 @@ The analysis of \java{remove} is similar. Here's my implementation:
     }
 \end{verbatim}
 
-It uses \java{get}, which is constant time, and then loops through the
-array, starting from \java{index}. If we remove the element at the end
-of the list, the loop never runs and this method is constant time. If we
-remove the first element, we loop through all of the remaining elements,
-which is linear. So, again, this method is considered linear (except in
-the special case where we know the element is at the end or a constant
-distance from the end).
+Este método usa a \java{get}, que es de tiempo constante, y luego itera a lo
+largo del arreglo, comenzando en \java{index}. Si removemos el elemento al final
+de la lista, el bucle nunca se ejecuta y este método es de tiempo constante. Si
+removemos el primer elemento, recorreremos todos los elementos restantes, lo
+que es lineal. Así que, de nuevo, este método se considera lineal (excepto en el
+caso especial donde sabemos que elemento está al final o a una distancia constante
+del final).
 
 
-\section{Classifying \java{add}}
+\section{Clasificación de \java{add}}
 \label{classifying-add}
 
-Here's a version of \java{add} that takes an
-index and an element as parameters:
+Aquí está una versión de \java{add} que toma un índice y un elemento como parámetros:
 
 \begin{verbatim}
     public void add(int index, E element) {
         if (index < 0 || index > size) {
             throw new IndexOutOfBoundsException();
         }
-        // add the element to get the resizing
+        // agregar el elemento para forzar el redimensionamiento
         add(element);
         
-        // shift the other elements
+        // desplaza los otros elementos
         for (int i=size-1; i>index; i--) {
             array[i] = array[i-1];
         }
-        // put the new one in the right place
+        // coloca el nuevo elemento en el lugar correcto
         array[index] = element;
     }
 \end{verbatim}
 
-This two-parameter version, called \java{add(int, E)}, uses
-the one-parameter version, called \java{add(E)}, which puts the
-new element at the end. Then it shifts the other elements to the right,
-and puts the new element in the correct place.
+Esta versión con dos parámetros, llamada \java{add(int, E)}, usa a
+la versión con un parámettros, llamada \java{add(E)}, que agrega un
+nuevo elemento al final. Luego desplaza los otros elementos a la derecha,
+y coloca el nuevo elemento en el lugar correcto.
 
 \index{add}
 
-Before we can classify the two-parameter \java{add(int, E)}, we have
-to classify the one-parameter \java{add(E)}:
+Antes de clasificar \java{add(int, E)} con dos parámetros, tenemos que
+clasificar \java{add(E)} con un parámetro:
 
 \begin{verbatim}
     public boolean add(E element) {
@@ -1451,85 +1444,85 @@ to classify the one-parameter \java{add(E)}:
     }
 \end{verbatim}
 
-The one-parameter version turns out to be hard to analyze. If there is
-an unused space in the array, it is constant time, but if we have to
-resize the array, it's linear because \java{System.arraycopy} takes
-time proportional to the size of the array. 
+La versión con un parámetro resulta difícil de analizar. Si hay un espacio
+sin utilizar en el arreglo, es de tiempo constante, pero si tenemos que
+redimensionar el arreglo, es lineal porque \java{System.arraycopy} toma
+tiempo proporcional al tamaño del arreglo. 
 
-\index{constant time}
-\index{linear time}
+\index{tiempo constante}
+\index{tiempo lineal}
 
-So is {\tt add} constant time or linear?
-We can classify this method by thinking about the average number of
-operations per add over a series of $n$ adds. For simplicity,
-assume we start with an array that has room for 2 elements.
-
-\begin{itemize}
-
-\item
-  The first time we call add, it finds unused space in the array, so it
-  stores 1 element.
-
-\item
-  The second time, it finds unused space in the array, so it stores 1
-  element.
-
-\item
-  The third time, we have to resize the array, copy 2 elements, and
-  store 1 element. Now the size of the array is 4.
-
-\item
-  The fourth time stores 1 element.
-
-\item
-  The fifth time resizes the array, copies 4 elements, and stores 1
-  element. Now the size of the array is 8.
-
-\item
-  The next 3 adds store 3 elements.
-
-\item
-  The next add copies 8 and stores 1. Now the size is 16.
-
-\item
-  The next 7 adds store 7 elements.
-
-\end{itemize}
-
-And so on. Adding things up:
+¿Así que es {\tt add} de tiempo constante o lineal?
+Podemos clasificar este método al pensar en el número promedio de
+operaciones por add en una serie de $n$ adds. Por simplicidad,
+asume que comenzamos con un arreglo que tiene espacio para 2 elementos.
 
 \begin{itemize}
 
 \item
-  After 4 adds, we've stored 4 elements and copied 2.
+  La primera vez que llamamos a add, encuentra un espacio libre en el arreglo, así que
+  guarda un elemento.
 
 \item
-  After 8 adds, we've stored 8 elements and copied 6.
+  La segunda vez, encuentra un espacio libre en el arreglo, así que guarda 1
+  elemento.
 
 \item
-  After 16 adds, we've stored 16 elements and copied 14.
+  La tercera vez, tenemos que redimensionar el arreglo, copiar 2 elementos y
+  guardar un elemento. Ahora el tamaño del arreglo es 4.
+
+\item
+  La cuarta vez se guarda un elemento.
+
+\item
+  La quinta vez redimensiona el arreglo, copia 4 elementos, y guarda 1
+  elemento. Ahora el tamaño del arreglo es 8.
+
+\item
+  Los siguientes 3 llamados a add guardan 3 elementos.
+
+\item
+  El siguiente add copia 8 y guarda 1. Ahora el tamaño es 16.
+
+\item
+  Los siguientes 7 llamados a add guardan 7 elementos.
 
 \end{itemize}
 
-By now you should see the pattern: to do $n$ adds, we have to
-store $n$ elements and copy $n-2$. So the total number of
-operations is $n + n - 2$, which is $2n-2$.
+Y así sucesivamente. Juntando todo:
 
-To get the average number of operations per add, we divide the total by
-$n$; the result is $2 - 2/n$. As $n$ gets big, the
-second term, $2/n$, gets small. Invoking the principle that we
-only care about the largest exponent of $n$, we can think of
-\java{add} as constant time.
+\begin{itemize}
 
-\index{constant time}
-\index{linear time}
+\item
+  Tras 4 llamados a add, hemos guardado 4 elementos and copiado 2.
 
-It might seem strange that an algorithm that is sometimes linear can be
-constant time on average. The key is that we double the length of the
-array each time it gets resized. That limits the number of times each
-element gets copied. Otherwise --- if we add a fixed amount to the
-length of the array, rather than multiplying by a fixed amount --- the
-analysis doesn't work.
+\item
+  Tras 8 llamados a add, hemos guardado 8 elementos and copiado 6.
+
+\item
+  Tras 16 llamados a add, hemos guardado 16 elementos and copiado 14.
+
+\end{itemize}
+
+Por ahora ya deberías ver el patrón: para llamar a add $n$ veces, tenemos
+que guardar $n$ elementos y copiar $n-2$. Así que el número total de
+operaciones es $n + n - 2$, que es $2n-2$.
+
+Para obtener el número promedio de operaciones por add, dividimos el total por
+$n$; el resultado es $2 - 2/n$. Conforme $n$ se hace más grande, el
+segundo término, $2/n$, se hace más pequeño. Si tenemos en cuenta el principio que
+sólo nos interesa el exponente mayor de $n$, podemos pensar en
+\java{add} como de tiempo constante.
+
+\index{tiempo constante}
+\index{tiempo lineal}
+
+Podría parecer extraño que un algoritmo que a veces es lineal puede ser de
+tiempo constante en promedio. La clave es que duplicamos la longitud del
+arreglo cada vez que se redimensiona. Esto limita el número de veces que
+cada elemento es copiado. De otra manera --- si agregáramos una cantidad
+fija a la longitud del arreglo, en lugar de multiplicar por una cantidad fija --- el
+análisis no funcionaría.
 
 % NOTE: Patrick notes potential confusion in my use of average, which
 % was an average over a hypothetical set of inputs when we looked at
@@ -1540,30 +1533,30 @@ analysis doesn't work.
 % case analysis and amortized analysis) than for beginners (who will
 % not, I conjecture, be bothered).
 
-\index{amortized analysis}
-\index{average time}
+\index{análisis amortizado}
+\index{tiempo promedio}
 
-This way of classifying an algorithm, by computing the average time in a
-series of invocations, is called {\bf amortized analysis}.  You can
-read more about it at 
+Esta forma de clasificar un algoritmo, al calcular el tiempo promedio en una
+serie de invocaciones, es llamada {\bf análisis amortizado}.  Puedes
+leer más al respecto en
 \url{http://thinkdast.com/amort}. 
-The key idea is that the extra cost of copying the array is
-spread, or ``amortized'', over a series of invocations.
+La idea clave es que el costo extra de copiar el arreglo es distribuido,
+o ``amortizado'', entre una serie de invocaciones.
 
-Now, if \java{add(E)} is constant time, what about
-\java{add(int, E)}? After calling \java{add(E)}, it loops through
-part of the array and shifts elements. This loop is linear, except in
-the special case where we are adding at the end of the list. So
-\java{add(int, E)} is linear.
+Ahora, si \java{add(E)} es de tiempo constante, ¿qué sucede con
+\java{add(int, E)}? Tras llamar a \java{add(E)}, itera a través de
+parte del arreglo y desplaza elementos. Este bucle es lineal, excepto
+en el caso especial donde estamos agregando al final de la lista. Así
+que \java{add(int, E)} es lineal.
 
-\index{linear time}
+\index{tiempo lineal}
 
 
-\section{Problem Size}
+\section{Tamaño del Problema}
 \label{classifying-removeall}
 
-The last example we'll consider is \java{removeAll}; here's the
-implementation in \java{MyArrayList}:
+El último ejemplo que consideraremos es \java{removeAll}; aquí está la
+la implementación en \java{MyArrayList}:
 
 \begin{verbatim}
     public boolean removeAll(Collection<?> collection) {
@@ -1575,58 +1568,58 @@ implementation in \java{MyArrayList}:
     }
 \end{verbatim}
 
-Each time through the loop, \java{removeAll} invokes \java{remove},
-which is linear.  So it is tempting to think that \java{removeAll} is
-quadratic.  But that's not necessarily the case.
+En cada repetición, \java{removeAll} invoca a \java{remove},
+que es lineal.  Así que es tentador pensar que \java{removeAll} es
+cuadrático.  Pero ese no es necesariamente el caso.
 
-\index{quadratic time}
+\index{tiempo cuadrático}
 
-In this method, the loop runs once for each element in
-\java{collection}. If \java{collection} contains $m$ elements and the
-list we are removing from contains $n$ elements, this method is in
-$O(nm)$. If the size of \java{collection} can be considered constant,
-\java{removeAll} is linear with respect to $n$. But if the size of the
-collection is proportional to $n$, \java{removeAll} is quadratic. For
-example, if \java{collection} always contains 100 or fewer elements,
-\java{removeAll} is linear. But if \java{collection} generally
-contains 1\% of the elements in the list, \java{removeAll} is
-quadratic.
+En este método, el bucle se ejecuta una vez para cada elemento en
+\java{collection}. Si \java{collection} contiene $m$ elementos y la
+lista de la que estamos removiendo contiene $n$ elementos, este método está en
+$O(nm)$. Si el tamaño de la \java{collection} puede ser considerado constante,
+\java{removeAll} es lineal con respecto a $n$. Pero si el tamaño de la
+colección es proporcional a $n$, \java{removeAll} es cuadrático. Por ejemplo,
+si \java{collection} siempre contiene 100 elementos o menos,
+\java{removeAll} es lineal. Pero si \java{collection} generalmente
+contiene 1\% de los elementos en la lista, \java{removeAll} es
+cuadrático.
 
-\index{constant time}
-\index{problem size}
+\index{tiempo constante}
+\index{tamaño del problema}
 \index{removeAll}
 
-When we talk about {\bf problem size}, we have to be careful
-about which size, or sizes, we are talking about. This example
-demonstrates a pitfall of algorithm analysis: the tempting shortcut of
-counting loops.  If there is one loop, the algorithm is \emph{often}
-linear.  If there are two loops (one nested inside the other), the
-algorithm is \emph{often} quadratic. But be careful! You have to think
-about how many times each loop runs. If the number of iterations is
-proportional to $n$ for all loops, you can get away with just counting
-the loops. But if, as in this example, the number of iterations is not
-always proportional to $n$, you have to give it more thought.
+Cuando hablamos del {\bf tamaño del problema}, tenemos que ser cuidadosos con
+respecto a cuál tamaño, o tamaños, estamos hablando. Este ejemplo demuestra
+un error de bulto en el análisis de algoritmos: el tentador atajo de contar
+bucles. Si sólo hay un bucle, el algoritmo es \emph{generalmente}
+linear.  Si hay dos bucles (uno anidado dentro del otro), el algoritmo es
+\emph{generalmente} cuadrático. ¡Pero ten cuidado! Tienes que pensar
+en cuántas veces se ejecuta cada bucle. Si el número de iteraciones
+proporcional a $n$ para todos los bucles, puedes salirte con la tuya limitándote
+a contar los bucles. Pero si, como en este ejemplo, el número de iteraciones no es
+siempre proporcional a $n$, tendrás que pensarlo con más detalle.
 
 
-\section{Linked Data Structures}
+\section{Estructuras de Datos Enlazadas}
 \label{linked-data-structures}
 
-For the next exercise I provide a partial implementation of the \java{List}
-interface that uses a linked list to store the elements.
-If you are not familiar with linked lists, you can read about them at
+Para el siguiente ejercicio proveo una implementación parcial de la
+interfaz \java{List} que usa una lista enlazada para guardar los elementos.
+Si no estás familiarizado con las listas enlazadas, puedes leer sobre ellas en
 \url{http://thinkdast.com/linkedlist},
-but this section provides a brief introduction.
+pero esta sección provee una breve introducción.
 
-\index{linked data structures}
-\index{node}
+\index{estructuras de datos enlazadas}
+\index{nodo}
 
-A data structure is ``linked'' if it is made up of objects, often called
-``nodes'', that contain references to other nodes. In a linked
-\emph{list}, each node contains a reference to the next node in the
-list. Other linked structures include trees and graphs, in which nodes
-can contain references to more than one other node.
+Una estructura de datos está ``linked'' si está formada por objetos, muchas veces llamados
+``nodos'', que contienen referencias a los otros nodos. En una \emph{lista} enlazada,
+cada nodo contiene una referencia al siguiente nodo en la lista. Otras estructuras enlazadas
+incluyen árboles y grafos, en los cuales los nodos pueden contener referencias a más de
+un nodo separado.
 
-Here's a class definition for a simple node:
+Aquí está una definición de clase para un nodo simple:
 
 \begin{verbatim}
 public class ListNode {
@@ -1655,23 +1648,22 @@ public class ListNode {
 }
 \end{verbatim}
 
-The \java{ListNode} object has two instance variables: \java{data} is a
-reference to some kind of \java{Object}, and \java{next} is a reference to
-the next node in the list. In the last node in the list, by convention,
-\java{next} is \java{null}.
+El objeto \java{ListNode} tiene dos variables de instancia: \java{data} es una
+referencia a algún tipo de \java{Object}, y \java{next} es una referencia al
+siguiente nodo en la lista. En el último nodo de la lista, por convención,
+\java{next} es \java{null}.
 
 \index{null}
 
-\java{ListNode} provides several constructors, allowing you to provide values
-for \java{data} and \java{next}, or initialize them to the default
-value, \java{null}.
+\java{ListNode} provee varios constructores, permitiéndote proveer valores
+para \java{data} y \java{next}, o inicializarlos con el valor por defecto, \java{null}.
 
 \index{ListNode}
 
-You can think of each \java{ListNode} as a list with a single element,
-but more generally, a list can contain any number of nodes. There are
-several ways to make a new list. A simple option is to create a set of
-\java{ListNode} objects, like this:
+Puedes pensar en cada \java{ListNode} como una lista con un único elemento,
+pero de forma más general, una lista puede contener cualquier número de nodos. Hay
+varias manera de crear una nueva lista. Una opción simple es crear un conjunto de
+objetos \java{ListNode}, así:
 
 \begin{verbatim}
         ListNode node1 = new ListNode(1);
@@ -1679,7 +1671,7 @@ several ways to make a new list. A simple option is to create a set of
         ListNode node3 = new ListNode(3);
 \end{verbatim}
 
-And then link them up, like this:
+Y luego enlazarlos, de esta manera:
 
 \begin{verbatim}
         node1.next = node2;
@@ -1687,72 +1679,69 @@ And then link them up, like this:
         node3.next = null;
 \end{verbatim}
 
-Alternatively, you can create a node and link it at the same time. For
-example, if you want to add a new node at the beginning of a list, you
-can do it like this:
+Alternativamente, puedes crear un nodo y enlazarlo al mismo tiempo. Por
+ejemplo, si quieres agregar un nuevo nodo al principio de una lista, puedes
+hacerlo así::
 
 \begin{verbatim}
         ListNode node0 = new ListNode(0, node1);
 \end{verbatim}
 
-After this sequence of instructions, we have four nodes containing the
-\java{Integer}s 0, 1, 2, and 3 as data, linked up in increasing order. In the
-last node, the \java{next} field is
-\java{null}.
+Tras esta secuencia de instrucciones, tenemos cuatro nodos que contienen los
+\java{Integer}s 0, 1, 2, y 3 como datos, enlazados en orden ascendente. En el
+último nodo, el campo \java{next} es \java{null}.
 
 \begin{figure}
 \centering
 \includegraphics[width=4in]{figs/linked_list1.pdf}
-\caption{Object diagram of a linked list.}
+\caption{Diagrama de objeto de una lista enlazada.}
 \label{linkedlistfig}
 \end{figure}
 
-\index{linked list}
-\index{object diagram}
+\index{lista enlazada}
+\index{diagrama de objeto}
 
-Figure~\ref{linkedlistfig} is an object diagram that shows these
-variables and the objects they refer to.  In an object diagram,
-variables appear as names inside boxes, with arrows that show what
-they refer to.  Objects appear as boxes with their type on the outside
-(like \java{ListNode} and \java{Integer}) and their instance variables on
-the inside.
+La figura~\ref{linkedlistfig} es un diagrama de objeto que muestra estas
+variables y los objetos a los que se refieren.  En un diagrama de objeto,
+las variables aparecen como nombres fuera de las cajas, con flechas que muestran
+a qué se refieren. Los objetos aparecen como cajas con su tipo en el exterior
+(como \java{ListNode} y \java{Integer}) y sus variables de instancia en el interior.
 
 
-\section{Exercise 3}
+\section{Ejercicio 3}
 \label{exercise3}
 
-In the repository for this book,
-you'll find the source files you need for this exercise:
+En el repositorio para este libro, encontrarás los archivos
+de código fuente que necesitas para este ejercicio:
 
 \index{MyLinkedList}
 
 \begin{itemize}
 
-\item \java{MyLinkedList.java} contains a partial implementation of
-  the \java{List} interface using a linked list to store the elements.
+\item \java{MyLinkedList.java} contiene una implementación parcial de
+  la interfaz \java{List} que usa una lista enlazada para guardar los elementos.
 
-\item \java{MyLinkedListTest.java} contains JUnit tests for
+\item \java{MyLinkedListTest.java} contiene tests de JUnit para
   \java{MyLinkedList}.
 
 \end{itemize}
 
-Run \java{ant MyLinkedList} to run \java{MyLinkedList.java}, which
-contains a few simple tests. 
+Ejecute \java{ant MyLinkedList} para correr \java{MyLinkedList.java}, que
+contiene unos pocos tests simples. 
 
-Then you can run \java{ant MyLinkedListTest} to run the JUnit tests.
-Several of them should fail. If you examine the source code, you'll
-find three \java{TODO} comments indicating the methods you should fill
-in.
+Luego puedes ejecutar \java{ant MyLinkedListTest} para correr los tests de JUnit.
+Varios de ellos deberían fallar. Si examinas el código fuente, encontrarás
+tres comentarios \java{TODO} indicando los métodos que deberías rellenar.
 
-Before you start, let's walk through some
-of the code. Here are the instance variables and the constructor for
+Antes de iniciar, revisemos una porción del
+código. Aquí están las variables de instancia y el constructor para
 \java{MyLinkedList}:
 
 \begin{verbatim}
 public class MyLinkedList<E> implements List<E> {
 
-    private int size;            // keeps track of the number of elements
-    private Node head;           // reference to the first node
+    private int size;            // registra el número de elementos
+    private Node head;           // referencia al primer nodo
 
     public MyLinkedList() {
         head = null;
@@ -1761,43 +1750,43 @@ public class MyLinkedList<E> implements List<E> {
 }
 \end{verbatim}
 
-As the comments indicate, \java{size} keeps track of how many elements
-are in \java{MyLinkedList}; \java{head} is a reference to the first
-\java{Node} in the list or \java{null} if the list is empty.
+Como lo indican los comentarios, \java{size} lleva el control de cuántos elementos
+están en \java{MyLinkedList}; \java{head} es una referencia al primer
+\java{Node} en la lista o \java{null} si la lista está vacía.
 
 \index{MyLinkedList}
 
-Storing the number of elements is not necessary, and in general it is
-risky to keep redundant information, because if it's not updated
-correctly, it creates opportunities for error. It also takes a little
-bit of extra space.
+Guardar el número de elementos no es necesario y en general es
+riesgoso mantener información redundante, porque si no se actualiza
+correctamente, crea oportunidades para cometer errores. Además
+toma un poquito de espacio extra.
 
 \index{size}
 
-But if we store \java{size} explicitly, we can implement the
-\java{size} method in constant time; otherwise, we would have to
-traverse the list and count the elements, which requires linear time.
+Pero si guardamos \java{size} explícitamente, podemos implementar el
+método \java{size} en tiempo constante; de otra forma, tendríamos que
+recorrer toda la lista y contar los elementos, lo que requiere tiempo lineal.
 
-\index{constant time}
-\index{linear time}
+\index{tiempo constante}
+\index{tiempo lineal}
 
-Because we store \java{size} explicitly, we have to update it each
-time we add or remove an element, so that slows down those methods a
-little, but it doesn't change their order of growth, so it's probably
-worth it.
+Porque guardamos \java{size} explícitamente, tenemos que actualizarlo cada
+vez que agregamos o removemos un elemento, así que hace un poco más lentos
+estos métodos, pero no cambia su orden de crecimiento, por lo que probablemente
+vale la pena.
 
-The constructor sets \java{head} to \java{null}, which indicates an
-empty list, and sets \java{size} to 0.
+El constructor establece \java{head} en \java{null}, lo que indica una lista
+vacía, y establece \java{size} en 0.
 
-\index{type parameter}
+\index{parámetro de tipo}
 
-This class uses the type parameter \java{E} for the type of the
-elements. If you are not familiar with type parameters, you might want
-to read this tutorial:
+Esta clase usa un parámetro de tipo \java{E} para el tipo de
+elementos. Si no estás familiarizado con los parámetros de tipo, podrías
+querer leer este tutorial:
 \url{http://thinkdast.com/types}.
 
-The type parameter also appears in the definition of \java{Node},
-which is nested inside \java{MyLinkedList}:
+El parámetro de tipo también aparece en la definición de \java{Node},
+que está anidada dentro de \java{MyLinkedList}:
 
 \begin{verbatim}
     private class Node {
@@ -1811,12 +1800,12 @@ which is nested inside \java{MyLinkedList}:
     }
 \end{verbatim}
 
-Other than that, \java{Node} is similar to \java{ListNode} above.
+Aparte de eso, \java{Node} es similar a \java{ListNode}, presentada anteriormente.
 
 \index{Node}
 \index{add}
 
-Finally, here's my implementation of \java{add}:
+Finalmente, aquí está mi implementación de \java{add}:
 
 \begin{verbatim}
     public boolean add(E element) {
@@ -1833,77 +1822,77 @@ Finally, here's my implementation of \java{add}:
     }
 \end{verbatim}
 
-\index{special case}
+\index{caso especial}
 
-This example demonstrates two patterns you'll need for your solutions:
+Este ejemplo demuestra dos patrones que necesitarás para tus soluciones:
 
 \begin{enumerate}
 
 \item
-  For many methods, we have to handle the first element of the list as a
-  special case. In this example, if we are adding the first element of a
-  list, we have to modify \java{head}. Otherwise, we traverse the
-  list, find the end, and add the new node.
+  Para muchos métodos, tenemos que tratar al primer elemento de la lista como un
+  caso especial. En este ejemplo, si estamos agregando el primer elemento de una
+  lista, tenemos que modificar \java{head}. De lo contrario, recorremos la
+  lista, encontramos el final, y agregamos el nuevo nodo.
 
 \item
-  This method shows how to use a \java{for} loop to traverse the nodes
-  in a list. In your solutions, you will probably write several
-  variations on this loop. Notice that we have to declare \java{node}
-  before the loop so we can access it after the loop.
+  Este método muestra cómo usar un bucle \java{for} para recorrer los nodos
+  en una lista. En tus soluciones, probablemente escribirás varias
+  variantes de este bucle. Nota que tenemos que declarar \java{node}
+  antes del bucle para poder acceder a él después del bucle.
 
 \end{enumerate}
 
-Now it's your turn.  Fill in the body of \java{indexOf}.  As usual,
-you should read the documentation, at
+Ahora es tu turno. Llena el cuerpo de \java{indexOf}.  Como es lo usual,
+deberías leer la documentación, en
 \url{http://thinkdast.com/listindof},
-so you know what it is supposed to do. In particular, notice how it's
-supposed to handle \java{null}.
+para que sepas lo que se supone que debe hacer. En particular, nota cómo se
+supone que maneje los \java{null}.
 
-\index{helper method}
+\index{método auxiliar}
 
-As in the previous exercise, I provide a helper method called
-\java{equals} that compares an element from the array to a target
-value and checks whether they are equal --- and it handles \java{null}
-correctly. This method is private because it is used inside this class
-but it is not part of the \java{List} interface.
+Como en el ejercicio anterior, proveo un método auxiliar llamado
+\java{equals} que compara un elemento de un arreglo a un valor objetivo
+y comprueba si son iguales --- y que maneja los \java{null}
+correctamente. Este método es privado porque se usa dentro de esta clase
+pero no es parte de la interfaz \java{List}.
 
-When you are done, run the tests again; \java{testIndexOf}
-should pass now, as well as the other tests that depend on it.
+Cuando termines, ejecuta los tests de nuevo; \java{testIndexOf}
+debería pasar ahora, así como los otros tests que dependen de él.
 
 \index{add}
 
-Next, you should fill in the two-parameter version of \java{add},
-which takes an index and stores the new value at the given index.
-Again, read the documentation at \url{http://thinkdast.com/listadd},
-write an implementation, and run the tests for confirmation.
+Luego, deberías completar la versión con dos parámetros de \java{add},
+que toma un índice y guarda el nuevo valor en el índice dado.
+De nuevo, lee la documentación en \url{http://thinkdast.com/listadd},
+escriba una implementación y ejecuta los tests para confirmar.
 
 \index{remove}
 
-Last one: fill in the body of \java{remove}.  The documentation is
-here: \url{http://thinkdast.com/listrem}.  When you finish this one,
-all tests should pass.
+El último: llena el cuerpo de \java{remove}.  Aquí está la documentación:
+\url{http://thinkdast.com/listrem}.  Cuando finalices este, todos los tests
+deberían pasar.
 
-Once you have your implementation working, compare it to the version
-in the \java{solution} directory of the repository.
+Una vez que tus implementaciones funcionen, compáralas a la versión
+en el directorio \java{solution} del repositorio.
 
 
-\section{A note on garbage collection}
+\section{Una nota sobre la recolección de basura}
 \label{a-note-on-garbage-collection}
 
-In \java{MyArrayList} from the previous exercise, the array grows if
-necessary, but it never shrinks. The array never gets garbage collected,
-and the elements don't get garbage collected until the list itself is
-destroyed.
+En \java{MyArrayList} del ejercicio anterior, el arreglo crece si es
+necesario, pero nunca se reduce. El arreglo nunca es recolectado y los
+elementos no son limpiados por el recolector de basura hasta que la lista
+como tal es destruida.
 
-\index{garbage collection}
+\index{recolección de basura}
 
-One advantage of the linked list implementation is that it shrinks when
-elements are removed, and the unused nodes can get garbage collected
-immediately.
+Una ventaja de la implementación de lista enlazada es que se reduce cuando
+los elementos son removidos y los nodos sin utilizar son limpiados por el
+recolector de basura inmediatamente.
 
 \index{clear}
 
-Here is my implementation of the \java{clear} method:
+Aquí está mi implmenetación del método \java{clear}:
 
 \begin{verbatim}
     public void clear() {
@@ -1912,28 +1901,25 @@ Here is my implementation of the \java{clear} method:
     }
 \end{verbatim}
 
-When we set \java{head} to \java{null}, we remove a reference to the
-first \java{Node}. If there are no other references to that
-\java{Node} (and there shouldn't be), it will get garbage collected.
-At that point, the reference to the second \java{Node} is removed, so
-it gets garbage collected, too. This process continues until all
-nodes are collected.
+Cuando establecemos el valor de \java{head} en \java{null}, removemos una
+referencia al primer \java{Node}. Si no hay otras referencias a ese \java{Node}
+(y no deberían haber), también es limpiado por el recolector de basura. Este
+proceso continúa hasta que todos los nodos son limpiados.
 
-So how should we classify \java{clear}? The method itself contains two
-constant time operations, so it sure looks like it's constant time. But
-when you invoke it, you make the garbage collector do work that's
-proportional to the number of elements. So maybe we
-should consider it linear!
+Así que, ¿cómo deberíamos clasificar \java{clear}? El método en si mismo contiene dos
+operaciones de tiempo constante, así que seguro parece como de tiempo constante. Pero
+cuando lo invocas, haces que el recolector de basura realice un trabajo que es
+proporcional al número de elementos. ¡Así que tal vez deberíamos considerarlo lineal!
 
-\index{constant time}
-\index{linear time}
-\index{performance bug}
+\index{tiempo constante}
+\index{tiempo lineal}
+\index{bug de rendimiento}
 
-This is an example of what is sometimes called a {\bf performance bug}:
-a program that is correct in the sense that it does the right thing,
-but it doesn't belong to the order of growth we expected. In languages
-like Java that do a lot of work, like garbage collection, behind the
-scenes, this kind of bug can be hard to find.
+Este es un ejemplo de lo que a veces se conoce como un {\bf bug de rendimiento}:
+un programa que es correcto en el sentido que hace lo correcto,
+pero que no pertenece a la orden de crecimiento que esperábamos. En lenguajes
+como Java que realizan gran parte del trabajo, como la recolección de basura,
+tras bambalinas, esta clase de bug puede ser difícil de encontrar.
 
 
 \chapter{LinkedList}
