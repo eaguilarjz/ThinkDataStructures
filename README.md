@@ -1,6 +1,6 @@
 # ThinkDataStructures
 
-Fuente LaTeX y código de soporte para *Piensa en Estructuras de Datos: Algoritmos y Recuperación de Información en Java* (traducción al español del libro de Allen Downey *Think Data Structures: Algorithms and Information Retrieval in Java*, por Ernesto Aguilar).
+Fuente LaTeX y código de soporte para *Piensa en Estructuras de Datos: Algoritmos y Recuperación de Información en Java* (traducción al español del libro de Allen Downey *Think Data Structures: Algorithms and Information Retrieval in Java*, por Ernesto A. Aguilar).
 
 Las estructuras de datos y los algoritmos están entre las invenciones más importantes
 de los últimos 50 años, y son herramientas fundamentales que los ingenieros de
