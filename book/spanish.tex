@@ -1552,7 +1552,7 @@ que \java{add(int, E)} es lineal.
 \index{tiempo lineal}
 
 
-\section{Tamaño del Problema}
+\section{Tamaño del problema}
 \label{classifying-removeall}
 
 El último ejemplo que consideraremos es \java{removeAll}; aquí está la
@@ -1601,7 +1601,7 @@ a contar los bucles. Pero si, como en este ejemplo, el número de iteraciones no
 siempre proporcional a $n$, tendrás que pensarlo con más detalle.
 
 
-\section{Estructuras de Datos Enlazadas}
+\section{Estructuras de datos enlazadas}
 \label{linked-data-structures}
 
 Para el siguiente ejercicio proveo una implementación parcial de la
@@ -1924,15 +1924,15 @@ tras bambalinas, esta clase de bug puede ser difícil de encontrar.
 
 \chapter{LinkedList}
 
-This chapter presents solutions to the previous exercise and continues
-the discussion of analysis of algorithms.
+Este capítulo presenta soluciones al ejercicio previo y continúa la
+discusión sobre el análisis de algoritmos.
 
 
-\section{Classifying \java{MyLinkedList} methods}
+\section{Clasificación de los métodos de \java{MyLinkedList}}
 \label{classifying-mylinkedlist-methods}
 
-My implementation of \java{indexOf} is below. Read through it and see
-if you can identify its order of growth before you read the explanation.
+Mi implementación de \java{indexOf} se encuentra a continuación. Léela y mira
+si puedes identificar su orden de crecimiento antes de leer la explicación.
 
 \begin{verbatim}
     public int indexOf(Object target) {
@@ -1947,47 +1947,46 @@ if you can identify its order of growth before you read the explanation.
     }
 \end{verbatim}
 
-Initially \java{node} gets a copy of \java{head}, so they both refer
-to the same \java{Node}. The loop variable, \java{i}, counts from 0 to
-\java{size-1}.  Each time through the loop, we use \java{equals} to
-see if we've found the target. If so, we return \java{i} immediately.
-Otherwise we advance to the next \java{Node} in the list.
+Inicialmente \java{node} obtiene una copia de \java{head}, así que ambos se
+refieren al mismo \java{Node}. La variable de repetición, \java{i}, cuenta desde 0 hasta
+\java{size-1}.  En cada repetición del bucle, usamos \java{equals} para
+ver si hemos encontrado el objetivo (\java{target}). De ser así, devolvemos \java{i} inmediatamente.
+De lo contrario, avanzamos al siguiente \java{Node} en la lista.
 
-Normally we would check to make sure the next \java{Node} is not
-\java{null}, but in this case it is safe because the loop ends when we
-get to the end of the list (assuming \java{size} is consistent with
-the actual number of nodes in the list).
+Normalmente deberíamos asegurarnos que el siguiente \java{Node} no sea
+\java{null}, pero en este caso es seguro porque el bucle termina al llegar al
+final de la lista (asumiendo que \java{size} es consistente con el número exacto de nodos en la lista).
 
-If we get through the loop without finding the target, we return
+Si el bucle finaliza sin haber encontrado al objetivo, devolvemos
 \java{-1}.
 
 \index{indexOf}
-\index{constant time}
+\index{tiempo constante}
 
-So what is the order of growth for this method?
+Así que, ¿cuál es la orden de crecimiento para este método?
 
 \begin{enumerate}
 
 \item
-  Each time through the loop we invoke \java{equals}, which is
-  constant time (it might depend on the size of \java{target} or
-  \java{data}, but it doesn't depend on the size of the list). The
-  other operations in the loop are also constant time.
+  En cada repetición del bucle invocamos \java{equals}, que es de
+  tiempo constante (lo que podría depender del tamaño de \java{target} o
+  \java{data}, pero no depende del tamaño de la lista). Las
+  otras operaciones en el bucle son también de tiempo constante.
 
 \item
-  The loop might run $n$ times, because in the worse case, we
-  might have to traverse the whole list.
+  El bucle podría ejecutarse $n$ veces, porque en el peor escenario,
+  podríamos tener que recorrer la lista completa.
 
 \end{enumerate}
 
-So the runtime of this method is proportional to the length of the
-list.
+Así que el tiempo de ejecución de este método es proporcional a la longitud
+de la lista.
 
 \index{add}
 
-Next, here is my implementation of the two-parameter \java{add}
-method. Again, you should try to classify it before you read the
-explanation.
+Para continuar, aquí está mi implementación del método \java{add}
+con dos parámetros. De nuevo, deberías tratar de clasificarlo antes de
+leer la explicación.
 
 \begin{verbatim}
     public void add(int index, E element) {
@@ -2001,12 +2000,12 @@ explanation.
     }
 \end{verbatim}
 
-If \java{index==0}, we're adding the new \java{Node} at the
-beginning, so we handle that as a special case. Otherwise, we have to
-traverse the list to find the element at \java{index-1}. We use the
-helper method \java{getNode}:
+Si \java{index==0}, agregamos el nuevo \java{Node} al principio,
+así que lo trataremos como un caso especial. De lo contrario, tendríamos
+que recorrer la lista para encontrar el elemento en \java{index-1}. Usamos el
+método auxiliar \java{getNode}:
 
-\index{helper method}
+\index{método auxiliar}
 
 \begin{verbatim}
     private Node getNode(int index) {
@@ -2021,38 +2020,37 @@ helper method \java{getNode}:
     }
 \end{verbatim}
 
-\java{getNode} checks whether \java{index} is out of bounds; if so,
-it throws an exception. Otherwise it traverses the list and returns the
-requested Node.
+\java{getNode} comprueba si el \java{index} está fuera de rango; de ser así,
+lanza una excepción. De otra forma, recorre la lista y devuelve el Nodo solicitado.
 
 \index{getNode}
 
-Jumping back to \java{add}, once we find the right \java{Node}, we create the
-new \java{Node} and put it between \java{node} and \java{node.next}. You
-might find it helpful to draw a diagram of this operation to make sure
-you understand it.
+Volviendo a \java{add}, una vez encontramos el \java{Node} apropiado, creamos el
+nuevo \java{Node} y lo colocamos entre \java{node} y \java{node.next}. Podrías
+encontrar útil dibujar un diagrama de esta operación para estar seguro que la
+entiendes.
 
-So, what's the order of growth for \java{add}?
+Así, ¿cuál es la orden de crecimiento para \java{add}?
 
 \begin{enumerate}
 
 \item
-  \java{getNode} is similar to
-  \java{indexOf}, and it is linear for the same reason.
+  \java{getNode} es similar a
+  \java{indexOf}, y es lineal por la misma razón.
 
 \item
-  In \java{add}, everything before and after \java{getNode} is
-  constant time.
+  En \java{add}, todo antes y después de \java{getNode} es
+  de tiempo constante.
 
 \end{enumerate}
 
-So all together, \java{add} is linear.
+Al combinar todo, \java{add} es lineal.
 
-\index{constant time}
-\index{linear time}
+\index{tiempo constante}
+\index{tiempo lineal}
 \index{remove}
 
-Finally, let's look at \java{remove}:
+Finalmente, examinemos \java{remove}:
 
 \begin{verbatim}
     public E remove(int index) {
@@ -2068,52 +2066,52 @@ Finally, let's look at \java{remove}:
     }
 \end{verbatim}
 
-\java{remove} uses \java{get} to find and store the element at
-\java{index}. Then it removes the \java{Node} that contained it.
+\java{remove} usa \java{get} para encontrar y guardar el elemento en
+\java{index}. Luego remueve el \java{Node} que lo contiene.
 
-If \java{index==0}, we handle that as a special case again. Otherwise
-we find the node at \java{index-1} and modify it to skip over
-\java{node.next} and link directly to \java{node.next.next}. This
-effectively removes \java{node.next} from the list, and it can be
-garbage collected.
+Si \java{index==0}, de nuevo lo tratamos como un caso especial. De lo contrario
+encontramos el nodo en \java{index-1} y lo modificamos para que se salte
+\java{node.next} y se enlace directamente con \java{node.next.next}. Esto
+efectivamente remueve \java{node.next} de la lista, y puede ser limpiado
+por el recolector de basura.
 
-Finally, we decrement \java{size} and return the element we retrieved
-at the beginning.
+Finalmente, disminuimos \java{size} y devolvemos el elemento que recuperamos
+al principio.
 
-So, what's the order of growth for \java{remove}? Everything in
-\java{remove} is constant time except \java{get} and
-\java{getNode}, which are linear. So \java{remove} is linear.
+Así, ¿cuál es la orden de crecimiento para \java{remove}? Todo en
+\java{remove} es de tiempo constante excepto \java{get} y
+\java{getNode}, que son lineales. Así que \java{remove} es lineal.
 
-When people see two linear operations, they sometimes think the result
-is quadratic, but that only applies if one operation is nested inside
-the other. If you invoke one operation after the other, the runtimes
-add. If they are both in $O(n)$, the sum is also in
+Cuando las personas ven dos operaciones lineales, a veces creen que el resultado
+es cuadrático, pero eso solo aplica si una operación está anidadad dentro de
+la otra. Si invocas una operación después de la otra, los tiempos de ejecución
+se suman. Si ambas están en $O(n)$, la suma también está en
 $O(n)$.
 
-\index{linear time}
-\index{quadratic time}
+\index{tiempo lineal}
+\index{tiempo cuadrático}
 
 
-\section{Comparing \java{MyArrayList} and \java{MyLinkedList}}
+\section{Comparación entre \java{MyArrayList} y \java{MyLinkedList}}
 \label{comparing-mylinkedlist-and-myarraylist}
 
 \index{MyArrayList}
 \index{MyLinkedList}
 
-The following table summarizes the differences between
-\java{MyLinkedList} and \java{MyArrayList}, where \java{1} means
-$O(1)$ or constant time and $n$ means $O(n)$ or
-linear.
+La siguiente tabla resume las diferencias entre
+\java{MyLinkedList} y \java{MyArrayList}, donde \java{1} significa
+$O(1)$ o tiempo constante y $n$ significa $O(n)$ o
+lineal.
 
 \begin{tabular}[c]{@{}lll@{}}
 \hline
 & MyArrayList & MyLinkedList \\
 \hline
-add (at the end) & \textbf{1} & n
+add (al final) & \textbf{1} & n
 \\
-add (at the beginning) & n & \textbf{1}
+add (al principio) & n & \textbf{1}
 \\
-add (in general) & n & n
+add (en general) & n & n
 \\
 get / set & \textbf{1} & n
 \\
@@ -2121,44 +2119,44 @@ indexOf / lastIndexOf & n & n
 \\
 isEmpty / size & 1 & 1
 \\
-remove (from the end) & \textbf{1} & n
+remove (del final) & \textbf{1} & n
 \\
-remove (from the beginning) & n & \textbf{1}
+remove (del principio) & n & \textbf{1}
 \\
-remove (in general) & n & n
+remove (en general) & n & n
 \\
 \hline
 \end{tabular}
 
-The operations where \java{MyArrayList} has an advantage are adding at
-the end, removing from the end, getting and setting.
+Las operaciones en las \java{MyArrayList} destaca son agregar (add) al final,
+remover (remove) del final, obtener (get) y establecer (set).
 
-The operations where \java{MyLinkedList} has an advantage are adding
-at the beginning and removing from the beginning.
+Las operaciones en las que \java{MyLinkedList} destaca son agregar al
+principio y remover del principio.
 
-For the other operations, the two implementations are in the same order
-of growth.
+Para otras operaciones, las dos implementaciones están en la misma orden
+de crecimiento.
 
-\index{order of growth}
+\index{orden de crecimiento}
 
-Which implementation is better? It depends on which operations you are
-likely to use the most. And that's why Java provides more than one
-implementation, because it depends.
+¿Cuál implementación es mejor? Depende de cuáles operaciones es
+probable que uses más. Y es por eso que Java provee más de una
+implementación, porque esto depende.
 
 
-\section{Profiling}
+\section{Perfilado}
 
-For the next exercise I provide a class called \java{Profiler} that
-contains code that runs a method with a range of problem sizes,
-measures runtimes, and plots the results.
+Para el siguiente ejercicio proveo una clase llamada \java{Profiler} que
+contiene código que ejecuta un método para varios tamaños de problemas,
+mide el tiempo de ejecución y grafica los resultados.
 
-\index{profiling}
+\index{perfilado}
 
-You will use \java{Profiler} to classify the performance
-of the \java{add} method for the Java implementations of
-\java{ArrayList} and \java{LinkedList}.
+Usarás un \java{Profiler} (Perfilador) para clasificar el desempeño
+de los métodos \java{add} para las implementaciones en Java de
+\java{ArrayList} y \java{LinkedList}.
 
-Here's an example that shows how to use the profiler:
+Aquí está un ejemplo que muestra como usar el perfilador:
 
 \begin{verbatim}
     public static void profileArrayListAddEnd() {
@@ -2186,63 +2184,63 @@ Here's an example that shows how to use the profiler:
     }
 \end{verbatim}
 
-This method measures the time it takes to run \java{add} on an
-\java{ArrayList}, which adds the new element at the end. I'll explain
-the code and then show the results.
+Este método mide el tiempo que toma ejecutar \java{add} en una
+\java{ArrayList}, el cual agrega el nuevo elemento al final. Explicaré
+el código y luego mostraré los resultados.
 
 \index{add}
 
-In order to use \java{Profiler}, we need to create a \java{Timeable}
-object that provides two methods: \java{setup} and \java{timeMe}.
-The \java{setup} method does whatever needs to be done before we start
-the clock; in this case it creates an empty list. Then \java{timeMe}
-does whatever operation we are trying to measure; in this case it adds
-$n$ elements to the list.
+Para usar el \java{Profiler}, necesitamos crear un objeto \java{Timeable}
+que provee dos métodos: \java{setup} and \java{timeMe}.
+El método \java{setup} hace lo que sea que se necesite hacer antes de iniciar
+el cronómetro; en este caso crea una lista vacía. Luego \java{timeMe}
+realiza cualquier operación que estemos tratando de medir; en este caso
+agrega $n$ elementos a la lista.
 
 \index{Profiler}
 \index{Timeable}
-\index{anonymous class}
+\index{clase anónima}
 
-The code that creates \java{timeable} is an {\bf anonymous class} that
-defines a new implementation of the \java{Timeable} interface and
-creates an instance of the new class at the same time. If you are not
-familiar with anonymous classes, you can read about them here:
+El código que crea \java{timeable} es una {\bf clase anónima} que
+define una nueva implementación de la interfaz \java{Timeable} y
+crea una instancia de la nueva clase al mismo tiempo. Si no estás
+familiarizado con las clases anónimas, puedes leer sobre ellas aquí:
 \url{http://thinkdast.com/anonclass}.
 
-But you don't need to know much for the next exercise; even if you
-are not comfortable with anonymous classes, you can
-copy and modify the example code.
+Pero no necesitas conocer mucho para el siguiente ejercicio; incluso si
+no te sientes cómodo con las clases anónimas, puedes copiar
+y modificar el código de ejemplo.
 
-The next step is to create the \java{Profiler} object, passing the
-\java{Timeable} object and a title as parameters.
+El siguiente paso es crear el objeto \java{Profiler} pasándole el
+objeto \java{Timeable} y un título como parámetros.
 
-The \java{Profiler} provides \java{timingLoop} which uses the
-\java{Timeable} object stored as an instance variable. It invokes the
-\java{timeMe} method on the \java{Timeable} object several times
-with a range of values of $n$. \java{timingLoop} takes two
-parameters:
+El \java{Profiler} provee \java{timingLoop} que usa el objeto
+\java{Timeable} guardado como una variable de instancia. Éste invoca al
+métoodo \java{timeMe} en el objeto \java{Timeable} varias veces
+con un rango de valores de $n$. \java{timingLoop} toma dos
+parámetros:
 
 \begin{itemize}
 
 \item
-  \java{startN} is the value of $n$ the timing loop should
-  start at.
+  \java{startN} es el valor de $n$ con el que debería iniciar el
+  temporizador.
 
 \item
-  \java{endMillis} is a threshold in milliseconds. As
-  \java{timingLoop} increases the problem size, the runtime increases;
-  when the runtime exceeds this threshold, \java{timingLoop} stops.
+  \java{endMillis} es un umbral en milisegundos. Conforme
+  \java{timingLoop} incrementa el tamaño del problema, el tiempo de ejecución se incrementa;
+  cuando el tiempo de ejecución sobrepasa este umbral, \java{timingLoop} se detiene.
 
 \end{itemize}
 
-When you run the experiments, you might have to adjust these
-parameters. If \java{startN} is too low, the runtime might be too
-short to measure accurately. If \java{endMillis} is too low, you might
-not get enough data to see a clear relationship between problem size and
-runtime.
+Cuando realices los experimentos, podrías tener que ajustar estos
+parámetros. Si \java{startN} es muy bajo, el tiempo de ejecución podría
+ser muy corto para medirlo con exactitud. Si \java{endMillis} es muy bajo, puede
+que no obtengas datos suficientes para ver una relación clara entre el tamaño del
+problema y el tiempo de ejecución.
 
-This code is in \java{ProfileListAdd.java}, which you'll run in the next
-exercise. When I ran it, I got this output:
+Este código está en \java{ProfileListAdd.java}, que ejecutarás en el siguiente
+ejercicio. Cuando yo lo ejecuté, obtuve esta salida:
 
 \begin{verbatim}
 4000, 3
@@ -2260,225 +2258,223 @@ exercise. When I ran it, I got this output:
 16384000, 1325
 \end{verbatim}
 
-The first column is problem size, $n$; the second column is
-runtime in milliseconds. The first few measurements are pretty noisy; it
-might have been better to set \java{startN} around 64000.
+La primera columna es el tamaño del problema, $n$; la segunda columna es
+el tiempo de ejecución en milisegundos. Las primeras mediciones contienen
+bastante ruido, podría haber sido mejor establecer \java{startN} alrededor de 64000.
 
 \index{XYSeries}
 
-The result from \java{timingLoop} is an \java{XYSeries} that
-contains this data. If you pass this series to \java{plotResults}, it
-generates a plot like the one in Figure~\ref{fig-profile1}.
+El resultado del \java{timingLoop} es una \java{XYSeries} que
+contiene estos datos. Si pasas esta serie a \java{plotResults},
+genera una gráfica como la de Figura~\ref{fig-profile1}.
 
 \begin{figure}
 \centering
 \includegraphics[height=2.5in]{figs/profile1.png}
-\caption{Profiling results: runtime versus problem size for
-adding $n$ elements to the end of an \java{ArrayList}.}
+\caption{Resultados del perfilado: tiempo de ejecución versus tamaño del problema para
+agregar $n$ elementos al final de una \java{ArrayList}.}
 \label{fig-profile1}
 \end{figure}
 
-The next section explains how to interpret it.
+La siguiente sección explica cómo interpretarla.
 
 
-\section{Interpreting results}\label{interpreting-results}
+\section{Interpretación de los resultados}\label{interpreting-results}
 
-Based on our understanding of how \java{ArrayList} works, we expect
-the \java{add} method to take constant time when we add elements to
-the end. So the total time to add $n$ elements should be linear.
+Con base en nuestro entendimiento sobre cómo funciona \java{ArrayList},
+esperaríamos que el método \java{add} tome una cantidad de tiempo constante
+cuando agregamos elementos al final. Así que el tiempo total para agregar $n$
+elementos debería ser lineal.
 
-\index{constant time}
-\index{linear time}
+\index{tiempo constante}
+\index{tiempo lineal}
 \index{ArrayList}
 
-To test that theory, we could plot total runtime versus problem size,
-and we should see a straight line, at least for problem sizes that are
-big enough to measure accurately. Mathematically, we can write the
-function for that line:
+Para comprobar esta teoría, podríamos graficar el tiempo total de ejecución
+versus el tamaño del problema, y deberíamos ver una línea recta, al menos
+para tamaños de problemas lo suficientemente grandes para obtener mediciones
+precisas. Matemáticamente, podemos escribir la función para esa línea:
 
-\newcommand{\runtime}{\mbox{runtime}}
+\newcommand{\runtime}{\mbox{tiempo de ejecución}}
 
 \[ \runtime = a + b n \]
 
-where $a$ is the intercept of the line and $b$ is the
-slope.
+donde $a$ es la intersección de la línea y $b$ es la pendiente.
 
-\index{quadratic time}
+\index{tiempo cuadrático}
 
-On the other hand, if \java{add} is linear, the total time for
-$n$ adds would be quadratic. If we plot runtime versus problem
-size, we expect to see a parabola. Or mathematically, something like:
+Por otro lado, si \java{add} es lineal, el tiempo total para
+$n$ adds sería cuadrático. Si graficamos el tiempo de ejecución versus el tamaño
+del problema, esperaríamos ver una parábola. O matemáticamente, algo como:
 
 \[ \runtime = a + b n + c n^2 \]
 
-With perfect data, we might be able to tell the difference between a
-straight line and a parabola, but if the measurements are noisy, it can
-be hard to tell. A better way to interpret noisy measurements is to plot
-runtime and problem size on a \textbf{log-log} scale.
+Con datos perfectos, podríamos ser capaces de distinguir entre una línea
+recta y una parábola, pero si las mediciones contienen ruido, esto puede
+ser difícil. Una mejor manera de interpretar mediciones con ruido es
+graficar el tiempo de ejecución y el tamaño del problema en una
+escala \textbf{log-log}.
 
-\index{logarithm}
-\index{log-log scale}
+\index{logaritmo}
+\index{escala log-log}
 
-Why? Let's suppose that runtime is proportional to $n^k$, but we
-don't know what the exponent $k$ is. We can write the
-relationship like this:
+¿Por qué? Supongamos que el tiempo de ejecución es proporcional
+a $n^k$, pero no sabemos cuál es el exponente $k$. Podemos escribir la
+relación como sigue:
 
 \[ \runtime = a + b n + \ldots + c n^k \]
 
-For large values of $n$, the term with the largest exponent is
-the most important, so:
+Para valores grandes de $n$, el término con el exponente mayor es el
+más importante, así que:
 
 \[ \runtime \approx c n^k \]
 
-where $\approx$ means ``approximately equal''. Now, if we
-take the logarithm of both sides of this equation:
+donde $\approx$ significa ``aproximadamente igual a''. Ahora, si
+calculamos el logaritmo de ambos lados de la ecuación:
 
 \[ \log(\runtime) \approx \log(c) + k \log(n) \]
 
-This equation implies that if we plot $\runtime$ versus $n$ on a
-log-log scale, we expect to see a straight line with intercept
-$\log(c)$ and slope $k$. We don't care much about the
-intercept, but the slope indicates the order of growth: if
-$k=1$, the algorithm is linear; if $k=2$, it's
-quadratic.
+Esta ecuación implica que si graficamos $\runtime$ versus $n$ en una
+escala log-log, esperaríamos ver una línea recta con intersección
+$\log(c)$ y pendiente $k$. No nos interesa mucho la intersección,
+pero la pendiente indica la orden de crecimiento: si
+$k=1$, el algoritmo es lineal; si $k=2$, es cuadrático.
 
-\index{slope}
+\index{pendiente}
 
-Looking at the figure in the previous section, you can estimate the
-slope by eye. But when you call \java{plotResults} it computes a least
-squares fit to the data and prints the estimated slope. In this
-example:
+Al observar la figura de la sección previa, puedes estimar la
+pendiente visualmente. Pero cuando llamas a \java{plotResults}
+se calcula un ajuste de mínimos cuadrados y se imprime la pendiente
+estimada. En este ejemplo:
 
 \begin{verbatim}
 Estimated slope = 1.06194352346708
 \end{verbatim}
 
-which is close to 1; and that suggests that the total time for
-$n$ adds is linear, so each add is constant time, as expected.
+Que es cercano a 1; y eso sugiere que el tiempo total para $n$ llamadas a add
+es lineal, así que cada add es de tiempo constante, tal como esperábamos.
 
-\index{constant time}
+\index{tiempo constante}
 
-One important point: if you see a straight line on a graph like this,
-that does \textbf{not} mean that the algorithm is linear. If the run
-time is proportional to $n^k$ for any exponent $k$, we
-expect to see a straight line with slope $k$. If the slope is
-close to 1, that suggests the algorithm is linear. If it is close to 2,
-it's probably quadratic.
+Un punto importante: si ves una línea recta en una gráfica como esta,
+eso \textbf{no} significa que el algoritmo es lineal. Si el tiempo de ejecuión
+es proporcional a $n^k$ para cualquier exponente $k$, esperaríamos ver
+una línea recta con pendiente $k$. Si la pendiente es cercana a 1, eso
+sugiere que el algoritmo es lineal. Si es cercana a 2, probablemente sea
+cuadrático.
 
-\index{linear time}
-\index{quadratic time}
+\index{tiempo lineal}
+\index{tiempo cuadrático}
 
 
-\section{Exercise 4}
+\section{Ejercicio 4}
 \label{instructions-4}
 
-In the repository for this book you'll find the source files you need
-for this exercise:
+En el repositorio para este libro encontrarás los archivos de código fuente que
+necesitarás para este ejercicio:
 
 \begin{enumerate}
 
 \item
-  \java{Profiler.java} contains the implementation of the
-  \java{Profiler} class described above. You will use this class, but
-  you don't have to know how it works. But feel free to read the source.
+  \java{Profiler.java} contiene la implementación de la clase
+  \java{Profiler} descrita anteriormente. Usarás esta clase, aunque no
+  tienes que saber cómo funciona. Pero siéntete libre de leer el código.
 
 \item
-  \java{ProfileListAdd.java} contains starter code for this exercise,
-  including the example, above, which profiles
-  \java{ArrayList.add}. You will modify this file to profile a few
-  other methods.
+  \java{ProfileListAdd.java} contiene un código inicial para este ejercicio,
+  incluyendo el ejemplo anterior, que perfila
+  \java{ArrayList.add}. Modificarás este archivo para perfilar algunos
+  otros métodos.
 
 \end{enumerate}
 
 \index{ProfileListAdd}
 
-Also, in the \java{code} directory , you'll find the Ant build file
-\java{build.xml}.
+También, en el directorio \java{code}, encontrarás el archivo de
+construcción Ant \java{build.xml}.
 
-Run \java{ant ProfileListAdd} to run \java{ProfileListAdd.java}. You should
-get results similar to Figure~\ref{fig-profile1}, but you might have to adjust
-\java{startN} or \java{endMillis}. The estimated slope should be close
-to 1, indicating that performing $n$ add operations takes time
-proportional to $n$ raised to the exponent 1; that is, it is
-in $O(n)$.
+Ejecuta \java{ant ProfileListAdd} para correr \java{ProfileListAdd.java}. Deberías
+obtener resultados similares a la Figura~\ref{fig-profile1}, pero puede que tengas que
+ajustar \java{startN} o \java{endMillis}. La pendiente estimada debería ser cercana
+a 1, lo que indica que realizar $n$ operaciones add toma un tiempo proporcional
+a $n$ elevada al exponente 1; es decir, está en $O(n)$.
 
-In \java{ProfileListAdd.java}, you'll find an empty method named
-\java{profileArrayListAddBeginning}. Fill in the body of this method
-with code that tests \java{ArrayList.add}, always putting the new
-element at the beginning. If you start with a copy of
-\java{profileArrayListAddEnd}, you should only have to make a few
-changes. Add a line in \java{main} to invoke this method.
+En \java{ProfileListAdd.java}, encontrarás un método vacío llamado
+\java{profileArrayListAddBeginning}. Llena el cuerpo de este método
+con el código que prueba \java{ArrayList.add}, siempre poniendo el nuevo
+elemento al principio. Si inicias con una copia de \java{profileArrayListAddEnd},
+deberías tener que hacer unos cuantos cambios. Agrega una línea en
+\java{main} para invocar este método.
 
-Run \java{ant ProfileListAdd} again and interpret the results. Based on
-our understanding of how \java{ArrayList} works, we expect each add
-operation to be linear, so the total time for $n$ adds should be
-quadratic. If so, the estimated slope of the line, on a log-log scale,
-should be near 2. Is it?
+Ejecuta \java{ant ProfileListAdd} de nuevo e interpreta los resultados. Con base en
+nuestro entendimiento de cómo funciona una \java{ArrayList} esperaríamos que cada
+operación add fuese lineal, así que el tiempo total para $n$ llamadas a add debería ser
+cuadrático. De ser el caso, la pendiente estimada de la línea, en una escala log-log,
+debería ser cercana a 2. ¿Lo es?
 
-\index{linear time}
-\index{quadratic time}
+\index{tiempo lineal}
+\index{tiempo cuadrático}
 
-Now let's compare that to the performance of \java{LinkedList}. Fill
-in the body of \java{profileLinkedListAddBeginning} and use it to
-classify \java{LinkedList.add} when we put the new element at the
-beginning. What performance do you expect? Are the results consistent
-with your expectations?
+Ahora comparemos estas mediciones con el desempeño de \java{LinkedList}. Llena
+el cuerpo de \java{profileLinkedListAddBeginning} y úsalo para clasificar
+\java{LinkedList.add} cuando colocamos el nuevo elemento al principio. ¿Qué
+desempeño esperaríamos? ¿Son los resultados consistentes con tus expectativas?
 
 \index{LinkedList}
 
-Finally, fill in the body of \java{profileLinkedListAddEnd} and use it
-to classify \java{LinkedList.add} when we put the new element at the
-end. What performance do you expect? Are the results consistent with
-your expectations?
+Finalmente, llena el cuerpo de \java{profileLinkedListAddEnd} y úsalo
+para clasificar \java{LinkedList.add} cuando colocamos el nuevo elemento al
+final. ¿Qué rendimiento esperarías? ¿Son los resultados consistentes con
+tus expectativas?
 
-I'll present results and answer these questions in the next chapter.
+Presentaré los resultados y las respuestas a estas preguntas en el siguiente capítulo.
 
 
-\chapter{Doubly-linked list}
+\chapter{Listas doblemente enlazadas}
 
-This chapter reviews results from the previous exercise and introduces yet
-another implementation of the \java{List} interface, the doubly-linked
-list.
+Este capítulo revisa los resultados de los ejercicios previos e introduce
+otra implementación de la interfaz \java{List}, la lista doblemente
+enlazada.
 
-\section{Performance profiling results}
+\section{Resultados del perfilado de desempeño}
 \label{performance-profiling-results}
 
-\index{profiling}
+\index{perfilado}
 
-In the previous exercise, we used \java{Profiler.java} to run various
-\java{ArrayList} and \java{LinkedList} operations with a range of
-problem sizes. We plotted runtime versus problem size on a log-log
-scale and estimated the slope of the resulting curve, which indicates
-the leading exponent of the relationship between runtime and problem
-size.
+En el ejercicio anterior, usamos \java{Profiler.java} para realizar varias
+operaciones con \java{ArrayList} y \java{LinkedList} para un rango de
+tamaños de problemas. Graficamos los tiempos de ejecución versus el tamaño
+del problema en una escala log-log y estimamos la pendiente de la curva
+resultante, que indica el exponente predominante de la relación entre tiempo
+de ejecución y tamaño del problema.
 
 \index{Profiler}
 \index{add}
-\index{average time}
+\index{tiempo promedio}
 
-For example, when we used the \java{add} method to add elements
-to the end of an \java{ArrayList}, we found that the total time to
-perform $n$ adds was proportional to $n$; that is, the
-estimated slope was close to 1. We concluded that performing $n$
-adds is in $O(n)$, so on average the time for a single add is
-constant time, or $O(1)$, which is what we expect based on algorithm
-analysis.
+Por ejemplo, cuando usamos el método \java{add} para agregar elementos
+al final de una \java{ArrayList}, encontramos que el tiempo total para llevar a
+cabo $n$ llamadas a add era proporcional a $n$; es decir, la pendiente
+estimada era cercana a 1. Concluimos que completar $n$ llamadas a add
+está en $O(n)$, así que en promedio el tiempo para una llamada a add es de
+tiempo constante, o $O(1)$, que es lo que esperaríamos con base en el análisis
+de los algoritmos.
 
-\index{constant time}
+\index{tiempo constante}
 
 % NOTE: Again, Patrick is concerned that my use of ``average'' might
 % be confusing, but I think it's reasonable to describe amortized
 % analysis as an average over a series of operations.
 
-The exercise asks you to fill in the body of
-\java{profileArrayListAddBeginning}, which tests the performance of
-adding new elements at the beginning of an \java{ArrayList}. Based on our
-analysis, we expect each add to be linear, because it has to shift the
-other elements to the right; so we expect $n$ adds to be
-quadratic.
+El ejercicio te pide llenar el cuerpo de
+\java{profileArrayListAddBeginning}, que prueba el desempeño de
+agregar nuevos elementos al principio de una \java{ArrayList}. Con base en
+nuestro análisis, esperaríamos que add sea lineal, porque tiene que desplazar
+los otros elementos a la derecha; así que esperíamos que $n$ llamadas a add
+sean cuadráticas.
 
-\index{quadratic time}
-\index{linear time}
+\index{tiempo cuadrático}
+\index{tiempo lineal}
 
 Here's a solution, which you can find in
 the {\tt solution} directory of the repository.
