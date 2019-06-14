@@ -1,63 +1,61 @@
 # ThinkDataStructures
 
-LaTeX source and supporting code for *Think Data Structures: Algorithms and Information Retrieval in Java*
+Fuente LaTeX y código de soporte para *Piensa en Estructuras de Datos: Algoritmos y Recuperación de Información en Java* (traducción al español del libro de Allen Downey *Think Data Structures: Algorithms and Information Retrieval in Java*, por Ernesto A. Aguilar).
 
+Las estructuras de datos y los algoritmos están entre las invenciones más importantes
+de los últimos 50 años, y son herramientas fundamentales que los ingenieros de
+software necesitan conocer. Pero en mi opinión, la mayoría de los libros sobre
+el tema son muy teóricos, muy grandes y muy detallados:
 
-Data structures and algorithms are among the most important inventions
-of the last 50 years, and they are fundamental tools
-software engineers need to know.  But in my opinion, most of the books
-on these topics are too theoretical, too big, and too bottom-up:
+* Muy teóricos:  El análisis matemático de los algoritmos se base en
+simplificar supuestos, lo que limita su utilidad en la práctica.
+La mayoría de exposiciones sobre el tema apenas cubren las simplificaciones y
+se enfocan en la matemática. En este libro presento el subconjunto más práctico
+de este material y omito o enfatizo menos el resto.
 
-* Too theoretical:  Mathematical analysis of algorithms is based
-on simplifying assumptions that limit its usefulness in practice.
-Many presentations of this topic gloss over the simplifications and
-focus on the math.  In this book I present the most practical subset
-of this material and eliminate the rest.
+* Muy grandes: La mayoría de libros sobre el tema tienen al menos 500 páginas,
+y algunos más de 1000. Al enfocarme en los temas que considero más útiles
+para los ingenieros de software, mantuve este libro por debajo de las 250 páginas.
 
-* Too big: Most books on these topics are at least 500 pages,
-and some are more than 1000.  By focusing on the topics I think are
-most useful for software engineers, I kept this book under
-250 pages.
+* Muy detallados: Muchos libros de estructuras de datos se enfocan más 
+en cómo funcionan las estructuras de datos (las implementaciones) y menos
+en cómo usarlas (las interfaces). En este libro, proveo una ``visión general'',
+al iniciar con las interfaces. Los lectores aprenderán a usar las estructuras del
+Java Collections Framework antes de adentrarse en los detalles de cómo funcionan.
 
-* Too bottom-up: Many data structures books focus on how data
-  structures work (the implementations), with less about how to use
-  them (the interfaces).  In this book, I go ``top down'', starting
-  with the interfaces.  Readers learn to use the structures in the
-  Java Collections Framework before getting into the details of how
-  they work.
+Finalmente, algunos libros presentan este material fuera de contexto y sin
+motivación alguna: ¡es sólo una estructura de datos tras otra!
 
-Finally, many present this material out of context and without
-motivation: it's just one damn data structure after another!
+Trato de volverlo más ameno al organizar los temas alrededor de una
+aplicación -- la búsqueda web -- que usa estructuras de datos
+ampliamente, y es una tema interesante e importante por sus propios méritos.
 
-I try to alleviate the boredom by organizing the topics around an
-application -- web search -- that uses data structures extensively,
-and is an interesting and important topic in its own right.
+Esta aplicación motiva algunos temas que generalmente no se cubren
+en una curso introductorio de estructuras de datos, incluyendo estructuras
+de datos persistentes con Redis y algoritmos de streaming.
 
-This application also motivates some topics that are not usually
-covered in an introductory data structures class, including persistent
-data structures, with Redis, and streaming algorithms.
+He tomado algunas decisiones difíciles con relación a qué dejar fuera,
+pero he hecho algunas concesiones. Incluyo algunos temas que la
+mayoría de los lectores nunca usarán, pero que podría esperarse
+que conozcan, posiblemente en una entrevista técnica. Para estos
+temas, presento tanto la sabiduría convencional como mis razones
+para ser escéptico al respecto.
 
-I have made difficult decisions about what to leave out, but 
-I have made some compromises.  I include a few topics
-that most readers will never use, but that they might be expected to
-know, possibly in a technical interview.  For these topics, I
-present both the conventional wisdom as well as my reasons to be
-skeptical. 
+Este libro también presenta aspectos básicos de la ingeniería de software
+en la práctica, incluyendo control de versiones y pruebas unitarias. La mayoría
+de los capítulos incluyen un ejercicio que permite a los lectores aplicar lo
+que han aprendido. Cada ejercicio provee pruebas automáticas para comprobar
+la solución. Y para la mayoría de ejercicios, presento mi solución al principio
+del siguiente capítulo.
 
-This book also presents basic aspects of software engineering practice,
-including version control and unit testing.  Each chapter ends with
-an exercise that allows readers to apply what they have learned.
-Each exercise includes automated tests that check the solution.
-And for most exercises, I present my solution at the beginning of
-the next chapter.
+Este libro está dirigido a estudiantes de ciencias de la computación
+y ramas afines, así como a ingenieros de software profesionales,
+personas capacitándose en ingeniería de software y personas
+personas preparándose para entrevistas técnicas.
 
-This book is intended for college students in computer science and related
-fields, as well as professional software engineers, people training in
-software engineering, and people preparing for technical interviews.
+Asumo que el lector conoce Java a nivel intermedio, pero explico
+algunas características de Java a lo largo del camino, y proveo
+enlaces a material suplementario.
 
-I assume that the reader knows Java at an intermediate level,
-but I explain some Java features along the way, and provide pointers
-to supplementary material.
-
-People who have read *Think Java* or *Head First
-Java* are prepared for this book.
+Las personas que han leído *Think Java* o *Head First
+Java* están preparadas para este libro.
