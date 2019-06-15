@@ -491,10 +491,10 @@ comparar tus implementaciones con las clases de Java {\tt ArrayList} y
 trabajarás en la primera aplicación: un programa que lea páginas de Wikipedia,
 interprete sus contenidos y navegue por el árbol resultante para encontrar enlaces
 y otras características. Usaremos estas herramientas para comprobar la conjetura
-``Llegando a la Filosofía'' (puedes anticiparte leyendo \url{http://thinkdast.com/getphil}).
+``Llegar a la Filosofía'' (puedes anticiparte leyendo \url{http://thinkdast.com/getphil}).
 
 \index{árbol}
-\index{Llegando a la Filosofía}
+\index{Llegar a la Filosofía}
 
 \item Aprenderemos sobre la interfaz {\tt Map} y la implementación
 {\tt HashMap} de Java. Luego escribiremos clases que implementen
@@ -1081,7 +1081,7 @@ Lineales} como un conjunto de algoritmos valientes, galantes y particularmente e
 \section{Ejercicio 2}
 \label{exercise2}
 
-El ejercio para este capítulo es implementar una \java{List} que
+El ejercicio para este capítulo es implementar una \java{List} que
 use un arreglo de Java para guardar sus elementos. 
 
 En el repositorio de código para este libro (véase la Sección~\ref{code}),
@@ -1256,7 +1256,7 @@ los otros elementos para hacer espacio, de ser necesario.
 De nuevo, lee la documentación en \url{http://thinkdast.com/listadd},
 escribe una implementación, y ejecuta los tests para confirmar.
 
-PISTA: Evita repetir el código que hace al array más grande.
+PISTA: Evita repetir el código que hace al arreglo más grande.
 
 El último: llena el cuerpo de \java{remove}.  La documentación está en
 \url{http://thinkdast.com/listrem}. Cuando finalices este útlimo, todos
@@ -2430,11 +2430,10 @@ tus expectativas?
 Presentaré los resultados y las respuestas a estas preguntas en el siguiente capítulo.
 
 
-\chapter{Listas doblemente enlazadas}
+\chapter{Listas de enlace doble}
 
 Este capítulo revisa los resultados de los ejercicios previos e introduce
-otra implementación de la interfaz \java{List}, la lista doblemente
-enlazada.
+otra implementación de la interfaz \java{List}, la lista de enlace doble.
 
 \section{Resultados del perfilado de desempeño}
 \label{performance-profiling-results}
@@ -2466,18 +2465,18 @@ de los algoritmos.
 % be confusing, but I think it's reasonable to describe amortized
 % analysis as an average over a series of operations.
 
-El ejercicio te pide llenar el cuerpo de
+El ejercicio te pedía llenar el cuerpo de
 \java{profileArrayListAddBeginning}, que prueba el desempeño de
 agregar nuevos elementos al principio de una \java{ArrayList}. Con base en
-nuestro análisis, esperaríamos que add sea lineal, porque tiene que desplazar
+nuestro análisis, esperábamos que add fuera lineal, porque tiene que desplazar
 los otros elementos a la derecha; así que esperíamos que $n$ llamadas a add
 sean cuadráticas.
 
 \index{tiempo cuadrático}
 \index{tiempo lineal}
 
-Here's a solution, which you can find in
-the {\tt solution} directory of the repository.
+Aquí está una solución, que puedes encontrar en
+el directorio {\tt solution} del repositorio.
 
 \begin{verbatim}
     public static void profileArrayListAddBeginning() {
@@ -2500,13 +2499,13 @@ the {\tt solution} directory of the repository.
     }
 \end{verbatim}
 
-This method is almost identical to \java{profileArrayListAddEnd}. The
-only difference is in \java{timeMe}, which uses the two-parameter
-version of \java{add} to put the new element at index 0. Also, we
-increased \java{endMillis} to get one additional data point.
+Este método es casi idéntico a \java{profileArrayListAddEnd}. La
+única diferencia está en \java{timeMe}, que usa la versión de dos
+parámetros de \java{add} para colocar el nuevo elemento en el índice 0. También,
+incrementos \java{endMillis} para obtener un punto de datos adicional.
 
-Here are the timing results (problem size on the left, runtime in
-milliseconds on the right):
+Aquí están los resultados de las mediciones (tamaño del problema a la
+izquierda, tiempo de ejecución en milisegundos a la derecha):
 
 \begin{verbatim}
 4000, 14
@@ -2517,44 +2516,44 @@ milliseconds on the right):
 128000, 11555
 \end{verbatim}
 
-Figure~\ref{fig-profile2}
-shows the graph of runtime versus problem size.
+La figura~\ref{fig-profile2}
+muestra la gráfica de tiempo de ejecución versus tamaño del problema.
 \index{problem size}
 
 \begin{figure}
 \centering
 \includegraphics[height=2.5in]{figs/profile2.png}
-\caption{Profiling results: runtime versus problem size for adding
-$n$ elements at the beginning of an \java{ArrayList}.}
+\caption{Resultados del perfilado: tiempo de ejecución versus tamaño del problema para agregar
+$n$ elementos al principio de una \java{ArrayList}.}
 \label{fig-profile2}
 \end{figure}
 
-Remember that a straight line on this graph does \textbf{not} mean that
-the algorithm is linear. Rather, if the runtime is proportional to
-$n^k$ for any exponent, $k$, we expect to see a straight
-line with slope $k$. In this case, we expect the total time for
-$n$ adds to be proportional to $n^2$, so we expect a
-straight line with slope 2. In fact, the estimated slope is 1.992, which
-is so close I would be afraid to fake data this good.
+Recuerda que una línea recta en esta gráfica \textbf{no} significa que
+el algoritmo es lineal. En su lugar, si el tiempo de ejecución es proporcional a
+$n^k$ para cualquier exponente, $k$, esperaríamos ver una línea recta
+con pendiente $k$. En este caso, esperaríamos que el tiempo total para $n$ llamadas a
+add sea proporcional a $n^2$, así que esperaríamos una línea recta con pendiente
+2. De hecho, la pendiente estimada es 1.992, que se acerca tanto que me daría
+temor falsificar datos tan buenos.
 
-\index{profiling}
+\index{perfilado}
 
 
-\section{Profiling \java{LinkedList} methods}
+\section{Perfilado de los métodos de \java{LinkedList}}
 \label{profiling-linkedlist-methods}
 
-In the previous exercise you also profiled the performance of adding new
-elements at the beginning of a \java{LinkedList}. Based on our
-analysis, we expect each \java{add} to take constant time, because in
-a linked list, we don't have to shift the existing elements; we can just
-add a new node at the beginning. So we expect the total time for
-$n$ adds to be linear.
+En el ejercicio anterior también perfilaste el desempeño de agregar nuevos
+elementos al principio de una \java{LinkedList}. Con base en nuestro
+análisis, esperaríamos que cada llamada a \java{add} tomara tiempo constante,
+porque en una lista enlazada, no tenemos que desplazar los elementos existentes;
+podemos simplemente agregar un nuevo nodo al principio. Así que esperaríamos
+que el tiempo total para $n$ llamadas a add fuese lineal.
 
-\index{constant time}
-\index{linear time}
+\index{tiempo constante}
+\index{tiempo lineal}
 \index{LinkedList}
 
-Here's a solution:
+Aquí está una solución:
 
 \begin{verbatim}
     public static void profileLinkedListAddBeginning() {
@@ -2577,11 +2576,11 @@ Here's a solution:
     }
 \end{verbatim}
 
-We only had a make a few changes, replacing
-\java{ArrayList} with \java{LinkedList} and adjusting
-\java{startN} and \java{endMillis} to get a good range of data.
-The measurements were noisier than the previous batch; here
-are the results:
+Tenemos que hacer unos cuantos cambios, reemplazando
+\java{ArrayList} con \java{LinkedList} y ajustando
+\java{startN} y \java{endMillis} para obtener un buen rango de datos.
+Las mediciones contenían más ruido que el anterior intento; aquí están
+los resultados:
 
 \begin{verbatim}
 128000, 16
@@ -2594,40 +2593,40 @@ are the results:
 16384000, 4755
 \end{verbatim}
 
-Figure~\ref{fig-profile3}
-shows the graph of these results.
+La figura~\ref{fig-profile3}
+muestra la gráfica de estos resultados.
 
 \begin{figure}
 \centering
 \includegraphics[height=2.5in]{figs/profile3.png}
-\caption{Profiling results: runtime versus problem size for adding
-$n$ elements at the beginning of a \java{LinkedList}.}
+\caption{Resultados del perfilado: tiempo de ejecución versus tamaño del problema para
+agregar $n$ elementos al principio de una \java{LinkedList}.}
 \label{fig-profile3}
 \end{figure}
 
-It's not a very straight line, and the slope is not exactly 1; the slope
-of the least squares fit is 1.23. But these results indicate that the
-total time for $n$ adds is at least approximately $O(n)$,
-so each add is constant time.
+No es una línea muy recta, y la pendiente no es exactamente 1; la pendiente
+del ajuste de mínimos cuadrados es 1.23. Pero estos resultados indican que
+el tiempo total para $n$ llamadas a add es por lo menos aproximadamente $O(n)$,
+así que cada llamada a add es de tiempo constante.
 
-\index{constant time}
+\index{tiempo constante}
 
-\section{Adding to the end of a \java{LinkedList}}
+\section{Agregar al final de una \java{LinkedList}}
 \label{adding-to-the-end-of-a-linkedlist}
 
-Adding elements at the beginning is one of the operations where we
-expect \java{LinkedList} to be faster than \java{ArrayList}. But for
-adding elements at the end, we expect \java{LinkedList} to be slower.
-In my implementation, we have to traverse the entire list to add an
-element to the end, which is linear. So we expect the total time for
-$n$ adds to be quadratic.
+Agregar elementos al principio es una de las operaciones donde
+esperamos que \java{LinkedList} sea más rápida que \java{ArrayList}. Pero para
+agregar elementos al final, esperamos que \java{LinkedList} sea más lenta.
+En mi implementación, tenemos que recorrer la lista completa para agregar
+un elemento al final, lo que es lineal. Así que esperamos que el tiempo total
+para $n$ llamadas a add sea cuadrático.
 
-\index{quadratic time}
-\index{linear time}
+\index{tiempo cuadrático}
+\index{tiempo lineal}
 \index{LinkedList}
 \index{add}
 
-Well, it's not.  Here's the code:
+Bien, no lo es. Aquí está el código:
 
 \begin{verbatim}
     public static void profileLinkedListAddEnd() {
@@ -2650,7 +2649,7 @@ Well, it's not.  Here's the code:
     }
 \end{verbatim}
 
-Here are the results:
+Aquí están los resultados:
 
 \begin{verbatim}
 64000, 9
@@ -2664,85 +2663,85 @@ Here are the results:
 16384000, 6160
 \end{verbatim}
 
-Figure~\ref{fig-profile4}
-shows the graph of these results.
+La figura~\ref{fig-profile4}
+muestra la gráfica de estos resultados.
 
 \begin{figure}
 \centering
 \includegraphics[height=2.5in]{figs/profile4.png}
-\caption{Profiling results: runtime versus problem size for adding
-$n$ elements at the end of a \java{LinkedList}.}
+\caption{Resultados del perfilado: tiempo de ejecución versus tamaño del problema
+para agregar $n$ elementos al final de una \java{LinkedList}.}
 \label{fig-profile4}
 \end{figure}
 
-\index{profiling}
+\index{perfilado}
 
-Again, the measurements are noisy and the line is not perfectly
-straight, but the estimated slope is 1.19, which is close to what
-we got adding elements at the beginning, and not very close to 2, which
-is what we expected based on our analysis. In fact, it is closer to 1,
-which suggests that adding elements at the end is constant time.
-What's going on?
+De nuevo, las medidas contienen mucho ruido y la línea no es perfectamente
+recta, pero la pendiente estimada es 1.19, que es cercana a la que obtuvimos
+al agregar elementos al principio, y no muy cercana a 2, que es lo que
+esperábamos con base en nuestro análisis. De hecho, es más cercana a
+1, lo que sugiere que agregar elementos al final es de tiempo constante.
+¿Qué está sucediendo?
 
-\index{constant time}
+\index{tiempo constante}
 
-\section{Doubly-linked list}
+\section{Lista de enlace doble}
 \label{doubly-linked-list}
 
-My implementation of a linked list, \java{MyLinkedList}, uses a
-singly-linked list; that is, each element contains a link to the next,
-and the \java{MyArrayList} object itself has a link to the first node.
+Mi implementación de una lista enlazada, \java{MyLinkedList}, usa una
+lista de enlace sencillo; es decir, cada elemento contiene un enlace al siguiente
+y el objeto \java{MyArrayList} en sí mismo tiene un enlace al primer nodo.
 
-\index{doubly-linked list}
+\index{lista de enlace doble}
 \index{LinkedList}
 
-But if you read the documentation of \java{LinkedList} at
+Pero si lees la documentación de \java{LinkedList} en
 \url{http://thinkdast.com/linked},
-it says:
+dice:
 
 \begin{quote}
-Doubly-linked list implementation of the List and Deque
-interfaces. [\ldots] All of the operations perform as
-could be expected for a doubly-linked list. Operations that
-index into the list will traverse the list from the beginning or the
-end, whichever is closer to the specified index.
+Implementación de lista de enlace doble de las interfaces
+List y Deque. [\ldots] Todas las operaciones se desempeñan
+como podría esperarse de una lista de enlace doble. Las operaciones
+provean un índice a la lista recorrerán la lista desde el principio o desde
+el final, dependiendo de cuál esté más cerca al índice especificado.
 \end{quote}
 
-If you are not familiar with doubly-linked lists, you can read more
-about them at \url{http://thinkdast.com/doublelist},
-but the short version is:
+Si no estás familiarizado con las listas de enlace doble, puedes leer
+más sobre ellas en \url{http://thinkdast.com/doublelist}, pero la
+versión corta es:
 
 \begin{itemize}
 \item
-  Each node contains a link to the next node and a link to the previous
-  node.
+  Cada nodo contiene un enlace al siguiente nodo y un enlace al nodo
+  previo.
 
 \item
-  The \java{LinkedList} object contains links to the first and last
-  elements of the list.
+  El objeto \java{LinkedList} contiene enlaces al primer y último
+  elementos de la lista.
 
 \end{itemize}
 
-So we can start at either end of the list and traverse it in either
-direction. As a result, we can add and remove elements from the
-beginning and the end of the list in constant time!
+Así que podemos empezar en cualquier extremo de la lista y recorrerla
+en cualquier dirección. Como resultado, ¡podemos agregar y remover
+elementos desde el principio y el final de la lista en tiempo constante!
 
-\index{constant time}
+\index{tiempo constante}
 
-The following table summarizes the performance we expect from
-\java{ArrayList}, \java{MyLinkedList} (singly-linked), and
-\java{LinkedList} (doubly-linked):
+La siguiente tabla resume el desempeño que esperaríamos de
+\java{ArrayList}, \java{MyLinkedList} (enlace simple), y
+\java{LinkedList} (enlace doble):
 
 \begin{tabular}[c]{@{}llll@{}}
 \hline
 & MyArrayList & MyLinkedList & LinkedList
 \\
 \hline
-add (at the end) & \textbf{1} & n & \textbf{1}
+add (al final) & \textbf{1} & n & \textbf{1}
 \\
-add (at the beginning) & n & \textbf{1} & \textbf{1}
+add (al principio) & n & \textbf{1} & \textbf{1}
 \\
-add (in general) & n & n & n
+add (en general) & n & n & n
 \\
 get / set & \textbf{1} & n & n
 \\
@@ -2750,159 +2749,159 @@ indexOf / lastIndexOf & n & n & n
 \\
 isEmpty / size & 1 & 1 & 1
 \\
-remove (from the end) & \textbf{1} & n & \textbf{1}
+remove (del final) & \textbf{1} & n & \textbf{1}
 \\
-remove (from the beginning) & n & \textbf{1} & \textbf{1}
+remove (del principio) & n & \textbf{1} & \textbf{1}
 \\
-remove (in general) & n & n & n
+remove (en general) & n & n & n
 \\
 \hline
 \end{tabular}
 
 
-\section{Choosing a Structure}
+\section{Elección de una estructura}
 
-The doubly-linked implementation is better than \java{ArrayList} for
-adding and removing at the beginning, and just as good as
-\java{ArrayList} for adding and removing at the end. So the only
-advantage of \java{ArrayList} is for \java{get} and \java{set},
-which require linear time in a linked list, even if it is doubly-linked.
+La implementación de enlace doble es mejor que \java{ArrayList} para
+agregar y remover al principio e igual de buena que
+\java{ArrayList} para agregar y remover al final. Así que la única
+ventaja de \java{ArrayList} es para \java{get} y \java{set},
+que requieren tiempo lineal en una lista enlazada, incluso si es de enlace doble.
 
-\index{linear time}
-\index{data structure selection}
-\index{choosing a data structure}
+\index{tiempo lineal}
+\index{selección de una estructura de datos}
+\index{elección de una estructura de datos}
 
-If you know that the runtime of your application depends on the time it
-takes to \java{get} and \java{set} elements, an \java{ArrayList}
-might be the better choice. If the runtime depends on adding and
-removing elements near the beginning or the end, \java{LinkedList}
-might be better.
+Si sabes que el tiempo de ejecución de tu aplicación depende del tiempo
+que toma obtener (\java{get}) o modificar (\java{set}) los elementos,
+una \java{ArrayList} podría ser la mejor opción. Si el tiempo de ejecución depende de
+agregar y remover elementos cerca del principio o del final, \java{LinkedList}
+podría ser mejor.
 
-\index{order of growth}
-\index{constant time}
+\index{orden de crecimiento}
+\index{tiempo constante}
 
-But remember that these recommendations are based on the order of growth
-for large problems. There are other factors to consider:
+Pero recuerda que estas recomendaciones se basan en la orden de crecimiento
+para problemas grandes. Hay otros factores a considerar:
 
 \begin{itemize}
 
 \item
-  If these operations don't take up a substantial fraction of the
-  runtime for your application --- that is, if your applications spends
-  most of its time doing other things --- then your choice of a
-  \java{List} implementation won't matter very much.
+  Si estas operaciones no requieren una fracción sustancial del tiempo
+  de ejecución para tu aplicación --- es decir, si tu aplicación pasa la
+  mayor parte de su tiempo haciendo otras cosas --- entonces tu elección
+  de una implementación de \java{List} no importará mucho.
 
 \item
-  If the lists you are working with are not very big, you might not get
-  the performance you expect. For small problems, a quadratic algorithm
-  might be faster than a linear algorithm, or linear might be faster
-  than constant time. And for small problems, the difference probably
-  doesn't matter.
+  Si las listas con las que estás trabajando no son muy grandes, podría ser
+  que no obtengas el desempeño que esperas. Para problemas pequeños, un
+  algoritmo cuadrático podría ser más rápido que un algoritmo lineal, o un algoritmo
+  lineal podría ser más rápido que uno de tiempo constante. Y para problemas
+  pequeños, la diferencia probablemente no es importante.
 
 \item
-  Also, don't forget about space. So far we have focused on runtime, but
-  different implementations require different amounts of space. In an
-  \java{ArrayList}, the elements are stored side-by-side in a single
-  chunk of memory, so there is little wasted space, and computer
-  hardware is often faster with contiguous chunks. In a linked list,
-  each element requires a node with one or two links. The links take up
-  space (sometimes more than the data!), and with nodes scattered
-  around in memory, the hardware might be less efficient.
+  También, no olvides el espacio. Hasta el momento nos hemos enfocado en el
+  tiempo de ejecución, pero diferentes implementaciones requieren diferentes
+  cantidades de espacio. En una \java{ArrayList}, los elementos se guardan uno a
+  la par de otro en un trozo de la memoria, así que hay poco espacio
+  desperdiciado y el hardware de la computadora es más rápido con trozos
+  contiguos. En una lista enlazada, cada elemento requiere un nodo con uno o dos
+  enlaces. Los enlaces ocupan espacio (¡a veces más que los datos!), y con nodos
+  dispersos por todas partes en la memoria, el hardware podría ser menos eficiente.
 
 \end{itemize}
 
-In summary, analysis of algorithms provides some guidance for choosing
-data structures, but only if
+En resumen, el análisis de algoritmos provee algunas guías para elegir entre
+estructuras de datos, pero solo si
 
 \begin{enumerate}
 
 \item
-  The runtime of your application is important,
+  El tiempo de ejecución de tu aplicación es importante,
 
 \item
-  The runtime of your application depends on your choice of data
-  structure, and
+  El tiempo de ejecución de tu aplicación depende de la elección de una estructura
+  de datos y
 
 \item
-  The problem size is large enough that the order of growth actually
-  predicts which data structure is better.
+  El tamaño del problema es lo suficientemente grande para que el orden de crecimiento
+  realmente prediga cuál estructura de datos es mejor.
 
 \end{enumerate}
 
-You could have a long career as a software engineer without ever finding
-yourself in this situation.
+Podrías tener una larga carrera como ingeniero de software y nunca encontrarte
+en esta situación.
 
 
-\chapter{Tree traversal}
+\chapter{Recorrido de árboles}
 \label{cs-traversing-trees}
 
-This chapter introduces the application we will develop during the
-rest of the book, a web search engine.
-I describe the elements of a search engine and
-introduce the first application, a Web crawler that downloads and parses
-pages from Wikipedia.  This chapter also presents a recursive implementation of
-depth-first search and an iterative implementation that uses a Java
-\java{Deque} to implement a ``last in, first out'' stack.
+Este capítulo introduce la aplicación que desarrollaremos durante el
+resto del libro, un motor de búsqueda web.
+Describo los elementos de un motor de búsqueda e
+introduzco la primera aplicación, un rastreador Web que descarga e interpreta
+páginas de Wikipedia.  Este capítulo también presenta una implementación
+recursiva de la búsqueda en profundidad y una implementación iterativa que usa
+una \java{Deque} de java para implementar una pila ``último en entrar, primero en salir''.
 
 \index{Deque}
 
-\section{Search engines}
+\section{Motores de búsqueda}
 \label{the-road-ahead}
 
-A \textbf{web search engine}, like Google Search or Bing, takes a set
-of ``search terms'' and returns a list of web pages that are relevant
-to those terms (I'll discuss what ``relevant'' means later).  You can
-read more at \url{http://thinkdast.com/searcheng}, but I'll explain
-what you need as we go along.
+Un \textbf{motor de búsqueda web}, como Google Search o Bing, toma un conjunto
+de ``términos de búsqueda'' y devuelve una lista de páginas web que son relevantes
+para esos términos (explicaré más tarde lo que significa ``relevante'').  Puedes leer
+más en \url{http://thinkdast.com/searcheng}, pero explicaré lo que necesites conforme
+que avancemos.
 
-\index{search engine}
-\index{search term}
-\index{crawler}
-\index{indexer}
-\index{retriever}
+\index{motor de búsqueda}
+\index{término de búsqueda}
+\index{rastreador}
+\index{indexador}
+\index{recuperador}
 
-The essential components of a search engine are:
+Los componentes esenciales de un motor de búsqueda son:
 
 \begin{itemize}
 
 \item
-  Crawling: We'll need a program that can download a web page, parse it,
-  and extract the text and any links to other pages.
+  Rastrear: Necesitaremos un programa que pueda descargar una página, interpretarla
+  y extraer el texto y cualquier enlace a otras páginas.
 
 \item
-  Indexing: We'll need a data structure that makes it possible to look up a
-  search term and find the pages that contain it.
+  Indexar: Necesitaremos una estructura de datos que haga posible buscar un término
+  de búsqueda y encontrar las páginas que lo contienen.
 
 \item
-  Retrieval: And we'll need a way to collect results from the Index and
-  identify pages that are most relevant to the search terms.
+  Recuperar: Y necesitaremos una forma de recolectar los resultados del Índice e identificar
+  las páginas que son más relevantes para los términos de búsqueda.
 
 \end{itemize}
 
-We'll start with the crawler.  The goal of a crawler is to discover and
-download a set of web pages. For search engines like Google and Bing,
-the goal is to find \emph{all} web pages, but often crawlers are limited
-to a smaller domain. In our case, we will only read pages from
-Wikipedia.
+Comenzaremos con el rastreador. La meta de un rastreador es descubir y
+descargar un conjunto de páginas web. Para motor de búsqueda como Google
+y Bing, la meta es encontrar \emph{todas} las páginas web, pero muchas veces los
+rastreadores están limitados a un dominio más pequeño. En nuestro caso, sólo leeremos
+páginas de Wikipedia.
 
 \index{Wikipedia}
-\index{Getting to Philosophy}
+\index{Llegar a la filosofía}
 
-As a first step, we'll build a crawler that reads a Wikipedia page,
-finds the first link, follows the link to another page, and repeats. We
-will use this crawler to test the ``Getting to Philosophy'' conjecture,
-which states:
+Como un primer paso, construiremos un rastreador que lea una página de Wikipedia,
+encuentre el primer enlace, siga un enlace a otra página y repita el proceso. Usaremos
+este rastreador para comprobar la conjetura ``Llegar a la Filosofía'', que establece:
 
 \begin{quote}
-Clicking on the first lowercase link in the main text of a
-Wikipedia article, and then repeating the process for subsequent
-articles, usually eventually gets one to the Philosophy article.
+Al hacer clic en el primer enlace en minúsculas en el texto principal de un artículo de
+Wikipedia, y luego repetir el proceso para artículos subsiguientes, por lo general
+eventualmente te conducirá al artículo sobre Filosofía.
 \end{quote}
 
-This conjecture is stated at
+La conjetura se establece en
 \url{http://thinkdast.com/getphil}{},
-and you can read its history there.
+y puedes leer su historia ahí.
 
+Probar la conjetura nos permitirá
 Testing the conjecture will allow us to build the basic pieces of a
 crawler without having to crawl the entire web, or even all of
 Wikipedia. And I think the exercise is kind of fun!
