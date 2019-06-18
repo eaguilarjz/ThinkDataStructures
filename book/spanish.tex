@@ -4521,10 +4521,10 @@ más eficiente.
 \chapter{Hashing}
 \label{cs-maps-hashing-readme}
 
-In this chapter, I define
-\java{MyBetterMap}, a better implementation of the \java{Map} interface
-than \java{MyLinearMap}, and introduce
-\textbf{hashing}, which makes \java{MyBetterMap} more efficient.
+En este capítulo, defino
+\java{MyBetterMap}, una mejor implementación de la interfaz \java{Map}
+que \java{MyLinearMap}, e introduzco el concepto de
+\textbf{hashing}, que hace a \java{MyBetterMap} más eficiente.
 
 
 \section{Hashing}
@@ -4533,13 +4533,13 @@ than \java{MyLinearMap}, and introduce
 \index{hashing}
 \index{MyBetterMap}
 
-To improve the performance of \java{MyLinearMap}, we'll write a new
-class, called \java{MyBetterMap}, that contains a collection of
-\java{MyLinearMap} objects. It divides the keys among the embedded
-maps, so the number of entries in each map is smaller, which speeds up
-\java{findEntry} and the methods that depend on it.
+Para mejorar el desempeño de \java{MyLinearMap}, escribiremos una nueva
+clase, llamada \java{MyBetterMap}, que contiene una colección de objetos
+\java{MyLinearMap}. Esta clase divide las claves entre los mapas
+embebidos, así que el número de entradas en cada mapa es más pequeño,
+lo que hace más rápido a \java{findEntry} y los métodos que dependen de él.
 
-Here's the beginning of the class definition:
+Aquí está el principio de la definición de la clase:
 
 \begin{verbatim}
 public class MyBetterMap<K, V> implements Map<K, V> {
@@ -4559,43 +4559,43 @@ public class MyBetterMap<K, V> implements Map<K, V> {
 }
 \end{verbatim}
 
-The instance variable, \java{maps}, is a collection of
-\java{MyLinearMap} objects. The constructor takes a parameter,
-\java{k}, that determines how many maps to use, at least initially.
-Then \java{makeMaps} creates the embedded maps and stores them in an
+La variable de instancia, \java{maps}, es una colección de
+objetos \java{MyLinearMap}. El constructor toma un parámetro,
+\java{k}, que determina cuántos mapas usar, al menos inicialmente.
+Luego \java{makeMaps} crea los mapas embebidos y los guarda en una
 \java{ArrayList}.
 
 \index{ArrayList}
 
-Now, the key to making this work is that we need some way to look at a
-key and decide which of the embedded maps it should go into. When we
-\java{put} a new key, we choose one of the maps; when we \java{get}
-the same key, we have to remember where we put it.
+Ahora, la clave para hacer que esto funcione es que necesitamos alguna forma
+de ver una clave y decidir en cuál de los mapas embebidos debería ir. Cuando
+ponemos (\java{put}) una nueva clave, elegimos una de los mapas; cuando
+obtenemos (\java{get}) la misma clave, tenemos que recordar dónde la pusimos.
 
 \index{get}
 \index{Map}
 
-One possibility is to choose one of the sub-maps at random and keep
-track of where we put each key. But how should we keep track? It might
-seem like we could use a \java{Map} to look up the key and find the
-right sub-map, but the whole point of the exercise is to write an
-efficient implementation of a \java{Map}. We can't assume we already
-have one.
+Una posibilidad es elegir uno de los submapas al azar y llevar un
+el control de en dónde pusimos cada clave. ¿Pero cómo llevaríamos el
+control? Tal vez podríamos usar un \java{Map} para buscar la clave y encontrar
+el sub-mapa correcto, pero todo el punto del ejercicio es escribir una
+implementación eficiente de un \java{Map}. No podemos asumir que ya
+tenemos una.
 
-A better approach is to use a \textbf{hash function}, which takes an
-\java{Object}, any \java{Object}, and returns an integer called a
-\textbf{hash code}.  Importantly, if it sees the same \java{Object}
-more than once, it always returns the same hash code. That way, if we
-use the hash code to store a key, we'll get the same hash code when we
-look it up.
+Una mejor aproximación es usar una \textbf{función hash}, que toma un
+\java{Object}, cualquier \java{Object}, y devuelve un entero llamado
+\textbf{código hash}.  Es importante que si esta función ve el mismo \java{Object}
+más de una vez, siempre devuelva el mismo código hash. De esa manera, si
+usamos el código hash para guardar una clave, obtendremos el mismo código
+hash cuando la busquemos.
 
-\index{hash function}
-\index{hash code}
+\index{función hash}
+\index{código hash}
 
-In Java, every \java{Object} provides a method called
-\java{hashCode} that computes a hash function. The implementation of
-this method is different for different objects; we'll see an example
-soon.
+En java, cada \java{Object} provee un método llamado
+\java{hashCode} que calcula una función hash. La implementación del
+método es diferente para diferentes objetos; veremos un ejemplo
+pronto.
 
 \index{helper method}
 

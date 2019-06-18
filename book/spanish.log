@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6745 64-bit) (preloaded format=pdflatex 2018.8.21)  18 JUN 2019 17:35
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6745 64-bit) (preloaded format=pdflatex 2018.8.21)  18 JUN 2019 17:52
 entering extended mode
 **./spanish.tex
 (spanish.tex
@@ -1359,13 +1359,13 @@ Overfull \hbox (10.7722pt too wide) in paragraph at lines 4894--4898
 \OT1/cmr/m/n/12 in the body of [][][]. HINT: use [][][]. Run [][][][][]
  []
 
-
+[97]
 Overfull \hbox (71.8458pt too wide) in paragraph at lines 4903--4907
 []\OT1/cmr/m/n/12 Fill in the body of [][][]. HINT: \OT1/cmr/m/it/12 don't \OT1
 /cmr/m/n/12 use [][][]. Run [][][][][]
  []
 
-[97] [98]
+[98]
 Cap\IeC {\'\i }tulo 11.
 
 Overfull \hbox (77.99025pt too wide) in paragraph at lines 4972--4972
@@ -1749,7 +1749,7 @@ nts/cm/cmss12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/c
 msy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb
 ><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Pro
 gram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on spanish.pdf (190 pages, 965183 bytes).
+Output written on spanish.pdf (190 pages, 965299 bytes).
 PDF statistics:
  1971 PDF objects out of 2073 (max. 8388607)
  423 named destinations out of 1000 (max. 500000)

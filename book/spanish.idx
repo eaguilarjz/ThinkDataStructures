@@ -326,18 +326,18 @@
 \indexentry{ArrayList|hyperpage}{92}
 \indexentry{get|hyperpage}{92}
 \indexentry{Map|hyperpage}{92}
-\indexentry{hash function|hyperpage}{92}
-\indexentry{hash code|hyperpage}{92}
+\indexentry{funci\IeC {\'o}n hash|hyperpage}{92}
+\indexentry{c\IeC {\'o}digo hash|hyperpage}{92}
 \indexentry{helper method|hyperpage}{92}
 \indexentry{chooseMap|hyperpage}{93}
 \indexentry{put|hyperpage}{93}
 \indexentry{get|hyperpage}{93}
 \indexentry{sub-map|hyperpage}{93}
 \indexentry{linear time|hyperpage}{93}
-\indexentry{SillyString|hyperpage}{93}
-\indexentry{equals|hyperpage}{94}
-\indexentry{toString|hyperpage}{94}
-\indexentry{hashCode|hyperpage}{94}
+\indexentry{SillyString|hyperpage}{94}
+\indexentry{equals|hyperpage}{95}
+\indexentry{toString|hyperpage}{95}
+\indexentry{hashCode|hyperpage}{95}
 \indexentry{Unicode|hyperpage}{95}
 \indexentry{code point|hyperpage}{95}
 \indexentry{sub-map|hyperpage}{95}
@@ -347,7 +347,7 @@
 \indexentry{setChar|hyperpage}{96}
 \indexentry{hash code|hyperpage}{97}
 \indexentry{MyBetterMap|hyperpage}{97}
-\indexentry{Ant|hyperpage}{97}
+\indexentry{Ant|hyperpage}{98}
 \indexentry{put|hyperpage}{98}
 \indexentry{get|hyperpage}{98}
 \indexentry{containsValue|hyperpage}{98}
