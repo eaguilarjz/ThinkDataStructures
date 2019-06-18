@@ -46,9 +46,9 @@
 \contentsline {section}{\numberline {8.2}TermCounter}{77}{section.8.2}
 \contentsline {section}{\numberline {8.3}Ejercicio 6}{80}{section.8.3}
 \contentsline {chapter}{\numberline {9}La interfaz Map}{85}{chapter.9}
-\contentsline {section}{\numberline {9.1}Implementing \lstinline {MyLinearMap}}{85}{section.9.1}
-\contentsline {section}{\numberline {9.2}Exercise 7}{86}{section.9.2}
-\contentsline {section}{\numberline {9.3}Analyzing \lstinline {MyLinearMap}}{87}{section.9.3}
+\contentsline {section}{\numberline {9.1}Implementaci\IeC {\'o}n de \lstinline {MyLinearMap}}{85}{section.9.1}
+\contentsline {section}{\numberline {9.2}Ejercicio 7}{86}{section.9.2}
+\contentsline {section}{\numberline {9.3}An\IeC {\'a}lisis de \lstinline {MyLinearMap}}{87}{section.9.3}
 \contentsline {chapter}{\numberline {10}Hashing}{91}{chapter.10}
 \contentsline {section}{\numberline {10.1}Hashing}{91}{section.10.1}
 \contentsline {section}{\numberline {10.2}How does hashing work?}{93}{section.10.2}

@@ -300,27 +300,27 @@
 \indexentry{map|hyperpage}{85}
 \indexentry{hash table|hyperpage}{85}
 \indexentry{MyLinearMap|hyperpage}{85}
-\indexentry{type parameter|hyperpage}{85}
+\indexentry{par\IeC {\'a}metro de tipo|hyperpage}{85}
 \indexentry{ArrayList|hyperpage}{85}
 \indexentry{Entry|hyperpage}{86}
 \indexentry{Ant|hyperpage}{87}
-\indexentry{helper method|hyperpage}{87}
+\indexentry{m\IeC {\'e}todo auxiliar|hyperpage}{87}
 \indexentry{findEntry|hyperpage}{87}
 \indexentry{put|hyperpage}{87}
 \indexentry{containsKey|hyperpage}{87}
 \indexentry{get|hyperpage}{87}
 \indexentry{remove|hyperpage}{87}
 \indexentry{equals|hyperpage}{87}
-\indexentry{constant time|hyperpage}{88}
-\indexentry{analysis of algorithms|hyperpage}{88}
+\indexentry{tiempo constante|hyperpage}{88}
+\indexentry{an\IeC {\'a}lisis de algoritmos|hyperpage}{88}
 \indexentry{findEntry|hyperpage}{88}
-\indexentry{linear time|hyperpage}{88}
+\indexentry{tiempo lineal|hyperpage}{88}
 \indexentry{put|hyperpage}{89}
 \indexentry{get|hyperpage}{89}
-\indexentry{constant time|hyperpage}{89}
-\indexentry{linear time|hyperpage}{89}
-\indexentry{haystack|hyperpage}{89}
-\indexentry{hash code|hyperpage}{90}
+\indexentry{tiempo constante|hyperpage}{89}
+\indexentry{tiempo lineal|hyperpage}{89}
+\indexentry{pajar|hyperpage}{89}
+\indexentry{c\IeC {\'o}digo hash|hyperpage}{90}
 \indexentry{hashing|hyperpage}{91}
 \indexentry{MyBetterMap|hyperpage}{91}
 \indexentry{ArrayList|hyperpage}{92}

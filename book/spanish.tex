@@ -4244,21 +4244,21 @@ elementos en orden.
 \index{map}
 \index{hash table}
 
-You will have a chance to implement these data structures, and then we
-will analyze their performance.
+Tendrás una oportunidad de implementar estas estructuras de datos, y entonces
+analizaremos su desempeño.
 
-But before we can explain hash tables, we'll start with a simple
-implementation of a \java{Map} using a \java{List} of key-value
-pairs.
+Pero antes de que podamos explicar las tablas hash, empezaremos con una
+implementación simple de un \java{Map} usando una \java{List} de pares
+clave-valor.
 
-\section{Implementing \java{MyLinearMap}}
+\section{Implementación de \java{MyLinearMap}}
 \label{implementing-mylinearmap}
 
 \index{MyLinearMap}
 
-As usual, I provide starter code and you will fill in the missing
-methods. Here's the beginning of the \java{MyLinearMap} class
-definition:
+Como es usual, proveo un código para empezar y llenarás los métodos
+faltantes. Aquí está el principio de la definición de la clase
+\java{MyLinearMap}:
 
 \begin{verbatim}
 public class MyLinearMap<K, V> implements Map<K, V> {
@@ -4266,18 +4266,18 @@ public class MyLinearMap<K, V> implements Map<K, V> {
     private List<Entry> entries = new ArrayList<Entry>();
 \end{verbatim}
 
-This class uses two type parameters, \java{K}, which is the type of
-the keys, and \java{V}, which is the type of the values.
-\java{MyLinearMap} implements \java{Map}, which means it has to
-provide the methods in the \java{Map} interface.
+Esta clase usa dos parámetros de tipo, \java{K}, que es el tipo de
+las claves, y \java{V}, que es el tipo de los valores.
+\java{MyLinearMap} implementa \java{Map}, lo que significa que tiene que
+proveer los métodos de la interfaz \java{Map}.
 
-\index{type parameter}
+\index{parámetro de tipo}
 \index{ArrayList}
 
-A \java{MyLinearMap} object has a single instance variable,
-\java{entries}, which is an \java{ArrayList} of \java{Entry}
-objects. Each \java{Entry} contains a key-value pair. Here is the
-definition:
+Un objeto \java{MyLinearMap} tiene una única variable de instancia,
+\java{entries}, que es una \java{ArrayList} de objetos
+\java{Entry}. Cada \java{Entry} contiene un par clave-valor. Aquí
+está la definición:
 
 \begin{verbatim}
     public class Entry implements Map.Entry<K, V> {
@@ -4300,91 +4300,90 @@ definition:
     }
 \end{verbatim}
 
-There's not much to it; an \java{Entry} is just a container for a key
-and a value. This definition is nested inside \java{MyLinearList}, so
-it uses the same type parameters, \java{K} and \java{V}.
+No hay mucho que decir; una \java{Entry} es solo un contenedor para una clave (key)
+y un valor (value). Esta definición esta anidada dentro de \java{MyLinearList}, así
+que usa los mismos parámetros de tipo, \java{K} y \java{V}.
 
 \index{Entry}
 
-That's all you need to do the exercise, so let's get started.
+Eso es todo lo que necesitas para hacer el ejercicio, así que comencemos.
 
 
-\section{Exercise 7}
+\section{Ejercicio 7}
 \label{exercise7}
 
-In the repository for this book,
-you'll find the source files for this exercise:
+En el repositorio para este libro, encontrarás
+los archivos de código fuente para este ejercicio:
 
 \begin{itemize}
 
-\item \java{MyLinearMap.java} contains starter code for the first part
-  of the exercise.
+\item \java{MyLinearMap.java} contiene código inicial para la primera parte
+  del ejercicio.
 
-\item \java{MyLinearMapTest.java} contains the unit tests for
+\item \java{MyLinearMapTest.java} contiene los tests unitarios para
   \java{MyLinearMap}.
 
 \end{itemize}
 
-You'll also find the Ant build file
+También encontrarás el archivo de construcción Ant
 \java{build.xml}.
 
 \index{Ant}
 
-Run \java{ant build} to compile the source files. Then run \java{ant
-  MyLinearMapTest}; several tests should fail, because you have some
-work to do!
+Ejecuta \java{ant build} para compilar los archivos fuente. Luego ejecuta \java{ant
+  MyLinearMapTest}; varios tests fallarán, ¡porque aún tienes trabajo por hacer!
 
-\index{helper method}
+\index{método auxiliar}
 
-First, fill in the body of \java{findEntry}. This is a helper method
-that is not part of the \java{Map} interface, but once you get it
-working, you can use it for several methods. Given a target key, it
-should search through the entries and return the entry that contains
-the target (as a key, not a value) or \java{null} if it's not
-there. Notice that I provide an \java{equals} method that
-compares two keys and handles \java{null} correctly.
+Primero, llena el cuerpo de \java{findEntry}. Este es un método auxiliar
+que no es parte de la interfaz \java{Map}, pero una vez consigas que
+funcione, puedes usarlo para varios métodos. Dada una clave objetivo,
+debería buscar a lo largo de las entradas (entries) y devolver la entrada
+que contenga el objetivo (como una clave, no un valor) o \java{null} si no
+está ahí. Nota que proveo un método \java{equals} que compara
+dos claves y maneja los \java{null} correctamente.
 
 \index{findEntry}
 
-You can run \java{ant MyLinearMapTest} again, but even if your
-\java{findEntry} is correct, the tests won't pass because \java{put}
-is not complete.
+Puedes ejecutar \java{ant MyLinearMapTest} de nuevo, pero incluso si tu
+\java{findEntry} es correo, los tests no pasarán porque \java{put}
+no está completo.
 
 \index{put}
 
-Fill in \java{put}. You should read the documentation of
-\java{Map.put} at \url{http://thinkdast.com/listput} so you know what
-it is supposed to do. You might want to start with a version of
-\java{put} that always adds a new entry and does not modify an
-existing entry; that way you can test the simple case first.  Or if
-you feel more confident, you can write the whole thing at once.
+Llena \java{put}. Deberías leer la documentación de
+\java{Map.put} en \url{http://thinkdast.com/listput} para que sepas lo que
+se supone que haga. Podrías querer inicar con una versión de
+\java{put} que siempre agregue una nueva entrada y no modifique una entrada
+existente; de esa forma puedes probar el caso más simple primero. O si
+te sientes con más confianza, puedes escribir todo el método de una vez.
 
 \index{containsKey}
 \index{get}
 \index{remove}
 
-Once you've got \java{put} working, the test for \java{containsKey}
-should pass.
+Una vez logres que \java{put} funcione, el test para \java{containsKey}
+debería pasar.
 
-Read the documentation of \java{Map.get} at
+Lee la documentación de \java{Map.get} en
   \url{http://thinkdast.com/listget}
-  and then fill in the method. Run the tests again.
+  y luego llena el método. Ejecuta los tests de nuevo.
 
-Finally, read the documentation of \java{Map.remove} at
+Finalmente, lee la documentación de \java{Map.remove} en
   \url{http://thinkdast.com/maprem}
-  and fill in the method.
+  y llena el método.
 
-At this point, all tests should pass. Congratulations!
+Llegados a este punto, todos los tests deberían pasar. ¡Felicitaciones!
 
 
-\section{Analyzing \java{MyLinearMap}}
+\section{Análisis de \java{MyLinearMap}}
 \label{analyzing-mylinearmap}
 
 \index{equals}
 
-In this section I present a solution to the previous exercise and
-analyze the performance of the core methods.  Here are
-\java{findEntry} and \java{equals}:
+En esta sección presento una solución al ejercicio anterior y
+analizo el desempeño de los métodos principales. Aquí están
+\java{findEntry} y \java{equals}:
 
 \begin{verbatim}
 private Entry findEntry(Object target) {
@@ -4404,24 +4403,23 @@ private boolean equals(Object target, Object obj) {
 }
 \end{verbatim}
 
-The runtime of \java{equals} might depend on the size of the
-\java{target} and the keys, but does not generally depend on
-the number of entries, $n$. So \java{equals} is constant time.
+El tiempo de ejecución de \java{equals} podría depender del tamaño del
+\java{target} (objetivo) y las claves, per generalmente no depende del
+número de entradas, $n$. Así que \java{equals} es de tiempo constante.
 
-\index{constant time}
-\index{analysis of algorithms}
+\index{tiempo constante}
+\index{análisis de algoritmos}
 
-In \java{findEntry}, we might get lucky and find the key we're looking
-for at the beginning, but we can't count on it. In general, the number
-of entries we have to search is proportional to $n$, so
-\java{findEntry} is linear.
+En \java{findEntry}, podríamos tener suerte y encontrar la clave que estamos
+buscando al principio, pero no podemos contar con ello. En general, el número
+de entradas que tenemos que buscar es proporcional a $n$, así que
+\java{findEntry} es lineal.
 
 \index{findEntry}
-\index{linear time}
+\index{tiempo lineal}
 
-Most of the core methods in \java{MyLinearMap} use \java{findEntry},
-including \java{put}, \java{get}, and \java{remove}. Here's what
-they look like:
+La mayoría de los métodos principales de \java{MyLinearMap} usan \java{findEntry},
+incluyendo \java{put}, \java{get}, y \java{remove}. Así es como se ven:
 
 \begin{verbatim}
 public V put(K key, V value) {
@@ -4460,64 +4458,64 @@ public V remove(Object key) {
 }
 \end{verbatim}
 
-After \java{put} calls \java{findEntry}, everything else is constant
-time. Remember that \java{entries} is an \java{ArrayList}, so adding
-an element \emph{at the end} is constant time, on average. If the key is
-already in the map, we don't have to add an entry, but we have to call
-\java{entry.getValue} and \java{entry.setValue}, and those are both
-constant time. Putting it all together, \java{put} is linear.
+Después que \java{put} llama a \java{findEntry}, todo lo demás es de tiempo
+constante. Recuera que \java{entries} es una \java{ArrayList}, así que
+agregar un elemento \emph{al final} es de tiempo constante, en promedio. Si la clave ya
+está en el mapa, no tenemos que agregar una entrada, pero tenemos que llamar a
+\java{entry.getValue} y \java{entry.setValue}, y ambos son de
+tiempo constante. Al combinar todo, \java{put} es lineal.
 
 \index{put}
 \index{get}
-\index{constant time}
+\index{tiempo constante}
 
-By the same reasoning, \java{get} is also linear.
+Siguiendo el mismo razonamiento, \java{get} también es lineal.
 
-\java{remove} is slightly more complicated because
-\java{entries.remove} might have to remove an element from the
-beginning or middle of the \java{ArrayList}, and that takes linear
-time. But that's OK: two linear operations are still linear.
+\java{remove} es ligeramente más complicado porque
+\java{entries.remove} podría tener que remover un elemento del
+principio o de la mita de la \java{ArrayList}, y eso toma tiempo
+lineal. Pero está bien: dos operaciones lineales siguen siendo lineales.
 
-\index{linear time}
+\index{tiempo lineal}
 
-In summary, the core methods are all linear, which is why we called this
-implementation \java{MyLinearMap} (ta-da!).
+En resumen, los métodos principales son todos lineales, y es por eso que
+llamamos a esta implementación \java{MyLinearMap} (¡ta-da!).
 
-If we know that the number of entries will be small, this implementation
-might be good enough, but we can do better. In fact, there is an
-implementation of \java{Map} where all of the core methods are
-constant time. When you first hear that, it might not seem possible.
-What we are saying, in effect, is that you can find a needle in a
-haystack in constant time, regardless of how big the haystack is. It's
-magic.
+Si sabemos que el número de entradas será pequeño, esta implementación
+podría ser lo suficientemente buena, pero podemos mejorarla. De hecho,
+hay una implementación de \java{Map} donde todos los métodos principales
+son de tiempo constante. Cuando escuchas eso por primera vez, podría parecer
+que no es posible. Lo que estamos diciendo, en efecto, es que puedes encontrar
+una aguja en un pajar en tiempo constante, sin importar el tamaño del pajar.
+Es magia.
 
-\index{haystack}
+\index{pajar}
 
-I'll explain how it works in two steps:
+Explicaré cómo funciona en dos pasos:
 
 \begin{enumerate}
 
 \item
-  Instead of storing entries in one big \java{List}, we'll break them
-  up into lots of short lists. For each key, we'll use a \textbf{hash
-  code} (explained in the next section) to determine which list to use.
+  En lugar de guardar las entradas en una gran \java{List}, las dividieremos
+  en muchas listas pequeñas. Para cada clave, usaremos un \textbf{código
+  hash} (se explica en la siguiente sección) para determinar qué lista usar.
 
 \item
-  Using lots of short lists is faster than using just one, but as I'll
-  explain, it doesn't change the order of growth; the core operations
-  are still linear. But there is one more trick: if we increase the
-  number of lists to limit the number of entries per list, the result is
-  a constant-time map. You'll see the details in the next exercise, but
-  first: hashing!
+  Usar muchas listas pequeñas es más rápido que usar solo una, pero como
+  explicaré, no cambia el orden de crecimiento, las operaciones principales
+  aún son lineales. Pero hay un truco adicional: si incrementamos el número
+  de listas para limitar el número de entradas por lista, el resultado es
+  un mapa de tiempo constante. Verás los detalles en el siguiente ejercicio,
+  pero primero, ¡veamos qué es hashing!
 
 \end{enumerate}
 
 
-\index{hash code}
+\index{código hash}
 
-In the next chapter, I'll present a solution, analyze the performance
-of the core \java{Map} methods, and introduce a more efficient
-implementation.
+En el siguiente capítulo, presentaré una solución, analizaré el desempeño
+de los métodos principales de \java{Map}, e introduciré una implementación
+más eficiente.
 
 
 \chapter{Hashing}
