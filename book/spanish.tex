@@ -3400,62 +3400,62 @@ Sección~\ref{the-road-ahead}.
 \section{Introducción}
 \label{getting-started}
 
-In the repository for this book,
-you'll find some code to help you get started:
+En el repositorio para este libro,
+encontrarás código base para ayudarte a empezar:
 
 \begin{enumerate}
 
 \item
-  \java{WikiNodeExample.java} contains the code from the previous
-  chapter, demonstrating recursive and iterative implementations of
-  depth-first search (DFS) in a DOM tree.
+  \java{WikiNodeExample.java} contiene el código del capítulo
+  anterior, demostrando implementaciones recursivas e iterativas de
+  la búsqueda en profundidad (DFS) en un árbol DOM.
 
 \item
-  \java{WikiNodeIterable.java} contains an \java{Iterable} class for
-  traversing a DOM tree. I'll explain this code in the next section.
+  \java{WikiNodeIterable.java} contiene una clase \java{Iterable} para
+  recorrer un árbol DOM: Explicaré este código en la siguiente sección.
 
 \item
-  \java{WikiFetcher.java} contains a utility class that uses jsoup to
-  download pages from Wikipedia. To help you comply with Wikipedia's
-  terms of service, this class limits how fast you can download pages;
-  if you request more than one page per second, it sleeps before
-  downloading the next page.
+  \java{WikiFetcher.java} contiene una clase utilitaria que usa jsoup para
+  descargar páginas de Wikipedia. Para ayudarte a cumplir con los términos del
+  servicio de Wikipedia, esta clase limita qué tan rápido puedes descargar páginas;
+  si solicitas más de una página por segundo, se duerme antes de
+  descargar la siguiente página.
 
 \item
-  \java{WikiPhilosophy.java} contains an outline of the code you will
-  write for this exercise. We'll walk through it below.
+  \java{WikiPhilosophy.java} contiene un boceto del código que escribirás
+  para este ejercicio. Lo revisaremos en breve.
 
 \end{enumerate}
 
-You'll also find the Ant build file
-\java{build.xml}.  If you run \java{ant WikiPhilosophy}, it will run
-a simple bit of starter code.
+También encontrarás el archivo de construcción Ant
+\java{build.xml}.  Si escribes \java{ant WikiPhilosophy}, se ejecutará
+un fragmento de código inicial.
 
 \index{WikiPhilosophy}
 \index{Ant}
 
 
-\section{Iterables and Iterators}
+\section{Iterables e Iterators}
 \label{iterables-and-iterators}
 
-In the previous chapter, I presented an iterative depth-first search
-(DFS), and suggested that an advantage of the iterative version,
-compared to the recursive version, is that it is easier to wrap in an
-\java{Iterator} object. In this section we'll see how to do that.
+En el capítulo anterior, presenté una búsqueda en profundidad
+iterativa (DFS), y sugerí que una ventaja de la versión iterativa,
+comparada a la versión recursiva, es que es más fácil de envolver en
+un objeto \java{Iterator}. En esta sección, veremos cómo hacer eso.
 
 \index{Iterable}
 \index{Iterator}
 
-If you are not familiar with the \java{Iterator} and \java{Iterable}
-interfaces, you can read about them at
+Si no estás familiarizado con las interfaces \java{Iterator} y
+\java{Iterable}, puedes leer sobre ellas en
 \url{http://thinkdast.com/iterator}
-and
+y
 \url{http://thinkdast.com/iterable}.
 
-Take a look at the contents of \java{WikiNodeIterable.java}. The outer
-class, \java{WikiNodeIterable} implements the
-\java{Iterable<Node>} interface  so we can use
-it in a for loop like this:
+Observa los contenidos de \java{WikiNodeIterable.java}. La clase más
+externa, \java{WikiNodeIterable} implementa la
+interfaz \java{Iterable<Node>} para que podamos usarla en
+un bucle for de la siguiente forma:
 
 \begin{verbatim}
     Node root = ...
@@ -3465,28 +3465,26 @@ it in a for loop like this:
     }
 \end{verbatim}
 
-where \java{root} is the root of the tree we want to traverse and
-\java{visit} is a method that does whatever we want when we ``visit''
-a \java{Node}.
+donde \java{root} es la raíz del árbol que queremos recorrer y
+\java{visit} es un método que hace lo que queramos cuando ``visitamos''
+un \java{Node}.
 
 \index{WikiNodeIterable}
 
-The implementation of \java{WikiNodeIterable} follows a conventional
-formula:
+La implementación de \java{WikiNodeIterable} sigue una fórmula
+convencional:
 
 \begin{enumerate}
 
 \item
-  The constructor takes and stores a reference to the root
-  \java{Node}.
+  El constructor toma y guarda una referencia al \java{Node} raíz.
 
 \item
-  The \java{iterator} method creates a returns an \java{Iterator}
-  object.
+  El método \java{iterator} crea y devuelve un objeto \java{Iterator}.
 
 \end{enumerate}
 
-Here's what it looks like:
+Así es como se ve:
 
 \begin{verbatim}
 public class WikiNodeIterable implements Iterable<Node> {
@@ -3504,7 +3502,7 @@ public class WikiNodeIterable implements Iterable<Node> {
 }
 \end{verbatim}
 
-The inner class, \java{WikiNodeIterator}, does all the real work:
+La clase más interna, \java{WikiNodeIterator}, hace todo el trabajo:
 
 \begin{verbatim}
     private class WikiNodeIterator implements Iterator<Node> {
@@ -3540,34 +3538,34 @@ The inner class, \java{WikiNodeIterator}, does all the real work:
 
 \index{WikiNodeIterator}
 \index{DFS}
-\index{depth-first search}
+\index{búsqueda en profundidad}
 
-This code is almost identical to the iterative version of DFS, but now
-it's split into three methods:
+Este código es casi idéntico a la versión iterativa de DFS, pero ahora
+se divide en tres métodos:
 
 \begin{enumerate}
 
 \item
-  The constructor initializes the stack (which is implemented using an
-  \java{ArrayDeque}) and pushes the root node onto it.
+  El constructor inicializa la pila (que se implementa usando una
+  \java{ArrayDeque}) y agrega el nodo raíz a dicha pila.
 
 \item
-  \java{isEmpty} checks whether the stack is empty.
+  \java{isEmpty} comprueba si la pila está vacía.
 
 \item
-  \java{next} pops the next \java{Node} off the stack, pushes its
-  children in reverse order, and returns the \java{Node} it popped. If
-  someone invokes \java{next} on an empty \java{Iterator}, it throws
-  an exception.
+  \java{next} remueve (pop) el siguiente \java{Node} de la pila, agrega (push) sus
+  hijos en orden inverso y devuelve el \java{Node} que removió. Si
+  alguien invoca \java{next} en un \java{Iterator} vacío, lanza
+  una excepción.
 
 \end{enumerate}
 
-It might not be obvious that it is worthwhile to rewrite a perfectly
-good method with two classes and five methods.  But now that we've
-done it, we can use \java{WikiNodeIterable} anywhere an
-\java{Iterable} is called for, which makes it easy and syntactically
-clean to separate the logic of the iteration (DFS) from whatever
-processing we are doing on the nodes.
+Podría no ser obvio que vale la pena reescribir un método perfectamente
+aceptable con dos clases y cinco métodos. Pero ahora que lo hemos
+hecho, podemos usar \java{WikiNodeIterable} en cualquier parte que
+se llame a un \java{Iterable}, lo que nos hace más fácil y es más limpio desde
+un punto de vista sintáctico, separar la lógica de iteración (DFS) de cualquier
+otro proceso que estemos haciendo en los nodos.
 
 \index{isEmpty}
 \index{next}
@@ -3578,26 +3576,26 @@ processing we are doing on the nodes.
 
 \index{WikiFetcher}
 
-When you write a Web crawler, it is easy to download too many pages too
-fast, which might violate the terms of service for the server you are
-downloading from. To help you avoid that, I provide a class called
-\java{WikiFetcher} that does two things:
+Cuando escribes un rastreador Web, es fácil descargar muchas páginas muy
+rápido, lo que podría violar los términos del servicio para el servidor
+del que estás realizando las descargas. Para evitar esto, proveo una clase
+llamada \java{WikiFetcher} que hace dos cosas:
 
 \begin{enumerate}
 
 \item
-  It encapsulates the code we demonstrated in the previous chapter for
-  downloading pages from Wikipedia, parsing the HTML, and selecting the
-  content text.
+  Encapsula el código que mostramos en el capítulo previo para descargar
+  páginas de Wikipedia, interpretar el HTML, y seleccionar el texto
+  del contenido.
 
 \item
-  It measures the time between requests and, if we don't leave enough
-  time between requests, it sleeps until a reasonable interval has
-  elapsed. By default, the interval is one second.
+  Mide el tiempo entre solicitudes y, si no hemos dejado pasar suficiente
+  tiempo entre solicitudes, duerme hasta que ha pasado un intervalo
+  razonable. Por defecto, el intervalo es un segundo.
 
 \end{enumerate}
 
-Here's the definition of \java{WikiFetcher}:
+Aquí está la definición de \java{WikiFetcher}:
 
 \begin{verbatim}
 public class WikiFetcher {
@@ -3640,19 +3638,18 @@ public class WikiFetcher {
 }
 \end{verbatim}
 
-The only public method is \java{fetchWikipedia}, which takes a URL as
-a \java{String} and returns an \java{Elements} collection that contains one
-DOM element for each paragraph in the content text. This code should
-look familiar.
+El único método público es \java{fetchWikipedia}, que toma una URL como
+una \java{String} y devuelve una colección \java{Elements} que contiene un
+elemento del DOM para cada párrafo en el texto del contenido. Este código
+debería resultarle familiar.
 
 \index{Elements}
 
-The new code is in \java{sleepIfNeeded}, which checks the time since
-the last request and sleeps if the elapsed time is less than
-\java{minInterval}, which is in milliseconds.
+El nuevo código está es \java{sleepIfNeeded}, que comprueba el tiempo desde
+la última solicitud y se duerme si el tiempo transcurrido es menor que
+\java{minInterval}, que está en milisegundos.
 
-That's all there is to \java{WikiFetcher}. Here's an example that
-demonstrates how it's used:
+Eso es todo en \java{WikiFetcher}. Aquí está un ejemplo que demuestra su uso:
 
 \begin{verbatim}
     WikiFetcher wf = new WikiFetcher();
@@ -3663,116 +3660,116 @@ demonstrates how it's used:
     }
 \end{verbatim}
 
-In this example, we assume that \java{urlList} is a collection of
-\java{String}s, and \java{processParagraphs} is a method that does something
-with the \java{Elements} object returned by \java{fetchWikipedia}.
+En este ejemplo, asumimos que \java{urlList} es una colección de
+\java{String}s, y \java{processParagraphs} es un método que hace algo
+con el objeto \java{Elements} que devuelve \java{fetchWikipedia}.
 
-This example demonstrates something important: you should create one
-\java{WikiFetcher} object and use it to handle all requests. If you
-have multiple instances of \java{WikiFetcher}, they won't enforce the
-minimum interval between requests.
+Este ejemplo demuestra algo importante: deberías crear un
+objeto \java{WikiFetcher} y usarlo para manejar todas las solicitudes. Si
+tienes múltiples instancias de \java{WikiFetcher}, ellas no forzarán el
+intervalo mínimo entre solicitudes.
 
 \index{singleton}
 
-NOTE: My implementation of \java{WikiFetcher} is simple, but it would
-be easy for someone to misuse it by creating multiple instances. You
-could avoid this problem by making \java{WikiFetcher} a ``singleton'',
-which you can read about at
+NOTA: Mi implementación de \java{WikiFetcher} es simple, pero sería
+fácil para alguien utilizarla incorrectamenta al crear múltiples instancias.
+Puedes evitar este problema haciendo a \java{WikiFetcher} un ``singleton'',
+sobre el que puedes leer más en
 \url{http://thinkdast.com/singleton}.
 
 
-\section{Exercise 5}
+\section{Ejercicio 5}
 \label{exercise5}
 
-In \java{WikiPhilosophy.java} you'll find a simple \java{main}
-method that shows how to use some of these pieces. Starting with this
-code, your job is to write a crawler that:
+En \java{WikiPhilosophy.java} encontrarás un método \java{main}
+simple que muestra cómo usar algunas de estos fragmentos. Comenzando con
+este código, tu trabajo es escribir un rastreador que:
 
 \begin{enumerate}
 
 \item
-  Takes a URL for a Wikipedia page, downloads it, and parses it.
+  Tome una URL para una página de Wikipedia, la descargue y la interprete.
 
 \item
-  It should traverse the resulting DOM tree to find the first
-  \emph{valid} link. I'll explain what ``valid'' means below.
+  Debería recorrer el árbol resultante para encontrar el primer
+  enlace \emph{válido} link. Explicaré lo que significa ``válido'' a continuación.
 
 \item
-  If the page has no links, or if the first link is a page we have
-  already seen, the program should indicate failure and exit.
+  Si la página no tiene enlaces, o si el primer enlace es una página que ya
+  hemos visto, el program debería indicar fracaso y salir.
 
 \item
-  If the link matches the URL of the Wikipedia page on philosophy, the
-  program should indicate success and exit.
+  Si el enlace coincide con la URL de la página de Wikipedia sobre filosofía,
+  el programa debería indicar éxito y salir.
 
 \item
-  Otherwise it should go back to Step 1.
+  De otra manera debería regresar al Paso 1.
 
 \end{enumerate}
 
-The program should build a \java{List} of the URLs it visits and
-display the results at the end (whether it succeeds or fails).
+El programa debería construir una \java{List} de las URL que visita y
+mostrar los resultados al final (independientemente de si es exitoso o fracasa).
 
-\index{Getting to Philosophy}
+\index{Llegar a la Filosofía}
 
-So what should we consider a ``valid'' link? You have some choices here.
-Various versions of the ``Getting to Philosophy'' conjecture use
-slightly different rules, but here are some options:
+Entonces, ¿qué deberíamos considerar un enlace``válido''? Tienes algunas opciones.
+Varias versiones de la conjetura ``Llegar a la Filosofía'' usan reglas
+ligeramente diferentes, pero aquí están algunas opciones:
 
 \begin{enumerate}
 
 \item
-  The link should be in the content text of the page, not in a sidebar
-  or boxout.
+  El enlace debería estar en el texto del contenido de la página, no en una
+  barra lateral o en un recuadro.
 
 \item
-  It should not be in italics or in parentheses.
+  No debería estar en cursiva o entre paréntesis.
 
 \item
-  You should skip external links, links to the current page, and red
-  links.
+  Deberías omitir enlaces externos, enlaces a la página actual y enlaces
+  en rojo.
 
 \item
-  In some versions, you should skip a link if the text starts with an
-  uppercase letter.
+  En algunas versiones, deberías omitir un enlace si el texto comienza
+  con una letra mayúscula.
 
 \end{enumerate}
 
-You don't have to enforce all of these rules, but we recommend that you
-at least handle parentheses, italics, and links to the current page.
+No tienes que forzar todas estas reglas, pero te recomendamos que al menos
+consideres los paréntesis, las cursivas y los enlaces a la página actual.
 
-If you feel like you have enough information to get started, go ahead.
-Or you might want to read these hints:
+Si sientes que tienes información para empezar, adelante.
+O podrías querer leer estas pistas:
 
 \begin{enumerate}
 
 \item
-  As you traverse the tree, the two kinds of \java{Node} you will need
-  to deal with are \java{TextNode} and \java{Element}. If you find
-  an \java{Element}, you will probably have to typecast it to access
-  the tag and other information.
+  Conforme recorras el árbol, las dos clases de \java{Node} que necesitarás
+  manejar son \java{TextNode} y \java{Element}. Si encuentras
+  un \java{Element}, probablemente tendrás que forzar su conversión a otro tipo
+  para acceder a la etiqueta y otra información.
 
 \item
-  When you find an \java{Element} that contains a link, you can check
-  whether it is in italics by following parent links up the tree. If
-  there is an \java{<i>} or \java{<em>} tag in the parent chain, the
-  link is in italics.
+  Cuando encuentres un \java{Element} que contiene un enlace, puedes comprobar
+  si está en cursiva siguiendo los enlaces hacia su padre en el árbol. Si hay
+  una etiqueta \java{<i>} o \java{<em>} en la cadena de nodos padres, el
+  enlace está en cursiva.
 
 \item
-  To check whether a link is in parentheses, you will have to scan
-  through the text as you traverse the tree and keep track of opening
-  and closing parentheses (ideally your solution should be able to
-  handle nested parentheses (like this)).
+  Para comprobar si un enlace está entre paréntesis, tendrás que escanear
+  el texto conforme recorras el árbol y llevar el control de los paréntesis
+  de apertura y de cierre (idealmente tu solución debería ser capaz de
+  manejar paréntesis anidados (como estos)).
 
 \item
-  If you start from the Java page, you should get to Philosophy
-  after following
-  seven links, unless something has changed since I ran the code.
+  Si comienzas desde la página de Java, deberías llegar a la Filosofía
+  después de seguir siete enlaces, a menos que algo haya cambiado desde
+  que ejecuteé el código.
 
 \end{enumerate}
 
-OK, that's all the help you're going to get. Now it's up to you.
-Have fun!
+Muy bien, esa es toda la ayuda que te daré. Ahora te toca a ti.
+¡Que te diviertas!
 
 
 
