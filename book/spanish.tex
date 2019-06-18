@@ -2879,7 +2879,7 @@ Los componentes esenciales de un motor de búsqueda son:
 \end{itemize}
 
 Comenzaremos con el rastreador. La meta de un rastreador es descubir y
-descargar un conjunto de páginas web. Para motor de búsqueda como Google
+descargar un conjunto de páginas web. Para motores de búsqueda como Google
 y Bing, la meta es encontrar \emph{todas} las páginas web, pero muchas veces los
 rastreadores están limitados a un dominio más pequeño. En nuestro caso, sólo leeremos
 páginas de Wikipedia.
@@ -2901,20 +2901,19 @@ La conjetura se establece en
 \url{http://thinkdast.com/getphil}{},
 y puedes leer su historia ahí.
 
-Probar la conjetura nos permitirá
-Testing the conjecture will allow us to build the basic pieces of a
-crawler without having to crawl the entire web, or even all of
-Wikipedia. And I think the exercise is kind of fun!
+Probar la conjetura nos permitirá construir las piezas básicas de un
+rastreador sin tener que rastrear toda la web, o incluso toda
+Wikipedia. ¡Y pienso que el ejercicio es algo divertido!
 
-In a few chapters, we'll work on the indexer, and then we'll get to the
-retriever.
+En unos cuantos capítulos, trabajaremos en el indexador, y luego en
+el recuperador.
 
-\section{Parsing HTML}
+\section{Interpretación del HTML}
 \label{parsing-html}
 
-When you download a web page, the contents are written in
-HyperText Markup Language, aka HTML.
-For example, here is a minimal HTML document:
+Cuando descargas una página web, los contenidos se escriben en
+el Lenguaje de Marcas de Hipertexto, también conocido como HTML.
+Por ejemplo, aquí está un documento de HTML con los contenidos mínimos:
 
 \begin{verbatim}
 <!DOCTYPE html>
@@ -2928,95 +2927,95 @@ For example, here is a minimal HTML document:
 </html>
 \end{verbatim}
 
-The phrases ``This is a title'' and ``Hello world!'' are the text that
-actually appears on the page; the other elements are \textbf{tags} that
-indicate how the text should be displayed.
+Las frases ``This is a title'' y ``Hello world!'' son el texto que
+de hecho aparece en la página; los otros elementos son \textbf{etiquetas} que
+indican cómo debería mostrarse el texto.
 
 \index{HTML}
-\index{tag}
+\index{etiqueta}
 \index{jsoup}
-\index{parsing}
+\index{interpretación}
 
-When our crawler downloads a page, it will need to parse the HTML in
-order to extract the text and find the links. To do that, we'll use
-\textbf{jsoup}, which is an open-source Java library that downloads and
-parses HTML.
+Cuando nuestro rastreador descarga una página, necesitará interpretar el HTML
+para extraer el texto y encontrar los enlaces. Para hacerlo, usaremos
+\textbf{jsoup}, que es una biblioteca de Java de código abierto que descarga e
+interpreta HTML.
 
-\index{DOM tree}
+\index{árbol DOM}
 
-The result of parsing HTML is a Document Object Model tree, or
-\textbf{DOM tree}, that contains the elements of the document, including
-text and tags. The tree is a linked data structure made up of nodes; the
-nodes represent text, tags, and other document elements.
+El resultado de interpretar HTML es un árbol de Modelo de Objeto de Documento (DOM) o
+\textbf{árbol DOM}, que contiene los elementos de un documento, incluyendo texto y
+etiquetas. El árbol es una estructura de datos enlazada formada por nodos; los
+nodos representan texto, etiquetas y otros elementos del documento.
 
-\index{root}
-\index{child node}
+\index{raíz}
+\index{nodo hijo}
 
-The relationships between the nodes are determined by the structure of
-the document. In the example above, the first node, called the
-\textbf{root}, is the \java{<html>} tag, which
-contains links to the two nodes it contains,
-\java{<head>} and
-\java{<body>}; these nodes are the
-\textbf{children} of the root node.
+Las relaciones entre los nodos son determinadas por la estructura del
+documento. En el ejemplo anterior, el primer nodo, llamado la
+\textbf{raíz}, es la etiqueta \java{<html>}, la cual
+contiene enlaces a los dos nodos que contiene,
+\java{<head>} y
+\java{<body>}; estos nodos son los
+\textbf{hijos} del nodo raíz.
 
-The \java{<head>} node has one child,
-\java{<title>}, and the
-\java{<body>} node has one child,
-\java{<p>} (which stands for ``paragraph''). 
-Figure~\ref{fig-dom1}
- represents this tree graphically.
+El nodo \java{<head>} tiene un hijo,
+\java{<title>}, y el nodo
+\java{<body>} tiene un hijo,
+\java{<p>} (que significa ``párrafo''). 
+La figura~\ref{fig-dom1}
+ representa este árbol gráficamente.
 
 \begin{figure}
 \centering
 \includegraphics[height=2.5in]{figs/dom_tree1.pdf}
-\caption{DOM tree for a simple HTML page.}
+\caption{Árbol DOM para una página HTML simple.}
 \label{fig-dom1}
 \end{figure}
 
 
-Each node contains links to its children; in addition, each node
-contains a link to its \textbf{parent}, so from any node it is possible
-to navigate up and down the tree. The DOM tree for real pages is usually
-more complicated than this example.
+Cada nodo contiene enlaces a sus hijos; además, cada nodo
+contiene un enlace a su \textbf{padre}, así que desde cualquier nodo es posible
+navegar hacia arriba y hacia abajo en el árbol. El árbol DOM para páginas web reales
+usualmente es más complicado que este ejemplo.
 
-\index{parent node}
-\index{inspecting the DOM}
+\index{nodo padre}
+\index{inspección del DOM}
 
-Most web browsers provide tools for inspecting the DOM of the page you
-are viewing. In Chrome, you can right-click on any part of a web page
-and select ``Inspect'' from the menu that pops up. In Firefox, you can
-right-click and select ``Inspect Element'' from the menu. Safari
-provides a tool called Web Inspector, which you can read about at
+La mayoría de los navegadores web proveen herramientas para inspeccionar el DOM de
+la página que estás viendo. En Chrome, puedes hacer clic derecho sobre cualquier parte
+de una página web y seleccionar ``Inspeccionar'' desde el menú emergente. En Firefox,
+puedes hacer clic derecho y seleccionar ``Inspeccionar Elemento'' del menú. Safari
+provee una herramienta llamada Inspector Web, sobre la que puedes leer en
 \url{http://thinkdast.com/safari}.
-For Internet Explorer, you can read the instructions at
+Para Internet Explorer, puedes leer las instrucciones en
 \url{http://thinkdast.com/explorer}.
 
 \begin{figure}
 \centering
 \includegraphics[height=2.5in]{figs/DOMinspector.png}
-\caption{Screenshot of the Chrome DOM Inspector.}
+\caption{Captura de pantalla del Inspector DOM de Chrome.}
 \label{fig-dom2}
 \end{figure}
 
-Figure~\ref{fig-dom2}
-shows a screenshot of the DOM for the Wikipedia page on Java,
+La figura~\ref{fig-dom2}
+muestra una captura de pantalla del DOM para la página de Wikipedia en Java,
 \url{http://thinkdast.com/java}.
-The element that's highlighted is the first paragraph of the main text
-of the article, which is contained in a
-\java{<div>} element with
-\java{id="mw-content-text"}. We'll use this element id to identify the
-main text of each article we download.
+El elemento que está resaltado es el primer párrafo del texto principal
+del artículo, que está contenido dentro de un
+elemento \java{<div>} con
+\java{id="mw-content-text"}. Usaremos el id de este elemento para identificar el
+texto principal de cada artículo que descarguemos.
 
-\index{element}
+\index{elemento}
 
 
 
-\section{Using jsoup}
+\section{Uso de jsoup}
 \label{using-jsoup}
 
-jsoup makes it easy to download and parse web pages, and to navigate the
-DOM tree. Here's an example:
+jsoup facilita descargar e interpretar páginas web y para navegar el árbol
+DOM. Aquí está un ejemplo:
 
 \begin{verbatim}
     String url = "http://en.wikipedia.org/wiki/Java_(programming_language)";
@@ -3030,38 +3029,36 @@ DOM tree. Here's an example:
     Elements paragraphs = content.select("p");
 \end{verbatim}
 
-\java{Jsoup.connect} takes a URL as a \java{String} and makes a connection to
-the web server; the \java{get} method downloads the HTML, parses it,
-and returns a \java{Document} object, which represents the DOM.
+\java{Jsoup.connect} toma una URL como una \java{String} y se conecta al
+servidor web; el método \java{get} descarga el HTML, lo interpreta,
+y devuelve un objeto \java{Document}, que representa el DOM.
 
 \index{jsoup}
 \index{Document}
 
-\java{Document} provides methods for navigating the
-tree and selecting nodes. In fact, it provides so many methods, it can
-be confusing. This example demonstrates two ways to select nodes:
+\java{Document} provee métodos para navegar por el árbol y
+seleccionar nodos. De hecho, provee tantos métodos, que puede ser
+confuso. Este ejemplo demuestra dos formas de seleccionar nodos:
 
 \begin{itemize}
 
 \item
-  \java{getElementById} takes a \java{String} and searches the tree for an
-  element that has a matching ``id'' field. Here it selects the node
+  \java{getElementById} toma una \java{String} y busca un elemento en el árbol
+  que tenga un campo ``id'' que coincida. Aquí selecciona el nodo
   \java{<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr">},
-  which appears on every Wikipedia page to identify the
-  \java{<div>} element that contains the main
-  text of the page, as opposed to the navigation sidebar and other
-  elements.
+  que aparece en cada página de Wikipedia para identificar el elemento
+  \java{<div>} que contiene el texto principal de la página, en oposición
+  a la barra de navegación y otros elementos.
 
-  The return value from \java{getElementById} is an \java{Element}
-  object that represents this \java{<div>} and
-  contains the elements in the \java{<div>} as
-  children, grandchildren, etc.
+  El valor de retorno de \java{getElementById} es un objeto \java{Element}
+  que representa este \java{<div>} y contiene los elementos en el \java{<div>}
+  como hijos, nietos, etc.
 
 \item
-  \java{select} takes a \java{String}, traverses the tree, and returns all
-  the elements with tags that match the \java{String}. In this example, it
-  returns all paragraph tags that appear in \java{content}. The return
-  value is an \java{Elements} object.
+  \java{select} toma una \java{String}, recorre el árbol y devuelve todos
+  los elementos con etiquetas que coincidan con la \java{String}. En este
+  ejemplo, devuelve todos los párrafos que aparecen en \java{content}. El
+  valor de retorno es un objeto {Elements}.
 
 \end{itemize}
 
@@ -3069,44 +3066,43 @@ be confusing. This example demonstrates two ways to select nodes:
 \index{Node}
 \index{Element}
 
-Before you go on, you should skim the documentation of these classes so
-you know what they can do. The most important classes are
-\java{Element}, \java{Elements}, and \java{Node}, which you can read 
-about at 
+Antes de continuar, deberías dar una ojeada a la documentación de estas clases para
+que sepas lo que pueden hacer. Las clases más importantes son
+\java{Element}, \java{Elements}, y \java{Node}, sobre las que puedes leer en
 \url{http://thinkdast.com/jsoupelt},
-\url{http://thinkdast.com/jsoupelts}, and
+\url{http://thinkdast.com/jsoupelts} y
 \url{http://thinkdast.com/jsoupnode}.
 
-\java{Node} represents a node in the DOM tree;  there are several
-subclasses that extend \java{Node}, including 
-\java{Element}, \java{TextNode}, \java{DataNode}, and \java{Comment}.
-\java{Elements} is a \java{Collection} of \java{Element} objects.
+\java{Node} representa un nodo en el árbol DOM; hay varias
+subclases que extienden \java{Node}, incluyeno 
+\java{Element}, \java{TextNode}, \java{DataNode} y \java{Comment}.
+\java{Elements} es una \java{Collection} de objetos \java{Element}.
 
-\index{subclass}
+\index{subclase}
 
 \begin{figure}
 \centering
 \includegraphics[width=5in]{figs/yuml2.pdf}
-\caption{UML diagram for selected classes provided by jsoup.}
+\caption{Diagrama UML para clases seleccionadas provistas por jsoup.}
 \label{fig-uml2}
 % Edit: http://yuml.me/edit/4bc1c919
 \end{figure}
 
-Figure~\ref{fig-uml2} is a UML diagram showing the relationships among
-these classes.  In a UML class diagram, a line with a hollow arrow
-head indicates that one class extends another.  For example, this
-diagram indicates that \java{Elements} extends \java{ArrayList}.
-We'll get back to UML diagrams in Section~\ref{uml-class-diagrams}.
+La figura~\ref{fig-uml2} es un diagrama UML que muestra las relaciones entre
+estas clases. En un diagrama de clases UML, una línea con una cabeza de flecha
+vacía indica que una clase extiende a la otra. Por ejemplo, este
+diagrama indica que \java{Elements} extiende \java{ArrayList}.
+Volveremos a los diagramas UML en la Sección~\ref{uml-class-diagrams}.
 
-\index{UML diagram}
+\index{diagrama UML}
 
 
-\section{Iterating through the DOM}
+\section{Recorriendo el DOM}
 \label{iterating-through-the-dom}
 
-To make your life easier, I provide a class called
-\java{WikiNodeIterable} that lets you iterate through the nodes in a
-DOM tree. Here's an example that shows how to use it:
+Para facilitarte la vida, proveo una clase llamada
+\java{WikiNodeIterable} que te permite recorrer los nodos en un
+árbol DOM. Aquí está un ejemplo que muestra cómo usarlo:
 
 \index{WikiNodeIterable}
 
@@ -3122,20 +3118,20 @@ DOM tree. Here's an example that shows how to use it:
     }
 \end{verbatim}
 
-This example picks up where the previous one leaves off. It selects the
-first paragraph in \java{paragraphs} and then creates a
-\java{WikiNodeIterable}, which implements
+Este ejemplo continúa donde finalizó el anterior. Selecciona el
+primer párrafo en \java{paragraphs} y luego crea un
+\java{WikiNodeIterable}, que implementa
 \java{Iterable<Node>}. 
-\java{WikiNodeIterable} performs a ``depth-first search'', which
-produces the nodes in the order they would appear on the page.
+\java{WikiNodeIterable} realiza una ``búsqueda en profundidad'', que
+produce los nodos en el orden que aparecerían en la página.
 
-\index{depth-first search}
+\index{búsqueda en profundidad}
 \index{TextNode}
 
-In this example, we print a \java{Node} only if it is a
-\java{TextNode} and ignore other types of \java{Node}, specifically
-the \java{Element} objects that represent tags. The result is the
-plain text of the HTML paragraph without any markup. The output is:
+En este ejemplo, imprimimos un \java{Node} solo si es un
+\java{TextNode} e ignoramos otros tipos de \java{Node}, específicamente
+los objetos \java{Element} que representan etiquetas. El resultado es el
+texto plano del párrafo HTML sin ninguna marca. La salida es:
 
 \begin{quote}
 Java is a general-purpose computer programming language that is
@@ -3144,23 +3140,22 @@ designed \ldots
 \end{quote}
 
 
-\section{Depth-first search}
+\section{Búsqueda en profundidad}
 \label{depth-first-search}
 
-There are several ways you might reasonably traverse a tree, each with
-different applications. We'll start with ``depth-first search'', or DFS.
-DFS starts at the root of the tree and selects the first child. If the
-child has children, it selects the first child again. When it gets to a
-node with no children, it backtracks, moving up the tree to the parent
-node, where it selects the next child if there is one; otherwise it
-backtracks again. When it has explored the last child of the root, it's
-done.
+Hay varias maneras en las que podrías razonablemente recorrer un árbol, cada una
+con diferentes aplicaciones. Comenzaremos con ``búsqueda en profundidad'', o
+DFS (por sus siglas en inglés, \emph{depth-first search}). DFS comienza en la raíz
+del árbol y selecciona el primer hijo. Si el hijo tiene hijos, selecciona el primer hijo de
+nuevo. Cuando llega a un nodo sin hijos, se regresa, moviéndose hacia arriba en el
+árbol al nodo padre, donde selecciona al siguiente hijo si hay uno; de otra manera
+se regresa de nuevo. Cuando ha explorado el último hijo de la raíz, finaliza.
 
 \index{DFS}
-\index{recursion}
+\index{recursión}
 
-There are two common ways to implement DFS, recursively and iteratively.
-The recursive implementation is simple and elegant:
+Hay dos formas comunes de implementar DFS, recursivamente e iterativamente.
+La implementación recursiva es simple y elegante:
 
 \begin{verbatim}
 private static void recursiveDFS(Node node) {
@@ -3173,147 +3168,150 @@ private static void recursiveDFS(Node node) {
 }
 \end{verbatim}
 
-This method gets invoked on every \java{Node} in the tree, starting
-with the root. If the \java{Node} it gets is a \java{TextNode}, it
-prints the contents. If the \java{Node} has any children, it invokes
-\java{recursiveDFS} on each one of them in order.
+Este método se invoca en cada \java{Node} en el árbol, comenzando
+con la raíz. Si el \java{Node} que se devuelve es un \java{TextNode}, se
+imprimen sus contenidos. Si el \java{Node} tiene hijos, se invoca
+\java{recursiveDFS} en cada uno de ellos en orden.
 
-\index{tree traversal}
-\index{pre-order}
-\index{post-order}
-\index{in-order}
+\index{recorrido de un árbol}
+\index{pre orden}
+\index{post orden}
+\index{en orden}
 
-In this example, we print the contents of each \java{TextNode} before
-traversing the children, so this is an example of a ``pre-order''
-traversal. You can read about ``pre-order'', ``post-order'', and
-``in-order'' traversals at \url{http://thinkdast.com/treetrav}.  For
-this application, the traversal order doesn't matter.
+En este ejemplo, imprimimos los contenidos de cada \java{TextNode} antes
+de recorrer los hijos, así que este es un ejemplo de un recorrido
+``pre orden''. Puedes leer sobre los recorridos ``pre orden'', ``post orden''
+y ``en orden'' en \url{http://thinkdast.com/treetrav}.  Para esta aplicación
+el orden del recorrido no importa.
 
-\index{call stack}
+\index{pila de llamadas}
 
-By making recursive calls, \java{recursiveDFS} uses the call stack
-(\url{http://thinkdast.com/callstack}) to keep
-track of the child nodes and process them in the right order. As an
-alternative, we can use a stack data structure to keep track of the
-nodes ourselves; if we do that, we can avoid the recursion and traverse
-the tree iteratively.
+Al realizar llamadas recursivas, \java{recursiveDFS} usa la pila de llamadas
+(\url{http://thinkdast.com/callstack}) para llevar el control
+de los nodos hijos y procesarlos en el orden correcto. Como una
+alternativa, podemos usar una estructura de datos pila para llevar
+el control de los nodos nosotros mismos; si hacemos eso, podemos evitar
+la recursión y recorrer el árbol iterativamente.
 
 
-\section{Stacks in Java}
+\section{Pilas (Stacks) en Java}
 \label{stacks-in-java}
 
-Before I explain the iterative version of DFS, I'll explain
-the stack data structure.  We'll start with the general concept of a
-stack, which I'll call a ``stack'' with a lowercase ``s''. Then we'll
-talk about two Java \java{interfaces} that define stack methods:
-\java{Stack} and \java{Deque}.
+Antes de explicar la versión iterativa de DFS, explicaré
+la estructura de datos pila. Comenzaremos con el concepto general
+de una pila, a la que llamaré una ``pila'' en minúsculas y en español.
+Luego hablaremos sobre dos \java{interfaces} de Java que definen los
+métodos de una pila: \java{Stack} y \java{Deque}.
 
 \index{Stack}
 \index{Deque}
 
 % TODO: introduce the term ``Abstract Data Type''?
 
-A stack is a data structure that is similar to a list: it is a
-collection that maintains the order of the elements. The primary
-difference between a stack and a list is that the stack provides fewer
-methods. In the usual convention, it provides:
+Una pila es una estructura de datos que es similar a una lista: es una
+colección que mantiene el orden de los elementos. La principal
+diferencia entre una pila y una lista es que una pila provee menos
+métodos. En la convención usual, provee:
 
 \begin{itemize}
 
 \item
-  \java{push}: which adds an element to the top of the stack.
+  \java{push}: que agrega un elemento a la parte superior de la pila.
 
 \item
-  \java{pop}: which removes and returns the top-most element from the stack.
+  \java{pop}: que remueve y devuelve el elemento de la parte superior de la pila.
 
 \item
-  \java{peek}: which returns the top-most element without modifying
-  the stack.
+  \java{peek}: que devuelve el elemento de la parte superior sin modificar
+  la pila.
 
 \item
-  \java{isEmpty}: which indicates whether the stack is empty.
+  \java{isEmpty}: que indica si la pila está vacía.
 
 \end{itemize}
 
-Because \java{pop} always returns the top-most element, a stack is
-also called a ``LIFO'', which stands for ``last in, first out''. An
-alternative to a stack is a ``queue'', which returns elements in the
-same order they are added; that is, ``first in, first out'', or FIFO.
+Porque \java{pop} siempre devuelve el elemento de la parte superior, una pila
+también es conocida como una ``UEPS'', que significa ``ultimo en entrar, primero
+en salir''. Una alternativa a una pila es una ``cola'', que devuelve elementos en el
+mismo orden que son añadidos, es decir, ``primero en entrar, primero en salir''
+o PEPS.
 
 \index{push}
 \index{pop}
 \index{peek}
 \index{isEmpty}
-\index{FIFO}
-\index{LIFO}
-\index{stack}
-\index{queue}
+\index{PEPS}
+\index{UEPS}
+\index{pila}
+\index{cola}
 
-It might not be obvious why stacks and queues are useful: they don't
-provide any capabilities that aren't provided by lists; in fact, they
-provide fewer capabilities. So why not use lists for everything? There
-are two reasons:
-
-\begin{enumerate}
-
-\item
-  If you limit yourself to a small set of methods --- that is, a small
-  API --- your code will be more readable and less error-prone. For
-  example, if you use a list to represent a stack, you might
-  accidentally remove an element in the wrong order. With the stack API,
-  this kind of mistake is literally impossible. And the best way to
-  avoid errors is to make them impossible.
-
-\item
-  If a data structure provides a small API, it is easier to implement
-  efficiently. For example, a simple way to implement a stack is a
-  singly-linked list. When we push an element onto the stack, we add it
-  to the beginning of the list; when we pop an element, we remove it
-  from the beginning. For a linked list, adding and removing from the
-  beginning are constant time operations, so this implementation is
-  efficient. Conversely, big APIs are harder to implement efficiently.
-
-\end{enumerate}
-
-\index{constant time}
-
-To implement a stack in Java, you have three options:
+Podría no ser obvio por qué las pilas y las colas son útiles: no proveen
+ninguna operación que no provean las listas; de hecho proveen
+menos operaciones. Así que, ¿por qué no usar las listas para todo? Hay
+dos razones:
 
 \begin{enumerate}
 
 \item
-  Go ahead and use \java{ArrayList} or \java{LinkedList}. If you use
-  \java{ArrayList}, be sure to add and remove from the \emph{end},
-  which is a constant time operation. And be careful not to add elements
-  in the wrong place or remove them in the wrong order.
+  Si te limitas tú mismo a un pequeño conjunto de métodos --- es decir,
+  una API pequeña --- tu código será más legible y menos propenso a
+  errores. Por ejemplo, si usas una lista para representar una pila, podrías
+  accidentalmente remover un elemento en el orden incorrecto. Con la API
+  pila, esta clase de error es literalmente imposible. Y la mejor manera para
+  evitar errores es hacerlos imposibles.
 
 \item
-  Java provides a class called \java{Stack} that provides the standard
-  set of stack methods. But this class is an old part of Java: it is not
-  consistent with the Java Collections Framework, which came later.
-
-\item
-  Probably the best choice is to use one of the implementations of the
-  \java{Deque} interface, like \java{ArrayDeque}.
+  Si una estructura de datos provee una API pequeña, es más fácil de
+  implementar eficientemente. Por ejemplo, una manera simple de
+  implementar una pila es con una lista de enlace sencillo. Cuando
+  agregamos (push) un elemento a la pila, lo agregamos al principio
+  de la lista; cuando removemos (pop) un elemento, lo removemos del
+  principio. Para una lista enlazada, agregar y remover desde el principio
+  son operaciones de tiempo constante, así que esta implementación es
+  eficiente. De forma similar, las APIs grandes son más difíciles de
+  implementar eficientemente.
 
 \end{enumerate}
 
-``Deque'' stands for ``double-ended queue''; it's supposed to be
-pronounced ``deck'', but some people say ``deek''. In Java, the
-\java{Deque} interface provides \java{push}, \java{pop},
-\java{peek}, and \java{isEmpty}, so you can use a \java{Deque} as
-a stack. It provides other methods, which you can read about at
+\index{tiempo constante}
+
+Para implementar una pila en Java, tienes tres opciones:
+
+\begin{enumerate}
+
+\item
+  Adelante, usa  \java{ArrayList} o \java{LinkedList}. Si usas
+  \java{ArrayList}, asegúrate de agregar y remover desde el \emph{final},
+  que es una operación de tiepo constante. Y ten el cuidado de no agregar
+  elementos en el lugar equivocado o removerlos en el orden equivocado,
+
+\item
+  Java provee una clase llamada \java{Stack} que provee el conjunto estándar
+  de métodos de una pila. Pero esta clase es una parte antigua de Java: no es
+  consistente con el Java Collections Framework, que vino después.
+
+\item
+  Probablemente la mejor opción es usar uno de las implementaciones de la
+  interfaz \java{Deque}, como \java{ArrayDeque}.
+
+\end{enumerate}
+
+``Deque'' significa ``double-ended queue'' (``cola con dos extremos''); se supone que
+se pronuncia ``deck'', pero algunos dicen ``deek''. En Java, la
+interfaz \java{Deque} provee \java{push}, \java{pop},
+\java{peek}, y \java{isEmpty}, así que puedes usar una \java{Deque} como
+una pila. Provee otros métodos, sobre los que puedes leer en
 \url{http://thinkdast.com/deque},
-but we won't use them for now.
+pero no los usaremos por ahora.
 
 \index{deque}
 
 
-\section{Iterative DFS}
+\section{DFS Iterativa}
 \label{iterative-dfs}
 
-Here is an iterative version of DFS that uses an \java{ArrayDeque} to
-represent a stack of \java{Node} objects:
+Aquí está una versión iterativa de DFS que usa una \java{ArrayDeque} para
+representar una pila de objetos \java{Node}:
 
 \begin{verbatim}
     private static void iterativeDFS(Node root) {
@@ -3336,56 +3334,56 @@ represent a stack of \java{Node} objects:
     }
 \end{verbatim}
 
-The parameter, \java{root}, is the root of the tree we want to
-traverse, so we start by creating the stack and pushing the root onto
-it.
+El parámetro, \java{root}, es la raíz del árbol que queremos
+recorrer, así que comenzamos por crear la pila y agregar la raíz en ella.
 
 \index{ArrayDeque}
-\index{iterative DFS}
+\index{DFS iterativa}
 
-The loop continues until the stack is empty. Each time through, it pops
-a \java{Node} off the stack. If it gets a \java{TextNode}, it prints
-the contents. Then it pushes the children onto the stack. In order to
-process the children in the right order, we have to push them onto the
-stack in reverse order; we do that by copying the children into an
-\java{ArrayList}, reversing the elements in place, and then iterating
-through the reversed \java{ArrayList}.
 
-One advantage of the iterative version of DFS is that it is easier to
-implement as a Java \java{Iterator}; you'll see how in the next
-chapter.
+El bucle continúa hasta que la pila está vacía. En cada repetición, se
+remueve un \java{Node} de la pila. Si se obtiene un \java{TextNode}, se imprimen
+los contenidos. Entonces se agregan a sus hijos en la pila. Para
+procesar a los hijos en el orden correcto, tenemos que agregarlos al stack
+en orden inverso; hacemos eso al copiar los hijos en una 
+\java{ArrayList}, invertimos los elementos en sitio y luego iteramos
+a través de la \java{ArrayList} invertida.
+
+Una ventaja de la versión iterativa de DFS es que es más fácil de
+implementar como un \java{Iterator} de Java; verás cómo en el siguiente
+capítulo.
 
 \index{LinkedList}
 
-But first, one last note about the \java{Deque} interface: in
-addition to \java{ArrayDeque}, Java provides another implementation of
-\java{Deque}, our old friend \java{LinkedList}. \java{LinkedList}
-implements both interfaces, \java{List} and \java{Deque}. Which
-interface you get depends on how you use it. For example, if you assign
-a \java{LinkedList} object to a \java{Deque} variable, like this:
+Pero antes, un último comentario sobre la interfaz \java{Deque}: además
+de \java{ArrayDeque}, Java provee otra implementación de
+\java{Deque}, nuestra vieja amiga \java{LinkedList}. \java{LinkedList}
+implementa ambas interfaces, \java{List} y \java{Deque}. La interfaz
+que obtendrás depende de cómo la uses. Por ejemplo, si asignas
+un objeto \java{LinkedList} a una variable \java{Deque}, así:
 
 \begin{verbatim}
 Deqeue<Node> deque = new LinkedList<Node>();
 \end{verbatim}
 
-you can use the methods in the \java{Deque} interface, but not all
-methods in the \java{List} interface. If you assign it to a
-\java{List} variable, like this:
+puedes usar los métodos de la interfaz \java{Deque}, pero ningún
+método de la interfaz \java{List}. Si asignas una variable
+\java{List}, como esta:
 
 \begin{verbatim}
 List<Node> deque = new LinkedList<Node>();
 \end{verbatim}
 
-you can use \java{List} methods but not all \java{Deque} methods.
-And if you assign it like this:
+puedes usar los métodos de \java{List} pero ninguno de los métodos de \java{Deque}.
+Y si la asignas así:
 
 \begin{verbatim}
 LinkedList<Node> deque = new LinkedList<Node>();
 \end{verbatim}
 
-you can use \emph{all} the methods. But if you combine methods from
-different interfaces, your code will be less readable and more
-error-prone.
+puedes usar \emph{todos} los métodos. Pero si combinas métodos de
+interfaces diferentes, tu código será menos legible y más propenso
+a errores.
 
 
 

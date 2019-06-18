@@ -1,0 +1,636 @@
+\indexentry{b\IeC {\'u}squeda web|hyperpage}{xii}
+\indexentry{Redis|hyperpage}{xii}
+\indexentry{pruebas unitarias|hyperpage}{xii}
+\indexentry{control de versiones|hyperpage}{xii}
+\indexentry{interfaz|hyperpage}{xiii}
+\indexentry{interface|hyperpage}{xiii}
+\indexentry{interfaz de programaci\IeC {\'o}n de aplicaciones|hyperpage}{xiii}
+\indexentry{application programming interface|hyperpage}{xiii}
+\indexentry{API|hyperpage}{xiii}
+\indexentry{type parameter|hyperpage}{xiii}
+\indexentry{Java Collections Framework|hyperpage}{xiii}
+\indexentry{JCF|hyperpage}{xiii}
+\indexentry{Apache Ant|hyperpage}{xiii}
+\indexentry{Ant|hyperpage}{xiii}
+\indexentry{JUnit|hyperpage}{xiii}
+\indexentry{Git|hyperpage}{xiii}
+\indexentry{control de versiones|hyperpage}{xiii}
+\indexentry{repositorio|hyperpage}{xiii}
+\indexentry{GitHub|hyperpage}{xiii}
+\indexentry{fork|hyperpage}{xiv}
+\indexentry{clone|hyperpage}{xiv}
+\indexentry{Java SDK|hyperpage}{xiv}
+\indexentry{estructuras de datos|hyperpage}{1}
+\indexentry{an\IeC {\'a}lisis de algoritmos|hyperpage}{1}
+\indexentry{recuperaci\IeC {\'o}n de informaci\IeC {\'o}n|hyperpage}{1}
+\indexentry{motor de b\IeC {\'u}squeda|hyperpage}{1}
+\indexentry{List|hyperpage}{1}
+\indexentry{ArrayList|hyperpage}{1}
+\indexentry{LinkedList|hyperpage}{1}
+\indexentry{\IeC {\'a}rbol|hyperpage}{1}
+\indexentry{Llegar a la Filosof\IeC {\'\i }a|hyperpage}{1}
+\indexentry{Map|hyperpage}{2}
+\indexentry{HashMap|hyperpage}{2}
+\indexentry{tabla hash|hyperpage}{2}
+\indexentry{\IeC {\'a}rbol binario de b\IeC {\'u}squeda|hyperpage}{2}
+\indexentry{b\IeC {\'u}squeda web|hyperpage}{2}
+\indexentry{rastreador|hyperpage}{2}
+\indexentry{indexador|hyperpage}{2}
+\indexentry{recuperador|hyperpage}{2}
+\indexentry{List|hyperpage}{2}
+\indexentry{ArrayList|hyperpage}{2}
+\indexentry{LinkedList|hyperpage}{2}
+\indexentry{interface|hyperpage}{2}
+\indexentry{Comparable|hyperpage}{2}
+\indexentry{tipo gen\IeC {\'e}rico|hyperpage}{3}
+\indexentry{compareTo|hyperpage}{3}
+\indexentry{Integer|hyperpage}{3}
+\indexentry{Number|hyperpage}{3}
+\indexentry{Comparable|hyperpage}{3}
+\indexentry{operador ternario|hyperpage}{3}
+\indexentry{List|hyperpage}{4}
+\indexentry{ArrayList|hyperpage}{4}
+\indexentry{LinkedList|hyperpage}{4}
+\indexentry{ListClientExample|hyperpage}{4}
+\indexentry{encapsular|hyperpage}{4}
+\indexentry{instanciar|hyperpage}{4}
+\indexentry{programaci\IeC {\'o}n basada en interfaces|hyperpage}{5}
+\indexentry{programar para una interfaz|hyperpage}{5}
+\indexentry{Java SDK|hyperpage}{5}
+\indexentry{entorno de desarrollo integrado|hyperpage}{5}
+\indexentry{IDE|hyperpage}{5}
+\indexentry{Ant|hyperpage}{6}
+\indexentry{raw type|hyperpage}{6}
+\indexentry{|hyperpage}{7}
+\indexentry{interfaz|hyperpage}{7}
+\indexentry{implementaci\IeC {\'o}n|hyperpage}{7}
+\indexentry{constructor|hyperpage}{7}
+\indexentry{an\IeC {\'a}lisis de algoritmos|hyperpage}{9}
+\indexentry{perfilado|hyperpage}{9}
+\indexentry{tiempo constante|hyperpage}{10}
+\indexentry{tiempo lineal|hyperpage}{10}
+\indexentry{tiempo cuadr\IeC {\'a}tico|hyperpage}{10}
+\indexentry{ordenamiento por selecci\IeC {\'o}n|hyperpage}{11}
+\indexentry{ordenamiento|hyperpage}{11}
+\indexentry{tiempo constante|hyperpage}{12}
+\indexentry{tiempo lineal|hyperpage}{12}
+\indexentry{tiempo lineal|hyperpage}{12}
+\indexentry{notaci\IeC {\'o}n Big O|hyperpage}{13}
+\indexentry{orden de crecimiento|hyperpage}{14}
+\indexentry{MyArrayList|hyperpage}{14}
+\indexentry{Ant|hyperpage}{14}
+\indexentry{variable de instancia|hyperpage}{15}
+\indexentry{constructor|hyperpage}{15}
+\indexentry{elemento|hyperpage}{15}
+\indexentry{par\IeC {\'a}metro de tipo|hyperpage}{15}
+\indexentry{booleano|hyperpage}{16}
+\indexentry{tiempo constante|hyperpage}{16}
+\indexentry{tiempo lineal|hyperpage}{16}
+\indexentry{get|hyperpage}{16}
+\indexentry{set|hyperpage}{16}
+\indexentry{indexOf|hyperpage}{17}
+\indexentry{m\IeC {\'e}todo auxiliar|hyperpage}{17}
+\indexentry{equals|hyperpage}{17}
+\indexentry{add|hyperpage}{17}
+\indexentry{remove|hyperpage}{17}
+\indexentry{ArrayList|hyperpage}{19}
+\indexentry{an\IeC {\'a}lisis amortizado|hyperpage}{19}
+\indexentry{tiempo constante|hyperpage}{19}
+\indexentry{get|hyperpage}{19}
+\indexentry{excepci\IeC {\'o}n|hyperpage}{20}
+\indexentry{set|hyperpage}{20}
+\indexentry{indexOf|hyperpage}{20}
+\indexentry{tiempo lineal|hyperpage}{20}
+\indexentry{tiempo constante|hyperpage}{20}
+\indexentry{tiempo lineal|hyperpage}{20}
+\indexentry{equals|hyperpage}{20}
+\indexentry{remove|hyperpage}{21}
+\indexentry{add|hyperpage}{22}
+\indexentry{tiempo constante|hyperpage}{22}
+\indexentry{tiempo lineal|hyperpage}{22}
+\indexentry{tiempo constante|hyperpage}{23}
+\indexentry{tiempo lineal|hyperpage}{23}
+\indexentry{an\IeC {\'a}lisis amortizado|hyperpage}{24}
+\indexentry{tiempo promedio|hyperpage}{24}
+\indexentry{tiempo lineal|hyperpage}{24}
+\indexentry{tiempo cuadr\IeC {\'a}tico|hyperpage}{24}
+\indexentry{tiempo constante|hyperpage}{25}
+\indexentry{tama\IeC {\~n}o del problema|hyperpage}{25}
+\indexentry{removeAll|hyperpage}{25}
+\indexentry{estructuras de datos enlazadas|hyperpage}{25}
+\indexentry{nodo|hyperpage}{25}
+\indexentry{null|hyperpage}{26}
+\indexentry{ListNode|hyperpage}{26}
+\indexentry{lista enlazada|hyperpage}{27}
+\indexentry{diagrama de objeto|hyperpage}{27}
+\indexentry{MyLinkedList|hyperpage}{27}
+\indexentry{MyLinkedList|hyperpage}{28}
+\indexentry{size|hyperpage}{28}
+\indexentry{tiempo constante|hyperpage}{28}
+\indexentry{tiempo lineal|hyperpage}{28}
+\indexentry{par\IeC {\'a}metro de tipo|hyperpage}{28}
+\indexentry{Node|hyperpage}{29}
+\indexentry{add|hyperpage}{29}
+\indexentry{caso especial|hyperpage}{29}
+\indexentry{m\IeC {\'e}todo auxiliar|hyperpage}{30}
+\indexentry{add|hyperpage}{30}
+\indexentry{remove|hyperpage}{30}
+\indexentry{recolecci\IeC {\'o}n de basura|hyperpage}{30}
+\indexentry{clear|hyperpage}{30}
+\indexentry{tiempo constante|hyperpage}{31}
+\indexentry{tiempo lineal|hyperpage}{31}
+\indexentry{bug de rendimiento|hyperpage}{31}
+\indexentry{indexOf|hyperpage}{34}
+\indexentry{tiempo constante|hyperpage}{34}
+\indexentry{add|hyperpage}{34}
+\indexentry{m\IeC {\'e}todo auxiliar|hyperpage}{34}
+\indexentry{getNode|hyperpage}{35}
+\indexentry{tiempo constante|hyperpage}{35}
+\indexentry{tiempo lineal|hyperpage}{35}
+\indexentry{remove|hyperpage}{35}
+\indexentry{tiempo lineal|hyperpage}{36}
+\indexentry{tiempo cuadr\IeC {\'a}tico|hyperpage}{36}
+\indexentry{MyArrayList|hyperpage}{36}
+\indexentry{MyLinkedList|hyperpage}{36}
+\indexentry{orden de crecimiento|hyperpage}{37}
+\indexentry{perfilado|hyperpage}{37}
+\indexentry{add|hyperpage}{38}
+\indexentry{Profiler|hyperpage}{38}
+\indexentry{Timeable|hyperpage}{38}
+\indexentry{clase an\IeC {\'o}nima|hyperpage}{38}
+\indexentry{XYSeries|hyperpage}{40}
+\indexentry{tiempo constante|hyperpage}{40}
+\indexentry{tiempo lineal|hyperpage}{40}
+\indexentry{ArrayList|hyperpage}{40}
+\indexentry{tiempo cuadr\IeC {\'a}tico|hyperpage}{41}
+\indexentry{logaritmo|hyperpage}{41}
+\indexentry{escala log-log|hyperpage}{41}
+\indexentry{pendiente|hyperpage}{41}
+\indexentry{tiempo constante|hyperpage}{42}
+\indexentry{tiempo lineal|hyperpage}{42}
+\indexentry{tiempo cuadr\IeC {\'a}tico|hyperpage}{42}
+\indexentry{ProfileListAdd|hyperpage}{42}
+\indexentry{tiempo lineal|hyperpage}{43}
+\indexentry{tiempo cuadr\IeC {\'a}tico|hyperpage}{43}
+\indexentry{LinkedList|hyperpage}{43}
+\indexentry{perfilado|hyperpage}{45}
+\indexentry{Profiler|hyperpage}{45}
+\indexentry{add|hyperpage}{45}
+\indexentry{tiempo promedio|hyperpage}{45}
+\indexentry{tiempo constante|hyperpage}{45}
+\indexentry{tiempo cuadr\IeC {\'a}tico|hyperpage}{46}
+\indexentry{tiempo lineal|hyperpage}{46}
+\indexentry{problem size|hyperpage}{47}
+\indexentry{perfilado|hyperpage}{47}
+\indexentry{tiempo constante|hyperpage}{47}
+\indexentry{tiempo lineal|hyperpage}{47}
+\indexentry{LinkedList|hyperpage}{47}
+\indexentry{tiempo constante|hyperpage}{48}
+\indexentry{tiempo cuadr\IeC {\'a}tico|hyperpage}{49}
+\indexentry{tiempo lineal|hyperpage}{49}
+\indexentry{LinkedList|hyperpage}{49}
+\indexentry{add|hyperpage}{49}
+\indexentry{perfilado|hyperpage}{50}
+\indexentry{tiempo constante|hyperpage}{51}
+\indexentry{lista de enlace doble|hyperpage}{51}
+\indexentry{LinkedList|hyperpage}{51}
+\indexentry{tiempo constante|hyperpage}{51}
+\indexentry{tiempo lineal|hyperpage}{52}
+\indexentry{selecci\IeC {\'o}n de una estructura de datos|hyperpage}{52}
+\indexentry{elecci\IeC {\'o}n de una estructura de datos|hyperpage}{52}
+\indexentry{orden de crecimiento|hyperpage}{52}
+\indexentry{tiempo constante|hyperpage}{52}
+\indexentry{Deque|hyperpage}{55}
+\indexentry{motor de b\IeC {\'u}squeda|hyperpage}{55}
+\indexentry{t\IeC {\'e}rmino de b\IeC {\'u}squeda|hyperpage}{55}
+\indexentry{rastreador|hyperpage}{55}
+\indexentry{indexador|hyperpage}{55}
+\indexentry{recuperador|hyperpage}{55}
+\indexentry{Wikipedia|hyperpage}{56}
+\indexentry{Llegar a la filosof\IeC {\'\i }a|hyperpage}{56}
+\indexentry{HTML|hyperpage}{57}
+\indexentry{etiqueta|hyperpage}{57}
+\indexentry{jsoup|hyperpage}{57}
+\indexentry{interpretaci\IeC {\'o}n|hyperpage}{57}
+\indexentry{\IeC {\'a}rbol DOM|hyperpage}{57}
+\indexentry{ra\IeC {\'\i }z|hyperpage}{57}
+\indexentry{nodo hijo|hyperpage}{57}
+\indexentry{nodo padre|hyperpage}{57}
+\indexentry{inspecci\IeC {\'o}n del DOM|hyperpage}{57}
+\indexentry{elemento|hyperpage}{58}
+\indexentry{jsoup|hyperpage}{59}
+\indexentry{Document|hyperpage}{59}
+\indexentry{select|hyperpage}{60}
+\indexentry{Node|hyperpage}{60}
+\indexentry{Element|hyperpage}{60}
+\indexentry{subclase|hyperpage}{60}
+\indexentry{diagrama UML|hyperpage}{60}
+\indexentry{WikiNodeIterable|hyperpage}{60}
+\indexentry{b\IeC {\'u}squeda en profundidad|hyperpage}{61}
+\indexentry{TextNode|hyperpage}{61}
+\indexentry{DFS|hyperpage}{61}
+\indexentry{recursi\IeC {\'o}n|hyperpage}{61}
+\indexentry{recorrido de un \IeC {\'a}rbol|hyperpage}{62}
+\indexentry{pre orden|hyperpage}{62}
+\indexentry{post orden|hyperpage}{62}
+\indexentry{en orden|hyperpage}{62}
+\indexentry{pila de llamadas|hyperpage}{62}
+\indexentry{Stack|hyperpage}{62}
+\indexentry{Deque|hyperpage}{62}
+\indexentry{push|hyperpage}{63}
+\indexentry{pop|hyperpage}{63}
+\indexentry{peek|hyperpage}{63}
+\indexentry{isEmpty|hyperpage}{63}
+\indexentry{PEPS|hyperpage}{63}
+\indexentry{UEPS|hyperpage}{63}
+\indexentry{pila|hyperpage}{63}
+\indexentry{cola|hyperpage}{63}
+\indexentry{tiempo constante|hyperpage}{63}
+\indexentry{deque|hyperpage}{64}
+\indexentry{ArrayDeque|hyperpage}{65}
+\indexentry{DFS iterativa|hyperpage}{65}
+\indexentry{LinkedList|hyperpage}{65}
+\indexentry{Getting to Philosophy|hyperpage}{67}
+\indexentry{WikiPhilosophy|hyperpage}{67}
+\indexentry{Ant|hyperpage}{67}
+\indexentry{Iterable|hyperpage}{68}
+\indexentry{Iterator|hyperpage}{68}
+\indexentry{WikiNodeIterable|hyperpage}{68}
+\indexentry{WikiNodeIterator|hyperpage}{69}
+\indexentry{DFS|hyperpage}{69}
+\indexentry{depth-first search|hyperpage}{69}
+\indexentry{isEmpty|hyperpage}{70}
+\indexentry{next|hyperpage}{70}
+\indexentry{WikiFetcher|hyperpage}{70}
+\indexentry{Elements|hyperpage}{71}
+\indexentry{singleton|hyperpage}{72}
+\indexentry{Getting to Philosophy|hyperpage}{73}
+\indexentry{index|hyperpage}{75}
+\indexentry{search term|hyperpage}{75}
+\indexentry{lookup|hyperpage}{76}
+\indexentry{map|hyperpage}{76}
+\indexentry{key-value pair|hyperpage}{76}
+\indexentry{key|hyperpage}{76}
+\indexentry{value|hyperpage}{76}
+\indexentry{frequency|hyperpage}{76}
+\indexentry{Set|hyperpage}{76}
+\indexentry{set intersection|hyperpage}{76}
+\indexentry{add|hyperpage}{77}
+\indexentry{contains|hyperpage}{77}
+\indexentry{TermCounter|hyperpage}{77}
+\indexentry{URL|hyperpage}{77}
+\indexentry{Map|hyperpage}{77}
+\indexentry{HashMap|hyperpage}{77}
+\indexentry{put|hyperpage}{78}
+\indexentry{get|hyperpage}{78}
+\indexentry{wrapper method|hyperpage}{78}
+\indexentry{Element|hyperpage}{79}
+\indexentry{DOM tree|hyperpage}{79}
+\indexentry{regular expression|hyperpage}{79}
+\indexentry{WikiFetcher|hyperpage}{80}
+\indexentry{Ant|hyperpage}{80}
+\indexentry{size|hyperpage}{81}
+\indexentry{Index|hyperpage}{81}
+\indexentry{add|hyperpage}{82}
+\indexentry{get|hyperpage}{82}
+\indexentry{object diagram|hyperpage}{82}
+\indexentry{URL|hyperpage}{82}
+\indexentry{Ant|hyperpage}{83}
+\indexentry{indexPage|hyperpage}{83}
+\indexentry{map|hyperpage}{85}
+\indexentry{hash table|hyperpage}{85}
+\indexentry{MyLinearMap|hyperpage}{85}
+\indexentry{type parameter|hyperpage}{85}
+\indexentry{ArrayList|hyperpage}{85}
+\indexentry{Entry|hyperpage}{86}
+\indexentry{Ant|hyperpage}{87}
+\indexentry{helper method|hyperpage}{87}
+\indexentry{findEntry|hyperpage}{87}
+\indexentry{put|hyperpage}{87}
+\indexentry{containsKey|hyperpage}{87}
+\indexentry{get|hyperpage}{87}
+\indexentry{remove|hyperpage}{87}
+\indexentry{equals|hyperpage}{87}
+\indexentry{constant time|hyperpage}{88}
+\indexentry{analysis of algorithms|hyperpage}{88}
+\indexentry{findEntry|hyperpage}{88}
+\indexentry{linear time|hyperpage}{88}
+\indexentry{put|hyperpage}{89}
+\indexentry{get|hyperpage}{89}
+\indexentry{constant time|hyperpage}{89}
+\indexentry{linear time|hyperpage}{89}
+\indexentry{haystack|hyperpage}{89}
+\indexentry{hash code|hyperpage}{90}
+\indexentry{hashing|hyperpage}{91}
+\indexentry{MyBetterMap|hyperpage}{91}
+\indexentry{ArrayList|hyperpage}{92}
+\indexentry{get|hyperpage}{92}
+\indexentry{Map|hyperpage}{92}
+\indexentry{hash function|hyperpage}{92}
+\indexentry{hash code|hyperpage}{92}
+\indexentry{helper method|hyperpage}{92}
+\indexentry{chooseMap|hyperpage}{93}
+\indexentry{put|hyperpage}{93}
+\indexentry{get|hyperpage}{93}
+\indexentry{sub-map|hyperpage}{93}
+\indexentry{linear time|hyperpage}{93}
+\indexentry{SillyString|hyperpage}{93}
+\indexentry{equals|hyperpage}{94}
+\indexentry{toString|hyperpage}{94}
+\indexentry{hashCode|hyperpage}{94}
+\indexentry{Unicode|hyperpage}{95}
+\indexentry{code point|hyperpage}{95}
+\indexentry{sub-map|hyperpage}{95}
+\indexentry{mutable|hyperpage}{95}
+\indexentry{immutable|hyperpage}{95}
+\indexentry{SillyArray|hyperpage}{95}
+\indexentry{setChar|hyperpage}{96}
+\indexentry{hash code|hyperpage}{97}
+\indexentry{MyBetterMap|hyperpage}{97}
+\indexentry{Ant|hyperpage}{97}
+\indexentry{put|hyperpage}{98}
+\indexentry{get|hyperpage}{98}
+\indexentry{containsValue|hyperpage}{98}
+\indexentry{linear time|hyperpage}{98}
+\indexentry{HashMap|hyperpage}{99}
+\indexentry{sub-map|hyperpage}{99}
+\indexentry{constant time|hyperpage}{99}
+\indexentry{MyHashMap|hyperpage}{99}
+\indexentry{superclass|hyperpage}{100}
+\indexentry{load factor|hyperpage}{100}
+\indexentry{MyBetterMap|hyperpage}{100}
+\indexentry{Ant|hyperpage}{100}
+\indexentry{rehash|hyperpage}{100}
+\indexentry{constant time|hyperpage}{101}
+\indexentry{put|hyperpage}{101}
+\indexentry{linear time|hyperpage}{101}
+\indexentry{amortized analysis|hyperpage}{101}
+\indexentry{unit of work|hyperpage}{101}
+\indexentry{hashing|hyperpage}{102}
+\indexentry{constant time|hyperpage}{102}
+\indexentry{containsKey|hyperpage}{102}
+\indexentry{get|hyperpage}{102}
+\indexentry{remove|hyperpage}{102}
+\indexentry{put|hyperpage}{102}
+\indexentry{cache|hyperpage}{103}
+\indexentry{containsValue|hyperpage}{103}
+\indexentry{linear time|hyperpage}{103}
+\indexentry{clear|hyperpage}{103}
+\indexentry{MyHashMap|hyperpage}{103}
+\indexentry{profiling|hyperpage}{103}
+\indexentry{Ant|hyperpage}{103}
+\indexentry{performance bug|hyperpage}{104}
+\indexentry{size|hyperpage}{104}
+\indexentry{linear time|hyperpage}{104}
+\indexentry{constant time|hyperpage}{105}
+\indexentry{linear time|hyperpage}{105}
+\indexentry{MyFixedHashMap|hyperpage}{105}
+\indexentry{superclass|hyperpage}{105}
+\indexentry{remove|hyperpage}{105}
+\indexentry{put|hyperpage}{106}
+\indexentry{size|hyperpage}{106}
+\indexentry{constant time|hyperpage}{106}
+\indexentry{profiling|hyperpage}{106}
+\indexentry{UML|hyperpage}{106}
+\indexentry{class diagram|hyperpage}{106}
+\indexentry{inheritance|hyperpage}{107}
+\indexentry{IS-A relationship|hyperpage}{107}
+\indexentry{HAS-A relationship|hyperpage}{107}
+\indexentry{TreeMap|hyperpage}{109}
+\indexentry{Map|hyperpage}{109}
+\indexentry{constant time|hyperpage}{109}
+\indexentry{linear time|hyperpage}{110}
+\indexentry{binary search tree|hyperpage}{110}
+\indexentry{BST|hyperpage}{110}
+\indexentry{BST property|hyperpage}{110}
+\indexentry{node|hyperpage}{110}
+\indexentry{key|hyperpage}{110}
+\indexentry{height|hyperpage}{111}
+\indexentry{log time|hyperpage}{112}
+\indexentry{logarithm|hyperpage}{112}
+\indexentry{order of growth|hyperpage}{112}
+\indexentry{Map|hyperpage}{112}
+\indexentry{Node|hyperpage}{113}
+\indexentry{key-value pair|hyperpage}{113}
+\indexentry{size|hyperpage}{113}
+\indexentry{constant time|hyperpage}{113}
+\indexentry{clear|hyperpage}{113}
+\indexentry{linear time|hyperpage}{113}
+\indexentry{MyTreeMap|hyperpage}{114}
+\indexentry{Ant|hyperpage}{114}
+\indexentry{get|hyperpage}{114}
+\indexentry{containsKey|hyperpage}{114}
+\indexentry{findNode|hyperpage}{114}
+\indexentry{type wildcard|hyperpage}{114}
+\indexentry{superclass|hyperpage}{114}
+\indexentry{height|hyperpage}{115}
+\indexentry{helper method|hyperpage}{115}
+\indexentry{containsValue|hyperpage}{115}
+\indexentry{put|hyperpage}{115}
+\indexentry{helper method|hyperpage}{115}
+\indexentry{keySet|hyperpage}{116}
+\indexentry{helper method|hyperpage}{116}
+\indexentry{recursion|hyperpage}{116}
+\indexentry{in-order|hyperpage}{116}
+\indexentry{tree traversal|hyperpage}{116}
+\indexentry{MyTreeMap|hyperpage}{117}
+\indexentry{findNode|hyperpage}{117}
+\indexentry{type wildcard|hyperpage}{118}
+\indexentry{recursion|hyperpage}{118}
+\indexentry{base case|hyperpage}{119}
+\indexentry{recursion|hyperpage}{119}
+\indexentry{linear time|hyperpage}{120}
+\indexentry{put|hyperpage}{120}
+\indexentry{subtree|hyperpage}{121}
+\indexentry{iterative|hyperpage}{121}
+\indexentry{in-order|hyperpage}{122}
+\indexentry{tree traversal|hyperpage}{122}
+\indexentry{keySet|hyperpage}{122}
+\indexentry{LinkedHashSet|hyperpage}{122}
+\indexentry{BST property|hyperpage}{123}
+\indexentry{recursion|hyperpage}{123}
+\indexentry{base case|hyperpage}{123}
+\indexentry{logarithmic time|hyperpage}{123}
+\indexentry{get|hyperpage}{123}
+\indexentry{put|hyperpage}{123}
+\indexentry{profiling|hyperpage}{123}
+\indexentry{UUID|hyperpage}{124}
+\indexentry{linear search|hyperpage}{124}
+\indexentry{constant time|hyperpage}{124}
+\indexentry{logarithmic time|hyperpage}{124}
+\indexentry{timestamp|hyperpage}{124}
+\indexentry{unbalanced tree|hyperpage}{125}
+\indexentry{balanced tree|hyperpage}{125}
+\indexentry{linear time|hyperpage}{125}
+\indexentry{self-balancing tree|hyperpage}{125}
+\indexentry{AVL tree|hyperpage}{126}
+\indexentry{red-black tree|hyperpage}{126}
+\indexentry{logarithmic time|hyperpage}{126}
+\indexentry{remove|hyperpage}{126}
+\indexentry{search engine|hyperpage}{127}
+\indexentry{crawler|hyperpage}{127}
+\indexentry{indexer|hyperpage}{127}
+\indexentry{retriever|hyperpage}{127}
+\indexentry{indexer|hyperpage}{127}
+\indexentry{Redis|hyperpage}{128}
+\indexentry{volatile|hyperpage}{128}
+\indexentry{persistent|hyperpage}{128}
+\indexentry{JSON|hyperpage}{128}
+\indexentry{database|hyperpage}{128}
+\indexentry{DBMS|hyperpage}{128}
+\indexentry{Redis|hyperpage}{128}
+\indexentry{key-value database|hyperpage}{129}
+\indexentry{client|hyperpage}{129}
+\indexentry{server|hyperpage}{129}
+\indexentry{RedisToGo|hyperpage}{129}
+\indexentry{Jedis|hyperpage}{129}
+\indexentry{Redis instance|hyperpage}{130}
+\indexentry{JedisMaker|hyperpage}{130}
+\indexentry{JedisIndex|hyperpage}{130}
+\indexentry{WikiFetcher|hyperpage}{130}
+\indexentry{helper class|hyperpage}{130}
+\indexentry{Ant|hyperpage}{131}
+\indexentry{Redis set|hyperpage}{133}
+\indexentry{Redis get|hyperpage}{133}
+\indexentry{constant time|hyperpage}{133}
+\indexentry{Redis list|hyperpage}{133}
+\indexentry{Redis hash|hyperpage}{133}
+\indexentry{field|hyperpage}{133}
+\indexentry{constant time|hyperpage}{134}
+\indexentry{Redis data type|hyperpage}{134}
+\indexentry{JedisIndex|hyperpage}{134}
+\indexentry{WikiFetcher|hyperpage}{135}
+\indexentry{URLSet|hyperpage}{135}
+\indexentry{TermCounter|hyperpage}{135}
+\indexentry{helper method|hyperpage}{135}
+\indexentry{server|hyperpage}{136}
+\indexentry{Transaction|hyperpage}{137}
+\indexentry{Redis|hyperpage}{139}
+\indexentry{URLSet|hyperpage}{139}
+\indexentry{TermCounter|hyperpage}{139}
+\indexentry{JedisIndex|hyperpage}{139}
+\indexentry{Transaction|hyperpage}{141}
+\indexentry{getCounts|hyperpage}{141}
+\indexentry{helper method|hyperpage}{141}
+\indexentry{analysis|hyperpage}{142}
+\indexentry{constant time|hyperpage}{143}
+\indexentry{linear time|hyperpage}{143}
+\indexentry{Transaction|hyperpage}{143}
+\indexentry{analysis|hyperpage}{143}
+\indexentry{DOM tree|hyperpage}{143}
+\indexentry{HashMap|hyperpage}{143}
+\indexentry{linear time|hyperpage}{143}
+\indexentry{constant time|hyperpage}{143}
+\indexentry{TermCounter|hyperpage}{144}
+\indexentry{stop words|hyperpage}{144}
+\indexentry{graph|hyperpage}{144}
+\indexentry{traversal|hyperpage}{144}
+\indexentry{queue|hyperpage}{145}
+\indexentry{stack|hyperpage}{145}
+\indexentry{FIFO|hyperpage}{145}
+\indexentry{LIFO|hyperpage}{145}
+\indexentry{WikiCrawler|hyperpage}{145}
+\indexentry{JedisIndex|hyperpage}{145}
+\indexentry{helper class|hyperpage}{145}
+\indexentry{JedisMaker|hyperpage}{146}
+\indexentry{Ant|hyperpage}{146}
+\indexentry{crawl|hyperpage}{146}
+\indexentry{WikiCrawler|hyperpage}{149}
+\indexentry{queue|hyperpage}{150}
+\indexentry{LinkedList|hyperpage}{150}
+\indexentry{constant time|hyperpage}{150}
+\indexentry{Index|hyperpage}{151}
+\indexentry{Element|hyperpage}{151}
+\indexentry{Wikipedia|hyperpage}{152}
+\indexentry{information retrieval|hyperpage}{152}
+\indexentry{boolean search|hyperpage}{152}
+\indexentry{query|hyperpage}{153}
+\indexentry{intersection|hyperpage}{153}
+\indexentry{union|hyperpage}{153}
+\indexentry{difference|hyperpage}{153}
+\indexentry{set operations|hyperpage}{153}
+\indexentry{WikiSearch|hyperpage}{154}
+\indexentry{helper class|hyperpage}{154}
+\indexentry{relevance|hyperpage}{154}
+\indexentry{term frequency|hyperpage}{154}
+\indexentry{inverse document frequency|hyperpage}{154}
+\indexentry{TF-IDF|hyperpage}{154}
+\indexentry{Ant|hyperpage}{155}
+\indexentry{and|hyperpage}{155}
+\indexentry{or|hyperpage}{155}
+\indexentry{minus|hyperpage}{155}
+\indexentry{JedisMaker|hyperpage}{155}
+\indexentry{sort|hyperpage}{155}
+\indexentry{Collections|hyperpage}{155}
+\indexentry{Comparable|hyperpage}{155}
+\indexentry{Comparator|hyperpage}{155}
+\indexentry{Card|hyperpage}{156}
+\indexentry{compareTo|hyperpage}{156}
+\indexentry{natural order|hyperpage}{157}
+\indexentry{Comparator|hyperpage}{157}
+\indexentry{compare|hyperpage}{157}
+\indexentry{anonymous class|hyperpage}{158}
+\indexentry{ordering|hyperpage}{158}
+\indexentry{TF-IDF|hyperpage}{158}
+\indexentry{relevance|hyperpage}{158}
+\indexentry{snippet|hyperpage}{158}
+\indexentry{Heroku|hyperpage}{158}
+\indexentry{sorting|hyperpage}{161}
+\indexentry{divide-conquer-glue|hyperpage}{162}
+\indexentry{linearithmic time|hyperpage}{162}
+\indexentry{insertion sort|hyperpage}{162}
+\indexentry{ListSorter|hyperpage}{162}
+\indexentry{type parameter|hyperpage}{162}
+\indexentry{List|hyperpage}{163}
+\indexentry{linear time|hyperpage}{163}
+\indexentry{quadratic time|hyperpage}{163}
+\indexentry{linear time|hyperpage}{163}
+\indexentry{merge sort|hyperpage}{164}
+\indexentry{quadratic time|hyperpage}{164}
+\indexentry{Ant|hyperpage}{164}
+\indexentry{ListSorter|hyperpage}{164}
+\indexentry{mergeSort|hyperpage}{165}
+\indexentry{base case|hyperpage}{165}
+\indexentry{recursion|hyperpage}{165}
+\indexentry{analysis|hyperpage}{165}
+\indexentry{linear time|hyperpage}{166}
+\indexentry{logarithm|hyperpage}{167}
+\indexentry{linearithmic time|hyperpage}{167}
+\indexentry{n log n|hyperpage}{167}
+\indexentry{comparison sort|hyperpage}{167}
+\indexentry{linear time|hyperpage}{167}
+\indexentry{radix sort|hyperpage}{168}
+\indexentry{Obama, Barack|hyperpage}{168}
+\indexentry{Schmidt, Eric|hyperpage}{168}
+\indexentry{Google|hyperpage}{168}
+\indexentry{bubble sort|hyperpage}{168}
+\indexentry{quadratic time|hyperpage}{168}
+\indexentry{non-comparison sort|hyperpage}{168}
+\indexentry{constant time|hyperpage}{169}
+\indexentry{linear time|hyperpage}{169}
+\indexentry{heap sort|hyperpage}{169}
+\indexentry{bounded heap|hyperpage}{169}
+\indexentry{out of core algorithm|hyperpage}{170}
+\indexentry{external sorting|hyperpage}{170}
+\indexentry{heap|hyperpage}{170}
+\indexentry{binary search tree|hyperpage}{170}
+\indexentry{BST|hyperpage}{170}
+\indexentry{heap property|hyperpage}{170}
+\indexentry{constant time|hyperpage}{170}
+\indexentry{logarithmic time|hyperpage}{170}
+\indexentry{PriorityQueue|hyperpage}{170}
+\indexentry{offer|hyperpage}{170}
+\indexentry{poll|hyperpage}{170}
+\indexentry{Queue|hyperpage}{170}
+\indexentry{heap sort|hyperpage}{171}
+\indexentry{linearithmic|hyperpage}{171}
+\indexentry{n log n|hyperpage}{171}
+\indexentry{ListSorter|hyperpage}{171}
+\indexentry{bounded heap|hyperpage}{171}
+\indexentry{k largest elements|hyperpage}{171}
+\indexentry{linear time|hyperpage}{172}
+\indexentry{Comparator|hyperpage}{172}
+\indexentry{space complexity|hyperpage}{172}
+\indexentry{analysis|hyperpage}{172}
+\indexentry{cache|hyperpage}{173}
+\indexentry{server|hyperpage}{173}
