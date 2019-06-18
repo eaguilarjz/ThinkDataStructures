@@ -45,7 +45,7 @@
 \contentsline {section}{\numberline {8.1}Selecci\IeC {\'o}n de una estructura de datos}{75}{section.8.1}
 \contentsline {section}{\numberline {8.2}TermCounter}{77}{section.8.2}
 \contentsline {section}{\numberline {8.3}Ejercicio 6}{80}{section.8.3}
-\contentsline {chapter}{\numberline {9}The Map interface}{85}{chapter.9}
+\contentsline {chapter}{\numberline {9}La interfaz Map}{85}{chapter.9}
 \contentsline {section}{\numberline {9.1}Implementing \lstinline {MyLinearMap}}{85}{section.9.1}
 \contentsline {section}{\numberline {9.2}Exercise 7}{86}{section.9.2}
 \contentsline {section}{\numberline {9.3}Analyzing \lstinline {MyLinearMap}}{87}{section.9.3}
