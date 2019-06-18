@@ -265,16 +265,16 @@
 \indexentry{Elements|hyperpage}{71}
 \indexentry{singleton|hyperpage}{72}
 \indexentry{Llegar a la Filosof\IeC {\'\i }a|hyperpage}{73}
-\indexentry{index|hyperpage}{75}
-\indexentry{search term|hyperpage}{75}
-\indexentry{lookup|hyperpage}{76}
-\indexentry{map|hyperpage}{76}
-\indexentry{key-value pair|hyperpage}{76}
-\indexentry{key|hyperpage}{76}
-\indexentry{value|hyperpage}{76}
-\indexentry{frequency|hyperpage}{76}
+\indexentry{\IeC {\'\i }ndice|hyperpage}{75}
+\indexentry{t\IeC {\'e}rmino de b\IeC {\'u}squeda|hyperpage}{75}
+\indexentry{b\IeC {\'u}squeda|hyperpage}{76}
+\indexentry{mapa|hyperpage}{76}
+\indexentry{par clave-valor|hyperpage}{76}
+\indexentry{clave|hyperpage}{76}
+\indexentry{valor|hyperpage}{76}
+\indexentry{frecuencia|hyperpage}{76}
 \indexentry{Set|hyperpage}{76}
-\indexentry{set intersection|hyperpage}{76}
+\indexentry{intersecci\IeC {\'o}n de conjuntos|hyperpage}{76}
 \indexentry{add|hyperpage}{77}
 \indexentry{contains|hyperpage}{77}
 \indexentry{TermCounter|hyperpage}{77}
@@ -283,17 +283,17 @@
 \indexentry{HashMap|hyperpage}{77}
 \indexentry{put|hyperpage}{78}
 \indexentry{get|hyperpage}{78}
-\indexentry{wrapper method|hyperpage}{78}
+\indexentry{m\IeC {\'e}todo envoltorio|hyperpage}{78}
 \indexentry{Element|hyperpage}{79}
-\indexentry{DOM tree|hyperpage}{79}
-\indexentry{regular expression|hyperpage}{79}
+\indexentry{\IeC {\'a}rbol DOM|hyperpage}{79}
+\indexentry{expresi\IeC {\'o}n regular|hyperpage}{79}
 \indexentry{WikiFetcher|hyperpage}{80}
 \indexentry{Ant|hyperpage}{80}
 \indexentry{size|hyperpage}{81}
 \indexentry{Index|hyperpage}{81}
 \indexentry{add|hyperpage}{82}
 \indexentry{get|hyperpage}{82}
-\indexentry{object diagram|hyperpage}{82}
+\indexentry{diagrama de objeto|hyperpage}{82}
 \indexentry{URL|hyperpage}{82}
 \indexentry{Ant|hyperpage}{83}
 \indexentry{indexPage|hyperpage}{83}

@@ -41,10 +41,10 @@
 \contentsline {section}{\numberline {7.2}Iterables e Iterators}{68}{section.7.2}
 \contentsline {section}{\numberline {7.3}\lstinline {WikiFetcher}}{70}{section.7.3}
 \contentsline {section}{\numberline {7.4}Ejercicio 5}{72}{section.7.4}
-\contentsline {chapter}{\numberline {8}Indexer}{75}{chapter.8}
-\contentsline {section}{\numberline {8.1}Data structure selection}{75}{section.8.1}
+\contentsline {chapter}{\numberline {8}Indexador}{75}{chapter.8}
+\contentsline {section}{\numberline {8.1}Selecci\IeC {\'o}n de una estructura de datos}{75}{section.8.1}
 \contentsline {section}{\numberline {8.2}TermCounter}{77}{section.8.2}
-\contentsline {section}{\numberline {8.3}Exercise 6}{80}{section.8.3}
+\contentsline {section}{\numberline {8.3}Ejercicio 6}{80}{section.8.3}
 \contentsline {chapter}{\numberline {9}The Map interface}{85}{chapter.9}
 \contentsline {section}{\numberline {9.1}Implementing \lstinline {MyLinearMap}}{85}{section.9.1}
 \contentsline {section}{\numberline {9.2}Exercise 7}{86}{section.9.2}

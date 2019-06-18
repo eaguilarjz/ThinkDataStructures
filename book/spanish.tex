@@ -3773,118 +3773,116 @@ Muy bien, esa es toda la ayuda que te daré. Ahora te toca a ti.
 
 
 
-\chapter{Indexer}
+\chapter{Indexador}
 
-At this point we have built a basic Web crawler; the next piece we will
-work on is the \textbf{index}. In the context of web search, an index is
-a data structure that makes it possible to look up a search term and
-find the pages where that term appears. In addition, we would like to
-know how many times the search term appears on each page, which will
-help identify the pages most relevant to the term.
+Llegados a este punto hemos construido un rastreador Web básico; la siguiente
+pieza en la que trabajaremos será el \textbf{índice}. En el contexto de una búsqueda
+web, un índice es una estructura de datos que hace posible explorar un término de búsqueda
+y encontrar las páginas donde este término aparece. Además, nos gustaría saber
+cuántas veces aparece el término de búsqueda en cada página, lo que nos
+ayudará a identificar las páginas más relevantes para el término.
 
-\index{index}
-\index{search term}
+\index{índice}
+\index{término de búsqueda}
 
-For example, if a user submits the search terms ``Java'' and
-``programming'', we would look up both search terms and get two sets of
-pages. Pages with the word ``Java'' would include pages about the island
-of Java, the nickname for coffee, and the programming language. Pages
-with the word ``programming'' would include pages about different
-programming languages, as well as other uses of the word. By selecting
-pages with both terms, we hope to eliminate irrelevant pages and find
-the ones about Java programming.
+Por ejemplo, si un usuario envía los términos de búsqueda ``programación'' y ``Java'', deberíamos buscar ambos términos y obtener dos conjuntos de
+páginas. Las páginas con la palabra ``programación'' incluirían páginas sobre
+diferentes lenguajes de programación, así como otros usos de la palabra. 
+Las páginas con la palabra ``Java'' incluirían páginas sobre la isla de Java,
+el término en inglés para un café y el lenguaje de programación. Al seleccionar
+páginas con ambos términos, esperamos eliminar páginas irrelevantes y encontrar
+las que tratan sobre programación en Java.
 
-Now that we understand what the index is and what operations it
-performs, we can design a data structure to represent it.
+Ahora que entendemos lo que es un índice y las operaciones que
+realiza, podemos diseñar una estructura de datos para representarlo.
 
 
-\section{Data structure selection}
+\section{Selección de una estructura de datos}
 \label{data-structure-selection}
 
-The fundamental operation of the index is a \textbf{lookup};
-specifically, we need the ability to look up a term and find all pages
-that contain it. The simplest implementation would be a collection of
-pages. Given a search term, we could iterate through the contents of the
-pages and select the ones that contain the search term. But the runtime
-would be proportional to the total number of words on all the pages,
-which would be way too slow.
+La operación fundamental del índice es una \textbf{búsqueda};
+específicamente, necesitamos la habilidad de buscar un término y encontrar
+todas las páginas que lo contengan. La implementación más simple sería una
+colección de páginas. Dado un término de búsqueda, podríamos iterar a través
+de los contenidos de las páginas y seleccionar las que contengan el término
+de búsqeuda. Pero el tiempo de ejecución sería proporcional al número total
+de palabras en todas las páginas, lo que sería súper lento.
 
-\index{lookup}
-\index{map}
-\index{key-value pair}
-\index{key}
-\index{value}
-\index{frequency}
+\index{búsqueda}
+\index{mapa}
+\index{par clave-valor}
+\index{clave}
+\index{valor}
+\index{frecuencia}
 
-A better alternative is a \textbf{map}, which is a data structure that
-represents a collection of \textbf{key-value pairs} and provides a fast
-way to look up a \textbf{key} and find the corresponding \textbf{value}.
-For example, the first map we'll construct is a \java{TermCounter},
-which maps from each search term to the number of times it appears in a
-page. The keys are the search terms and the values are the counts (also
-called ``frequencies'').
+Una mejor alternativa es un \textbf{mapa}, que es una estructura de datos que
+representa una colección de \textbf{pares clave-valor} y provee una forma
+rápida de buscar una \textbf{clave} y encontrar el \textbf{valor} correspondiente.
+Por ejemplo, el primer mapa que construiremos es un \java{TermCounter} (contador
+de términos), que mapea cada término de búsqueda al número de veces que aparece
+en una página. Las claves son los términos de búsqueda y los valores son los
+conteos (también llamados ``frecuencias'').
 
-Java provides an interface called \java{Map} that specifies the
-methods a map should provide; the most important are:
+Java provee una interfaz llamada \java{Map} que especifica los métodos
+que un mapa debe proveer; los más importantes son:
 
 \begin{itemize}
 
 \item
-  \java{get(key)}: This method looks up a key and returns the
-  corresponding value.
+  \java{get(key)}: Este método busca una clave (key) y devuelve el
+  valor (value) correspondiente.
 
 \item
-  \java{put(key, value)}: This method adds a new key-value pair to the
-  \java{Map}, or if the key is already in the map, it replaces the
-  value associated with \java{key}.
+  \java{put(key, value)}: Este método agrega un nuevo par clave-valor al
+  \java{Map}, o si la clave ya está en el mapa, reemplaza el valor asociado con \java{key}.
 
 \end{itemize}
 
-Java provides several implementations of \java{Map}, including the two
-we will focus on, \java{HashMap} and \java{TreeMap}. In upcoming
-chapters, we'll look at these implementations and analyze their performance.
+Java provee varias implementaciones de \java{Map}, incluyendo las dos en
+la que nos enfocaremos, \java{HashMap} y \java{TreeMap}. En capítulos
+posteriores, examinaremos estas implementaciones y analizaremos su desempeño.
 
-In addition to the \java{TermCounter}, which maps from search terms to
-counts, we will define a class called \java{Index}, which maps from a
-search term to a collection of pages where it appears. And that raises
-the next question, which is how to represent a collection of pages.
-Again, if we think about the operations we want to perform, that guides
-our decision.
+Además del \java{TermCounter}, que mapeo términos de búsqueda a conteos,
+definiremos una clase llamda \java{Index}, que mapeo de un término de
+búsqueda a una colección de las páginas donde aparece. Y eso hace surgir
+la siguiente pregunta, que es cómo representar una colección de páginas.
+De nuevo, si pensamos en las operaciones que queremos realizar, eso guía
+nuestra decisión.
 
 \index{Set}
-\index{set intersection}
+\index{intersección de conjuntos}
 
-In this case, we'll need to combine two or more collections and find the
-pages that appear in all of them. You might recognize this operation as
-\textbf{set intersection}: the intersection of two sets is the set of
-elements that appear in both.
+En este caso, necesitaremos combinar dos o más colecciones y encontrar las
+páginas que aparecen en todas ellas. Podrías reconocer esta operación como
+la \textbf{intersección de conjuntos}: la intersección de dos conjuntos es el
+conjunto de elementos que aparecen en ambos.
 
-As you might expect by now, Java provides a \java{Set} interface that
-defines the operations a set should perform. It doesn't actually provide
-set intersection, but it provides methods that make it possible to
-implement intersection and other set operations efficiently. The core
-\java{Set} methods are:
+Como podrías esperar, Java provee una interfaz \java{Set} (Conjunto, en inglés) que
+define las operaciones que un conjunto debería realizar. No provee realmente una
+intersección de conjuntos, pero provee métodos que hacen posible implementar la
+intersección y otras operaciones de conjuntos eficientemente. Los métodos
+principales de un \java{Set} son:
 
 \begin{itemize}
 
 \item
-  \java{add(element)}: This method adds an element to a set; if the
-  element is already in the set, it has no effect.
+  \java{add(element)}: Este método añade un elemento al conjunto; si el
+  elemento ya está en el conjunto, no tiene ningún efecto.
 
 \item
-  \java{contains(element)}: This method checks whether the given
-  element is in the set.
+  \java{contains(element)}: Este método comprueba si el elemento dado
+  está en el conjunto.
 
 \end{itemize}
 
-Java provides several implementations of \java{Set}, including
-\java{HashSet} and \java{TreeSet}.
+Java provee varias implementaciones de \java{Set}, incluyendo
+\java{HashSet} y \java{TreeSet}.
 
 \index{add}
 \index{contains}
 
-Now that we've designed our data structures from the top down, we'll
-implement them from the inside out, starting with \java{TermCounter}.
+Ahora que hemos diseñado nuestras estructuras de datos a nivel general,
+las implementaremos desde lo más básico, comenzando con \java{TermCounter}.
 
 
 \section{TermCounter}
@@ -3892,9 +3890,9 @@ implement them from the inside out, starting with \java{TermCounter}.
 
 \index{TermCounter}
 
-\java{TermCounter} is a class that represents a mapping from search
-terms to the number of times they appear in a page. Here is the first
-part of the class definition:
+\java{TermCounter} es una clase que representa un mapeo de términos de búsqueda con
+el número de veces que aparecen en una página. Aquí está la primera
+parte de la definición de la clase:
 
 \begin{verbatim}
 public class TermCounter {
@@ -3909,20 +3907,20 @@ public class TermCounter {
 }
 \end{verbatim}
 
-The instance variables are \java{map}, which contains the mapping from
-terms to counts, and \java{label}, which identifies the document the
-terms came from; we'll use it to store URLs.
+Las variables de instancia son \java{map}, que contiene el mapeo de
+términos con conteos, y \java{label}, que identifica el documento del
+que provienen los términos; la usaremos para guardar URLs.
 
 \index{URL}
 \index{Map}
 \index{HashMap}
 
-To implement the mapping, I chose \java{HashMap}, which is the most
-commonly-used \java{Map}. Coming up in a few chapters, you will see how
-it works and why it is a common choice.
+Para implementar el mapeo, elegí \java{HashMap}, que es el \java{Map} más
+comúnmente usado. En unos cuantos capítulos, verás cómo funciona y por qué
+es una elección común.
 
-\java{TermCounter} provides \java{put} and \java{get}, which are
-defined like this:
+\java{TermCounter} provee \java{put} y \java{get}, que se
+definen como sigue:
 
 \begin{verbatim}
     public void put(String term, int count) {
@@ -3935,20 +3933,20 @@ defined like this:
     }
 \end{verbatim}
 
-\java{put} is just a \textbf{wrapper method}; when you call
-\java{put} on a \java{TermCounter}, it calls \java{put} on the
-embedded map.
+\java{put} es solo un \textbf{método envoltorio (wrapper)}; cuando llamas
+\java{put} en un \java{TermCounter}, éste llama a \java{put} en el
+mapa embebido.
 
 \index{put}
 \index{get}
-\index{wrapper method}
+\index{método envoltorio}
 
-On the other hand, \java{get} actually does some work. When you call
-\java{get} on a \java{TermCounter}, it calls \java{get} on the
-map, and then checks the result. If the term does not appear in the
-map, \java{TermCount.get} returns 0. Defining \java{get} this way
-makes it easier to write \java{incrementTermCount}, which takes a term
-and increases by one the counter associated with that term.
+Por otro lado, \java{get} de hecho hace un poco de trabajo. Cuando lo
+llamas a \java{get} en un \java{TermCounter}, llama a \java{get} en el
+mapa y comprueba el resultado. Si el término no aparece en el
+mapa,\java{TermCount.get} devuelve 0. Al definir \java{get} de esta forma
+es más fácil escribir \java{incrementTermCount}, que toma un término e
+incrementa en uno el contador asociado con ese término.
 
 \begin{verbatim}
     public void incrementTermCount(String term) {
@@ -3956,13 +3954,13 @@ and increases by one the counter associated with that term.
     }
 \end{verbatim}
 
-If the term has not been seen before, \java{get} returns 0; we add 1,
-then use \java{put} to add a new key-value pair to the map. If the
-term is already in the map, we get the old count, add 1, and then store
-the new count, which replaces the old value.
+Si el término no ha aparecido antes, \java{get} devuelve 0; le sumamos 1,
+y luego usamos \java{put} para agregar un nuevo par clave-valor al mapa.
+Si el término ya existe en el mapa, obtenemos el conteo anterior, le sumamos
+1 y luego guardamos el nuevo conteo, que reemplaza al valor antiguo.
 
-In addition, \java{TermCounter} provides these other methods to help
-with indexing Web pages:
+Además, \java{TermCounter} provee estos otros métodos para ayudar con
+la indexación de páginas Web:
 
 \begin{verbatim}
     public void processElements(Elements paragraphs) {
@@ -3994,33 +3992,32 @@ with indexing Web pages:
 \begin{itemize}
 
 \item
-  \java{processElements} takes an \java{Elements} object, which is a
-  collection of jsoup \java{Element} objects. It iterates through the
-  collection and calls \java{processTree} on each.
+  \java{processElements} toma un objeto \java{Elements}, que es una
+  colección de objetos \java{Element} de jsoup. Itera por la
+  colección y llama a \java{processTree} para cada uno.
 
 \item
-  \java{processTree} takes a jsoup \java{Node} that represents the
-  root of a DOM tree. It iterates through the tree to find the nodes
-  that contain text; then it extracts the text and passes it to
+  \java{processTree} toma un \java{Node} de jsoup que representa la
+  raíz de un árbol DOM. Itera por el árbol para encontrar los nodos
+  que contienen texto; luego extrae el texto y lo pasa a
   \java{processText}.
 
 \item
-  \java{processText} takes a \java{String} that contains words, spaces,
-  punctuation, etc. It removes punctuation characters by replacing
-  them with spaces, converts the remaining letters to lowercase, then
-  splits the text into words. Then it loops through the words it found
-  and calls \java{incrementTermCount} on each.  The \java{replaceAll}
-  and \java{split} methods take {\bf regular expressions} as parameters;
-  you can read more about them at \url{http://thinkdast.com/regex}.
+  \java{processText} toma una \java{String} que contiene palabras, espacios,
+  signos de puntuación, etc. Remueve los signos de puntuación reemplazándolos
+  con espacios, convierte las letras restantes a minúsculas, luego
+  las separa en palabras. A continuación, itera por las palabras que encontró
+  y llama a \java{incrementTermCount} con cada una.  Los métodos \java{replaceAll}
+  y \java{split} toman {\bf expresiones regulares} como parámetros;
+  puedes leer más sobre ellas en \url{http://thinkdast.com/regex}.
 
 \end{itemize}
 
 \index{Element}
-\index{DOM tree}
-\index{regular expression}
+\index{árbol DOM}
+\index{expresión regular}
 
-Finally, here's an example that demonstrates how \java{TermCounter} is
-used:
+Finalmente, aquí está un ejemplo que demuestra cómo se usa \java{TermCounter}:
 
 \begin{verbatim}
     String url = "http://en.wikipedia.org/wiki/Java_(programming_language)";
@@ -4032,50 +4029,49 @@ used:
     counter.printCounts();
 \end{verbatim}
 
-This example uses a \java{WikiFetcher} to download a page from
-Wikipedia and parse the main text. Then it creates a
-\java{TermCounter} and uses it to count the words in the page.
+Este ejemplo usa un \java{WikiFetcher} para descargar una página de
+Wikipedia e interpretar el texto principal. Luego crea un
+\java{TermCounter} y lo usa para contar las palabras en la página.
 
 \index{WikiFetcher}
 
-In the next section, you'll have a chance to run this code and test your
-understanding by filling in a missing method.
+En la siguiente sección, tendrás una oportunidad de ejecutar este código y probar
+tu comprensión al llenar un método faltante.
 
 
-\section{Exercise 6}
+\section{Ejercicio 6}
 \label{exercise6}
 
-In the repository for this book,
-you'll find the source files for this exercise:
+En el repositorio para este libro,
+encontrarás los archivos de código fuente para este ejercicio:
 
 \begin{itemize}
 
-\item \java{TermCounter.java} contains the code from the previous
-  section.
+\item \java{TermCounter.java} contiene el código de la sección anterior.
 
-\item \java{TermCounterTest.java} contains test code for
+\item \java{TermCounterTest.java} contiene código de prueba para
   \java{TermCounter.java}.
 
-\item \java{Index.java} contains the class definition for the next
-  part of this exercise.
+\item \java{Index.java} contiene la definición de la clase para la siguiente
+  parte de este ejercicio.
 
-\item \java{WikiFetcher.java} contains the class we used in the
-  previous exercise to download and parse Web pages.
+\item \java{WikiFetcher.java} contiene la clase que usamos en el 
+  ejercicio anterior para descargar e interpretar páginas Web.
 
-\item \java{WikiNodeIterable.java} contains the class we used to
-  traverse the nodes in a DOM tree.
+\item \java{WikiNodeIterable.java} contiene la clase que usamos para recorrer
+  los nodos en un árbol DOM.
 
 \end{itemize}
 
-You'll also find the Ant build file
+También encontrarás el archivo de construcción Ant
 \java{build.xml}.
 
 \index{Ant}
 
-Run \java{ant build} to compile the source
-  files. Then run \java{ant TermCounter}; it should run the code from
-  the previous section and print a list of terms and their counts. The
-  output should look something like this:
+Ejecuta \java{ant build} para compilar los archivos de código
+  fuente. Luego ejecuta \java{ant TermCounter}; debería ejecutar el código
+  de la sección anterior e imprimir una lista de términos y sus conteos. La
+  salida debería verse algo así:
 
 \begin{verbatim}
 genericservlet, 2
@@ -4086,23 +4082,23 @@ occur, 2
 Total of all counts = -1
 \end{verbatim}
 
-When you run it, the order of the terms might be different.
+Cuando lo ejecutes, el orden de los términos podría ser diferente.
 
 \index{size}
 
-The last line is supposed to print the total of the term counts, but
-it returns \java{-1} because the method \java{size} is incomplete.
-Fill in this method and run \java{ant TermCounter} again. The result
-should be \java{4798}.
+Se supone que la última línea imprima el total de los conteos de términos, pero
+devuelve \java{-1} porque el método \java{size} está incompleto.
+Llena este método y ejecuta \java{ant TermCounter} de nuevo. El resultado
+debería ser \java{4798}.
 
-Run \java{ant TermCounterTest} to confirm that this part of the
-exercise is complete and correct.
+Ejecuta \java{ant TermCounterTest} para confirmar que esta parte del
+ejercicio está completa y correcta.
 
 \index{Index}
 
-For the second part of the exercise, I'll present an implementation of an
-\java{Index} object and you will fill in a missing method. Here's the
-beginning of the class definition:
+Para la segunda parte del ejercicio, presentaré una implementación de un
+objeto \java{Index} y llenarás un método faltante. Aquí está el principio
+de la definición de la clase:
 
 \begin{verbatim}
 public class Index {
@@ -4127,53 +4123,52 @@ public class Index {
     }
 \end{verbatim}
 
-The instance variable, \java{index}, is a map from each search term to
-a set of \java{TermCounter} objects. Each \java{TermCounter}
-represents a page where the search term appears.
+La variable de instancia, \java{index}, es un mapa de cada término de búsqueda con
+un conjunto de objetos \java{TermCounter}. Cada \java{TermCounter}
+representa una página donde el término de búsqueda aparece.
 
-The \java{add} method adds a new \java{TermCounter} to the set
-associated with a term. When we index a term that has not appeared
-before, we have to create a new set. Otherwise we can just add a new
-element to an existing set. In that case, \java{set.add} modifies a
-set that lives inside \java{index}, but doesn't modify \java{index}
-itself. The only time we modify \java{index} is when we add a new
-term.
+El método \java{add} agrega un nuevo \java{TermCounter} al conjunto (set)
+asociado con un término. Cuando indexamos un término que no había aparecido
+antes, tenemos que crear un nuevo conjunto. De lo contrario, podemos simplemente
+agregar un nuevo elemento a un set existente. En ese caso, \java{set.add} modifica
+un set que vive dentro de un \java{index}, pero no modifica el \java{index}
+en sí mismo. La única vez que modificamos \java{index} es cuando agregamos un
+nuevo término.
 
 \index{add}
 \index{get}
+Finalmaente, el método \java{get} toma un término de búsqueda y devuelve el set
+correspndiente de objetos \java{TermCounter}.
 
-Finally, the \java{get} method takes a search term and returns the
-corresponding set of \java{TermCounter} objects.
-
-This data structure is moderately complicated. To review, an
-\java{Index} contains a \java{Map} from each search term to a
-\java{Set} of \java{TermCounter} objects, and each \java{TermCounter}
-is a map from search terms to counts.
+Esta estructura de datos es moderadamente más complicada. Para repasar,
+un \java{Index} contiene un \java{Map} de cada término de búsqueda con un
+\java{Set} de objetos \java{TermCounter}, y cada \java{TermCounter}
+es un mapa de términos de búsqueda a conteos.
 
 \begin{figure}
 \centering
 \includegraphics[width=4in]{figs/index.pdf}
-\caption{Object diagram of an \java{Index}.}
+\caption{Diagrama de objeto de un \java{Index}.}
 \label{indexfig}
 \end{figure}
 
-Figure~\ref{indexfig} is an object diagram that shows these
-objects.  The \java{Index} object has an instance variable named
-\java{index} that refers to a \java{Map}.  In this example the
-\java{Map} contains only one string, \java{"Java"}, which maps
-to a \java{Set} that contains two \java{TermCounter} objects,
-one for each page where the word ``Java'' appears.
+La figura~\ref{indexfig} es un diagrama de objeto que muestra estos
+objetos.  El objeto \java{Index} tiene una variable de instancia llamada
+\java{index} que se refiere a un \java{Map}.  Es este ejemplo el
+\java{Map} contiene sólo una cadena, \java{"Java"}, que se mapea
+a un \java{Set} que contiene dos objetos \java{TermCounter},
+uno para cada página donde la palabra ``Java'' aparece.
 
-\index{object diagram}
+\index{diagrama de objeto}
 \index{URL}
 
-Each \java{TermCounter} contains \java{label}, which is the URL
-of the page, and \java{map}, which is a \java{Map} that
-contains the words on the page
-and the number of times each word appears.
+Cada \java{TermCounter} contiene \java{label}, que es la URL
+de la página y \java{map}, que es un \java{Map} que
+contiene las palabras en la página y el número de veces
+que cada palabra aparece.
 
-The method \java{printIndex} shows how to
-unpack this data structure:
+El método \java{printIndex} muestra cómo
+desempaquetar esta estructura de datos:
 
 \begin{verbatim}
     public void printIndex() {
@@ -4191,32 +4186,32 @@ unpack this data structure:
     }
 \end{verbatim}
 
-The outer loop iterates the search terms. The inner loop iterates the
-\java{TermCounter} objects.
+El bucle externo itera por los términos de búsqueda. El bucle interno itera por
+los objetos \java{TermCounter}.
 
 \index{Ant}
 
-Run \java{ant build} to make sure your source code is compiled, and
-then run \java{ant Index}. It downloads two Wikipedia pages, indexes
-them, and prints the results; but when you run it you won't see any
-output because we've left one of the methods empty.
+Ejecuta \java{ant build} para asegurarte que tu código fuente está compilado y
+entonces ejecuta \java{ant Index}. Éste descarga dos páginas de Wikipedia pages, las
+index e imprime los resultados; pero cuando lo ejecutes no verás ninguna
+salida porque hemos dejado vacío uno de los métodos.
 
 \index{indexPage}
 
-Your job is to fill in \java{indexPage}, which takes a URL (as a
-\java{String}) and an \java{Elements} object, and updates the index. The
-comments below sketch what it should do:
+Tu trabajo es llenar \java{indexPage}, que toma una URL (como una
+\java{String}) y un objeto \java{Elements}, y actualiza el índice. Los
+comentarios siguientes dicen a grandes rasgos lo que debería hacer:
 
 \begin{verbatim}
 public void indexPage(String url, Elements paragraphs) {
-    // make a TermCounter and count the terms in the paragraphs
+    // crea un TermCounter y cuenta los términos en los párrafos
 
-    // for each term in the TermCounter, add the TermCounter to the index
+    // para cada término en el TermCounter, agrega el TermCounter al index
 }
 \end{verbatim}
 
-When it's working, run \java{ant Index} again, and you should see
-  output like this:
+Cuando funcione, ejecuta \java{ant Index} de nuevo, y deberías ver
+  una salida como esta:
 
 \begin{verbatim}
 ...
@@ -4231,10 +4226,10 @@ occur
     http://en.wikipedia.org/wiki/Java_(programming_language) 2
 \end{verbatim}
 
-The order of the search terms might be different when you run it.
+El orden de los términos de búsqueda podría ser diferente cuando lo ejecutes.
 
-Also, run \java{ant TestIndex} to confirm that this part of the exercise is
-complete.
+También, ejecuta \java{ant TestIndex} para confirmar que esta parte del ejercicio
+está completa.
 
 
 \chapter{The Map interface}
