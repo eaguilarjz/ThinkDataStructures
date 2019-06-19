@@ -5858,35 +5858,35 @@ capítulo, presentaré mis soluciones y comprobaré el desempeño de los
 métodos principales.
 
 
-\chapter{Binary search tree}
+\chapter{Árbol binario de búsqueda}
 
-This chapter presents solutions to the previous exercise, then tests the
-performance of the tree-backed map. I present a problem with the
-implementation and explain how Java's \java{TreeMap} solves it.
+Este capítulo presenta las soluciones al ejercicio anterior, luego prueba
+el desemepeño del mapa basado en un árbol. Presento un problema con la
+implementación y explico cómo el \java{TreeMap} de Java lo resuelve.
 
 
-\section{A simple \java{MyTreeMap}}
+\section{Un \java{MyTreeMap} simple}
 \label{our-version-of-mytreemap}
 
-In the previous exercise I gave you the outline of \java{MyTreeMap} and
-asked you to fill in the missing methods. Now I'll present a
-solution, starting with \java{findNode}:
+En el ejercicio anterior te dí un boceto de \java{MyTreeMap} y
+te pedí que llenaras los métodos faltantes. Ahora presentaré una
+solución, comenzando con \java{findNode}:
 
 \index{MyTreeMap}
 \index{findNode}
 
 \begin{verbatim}
 private Node findNode(Object target) {
-    // some implementations can handle null as a key, but not this one
+    // algunas implementaciones pueden tratar a null como clave, no esta
     if (target == null) {
             throw new IllegalArgumentException();
     }
 
-    // something to make the compiler happy
+    // algo para hacer feliz al compilador
     @SuppressWarnings("unchecked")
     Comparable<? super K> k = (Comparable<? super K>) target;
 
-    // the actual search
+    // la búsqueda como tal
     Node node = root;
     while (node != null) {
         int cmp = k.compareTo(node.key);
@@ -5901,51 +5901,50 @@ private Node findNode(Object target) {
 }
 \end{verbatim}
 
-\java{findNode} is a private method used by \java{containsKey} and
-\java{get}; it is not part of the \java{Map} interface. The
-parameter \java{target} is the key we're looking for. I explained the
-first part of this method in the previous exercise:
+\java{findNode} es un método privado usado por \java{containsKey} y
+\java{get}; no es parte de la interfaz \java{Map} El parámero
+\java{target} es la clave que buscamos. Expliqué la primera parte
+de este método en el ejercicio previo:
 
 \begin{itemize}
 
 \item
-  In this implementation, \java{null} is not a legal value for a key.
+  En esta implementación, \java{null} no es un valor legal para una clave.
 
 \item
-  Before we can invoke \java{compareTo} on \java{target}, we have to
-  typecast it to some kind of \java{Comparable}. The ``type wildcard''
-  used here is as permissive as possible; that is, it works with any
-  type that implements \java{Comparable} and whose \java{compareTo}
-  method accepts \java{K} or any supertype of \java{K}.
+  Antes de que podamos invocar a \java{compareTo} en \java{target}, tenemos
+  que convertirlo a algún tipo de \java{Comparable}. El ``tipo comodín''
+  usado aquí es tan permisivo como resulta posible; es decir, funciona con
+  cualquier tipo que implemente \java{Comparable} y cuyo método \java{compareTo}
+  acepte \java{K} o cualquier supertipo de \java{K}.
 
 \end{itemize}
 
-\index{type wildcard}
+\index{tipo comodín}
 
-After all that, the actual search is relatively simple. We initialize a
-loop variable \java{node} so it refers to the root node. Each time
-through the loop, we compare the target to \java{node.key}. If the
-target is less than the current key, we move to the left child. If it's
-greater, we move to the right child. And if it's equal, we return the
-current node.
+Después de todo eso, la búsqueda como tal es relativamente simple. Inicializamos una
+variable de repetición \java{node} que se refiera al nodo raíz. En cada repetición
+del bucle, comparamos el objetivo (target) con \java{node.key}. Si el objetivo
+es menor que la clave actual, nos movemos al hijo izquierdo. Si es mayor, nos
+movemos el hijo derecho. Y si son iguales, devolvemos el nodo actual.
 
-If we get to the bottom of the tree without finding the target, we
-conclude that it is not in the tree and return \java{null}.
+Si llegamos a la parte inferior del árbol sin encontrar el objetivo,
+concluimos que no está en el árbol y devolvemos \java{null}.
 
 
-\section{Searching for values}
+\section{Búsqueda de valores}
 \label{searching-for-values}
 
-As I explained in the previous exercise, the runtime of
-\java{findNode} is proportional to the height of the tree, not the
-number of nodes, because we don't have to search the whole tree. But
-for \java{containsValue}, we have to search the values, not the keys;
-the BST property doesn't apply to the values, so we have to search the
-whole tree.
+Como expliqué en el ejercicio previo, el tiempo de ejecución de
+\java{findNode} es proporcional a la altura del árbol, no al
+número de nodos, porque no tenemos que buscar en el árbol completo.
+Pero para \java{containsValue}, tenemos que buscar los valores, no las claves;
+la propiedad ABB no aplica a los valores, así que tenemos que buscar en el
+árbol completo.
 
-\index{recursion}
+\index{recursión}
 
-My solution is recursive:
+Mi solución es recursiva:
 
 \begin{verbatim}
 public boolean containsValue(Object target) {
@@ -5969,59 +5968,58 @@ private boolean containsValueHelper(Node node, Object target) {
 }
 \end{verbatim}
 
-\java{containsValue} takes the target value as a parameter and
-immediately invokes \java{containsValueHelper}, passing the root of
-the tree as an additional parameter.
+\java{containsValue} toma el valor objetivo como un parámetro e
+invoca inmediatamente a \java{containsValueHelper}, pasando la raíz
+del árbol como un parámetro adicional.
 
-\index{base case}
-\index{recursion}
+\index{caso base}
+\index{recursió}
 
-Here's how \java{containsValueHelper} works:
+Así es cómo funciona \java{containsValueHelper}:
 
 \begin{itemize}
 
 \item
-  The first \java{if} statement checks the base case of the recursion.
-  If \java{node} is \java{null}, that means we have recursed to the
-  bottom of the tree without finding the \java{target}, so we should
-  return \java{false}. Note that this only means that the target did
-  not appear on one path through the tree; it is still possible that it
-  will be found on another.
+  La primera instrucción \java{if} comprueba el caso base de la recursión.
+  Si \java{node} es \java{null}, eso significa que hemos llegado hasta la
+  parte inferior del árbol sin encontrar el \java{target}, así que deberíamos
+  devolver \java{false}. Nota que esto sólo implica que el objetivo no
+  aparecía en una ruta del árbol; aún es posible que sea encontrado en otra.
 
 \item
-  The second case checks whether we've found what we're looking for. If
-  so, we return \java{true}. Otherwise, we have to keep going.
+  El segundo caso comprueba si hemos encontrado lo que estamos buscando. De ser
+  así, devolveríamos \java{true}. De otra manera, tenemos que continuar.
 
 \item
-  The third case makes a recursive call to search for \java{target} in
-  the left subtree. If we find it, we can return \java{true}
-  immediately, without searching the right subtree. Otherwise, we keep
-  going.
+  El tercer caso realiza una llamada recursiva a la búsqueda para \java{target} en
+  el subárbol izquierdo. Si lo encontramos, podemos devolver \java{true}
+  inmediatamente, sin tener que buscar en el subárbol derecho. De lo contrario,
+  seguimos.
 
 \item
-  The fourth case searches the right subtree. Again, if we find what we
-  are looking for, we return \java{true}. Otherwise, having searched
-  the whole tree, we return \java{false}.
+  El cuarto caso busca en el subárbol derecho. De nuevo, si encontramos lo que
+  estamos buscando, devolvemos \java{true}. De lo contrario, tras haber buscado
+  en todo el árbol, devolvemos \java{false}.
 
 \end{itemize}
 
-This method ``visits'' every node in the tree, so it takes time
-proportional to the number of nodes.
+Este método ``visita'' cada nodo en el árbol, así que toma tiempo
+proporcional al número de nodos.
 
-\index{linear time}
+\index{tiempo lineal}
 
 
-\section{Implementing {\tt put}}
+\section{Implementación de {\tt put}}
 \label{implementing-put}
 
-The \java{put} method is a little more complicated than \java{get}
-because it has to deal with two cases: (1) if the given key is already
-in the tree, it replaces and returns the old value; (2) otherwise it has
-to add a new node to the tree, in the right place.
+El método \java{put} es un poco más complicado que \java{get}
+porque tiene que lidiar con dos casos: (1) si la clave dada ya
+está en el árbol, la reemplaza y devuelve el valor antiguo; (2) de lo
+contrario tiene que agregar un nuevo nodo al árbol, en el lugar correcto.
 
 \index{put}
 
-In the previous exercise, I provided this starter code:
+En el ejercicio anterior, proveía este código inicial:
 
 \begin{verbatim}
 public V put(K key, V value) {
@@ -6037,7 +6035,7 @@ public V put(K key, V value) {
 }
 \end{verbatim}
 
-And asked you to fill in \java{putHelper}. Here's my solution:
+Y te pedí que llenaras \java{putHelper}. Aquí está mi solución:
 
 \begin{verbatim}
 private V putHelper(Node node, K key, V value) {
@@ -6068,57 +6066,57 @@ private V putHelper(Node node, K key, V value) {
 }
 \end{verbatim}
 
-\index{subtree}
+\index{subárbol}
 
-The first parameter, \java{node}, is initially the root of the tree,
-but each time we make a recursive call, it refers to a different
-subtree.  As in \java{get}, we use the \java{compareTo} method to
-figure out which path to follow through the tree.  If \java{cmp < 0},
-the key we're adding is less than \java{node.key}, so we want to look
-in the left subtree. There are two cases:
+El primer parámetro, \java{node}, es inicialmente la raíz del árbol,
+pero cada vez que hacemos una llamada recursiva, se refiere un subárbol
+diferente. Como en \java{get}, usamos el método \java{compareTo} para
+decidir qué ruta seguir en el árbol. Si \java{cmp < 0}, la clave que
+estamos agregando es menor que \java{node.key}, así que queremos buscar
+en el subárbol izquierdo. Aquí hay dos casos:
 
 \begin{itemize}
 
 \item
-  If the left subtree is empty, that is, if \java{node.left} is
-  \java{null}, we have reached the bottom of the tree without finding
-  \java{key}. At this point, we know that \java{key} isn't in the
-  tree, and we know where it should go. So we create a new node and add
-  it as the left child of \java{node}.
+  Si el subárbol izquierdo está vacío, es decir, si \java{node.left} es
+  \java{null}, hecmos alcanzado la parte inferior del árbol sin encontrar a
+  \java{key}. En este punto, sabemos que \java{key} no está en el árbol
+  y sabemos dónde debería ir. Así que creamos un nuevo nodo y lo agregamos
+  como el hijo izquierdo de \java{node}.
 
 \item
-  Otherwise we make a recursive call to search the left subtree.
+  De lo contarior, hacemos una llamada recursiva para buscar en el subárbol izquierdo.
 
 \end{itemize}
 
-If \java{cmp > 0}, the key we're adding is greater than
-\java{node.key}, so we want to look in the right subtree. And we
-handle the same two cases as in the previous branch.
-Finally, if \java{cmp == 0}, we found the key in the tree, so we
-replace and return the old value.
+Si \java{cmp > 0}, la clave que estamos agregando es mayor que
+\java{node.key}, así que queremos buscar en el subárbol derecho. Y se
+tienen los mismo dos casos que en la rama anterior.
+Finalmente, si \java{cmp == 0}, encontramos la clave en el árbol, así que
+la reemplazamos y devolvemos el valor antiguo.
 
-\index{iterative}
+\index{iterativo}
 
-I wrote this method recursively to make it more readable, but it would
-be straightforward to rewrite it iteratively, which you might want to
-do as an exercise.
+Escribí este método recursivamente para hacerlo más legible, pero debería
+ser sencillo reescribirlo de forma iterativa, lo que podrías querer
+hacer como un ejercicio.
 
 
-\section{In-order traversal}
+\section{Recorrido en orden}
 \label{in-order-traversal}
 
-The last method I asked you to write is \java{keySet}, which returns
-a \java{Set} that contains the keys from the tree in ascending order.
-In other implementations of \java{Map}, the keys returned by
-\java{keySet} are in no particular order, but one of the capabilities
-of the tree implementation is that it is simple and efficient to sort
-the keys. So we should take advantage of that.
+El último método que te pedí escribir es \java{keySet}, que devuelve
+un \java{Set} que contiene las claves del árbol en orden ascendente.
+En otras implementaciones de \java{Map}, las claves devueltas por
+\java{keySet} no están en ningún orden particular, pero una de las 
+características de la implementación de árbol es que es simple y eficiente
+ordenar las claves. Así que deberíamos aprovechar eso.
 
-\index{in-order}
-\index{tree traversal}
+\index{en orden}
+\index{recorrido de árboles}
 \index{keySet}
 
-Here's my solution:
+Aquí está mi solución:
 
 \begin{verbatim}
 public Set<K> keySet() {
@@ -6135,78 +6133,78 @@ private void addInOrder(Node node, Set<K> set) {
 }
 \end{verbatim}
 
-In \java{keySet}, we create a \java{LinkedHashSet}, which is a
-\java{Set} implementation that keeps the elements in order (unlike
-most other \java{Set} implementations). Then we call
-\java{addInOrder} to traverse the tree.
+En \java{keySet}, creamos un \java{LinkedHashSet}, que es una
+implementación de \java{Set} que mantiene los elementos en orden (a diferencia
+de la mayoría de las demás implmentaciones de \java{Set}). Luego llamamos a
+\java{addInOrder} para recorrer el árbol.
 
 \index{LinkedHashSet}
 
-The first parameter, \java{node}, is initially the root of the tree,
-but as you should expect by now, we use it to traverse the tree
-recursively. \java{addInOrder} performs a classic ``in-order
-traversal'' of the tree.
+El primer parámetro, \java{node}, es inicialmente la raíz del árbol,
+pero como deberías esperar por ahora, la usamos para navegar por el árbol
+de forma recursiva. \java{addInOrder} realiza un clásico ``recorrido
+en orden'' del árbol.
 
-If \java{node} is \java{null}, that means the subtree is empty, so
-we return without adding anything to \java{set}. Otherwise we:
+Si el \java{node} es \java{null}, significa que el subárbol está vacío, así que
+nos salimos sin agregar nada al \java{set}. De lo contrario:
 
 \begin{enumerate}
 
 \item
-  Traverse the left subtree in order.
+  Recorre el subárbol izquierdo en orden.
 
 \item
-  Add \java{node.key}.
+  Agrega \java{node.key}.
 
 \item
-  Traverse the right subtree in order.
+  Navega por el subárbol derecho en orden.
 
 \end{enumerate}
 
-Remember that the BST property guarantees that all nodes in the left
-subtree are less than \java{node.key}, and all nodes in the right
-subtree are greater. So we know that \java{node.key} has been added in
-the correct order.
+Recuerda que la propiedad ABB garantiza que todos los nodos en el subárbol
+izquierdo son menores que \java{node.key}, y todos los nodos en el subárbol derecho
+son mayores. Así que sabemos que \java{node.key} ha sido agregado en el orden
+correcto.
 
-\index{BST property}
-\index{recursion}
-\index{base case}
+\index{propiedad ABB}
+\index{recursión}
+\index{caso base}
 
-Applying the same argument recursively, we know that the elements from
-the left subtree are in order, as well as the elements from the right
-subtree.  And the base case is correct: if the subtree is empty, no
-keys are added.  So we can conclude that this method adds all keys in
-the correct order.
+Al aplicar el mismo argumento recursivamente, sabemos que los elementos del
+subárbol izquierdo están en orden, así como los elementos del subárbol
+derecho. Y el caso base es correcto: si el subárbol está vacío, no se
+agregan claves. Así que podemos concluir que este método agrega todas las
+claves en el orden correcto.
 
-Because this method visits every node in the tree, like
-\java{containsValue}, it takes time proportional to $n$.
+Porque este método visita cada nodo en el árbol, como
+\java{containsValue}, toma tiempo proporcional a $n$.
 
 
-\section{The logarithmic methods}
+\section{Los métodos logarítmicos}
 \label{the-logarithmic-methods}
 
-In \java{MyTreeMap}, the methods \java{get} and \java{put} take
-time proportional to the height of the tree, $h$. In the previous
-exercise, we showed that if the tree is full --- if every level of the tree
-contains the maximum number of nodes --- the height of the tree is
-proportional to $\log n$.
+En \java{MyTreeMap}, los métodos \java{get} y \java{put} toman
+tiempo proporcional a la altura del árbol, $h$. En el ejercicio
+anterior, mostramos que si el árbol está lleno --- si cada nivel del
+árbol contiene el máximo número de nodos --- la altura del árbol es
+proporcional a $\log n$.
 
-\index{logarithmic time}
+\index{tiempo logarítmico}
 \index{get}
 \index{put}
 
-And I claimed that \java{get} and \java{put} are logarithmic; that
-is, they take time proportional to $\log n$. But for most
-applications, there's no guarantee that the tree is full. In general,
-the shape of the tree depends on the keys and what order they are added.
+Y afirmé que \java{get} y \java{put} son logarítmicos; es decir,
+toman tiempo proporcional a $\log n$. Pero para la mayoría de
+aplicaciones, no hay garantías que el árbol esté llenon. En general,
+la forma del árbol depende de las claves y el orden en que se agreguen.
 
-To see how this works out in practice, we'll test our implementation
-with two sample datasets: a list of random strings and a list of
-timestamps in increasing order.
+Para ver cómo esto funciona en la práctica, probaremos nuestra implementación
+con dos conjuntos de datos de ejemplo: una lista de cadenas al azar y una
+lista de marcas de tiempo (timestamps) en orden ascendente.
 
-\index{profiling}
+\index{perfilado}
 
-Here's the code that generates random strings:
+Aquí está el código que genera cadenas al azar:
 
 \begin{verbatim}
 Map<String, Integer> map = new MyTreeMap<String, Integer>();
@@ -6217,15 +6215,15 @@ for (int i=0; i<n; i++) {
 }
 \end{verbatim}
 
-\java{UUID} is a class in the \java{java.util} package that can
-generate a random ``universally unique identifier''. UUIDs are useful
-for a variety of applications, but in this example we're taking
-advantage of an easy way to generate random strings.
+\java{UUID} es una clase en el paquete \java{java.util} que puede
+generar un ``identificador universalmente único'' al azar. Los UUIDs son
+útiles para una variedad de aplicaciones, pero en este ejemplo tomamos
+ventaja de una forma fácil para generar cadenas al azar.
 
 \index{UUID}
 
-I ran this code with \java{n=16384} and measured the runtime and the
-height of the final tree. Here's the output:
+Ejecuté este código con \java{n=16384} y medí el tiempo de ejecución
+y la altura del árbol final. Aquí está la salida:
 
 \begin{verbatim}
 Time in milliseconds = 151
@@ -6234,32 +6232,32 @@ log base 2 of size of MyTreeMap = 14.0
 Final height of MyTreeMap = 33
 \end{verbatim}
 
-I included ``log base 2 of size of MyTreeMap'' to see how tall the tree
-would be if it were full. The result indicates that a full tree with
-height 14 would contain 16,384 nodes.
+Incluí ``log base 2 of size of MyTreeMap'' (logaritmo base 2 del tamaño de
+MyTreeMap) para ver qué tan alto sería el árbol si estuviera lleno. El
+resultado indica que un árbol lleno con altura 14 contendría 16,384 nodos.
 
-The actual tree of random strings has height 33, which is substantially
-more than the theoretical minimum, but not too bad. To find one key in a
-collection of 16,384, we only have to make 33 comparisons. Compared to a
-linear search, that's almost 500 times faster.
+El árbol real de cadenas al azar tiene altura 33, que es sustancialmente
+mayor a la altura teórica mínima, pero no está mal. Para encontrar una
+clave en un colección de 16,348, sólo tenemos que hacer 33 comparaciones.
+Con respecto a una búsqueda lineal, es casi 500 veces más rápida.
 
-\index{linear search}
+\index{búsqueda lineal}
 
-This performance is typical with random strings or other keys that are
-added in no particular order. The final height of the tree might be 2-3
-times the theoretical minimum, but it is still proportional to
-$\log n$, which is much less than $n$. In fact,
-$\log n$ grows so slowly as $n$ increases, it can be
-difficult to distinguish logarithmic time from constant time in
-practice.
+Este desempeño es típico para cadenas al azar u otras claves que no
+agregan en ningún orden particular. La altura final del árbol podría ser
+2-3 veces el mínimo teórico, pero todavía es proporcional a
+$\log n$, que es mucho menor que $n$. De hecho,
+$\log n$ crece tan lento conforme $n$ se incrementa, que puede ser
+difícil distinguir tiempo logarítmico de tiempo constante en la
+práctica.
 
-\index{constant time}
-\index{logarithmic time}
+\index{tiempo constante}
+\index{tiempo logarítmico}
 \index{timestamp}
 
-However, binary search trees don't always behave so well. Let's see what
-happens when we add keys in increasing order. Here's an example that
-measures timestamps in nanoseconds and uses them as keys:
+Sin embargo, los árboles binarios de búsqueda no siempre se comportan tan bien.
+Veamos lo que sucede cuando agregamos claves en orden ascendente. Aquí está un
+ejemplo que mide marcas de tiempo en nanosegundos y las usa como claves:
 
 \begin{verbatim}
 MyTreeMap<String, Integer> map = new MyTreeMap<String, Integer>();
@@ -6270,12 +6268,12 @@ for (int i=0; i<n; i++) {
 }
 \end{verbatim}
 
-\java{System.nanoTime} returns an integer with type \java{long} that
-indicates elapsed time in nanoseconds. Each time we call it, we get a
-somewhat bigger number. When we convert these timestamps to strings,
-they appear in increasing alphabetical order.
+\java{System.nanoTime} devuelve un entero de tipo \java{long} que
+indica el tiempo transcurrido en nanosegundos. Cada vez que lo llamamos,
+obtenemos un número más grande. Cuando convertimos estas marcas de
+tiempo a cadenas, aparecen en orden alfabético ascendente.
 
-And let's see what happens when we run it:
+Y veamos lo que ocurre cuando lo ejecutamos:
 
 \begin{verbatim}
 Time in milliseconds = 1158
@@ -6284,100 +6282,100 @@ log base 2 of size of MyTreeMap = 14.0
 Final height of MyTreeMap = 16384
 \end{verbatim}
 
-The runtime is more than seven times longer than in the previous case.
-longer. If you wonder why, take a look at the final height of the tree:
-16384!
+El tiempo de ejecución es más de siete veces más largo que el del caso
+anterior. Si te preguntas por qué, mira la altura final del árbol: ¡16384!
 
 \begin{figure}
 \centering
 \includegraphics[width=4in]{figs/bst.pdf}
-\caption{Binary search trees, balanced (left) and unbalanced (right).}
+\caption{Árboles binarios de búsqueda, balanceado (izquierda) y desbalanceado (derecha).}
 \label{bstfig}
 \end{figure}
 
-If you think about how \java{put} works, you can figure out what's
-going on. Every time we add a new key, it's larger than all of the keys
-in the tree, so we always choose the right subtree, and always add the
-new node as the right child of the rightmost node. The result is an
-``unbalanced'' tree that only contains right children.
+Si piensas en cómo funciona \java{put}, puedes entender lo que ocurre.
+Cada vez que agregamos una nueva clave, es mayor que todas las demás
+claves en el árbol, así que siempre elegimos el subárbol derecho y siempre
+agregamos el nuevo nodo como el hijo derecho del nodo más a la dercha. El
+resultado es un árbol ``desbalanceado'' que sólo contiene hijos a la derecha.
 
-\index{unbalanced tree}
-\index{balanced tree}
+\index{árbol desbalanceado}
+\index{árbol balanceado}
 
-The height of this tree is proportional to $n$, not
-$\log n$, so the performance of \java{get} and \java{put} is
-linear, not logarithmic.
+La altura de este árbol es proporcional a $n$, no
+$\log n$, así que el desempeño de \java{get} y \java{put} es
+lineal, no logarítmico.
 
-\index{linear time}
+\index{tiempo lineal}
 
-Figure~\ref{bstfig} shows an example of a balanced and unbalanced
-tree.  In the balanced tree, the height is 4 and the total number of
-nodes is $2^4-1 = 15$.  In the unbalanced tree with the same number of
-nodes, the height is 15.
+La figura~\ref{bstfig} muestra un ejemplo de un árbol balanceado y un
+árbol desbalanceado. En el árbol balanceado, la altura es 4 y el número
+total de nodos es $2^4-1 = 15$.  En el árbol desbalanceado con el mismo
+número de nodos, la altura es 15.
 
 
-\section{Self-balancing trees}
+\section{Árboles auto-balanceables}
 \label{self-balancing-trees}
 
-\index{self-balancing tree}
+\index{árboles auto-balanceables}
 
-There are two possible solutions to this problem:
+Hay dos posibles soluciones para este problema:
 
 \begin{itemize}
 
 \item
-  You could avoid adding keys to the \java{Map} in order. But this is
-  not always possible.
+  Puedes evitar agregar claves al \java{Map} en orden. Pero esto
+  no siempre es posible.
 
 \item
-  You could make a tree that does a better job of handling keys if they
-  happen to be in order.
+  Puedes hacer un árbol que haga un mejor trabajo al manejar claves
+  si se da el caso que están en orden.
 
 \end{itemize}
 
-The second solution is better, and there are several ways to do it. The
-most common is to modify \java{put} so that it detects when the tree
-is starting to become unbalanced and, if so, rearranges the nodes. Trees
-with this capability are called ``self-balancing''. Common
-self-balancing trees include the AVL tree (``AVL'' are the initials of
-the inventors), and the red-black tree, which is what the Java
-\java{TreeMap} uses.
+La segunda solución es mejor y hay varias maneras de hacerlo. La más
+común es modificar \java{put} para que detecte cuando el árbol está
+comenzando a desbalancearse y, de ser así, reacomode los nodos. Los
+árboles con esta habilidad se llaman ``auto-balanceables''. Los árboles
+auto-balanceables comunes incluye el árbol AVL (``AVL'' son las iniciales
+de sus inventores) y el árbol rojo-negro, que es el que el \java{TreeMap}
+de Java usa.
 
-\index{AVL tree}
-\index{red-black tree}
+\index{árbol AVL}
+\index{árbol rojo-negro}
 
-In our example code, if we replace \java{MyTreeMap} with the Java
-\java{TreeMap}, the runtimes are about the same for the random strings
-and the timestamps. In fact, the timestamps run faster, even though they
-are in order, probably because they take less time to hash.
+En nuestro código de ejemplo, si reemplazamos \java{MyTreeMap} con el 
+\java{TreeMap} de Java, los tiempos de ejecución son casi iguales para
+cadenas aleatorias y para marcas de tiempo. De hecho, las marcas de tiempo
+se ejecutan incluso más rápido, aunque están en orde, probablemente porque
+necesitan menos tiempo para codificarse (hash).
 
-\index{logarithmic time}
+\index{tiempo logarítmico}
 
-In summary, a binary search tree can implement \java{get} and
-\java{put} in logarithmic time, but only if the keys are added in an
-order that keeps the tree sufficiently balanced. Self-balancing trees
-avoid this problem by doing some additional work each time a new key is
-added.
+En resumen, un árbol binario de búsqueda puede implementar \java{get} y
+\java{put} en tiempo logarítmico, pero solo si las claves se agregan en un
+orden que mantenga al árbol lo suficientemente balanceado. Los árboles
+auto-balanceables previenen este problema realizando trabajo adicional cada
+vez que se agrega una nueva clave.
 
-You can read more about self-balancing trees at
+Puedes leer más sobre árboles auto-balanceables en
 \url{http://thinkdast.com/balancing}.
 
 
-\section{One more exercise}
+\section{Un ejercicio más}
 \label{one-more-exercise}
 
-In the previous exercise you didn't have to implement \java{remove},
-but you might want to try it. If you remove a node from the middle of
-the tree, you have to rearrange the remaining nodes to restore the BST
-property.  You can probably figure out how to do that on your own, or
-you can read the explanation at
+En el ejercicio anterior no tuviste que implementar \java{remove},
+pero podrías querer intentarlo. Si remueves un nodo de la mitad del
+árbol, debes reacomodar los nodos restantes para restaurar la propiedad
+ABB. Probablemente puedas deducir cómo hacer eso por tu cuenta, o puedes
+leer la explicación en
 \url{http://thinkdast.com/bstdel}.
 
 \index{remove}
 
-Removing a node and rebalancing a tree are similar operations: if you do
-this exercise, you will have a better idea of how self-balancing trees
-work.
+Remover un nodo y rebalancear un árbol son operaciones similares: si haces
+este ejercicio, tendrás una mejor idea de cómo funcionan los árboles
+auto-balanceables.
 
 
 

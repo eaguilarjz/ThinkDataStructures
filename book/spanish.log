@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6745 64-bit) (preloaded format=pdflatex 2018.8.21)  19 JUN 2019 10:35
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6745 64-bit) (preloaded format=pdflatex 2018.8.21)  19 JUN 2019 15:25
 entering extended mode
 **./spanish.tex
 (spanish.tex
@@ -1472,13 +1472,25 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `\lstinline' on input line 5868.
 
 
-Overfull \hbox (34.76523pt too wide) in paragraph at lines 5902--5902
-[]    \OT1/cmtt/m/n/12 // some implementations can handle null as a key, but no
-t this one[] 
+Overfull \hbox (47.11523pt too wide) in paragraph at lines 5902--5902
+[]    \OT1/cmtt/m/n/12 // algunas implementaciones pueden tratar a null como cl
+ave, no esta[] 
  []
 
-[119] [120] [121] [122] [123] [124] [125]
-Overfull \hbox (10.06522pt too wide) in paragraph at lines 6271--6271
+[119] [120] [121] [122]
+Overfull \hbox (2.04143pt too wide) in paragraph at lines 6088--6089
+[]\OT1/cmr/m/n/12 De lo con-tar-ior, hace-mos una lla-mada re-cur-siva para bus
+-car en el subarbol
+ []
+
+[123] [124]
+Overfull \hbox (1.97615pt too wide) in paragraph at lines 6201--6204
+[]\OT1/cmr/m/n/12 Para ver como esto fun-ciona en la practica, pro-bare-mos n
+ues-tra im-ple-mentacion
+ []
+
+[125]
+Overfull \hbox (10.06522pt too wide) in paragraph at lines 6269--6269
 []\OT1/cmtt/m/n/12 MyTreeMap<String, Integer> map = new MyTreeMap<String, Integ
 er>();[] 
  []
@@ -1487,261 +1499,261 @@ er>();[]
 <figs/bst.pdf, id=1510, 542.025pt x 180.675pt>
 File: figs/bst.pdf Graphic file (type pdf)
 <use figs/bst.pdf>
-Package pdftex.def Info: figs/bst.pdf  used on input line 6293.
+Package pdftex.def Info: figs/bst.pdf  used on input line 6290.
 (pdftex.def)             Requested size: 289.07999pt x 96.3638pt.
- [127 <./figs/bst.pdf>] [128]
-Cap\IeC {\'\i }tulo 14.
-[129
+ [127 <./figs/bst.pdf>] [128] [129] [130
 
-] [130]
-Overfull \hbox (5.05315pt too wide) in paragraph at lines 6548--6551
+]
+Cap\IeC {\'\i }tulo 14.
+[131] [132]
+Overfull \hbox (5.05315pt too wide) in paragraph at lines 6546--6549
 []\OT1/cmr/m/n/12 Create an ac-count on Re-dis-ToGo, at [][]$\OT1/cmtt/m/n/12 h
 ttp : / / thinkdast . com / redissign$[][]\OT1/cmr/m/n/12 ,
  []
 
 
-Overfull \hbox (88.83994pt too wide) in paragraph at lines 6564--6564
+Overfull \hbox (88.83994pt too wide) in paragraph at lines 6562--6562
  []  \OT1/cmtt/m/n/12 redis://redistogo:1234567feedfacebeefa1e1234567@dory.redi
 stogo.com:10534[] 
  []
 
-[131] [132]
-Overfull \hbox (131.25746pt too wide) in paragraph at lines 6649--6651
+[133] [134]
+Overfull \hbox (131.25746pt too wide) in paragraph at lines 6647--6649
 []\OT1/cmr/m/n/12 Use a text ed-i-tor to cre-ate end edit [][][][][][][][][][][
 ][][]. 
  []
 
 
-Overfull \hbox (84.7359pt too wide) in paragraph at lines 6656--6657
+Overfull \hbox (84.7359pt too wide) in paragraph at lines 6654--6655
 [][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (3.89021pt too wide) in paragraph at lines 6702--6702
+Overfull \hbox (3.89021pt too wide) in paragraph at lines 6700--6700
 []                           \OT1/cmtt/m/n/12 jedis.sismember("myset", "element
 2"));[] 
  []
 
 
-Overfull \hbox (10.06522pt too wide) in paragraph at lines 6702--6702
+Overfull \hbox (10.06522pt too wide) in paragraph at lines 6700--6700
 []        \OT1/cmtt/m/n/12 jedis.rpush("mylist", "element1", "element2", "eleme
 nt3");[] 
  []
 
-[133] [134]
-Overfull \hbox (10.06522pt too wide) in paragraph at lines 6774--6774
+[135] [136]
+Overfull \hbox (10.06522pt too wide) in paragraph at lines 6772--6772
 []        \OT1/cmtt/m/n/12 jedis.rpush("mylist", "element1", "element2", "eleme
 nt3");[] 
  []
 
 
-Overfull \hbox (54.93567pt too wide) in paragraph at lines 6787--6790
+Overfull \hbox (54.93567pt too wide) in paragraph at lines 6785--6788
 []\OT1/cmr/m/n/12 Finally, Re-dis pro-vides a \OT1/cmr/m/it/12 hash \OT1/cmr/m/
 n/12 struc-ture, which is sim-i-lar to a Java [][][][][][][][][].
  []
 
-[135]
-Overfull \hbox (24.65578pt too wide) in paragraph at lines 6833--6835
+[137]
+Overfull \hbox (24.65578pt too wide) in paragraph at lines 6831--6833
 []\OT1/cmr/m/n/12 You can read more about Re-dis data types at [][]$\OT1/cmtt/m
 /n/12 http : / / thinkdast . com / redistypes$[][]\OT1/cmr/m/n/12 . 
  []
 
 
-Overfull \hbox (17.0446pt too wide) in paragraph at lines 6862--6866
+Overfull \hbox (17.0446pt too wide) in paragraph at lines 6860--6864
 [][][][]\OT1/cmr/m/n/12 , which takes a search term and re-turns a [][][][][][]
 [][][]
  []
 
-[136]
-Overfull \hbox (40.94023pt too wide) in paragraph at lines 6881--6881
+[138]
+Overfull \hbox (40.94023pt too wide) in paragraph at lines 6879--6879
 []            \OT1/cmtt/m/n/12 "http://en.wikipedia.org/wiki/Java_(programming_
 language)";[] 
  []
 
 
-Overfull \hbox (39.47832pt too wide) in paragraph at lines 6920--6924
+Overfull \hbox (39.47832pt too wide) in paragraph at lines 6918--6922
 \OT1/cmr/m/n/12 for each in-dexed page. I pro-vide two helper meth-ods, [][][] 
 and [][][],
  []
 
-[137] [138]
-Overfull \hbox (65.64024pt too wide) in paragraph at lines 7042--7042
+[139] [140]
+Overfull \hbox (65.64024pt too wide) in paragraph at lines 7040--7040
 []     \OT1/cmtt/m/n/12 * Returns the number of times the given term appears at
  the given URL.[] 
  []
 
-[139]
-Overfull \hbox (3.89021pt too wide) in paragraph at lines 7042--7042
+[141]
+Overfull \hbox (3.89021pt too wide) in paragraph at lines 7040--7040
 []    \OT1/cmtt/m/n/12 public List<Object> pushTermCounterToRedis(TermCounter t
 c) {}[] 
  []
 
-[140]
+[142]
 Cap\IeC {\'\i }tulo 15.
-[141
+[143
 
 ]
-Overfull \hbox (3.89021pt too wide) in paragraph at lines 7157--7157
+Overfull \hbox (3.89021pt too wide) in paragraph at lines 7155--7155
 []    \OT1/cmtt/m/n/12 // if this page has already been indexed, delete the old
  hash[] 
  []
 
-[142]
-Overfull \hbox (10.06522pt too wide) in paragraph at lines 7200--7200
+[144]
+Overfull \hbox (10.06522pt too wide) in paragraph at lines 7198--7198
 []        \OT1/cmtt/m/n/12 Map<String, Integer> map = new HashMap<String, Integ
 er>();[] 
  []
 
-[143] [144] [145] [146]
-Overfull \hbox (11.0739pt too wide) in paragraph at lines 7412--7414
+[145] [146] [147] [148]
+Overfull \hbox (11.0739pt too wide) in paragraph at lines 7410--7412
 []\OT1/cmr/m/n/12 You can read more about graph traver-sal at [][]$\OT1/cmtt/m/
 n/12 http : / / thinkdast . com / graphtrav$[][]\OT1/cmr/m/n/12 . 
  []
 
-[147]
-Overfull \hbox (42.90802pt too wide) in paragraph at lines 7515--7518
+[149]
+Overfull \hbox (42.90802pt too wide) in paragraph at lines 7513--7516
 []\OT1/cmr/m/n/12 The pa-ram-e-ter [][][] will be [][][] when this method is ca
 lled from [][][]
  []
 
-[148]
-Overfull \hbox (1.57922pt too wide) in paragraph at lines 7527--7531
+[150]
+Overfull \hbox (1.57922pt too wide) in paragraph at lines 7525--7529
 []\OT1/cmr/m/n/12 Read the con-tents of the page us-ing [][][][][], which
  []
 
 
-Overfull \hbox (71.7605pt too wide) in paragraph at lines 7557--7560
+Overfull \hbox (71.7605pt too wide) in paragraph at lines 7555--7558
 []\OT1/cmr/m/n/12 Otherwise it should read the con-tents of the page us-ing [][
 ][][][],
  []
 
-[149] [150
+[151] [152
 
 ]
 Cap\IeC {\'\i }tulo 16.
-[151] [152] [153] [154]
-Overfull \hbox (84.80118pt too wide) in paragraph at lines 7856--7858
+[153] [154] [155] [156]
+Overfull \hbox (84.80118pt too wide) in paragraph at lines 7854--7856
 [][][][][][]\OT1/cmr/m/n/12 , which demon-strates how to use the [][][] method 
 in [][][][][][][]. 
  []
 
-[155] [156]
-Overfull \hbox (8.2885pt too wide) in paragraph at lines 7964--7969
+[157] [158]
+Overfull \hbox (8.2885pt too wide) in paragraph at lines 7962--7967
 \OT1/cmr/m/n/12 vance. I sug-gest you use the [][][] method pro-vided by [][][]
 [][][][],
  []
 
 
-Overfull \hbox (13.36697pt too wide) in paragraph at lines 7980--7983
+Overfull \hbox (13.36697pt too wide) in paragraph at lines 7978--7981
 []\OT1/cmr/m/n/12 The two-parameter ver-sion takes a list of any ob-ject type a
 nd a [][][],
  []
 
-[157]
-Overfull \hbox (57.97595pt too wide) in paragraph at lines 8014--8018
+[159]
+Overfull \hbox (57.97595pt too wide) in paragraph at lines 8012--8016
 []\OT1/cmr/m/n/12 A [][][] ob-ject has two in-te-ger fields, [][][] and [][][].
  [][][] im-ple-ments [][][][][][],
  []
 
 
-Overfull \hbox (12.31522pt too wide) in paragraph at lines 8044--8047
+Overfull \hbox (12.31522pt too wide) in paragraph at lines 8042--8045
 []\OT1/cmr/m/n/12 If you use the one-parameter ver-sion of [][][][][], it uses 
 the [][][]
  []
 
-[158] [159] [160] [161] [162
+[160] [161] [162] [163] [164
 
 ]
 Cap\IeC {\'\i }tulo 17.
-[163]
-Overfull \hbox (40.94023pt too wide) in paragraph at lines 8259--8259
+[165]
+Overfull \hbox (40.94023pt too wide) in paragraph at lines 8257--8257
 []    \OT1/cmtt/m/n/12 public void insertionSort(List<T> list, Comparator<T> co
 mparator) {[] 
  []
 
-[164]
-Overfull \hbox (22.41522pt too wide) in paragraph at lines 8292--8292
+[166]
+Overfull \hbox (22.41522pt too wide) in paragraph at lines 8290--8290
 []        \OT1/cmtt/m/n/12 Comparator<Integer> comparator = new Comparator<Inte
 ger>() {[] 
  []
 
-[165]
-Overfull \hbox (17.11418pt too wide) in paragraph at lines 8387--8389
+[167]
+Overfull \hbox (17.11418pt too wide) in paragraph at lines 8385--8387
 []\OT1/cmr/m/n/12 In [][][][][], I've pro-vided an out-line of two meth-ods, []
 [][]
  []
 
 
-Overfull \hbox (59.46524pt too wide) in paragraph at lines 8401--8401
+Overfull \hbox (59.46524pt too wide) in paragraph at lines 8399--8399
 []    \OT1/cmtt/m/n/12 public void mergeSortInPlace(List<T> list, Comparator<T>
  comparator) {[] 
  []
 
 
-Overfull \hbox (40.94023pt too wide) in paragraph at lines 8401--8401
+Overfull \hbox (40.94023pt too wide) in paragraph at lines 8399--8399
 []    \OT1/cmtt/m/n/12 private List<T> mergeSort(List<T> list, Comparator<T> co
 mparator) {[] 
  []
 
 
-Overfull \hbox (11.39146pt too wide) in paragraph at lines 8403--8407
+Overfull \hbox (11.39146pt too wide) in paragraph at lines 8401--8405
 []\OT1/cmr/m/n/12 These two meth-ods do the same thing but pro-vide dif-fer-ent
  in-ter-faces. [][][]
  []
 
-[166]
-Overfull \hbox (12.38751pt too wide) in paragraph at lines 8440--8443
+[168]
+Overfull \hbox (12.38751pt too wide) in paragraph at lines 8438--8441
 \OT1/cmr/m/n/12 the ar-ray. When you get it work-ing, [][][] and [][][]
  []
 
-<figs/merge_sort1.pdf, id=1743, 325.215pt x 271.0125pt>
+<figs/merge_sort1.pdf, id=1752, 325.215pt x 271.0125pt>
 File: figs/merge_sort1.pdf Graphic file (type pdf)
 <use figs/merge_sort1.pdf>
-Package pdftex.def Info: figs/merge_sort1.pdf  used on input line 8473.
+Package pdftex.def Info: figs/merge_sort1.pdf  used on input line 8471.
 (pdftex.def)             Requested size: 216.81607pt x 180.67499pt.
-[167]
-<figs/merge_sort2.pdf, id=1753, 433.62pt x 180.675pt>
+[169]
+<figs/merge_sort2.pdf, id=1762, 433.62pt x 180.675pt>
 File: figs/merge_sort2.pdf Graphic file (type pdf)
 <use figs/merge_sort2.pdf>
-Package pdftex.def Info: figs/merge_sort2.pdf  used on input line 8488.
+Package pdftex.def Info: figs/merge_sort2.pdf  used on input line 8486.
 (pdftex.def)             Requested size: 346.89647pt x 144.54pt.
- [168 <./figs/merge_sort1.pdf> <./figs/merge_sort2.pdf
+ [170 <./figs/merge_sort1.pdf> <./figs/merge_sort2.pdf
 
 pdfTeX warning: pdflatex.exe (file ./figs/merge_sort2.pdf): PDF inclusion: mult
 iple pdfs with page group included in a single page
 >]
-Overfull \hbox (6.79834pt too wide) in paragraph at lines 8560--8567
+Overfull \hbox (6.79834pt too wide) in paragraph at lines 8558--8565
 \OT1/cmr/m/n/12 During the 2008 United States Pres-i-den-tial Cam-paign, can-di
 -date Barack Obama
  []
 
-[169]
-Overfull \hbox (8.60385pt too wide) in paragraph at lines 8568--8571
+[171]
+Overfull \hbox (8.60385pt too wide) in paragraph at lines 8566--8569
 []\OT1/cmr/m/n/12 Obama was right: bub-ble sort is con-cep-tu-ally sim-ple but 
 its run-time is quadratic;
  []
 
-<figs/radix_sort1.pdf, id=1786, 433.62pt x 180.675pt>
+<figs/radix_sort1.pdf, id=1796, 433.62pt x 180.675pt>
 File: figs/radix_sort1.pdf Graphic file (type pdf)
 <use figs/radix_sort1.pdf>
-Package pdftex.def Info: figs/radix_sort1.pdf  used on input line 8609.
+Package pdftex.def Info: figs/radix_sort1.pdf  used on input line 8607.
 (pdftex.def)             Requested size: 346.89647pt x 144.54pt.
-[170] [171 <./figs/radix_sort1.pdf>] [172] [173] [174] [175] [176
+[172] [173 <./figs/radix_sort1.pdf>] [174] [175] [176] [177] [178
 
 ]
 No file spanish.ind.
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 8896.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 8896.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 8894.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 8894.
 (spanish.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 8896.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 8896.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 8894.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 8894.
 
 Package rerunfilecheck Info: File `spanish.out' has not changed.
-(rerunfilecheck)             Checksum: 450ECC17DEF7D40CE84C59F7F3B35B73;7536.
+(rerunfilecheck)             Checksum: C355DEE8FD062C7CD7400CE2D90AE153;7577.
  ) 
 Here is how much of TeX's memory you used:
- 11283 strings out of 492973
- 156920 string characters out of 3135920
+ 11285 strings out of 492973
+ 156936 string characters out of 3135920
  360308 words of memory out of 3000000
  14565 multiletter control sequences out of 15000+200000
  10366 words of font info for 38 fonts, out of 3000000 for 9000
@@ -1760,9 +1772,9 @@ nts/cm/cmss12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/c
 msy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb
 ><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Pro
 gram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on spanish.pdf (192 pages, 969582 bytes).
+Output written on spanish.pdf (194 pages, 972793 bytes).
 PDF statistics:
- 1979 PDF objects out of 2073 (max. 8388607)
- 425 named destinations out of 1000 (max. 500000)
+ 1990 PDF objects out of 2073 (max. 8388607)
+ 427 named destinations out of 1000 (max. 500000)
  921 words of extra memory for PDF output out of 10000 (max. 10000000)
 

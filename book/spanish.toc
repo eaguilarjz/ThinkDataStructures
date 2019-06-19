@@ -66,40 +66,40 @@
 \contentsline {section}{\numberline {12.2}\IeC {\'A}rbol binario de b\IeC {\'u}squeda}{110}{section.12.2}
 \contentsline {section}{\numberline {12.3}Ejercicio 10}{112}{section.12.3}
 \contentsline {section}{\numberline {12.4}Implementaci\IeC {\'o}n de un TreeMap}{114}{section.12.4}
-\contentsline {chapter}{\numberline {13}Binary search tree}{119}{chapter.13}
-\contentsline {section}{\numberline {13.1}A simple \lstinline {MyTreeMap}}{119}{section.13.1}
-\contentsline {section}{\numberline {13.2}Searching for values}{120}{section.13.2}
-\contentsline {section}{\numberline {13.3}Implementing {\tt put}}{122}{section.13.3}
-\contentsline {section}{\numberline {13.4}In-order traversal}{124}{section.13.4}
-\contentsline {section}{\numberline {13.5}The logarithmic methods}{125}{section.13.5}
-\contentsline {section}{\numberline {13.6}Self-balancing trees}{127}{section.13.6}
-\contentsline {section}{\numberline {13.7}One more exercise}{128}{section.13.7}
-\contentsline {chapter}{\numberline {14}Persistence}{129}{chapter.14}
-\contentsline {section}{\numberline {14.1}Redis}{130}{section.14.1}
-\contentsline {section}{\numberline {14.2}Redis clients and servers}{131}{section.14.2}
-\contentsline {section}{\numberline {14.3}Making a Redis-backed index}{132}{section.14.3}
-\contentsline {section}{\numberline {14.4}Redis data types}{134}{section.14.4}
-\contentsline {section}{\numberline {14.5}Exercise 11}{136}{section.14.5}
-\contentsline {section}{\numberline {14.6}More suggestions if you want them}{138}{section.14.6}
-\contentsline {section}{\numberline {14.7}A few design hints}{139}{section.14.7}
-\contentsline {chapter}{\numberline {15}Crawling Wikipedia}{141}{chapter.15}
-\contentsline {section}{\numberline {15.1}The Redis-backed indexer}{141}{section.15.1}
-\contentsline {section}{\numberline {15.2}Analysis of lookup}{144}{section.15.2}
-\contentsline {section}{\numberline {15.3}Analysis of indexing}{145}{section.15.3}
-\contentsline {section}{\numberline {15.4}Graph traversal}{146}{section.15.4}
-\contentsline {section}{\numberline {15.5}Exercise 12}{147}{section.15.5}
-\contentsline {chapter}{\numberline {16}Boolean search}{151}{chapter.16}
-\contentsline {section}{\numberline {16.1}Crawler solution}{151}{section.16.1}
-\contentsline {section}{\numberline {16.2}Information retrieval}{154}{section.16.2}
-\contentsline {section}{\numberline {16.3}Boolean search}{154}{section.16.3}
-\contentsline {section}{\numberline {16.4}Exercise 13}{155}{section.16.4}
-\contentsline {section}{\numberline {16.5}{\tt Comparable} and {\tt Comparator}}{158}{section.16.5}
-\contentsline {section}{\numberline {16.6}Extensions}{160}{section.16.6}
-\contentsline {chapter}{\numberline {17}Sorting}{163}{chapter.17}
-\contentsline {section}{\numberline {17.1}Insertion sort}{164}{section.17.1}
-\contentsline {section}{\numberline {17.2}Exercise 14}{166}{section.17.2}
-\contentsline {section}{\numberline {17.3}Analysis of merge sort}{167}{section.17.3}
-\contentsline {section}{\numberline {17.4}Radix sort}{170}{section.17.4}
-\contentsline {section}{\numberline {17.5}Heap sort}{171}{section.17.5}
-\contentsline {section}{\numberline {17.6}Bounded heap}{173}{section.17.6}
-\contentsline {section}{\numberline {17.7}Space complexity}{174}{section.17.7}
+\contentsline {chapter}{\numberline {13}\IeC {\'A}rbol binario de b\IeC {\'u}squeda}{119}{chapter.13}
+\contentsline {section}{\numberline {13.1}Un \lstinline {MyTreeMap} simple}{119}{section.13.1}
+\contentsline {section}{\numberline {13.2}B\IeC {\'u}squeda de valores}{120}{section.13.2}
+\contentsline {section}{\numberline {13.3}Implementaci\IeC {\'o}n de {\tt put}}{122}{section.13.3}
+\contentsline {section}{\numberline {13.4}Recorrido en orden}{124}{section.13.4}
+\contentsline {section}{\numberline {13.5}Los m\IeC {\'e}todos logar\IeC {\'\i }tmicos}{125}{section.13.5}
+\contentsline {section}{\numberline {13.6}\IeC {\'A}rboles auto-balanceables}{128}{section.13.6}
+\contentsline {section}{\numberline {13.7}Un ejercicio m\IeC {\'a}s}{129}{section.13.7}
+\contentsline {chapter}{\numberline {14}Persistence}{131}{chapter.14}
+\contentsline {section}{\numberline {14.1}Redis}{132}{section.14.1}
+\contentsline {section}{\numberline {14.2}Redis clients and servers}{133}{section.14.2}
+\contentsline {section}{\numberline {14.3}Making a Redis-backed index}{134}{section.14.3}
+\contentsline {section}{\numberline {14.4}Redis data types}{136}{section.14.4}
+\contentsline {section}{\numberline {14.5}Exercise 11}{138}{section.14.5}
+\contentsline {section}{\numberline {14.6}More suggestions if you want them}{140}{section.14.6}
+\contentsline {section}{\numberline {14.7}A few design hints}{141}{section.14.7}
+\contentsline {chapter}{\numberline {15}Crawling Wikipedia}{143}{chapter.15}
+\contentsline {section}{\numberline {15.1}The Redis-backed indexer}{143}{section.15.1}
+\contentsline {section}{\numberline {15.2}Analysis of lookup}{146}{section.15.2}
+\contentsline {section}{\numberline {15.3}Analysis of indexing}{147}{section.15.3}
+\contentsline {section}{\numberline {15.4}Graph traversal}{148}{section.15.4}
+\contentsline {section}{\numberline {15.5}Exercise 12}{149}{section.15.5}
+\contentsline {chapter}{\numberline {16}Boolean search}{153}{chapter.16}
+\contentsline {section}{\numberline {16.1}Crawler solution}{153}{section.16.1}
+\contentsline {section}{\numberline {16.2}Information retrieval}{156}{section.16.2}
+\contentsline {section}{\numberline {16.3}Boolean search}{156}{section.16.3}
+\contentsline {section}{\numberline {16.4}Exercise 13}{157}{section.16.4}
+\contentsline {section}{\numberline {16.5}{\tt Comparable} and {\tt Comparator}}{160}{section.16.5}
+\contentsline {section}{\numberline {16.6}Extensions}{162}{section.16.6}
+\contentsline {chapter}{\numberline {17}Sorting}{165}{chapter.17}
+\contentsline {section}{\numberline {17.1}Insertion sort}{166}{section.17.1}
+\contentsline {section}{\numberline {17.2}Exercise 14}{168}{section.17.2}
+\contentsline {section}{\numberline {17.3}Analysis of merge sort}{169}{section.17.3}
+\contentsline {section}{\numberline {17.4}Radix sort}{172}{section.17.4}
+\contentsline {section}{\numberline {17.5}Heap sort}{173}{section.17.5}
+\contentsline {section}{\numberline {17.6}Bounded heap}{175}{section.17.6}
+\contentsline {section}{\numberline {17.7}Space complexity}{176}{section.17.7}

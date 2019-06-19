@@ -435,202 +435,202 @@
 \indexentry{recorrido de un \IeC {\'a}rbol|hyperpage}{117}
 \indexentry{MyTreeMap|hyperpage}{119}
 \indexentry{findNode|hyperpage}{119}
-\indexentry{type wildcard|hyperpage}{120}
-\indexentry{recursion|hyperpage}{120}
-\indexentry{base case|hyperpage}{121}
-\indexentry{recursion|hyperpage}{121}
-\indexentry{linear time|hyperpage}{122}
+\indexentry{tipo comod\IeC {\'\i }n|hyperpage}{120}
+\indexentry{recursi\IeC {\'o}n|hyperpage}{121}
+\indexentry{caso base|hyperpage}{121}
+\indexentry{recursi\IeC {\'o}|hyperpage}{121}
+\indexentry{tiempo lineal|hyperpage}{122}
 \indexentry{put|hyperpage}{122}
-\indexentry{subtree|hyperpage}{123}
-\indexentry{iterative|hyperpage}{123}
-\indexentry{in-order|hyperpage}{124}
-\indexentry{tree traversal|hyperpage}{124}
+\indexentry{sub\IeC {\'a}rbol|hyperpage}{123}
+\indexentry{iterativo|hyperpage}{124}
+\indexentry{en orden|hyperpage}{124}
+\indexentry{recorrido de \IeC {\'a}rboles|hyperpage}{124}
 \indexentry{keySet|hyperpage}{124}
 \indexentry{LinkedHashSet|hyperpage}{124}
-\indexentry{BST property|hyperpage}{125}
-\indexentry{recursion|hyperpage}{125}
-\indexentry{base case|hyperpage}{125}
-\indexentry{logarithmic time|hyperpage}{125}
+\indexentry{propiedad ABB|hyperpage}{125}
+\indexentry{recursi\IeC {\'o}n|hyperpage}{125}
+\indexentry{caso base|hyperpage}{125}
+\indexentry{tiempo logar\IeC {\'\i }tmico|hyperpage}{125}
 \indexentry{get|hyperpage}{125}
 \indexentry{put|hyperpage}{125}
-\indexentry{profiling|hyperpage}{125}
+\indexentry{perfilado|hyperpage}{125}
 \indexentry{UUID|hyperpage}{126}
-\indexentry{linear search|hyperpage}{126}
-\indexentry{constant time|hyperpage}{126}
-\indexentry{logarithmic time|hyperpage}{126}
+\indexentry{b\IeC {\'u}squeda lineal|hyperpage}{126}
+\indexentry{tiempo constante|hyperpage}{126}
+\indexentry{tiempo logar\IeC {\'\i }tmico|hyperpage}{126}
 \indexentry{timestamp|hyperpage}{126}
-\indexentry{unbalanced tree|hyperpage}{127}
-\indexentry{balanced tree|hyperpage}{127}
-\indexentry{linear time|hyperpage}{127}
-\indexentry{self-balancing tree|hyperpage}{127}
-\indexentry{AVL tree|hyperpage}{128}
-\indexentry{red-black tree|hyperpage}{128}
-\indexentry{logarithmic time|hyperpage}{128}
-\indexentry{remove|hyperpage}{128}
-\indexentry{search engine|hyperpage}{129}
-\indexentry{crawler|hyperpage}{129}
-\indexentry{indexer|hyperpage}{129}
-\indexentry{retriever|hyperpage}{129}
-\indexentry{indexer|hyperpage}{129}
-\indexentry{Redis|hyperpage}{130}
-\indexentry{volatile|hyperpage}{130}
-\indexentry{persistent|hyperpage}{130}
-\indexentry{JSON|hyperpage}{130}
-\indexentry{database|hyperpage}{130}
-\indexentry{DBMS|hyperpage}{130}
-\indexentry{Redis|hyperpage}{130}
-\indexentry{key-value database|hyperpage}{131}
-\indexentry{client|hyperpage}{131}
-\indexentry{server|hyperpage}{131}
-\indexentry{RedisToGo|hyperpage}{131}
-\indexentry{Jedis|hyperpage}{131}
-\indexentry{Redis instance|hyperpage}{132}
-\indexentry{JedisMaker|hyperpage}{132}
-\indexentry{JedisIndex|hyperpage}{132}
-\indexentry{WikiFetcher|hyperpage}{132}
-\indexentry{helper class|hyperpage}{132}
-\indexentry{Ant|hyperpage}{133}
-\indexentry{Redis set|hyperpage}{135}
-\indexentry{Redis get|hyperpage}{135}
-\indexentry{constant time|hyperpage}{135}
-\indexentry{Redis list|hyperpage}{135}
-\indexentry{Redis hash|hyperpage}{135}
-\indexentry{field|hyperpage}{135}
-\indexentry{constant time|hyperpage}{136}
-\indexentry{Redis data type|hyperpage}{136}
-\indexentry{JedisIndex|hyperpage}{136}
-\indexentry{WikiFetcher|hyperpage}{137}
-\indexentry{URLSet|hyperpage}{137}
-\indexentry{TermCounter|hyperpage}{137}
-\indexentry{helper method|hyperpage}{137}
-\indexentry{server|hyperpage}{138}
-\indexentry{Transaction|hyperpage}{139}
-\indexentry{Redis|hyperpage}{141}
-\indexentry{URLSet|hyperpage}{141}
-\indexentry{TermCounter|hyperpage}{141}
-\indexentry{JedisIndex|hyperpage}{141}
-\indexentry{Transaction|hyperpage}{143}
-\indexentry{getCounts|hyperpage}{143}
-\indexentry{helper method|hyperpage}{143}
-\indexentry{analysis|hyperpage}{144}
-\indexentry{constant time|hyperpage}{145}
-\indexentry{linear time|hyperpage}{145}
+\indexentry{\IeC {\'a}rbol desbalanceado|hyperpage}{127}
+\indexentry{\IeC {\'a}rbol balanceado|hyperpage}{127}
+\indexentry{tiempo lineal|hyperpage}{127}
+\indexentry{\IeC {\'a}rboles auto-balanceables|hyperpage}{128}
+\indexentry{\IeC {\'a}rbol AVL|hyperpage}{128}
+\indexentry{\IeC {\'a}rbol rojo-negro|hyperpage}{128}
+\indexentry{tiempo logar\IeC {\'\i }tmico|hyperpage}{128}
+\indexentry{remove|hyperpage}{129}
+\indexentry{search engine|hyperpage}{131}
+\indexentry{crawler|hyperpage}{131}
+\indexentry{indexer|hyperpage}{131}
+\indexentry{retriever|hyperpage}{131}
+\indexentry{indexer|hyperpage}{131}
+\indexentry{Redis|hyperpage}{132}
+\indexentry{volatile|hyperpage}{132}
+\indexentry{persistent|hyperpage}{132}
+\indexentry{JSON|hyperpage}{132}
+\indexentry{database|hyperpage}{132}
+\indexentry{DBMS|hyperpage}{132}
+\indexentry{Redis|hyperpage}{132}
+\indexentry{key-value database|hyperpage}{133}
+\indexentry{client|hyperpage}{133}
+\indexentry{server|hyperpage}{133}
+\indexentry{RedisToGo|hyperpage}{133}
+\indexentry{Jedis|hyperpage}{133}
+\indexentry{Redis instance|hyperpage}{134}
+\indexentry{JedisMaker|hyperpage}{134}
+\indexentry{JedisIndex|hyperpage}{134}
+\indexentry{WikiFetcher|hyperpage}{134}
+\indexentry{helper class|hyperpage}{134}
+\indexentry{Ant|hyperpage}{135}
+\indexentry{Redis set|hyperpage}{137}
+\indexentry{Redis get|hyperpage}{137}
+\indexentry{constant time|hyperpage}{137}
+\indexentry{Redis list|hyperpage}{137}
+\indexentry{Redis hash|hyperpage}{137}
+\indexentry{field|hyperpage}{137}
+\indexentry{constant time|hyperpage}{138}
+\indexentry{Redis data type|hyperpage}{138}
+\indexentry{JedisIndex|hyperpage}{138}
+\indexentry{WikiFetcher|hyperpage}{139}
+\indexentry{URLSet|hyperpage}{139}
+\indexentry{TermCounter|hyperpage}{139}
+\indexentry{helper method|hyperpage}{139}
+\indexentry{server|hyperpage}{140}
+\indexentry{Transaction|hyperpage}{141}
+\indexentry{Redis|hyperpage}{143}
+\indexentry{URLSet|hyperpage}{143}
+\indexentry{TermCounter|hyperpage}{143}
+\indexentry{JedisIndex|hyperpage}{143}
 \indexentry{Transaction|hyperpage}{145}
-\indexentry{analysis|hyperpage}{145}
-\indexentry{DOM tree|hyperpage}{145}
-\indexentry{HashMap|hyperpage}{145}
-\indexentry{linear time|hyperpage}{145}
-\indexentry{constant time|hyperpage}{145}
-\indexentry{TermCounter|hyperpage}{146}
-\indexentry{stop words|hyperpage}{146}
-\indexentry{graph|hyperpage}{146}
-\indexentry{traversal|hyperpage}{146}
-\indexentry{queue|hyperpage}{147}
-\indexentry{stack|hyperpage}{147}
-\indexentry{FIFO|hyperpage}{147}
-\indexentry{LIFO|hyperpage}{147}
-\indexentry{WikiCrawler|hyperpage}{147}
-\indexentry{JedisIndex|hyperpage}{147}
-\indexentry{helper class|hyperpage}{147}
-\indexentry{JedisMaker|hyperpage}{148}
-\indexentry{Ant|hyperpage}{148}
-\indexentry{crawl|hyperpage}{148}
-\indexentry{WikiCrawler|hyperpage}{151}
-\indexentry{queue|hyperpage}{152}
-\indexentry{LinkedList|hyperpage}{152}
-\indexentry{constant time|hyperpage}{152}
-\indexentry{Index|hyperpage}{153}
-\indexentry{Element|hyperpage}{153}
-\indexentry{Wikipedia|hyperpage}{154}
-\indexentry{information retrieval|hyperpage}{154}
-\indexentry{boolean search|hyperpage}{154}
-\indexentry{query|hyperpage}{155}
-\indexentry{intersection|hyperpage}{155}
-\indexentry{union|hyperpage}{155}
-\indexentry{difference|hyperpage}{155}
-\indexentry{set operations|hyperpage}{155}
-\indexentry{WikiSearch|hyperpage}{156}
-\indexentry{helper class|hyperpage}{156}
-\indexentry{relevance|hyperpage}{156}
-\indexentry{term frequency|hyperpage}{156}
-\indexentry{inverse document frequency|hyperpage}{156}
-\indexentry{TF-IDF|hyperpage}{156}
-\indexentry{Ant|hyperpage}{157}
-\indexentry{and|hyperpage}{157}
-\indexentry{or|hyperpage}{157}
-\indexentry{minus|hyperpage}{157}
-\indexentry{JedisMaker|hyperpage}{157}
-\indexentry{sort|hyperpage}{157}
-\indexentry{Collections|hyperpage}{157}
-\indexentry{Comparable|hyperpage}{157}
-\indexentry{Comparator|hyperpage}{157}
-\indexentry{Card|hyperpage}{158}
-\indexentry{compareTo|hyperpage}{158}
-\indexentry{natural order|hyperpage}{159}
+\indexentry{getCounts|hyperpage}{145}
+\indexentry{helper method|hyperpage}{145}
+\indexentry{analysis|hyperpage}{146}
+\indexentry{constant time|hyperpage}{147}
+\indexentry{linear time|hyperpage}{147}
+\indexentry{Transaction|hyperpage}{147}
+\indexentry{analysis|hyperpage}{147}
+\indexentry{DOM tree|hyperpage}{147}
+\indexentry{HashMap|hyperpage}{147}
+\indexentry{linear time|hyperpage}{147}
+\indexentry{constant time|hyperpage}{147}
+\indexentry{TermCounter|hyperpage}{148}
+\indexentry{stop words|hyperpage}{148}
+\indexentry{graph|hyperpage}{148}
+\indexentry{traversal|hyperpage}{148}
+\indexentry{queue|hyperpage}{149}
+\indexentry{stack|hyperpage}{149}
+\indexentry{FIFO|hyperpage}{149}
+\indexentry{LIFO|hyperpage}{149}
+\indexentry{WikiCrawler|hyperpage}{149}
+\indexentry{JedisIndex|hyperpage}{149}
+\indexentry{helper class|hyperpage}{149}
+\indexentry{JedisMaker|hyperpage}{150}
+\indexentry{Ant|hyperpage}{150}
+\indexentry{crawl|hyperpage}{150}
+\indexentry{WikiCrawler|hyperpage}{153}
+\indexentry{queue|hyperpage}{154}
+\indexentry{LinkedList|hyperpage}{154}
+\indexentry{constant time|hyperpage}{154}
+\indexentry{Index|hyperpage}{155}
+\indexentry{Element|hyperpage}{155}
+\indexentry{Wikipedia|hyperpage}{156}
+\indexentry{information retrieval|hyperpage}{156}
+\indexentry{boolean search|hyperpage}{156}
+\indexentry{query|hyperpage}{157}
+\indexentry{intersection|hyperpage}{157}
+\indexentry{union|hyperpage}{157}
+\indexentry{difference|hyperpage}{157}
+\indexentry{set operations|hyperpage}{157}
+\indexentry{WikiSearch|hyperpage}{158}
+\indexentry{helper class|hyperpage}{158}
+\indexentry{relevance|hyperpage}{158}
+\indexentry{term frequency|hyperpage}{158}
+\indexentry{inverse document frequency|hyperpage}{158}
+\indexentry{TF-IDF|hyperpage}{158}
+\indexentry{Ant|hyperpage}{159}
+\indexentry{and|hyperpage}{159}
+\indexentry{or|hyperpage}{159}
+\indexentry{minus|hyperpage}{159}
+\indexentry{JedisMaker|hyperpage}{159}
+\indexentry{sort|hyperpage}{159}
+\indexentry{Collections|hyperpage}{159}
+\indexentry{Comparable|hyperpage}{159}
 \indexentry{Comparator|hyperpage}{159}
-\indexentry{compare|hyperpage}{159}
-\indexentry{anonymous class|hyperpage}{160}
-\indexentry{ordering|hyperpage}{160}
-\indexentry{TF-IDF|hyperpage}{160}
-\indexentry{relevance|hyperpage}{160}
-\indexentry{snippet|hyperpage}{160}
-\indexentry{Heroku|hyperpage}{160}
-\indexentry{sorting|hyperpage}{163}
-\indexentry{divide-conquer-glue|hyperpage}{164}
-\indexentry{linearithmic time|hyperpage}{164}
-\indexentry{insertion sort|hyperpage}{164}
-\indexentry{ListSorter|hyperpage}{164}
-\indexentry{type parameter|hyperpage}{164}
-\indexentry{List|hyperpage}{165}
-\indexentry{linear time|hyperpage}{165}
-\indexentry{quadratic time|hyperpage}{165}
-\indexentry{linear time|hyperpage}{165}
-\indexentry{merge sort|hyperpage}{166}
-\indexentry{quadratic time|hyperpage}{166}
-\indexentry{Ant|hyperpage}{166}
+\indexentry{Card|hyperpage}{160}
+\indexentry{compareTo|hyperpage}{160}
+\indexentry{natural order|hyperpage}{161}
+\indexentry{Comparator|hyperpage}{161}
+\indexentry{compare|hyperpage}{161}
+\indexentry{anonymous class|hyperpage}{162}
+\indexentry{ordering|hyperpage}{162}
+\indexentry{TF-IDF|hyperpage}{162}
+\indexentry{relevance|hyperpage}{162}
+\indexentry{snippet|hyperpage}{162}
+\indexentry{Heroku|hyperpage}{162}
+\indexentry{sorting|hyperpage}{165}
+\indexentry{divide-conquer-glue|hyperpage}{166}
+\indexentry{linearithmic time|hyperpage}{166}
+\indexentry{insertion sort|hyperpage}{166}
 \indexentry{ListSorter|hyperpage}{166}
-\indexentry{mergeSort|hyperpage}{167}
-\indexentry{base case|hyperpage}{167}
-\indexentry{recursion|hyperpage}{167}
-\indexentry{analysis|hyperpage}{167}
-\indexentry{linear time|hyperpage}{168}
-\indexentry{logarithm|hyperpage}{169}
-\indexentry{linearithmic time|hyperpage}{169}
-\indexentry{n log n|hyperpage}{169}
-\indexentry{comparison sort|hyperpage}{169}
-\indexentry{linear time|hyperpage}{169}
-\indexentry{radix sort|hyperpage}{170}
-\indexentry{Obama, Barack|hyperpage}{170}
-\indexentry{Schmidt, Eric|hyperpage}{170}
-\indexentry{Google|hyperpage}{170}
-\indexentry{bubble sort|hyperpage}{170}
-\indexentry{quadratic time|hyperpage}{170}
-\indexentry{non-comparison sort|hyperpage}{170}
-\indexentry{constant time|hyperpage}{171}
+\indexentry{type parameter|hyperpage}{166}
+\indexentry{List|hyperpage}{167}
+\indexentry{linear time|hyperpage}{167}
+\indexentry{quadratic time|hyperpage}{167}
+\indexentry{linear time|hyperpage}{167}
+\indexentry{merge sort|hyperpage}{168}
+\indexentry{quadratic time|hyperpage}{168}
+\indexentry{Ant|hyperpage}{168}
+\indexentry{ListSorter|hyperpage}{168}
+\indexentry{mergeSort|hyperpage}{169}
+\indexentry{base case|hyperpage}{169}
+\indexentry{recursion|hyperpage}{169}
+\indexentry{analysis|hyperpage}{169}
+\indexentry{linear time|hyperpage}{170}
+\indexentry{logarithm|hyperpage}{171}
+\indexentry{linearithmic time|hyperpage}{171}
+\indexentry{n log n|hyperpage}{171}
+\indexentry{comparison sort|hyperpage}{171}
 \indexentry{linear time|hyperpage}{171}
-\indexentry{heap sort|hyperpage}{171}
-\indexentry{bounded heap|hyperpage}{171}
-\indexentry{out of core algorithm|hyperpage}{172}
-\indexentry{external sorting|hyperpage}{172}
-\indexentry{heap|hyperpage}{172}
-\indexentry{binary search tree|hyperpage}{172}
-\indexentry{BST|hyperpage}{172}
-\indexentry{heap property|hyperpage}{172}
-\indexentry{constant time|hyperpage}{172}
-\indexentry{logarithmic time|hyperpage}{172}
-\indexentry{PriorityQueue|hyperpage}{172}
-\indexentry{offer|hyperpage}{172}
-\indexentry{poll|hyperpage}{172}
-\indexentry{Queue|hyperpage}{172}
+\indexentry{radix sort|hyperpage}{172}
+\indexentry{Obama, Barack|hyperpage}{172}
+\indexentry{Schmidt, Eric|hyperpage}{172}
+\indexentry{Google|hyperpage}{172}
+\indexentry{bubble sort|hyperpage}{172}
+\indexentry{quadratic time|hyperpage}{172}
+\indexentry{non-comparison sort|hyperpage}{172}
+\indexentry{constant time|hyperpage}{173}
+\indexentry{linear time|hyperpage}{173}
 \indexentry{heap sort|hyperpage}{173}
-\indexentry{linearithmic|hyperpage}{173}
-\indexentry{n log n|hyperpage}{173}
-\indexentry{ListSorter|hyperpage}{173}
 \indexentry{bounded heap|hyperpage}{173}
-\indexentry{k largest elements|hyperpage}{173}
-\indexentry{linear time|hyperpage}{174}
-\indexentry{Comparator|hyperpage}{174}
-\indexentry{space complexity|hyperpage}{174}
-\indexentry{analysis|hyperpage}{174}
-\indexentry{cache|hyperpage}{175}
-\indexentry{server|hyperpage}{175}
+\indexentry{out of core algorithm|hyperpage}{174}
+\indexentry{external sorting|hyperpage}{174}
+\indexentry{heap|hyperpage}{174}
+\indexentry{binary search tree|hyperpage}{174}
+\indexentry{BST|hyperpage}{174}
+\indexentry{heap property|hyperpage}{174}
+\indexentry{constant time|hyperpage}{174}
+\indexentry{logarithmic time|hyperpage}{174}
+\indexentry{PriorityQueue|hyperpage}{174}
+\indexentry{offer|hyperpage}{174}
+\indexentry{poll|hyperpage}{174}
+\indexentry{Queue|hyperpage}{174}
+\indexentry{heap sort|hyperpage}{175}
+\indexentry{linearithmic|hyperpage}{175}
+\indexentry{n log n|hyperpage}{175}
+\indexentry{ListSorter|hyperpage}{175}
+\indexentry{bounded heap|hyperpage}{175}
+\indexentry{k largest elements|hyperpage}{175}
+\indexentry{linear time|hyperpage}{176}
+\indexentry{Comparator|hyperpage}{176}
+\indexentry{space complexity|hyperpage}{176}
+\indexentry{analysis|hyperpage}{176}
+\indexentry{cache|hyperpage}{177}
+\indexentry{server|hyperpage}{177}
