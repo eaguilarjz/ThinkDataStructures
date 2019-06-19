@@ -55,12 +55,12 @@
 \contentsline {section}{\numberline {10.3}Hashing y mutaci\IeC {\'o}n}{95}{section.10.3}
 \contentsline {section}{\numberline {10.4}Ejercicio 8}{97}{section.10.4}
 \contentsline {chapter}{\numberline {11}HashMap}{99}{chapter.11}
-\contentsline {section}{\numberline {11.1}Exercise 9}{99}{section.11.1}
-\contentsline {section}{\numberline {11.2}Analyzing \lstinline {MyHashMap}}{101}{section.11.2}
-\contentsline {section}{\numberline {11.3}The tradeoffs}{102}{section.11.3}
+\contentsline {section}{\numberline {11.1}Ejercicio 9}{99}{section.11.1}
+\contentsline {section}{\numberline {11.2}An\IeC {\'a}lisis de \lstinline {MyHashMap}}{101}{section.11.2}
+\contentsline {section}{\numberline {11.3}The tradeoffs}{103}{section.11.3}
 \contentsline {section}{\numberline {11.4}Profiling \lstinline {MyHashMap}}{103}{section.11.4}
 \contentsline {section}{\numberline {11.5}Fixing \lstinline {MyHashMap}}{104}{section.11.5}
-\contentsline {section}{\numberline {11.6}UML class diagrams}{106}{section.11.6}
+\contentsline {section}{\numberline {11.6}UML class diagrams}{107}{section.11.6}
 \contentsline {chapter}{\numberline {12}TreeMap}{109}{chapter.12}
 \contentsline {section}{\numberline {12.1}What's wrong with hashing?}{109}{section.12.1}
 \contentsline {section}{\numberline {12.2}Binary search tree}{110}{section.12.2}

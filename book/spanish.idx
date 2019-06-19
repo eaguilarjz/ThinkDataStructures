@@ -353,25 +353,25 @@
 \indexentry{containsValue|hyperpage}{98}
 \indexentry{tiempo lineal|hyperpage}{98}
 \indexentry{HashMap|hyperpage}{99}
-\indexentry{sub-map|hyperpage}{99}
-\indexentry{constant time|hyperpage}{99}
+\indexentry{sub-mapa|hyperpage}{99}
+\indexentry{tiempo constante|hyperpage}{99}
 \indexentry{MyHashMap|hyperpage}{99}
-\indexentry{superclass|hyperpage}{100}
-\indexentry{load factor|hyperpage}{100}
+\indexentry{superclase|hyperpage}{100}
+\indexentry{factor de carga|hyperpage}{100}
 \indexentry{MyBetterMap|hyperpage}{100}
 \indexentry{Ant|hyperpage}{100}
 \indexentry{rehash|hyperpage}{100}
-\indexentry{constant time|hyperpage}{101}
+\indexentry{tiempo constante|hyperpage}{101}
 \indexentry{put|hyperpage}{101}
-\indexentry{linear time|hyperpage}{101}
-\indexentry{amortized analysis|hyperpage}{101}
-\indexentry{unit of work|hyperpage}{101}
+\indexentry{tiempo lineal|hyperpage}{101}
+\indexentry{an\IeC {\'a}lisis amortizado|hyperpage}{101}
+\indexentry{unidad de trabajo|hyperpage}{101}
 \indexentry{hashing|hyperpage}{102}
 \indexentry{constant time|hyperpage}{102}
-\indexentry{containsKey|hyperpage}{102}
-\indexentry{get|hyperpage}{102}
-\indexentry{remove|hyperpage}{102}
-\indexentry{put|hyperpage}{102}
+\indexentry{containsKey|hyperpage}{103}
+\indexentry{get|hyperpage}{103}
+\indexentry{remove|hyperpage}{103}
+\indexentry{put|hyperpage}{103}
 \indexentry{cache|hyperpage}{103}
 \indexentry{containsValue|hyperpage}{103}
 \indexentry{linear time|hyperpage}{103}
@@ -386,13 +386,13 @@
 \indexentry{linear time|hyperpage}{105}
 \indexentry{MyFixedHashMap|hyperpage}{105}
 \indexentry{superclass|hyperpage}{105}
-\indexentry{remove|hyperpage}{105}
+\indexentry{remove|hyperpage}{106}
 \indexentry{put|hyperpage}{106}
 \indexentry{size|hyperpage}{106}
 \indexentry{constant time|hyperpage}{106}
 \indexentry{profiling|hyperpage}{106}
-\indexentry{UML|hyperpage}{106}
-\indexentry{class diagram|hyperpage}{106}
+\indexentry{UML|hyperpage}{107}
+\indexentry{class diagram|hyperpage}{107}
 \indexentry{inheritance|hyperpage}{107}
 \indexentry{IS-A relationship|hyperpage}{107}
 \indexentry{HAS-A relationship|hyperpage}{107}

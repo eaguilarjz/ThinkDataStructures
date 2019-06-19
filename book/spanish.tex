@@ -5002,14 +5002,14 @@ métodos que podrían servirte: \java{MyBetterMap.makeMaps} y
 de mapas, $k$, cada vez que es llamada.
 
 
-\section{Analyzing \java{MyHashMap}}
+\section{Análisis de \java{MyHashMap}}
 \label{analyzing-myhashmap}
 
-\index{constant time}
+\index{tiempo constante}
 
-If the number of entries in the biggest sub-map is proportional to
-$n/k$, and $k$ grows in proportion to $n$, several of the core
-\java{MyBetterMap} methods become constant time:
+Si el número de entradas en el sub-mapa más grande es proporcional a
+$n/k$, y $k$ crece en proporción a $n$, varios de los métodos
+principales de \java{MyBetterMap} se vuelven de tiempo constante:
 
 \begin{verbatim}
     public boolean containsKey(Object target) {
@@ -5028,102 +5028,103 @@ $n/k$, and $k$ grows in proportion to $n$, several of the core
     }
 \end{verbatim}
 
-Each method hashes a key, which is constant time, and then invokes a
-method on a sub-map, which is constant time.
+Cada método codifica (hashes) un clave (key), lo que es de tiempo
+constante y luego invoca un método en un sub-mapa, que también es
+de tiempo constante.
 
 \index{put}
 
-So far, so good. But the other core method, \java{put}, is a little
-harder to analyze. When we don't have to rehash, it is constant time,
-but when we do, it's linear. In that way, it's similar to
-\java{ArrayList.add}, which we analyzed in Section~\ref{classifying-add}.
+Hasta el momento, vamos bien. Pero el otro método principal, \java{put}, es un
+poco más difícil de analizar. Cuando no tenemos que recodificar, es de tiempo
+constante,  pero cuando tenemos que hacerlo, es lineal. En ese sentido, es similar
+a \java{ArrayList.add}, que analizamos en la Sección~\ref{classifying-add}.
 
-\index{linear time}
+\index{tiempo lineal}
 
-For the same reason, \java{MyHashMap.put} turns out to be
-constant time if we average over a series of invocations.
-Again, the argument is based on amortized analysis 
-(see Section~\ref{classifying-add}).
+Por la misma razón, \java{MyHashMap.put} resulta ser de
+tiempo constante si promediamos una serie de invoaciones.
+De nuevo, el argumento se base en el análisis amortizado
+(ver la Sección~\ref{classifying-add}).
 
-\index{amortized analysis}
+\index{análisis amortizado}
 
-Suppose the initial number of sub-maps, $k$, is 2, and the load
-factor is 1. Now let's see how much work it takes to \java{put} a
-series of keys. As the basic ``unit of work'', we'll count the number of
-times we have to hash a key and add it to a sub-map.
+Supón que el número inicial de sub-mapas, $k$, es 2, y que el factor
+de carga es 1. Ahora veamos cuánto trabajo requiere poner (\java{put}) una
+serie de claves. Como ``unidad de trabajo'' básica, contaremos el número de
+veces que tenemos que codificar una clave y agregarla a un sub-mapa.
 
-\index{unit of work}
+\index{unidad de trabajo}
 
-The first time we call \java{put} it takes 1 unit of work. The second
-time also takes 1 unit. The third time we have to rehash, so it takes 2
-units to rehash the existing keys and 1 unit to hash the new key.
+La primera vez que llamamos a \java{put} requiere 1 unidad de trabajo. La segunda
+vez también toma 1 unidad. La tercera vez tenemos que recodificar, así que
+toma 2 unidades recodificar las llaves existentes y 1 unidad recodificar la
+nueva clave.
 
-Now the size of the hash table is 4, so the next time we call
-\java{put}, it takes 1 unit of work. But the next time we have to
-rehash, which takes 4 units to rehash the existing keys and 1 unit to
-hash the new key.
+Ahora el tamaño de la tabla hash es 4, así que la siguiente vez que llamemos
+a \java{put}, toma 1 unidad de trabajo. Pero la siguiente vez tenemos que
+recodificar, lo que toma 4 unidades para recodificar las llaves existentes y 1
+unidad para recodificar la nueva clave.
 
 \index{hashing}
 
-Figure~\ref{fig-hashtable} shows the pattern, with the normal work of hashing
-a new key shown across the bottom and extra work of rehashing shown as a
-tower.
+La figura ~\ref{fig-hashtable} muestra el patrón, con la carga normal de trabajo de
+codificar una nueva clave en la parte inferior y el trabajo extra de recodificar se
+muestra como una torre.
 
 \begin{figure}
 \centerline{\includegraphics[width=5.5in]{figs/tower.pdf}}
-\caption{Representation of the work done to add elements to a hash table.}
+\caption{Representación del trabajo realizado para agregar elementos a una tabla hash.}
 \label{fig-hashtable}
 \end{figure}
 
-As the arrows suggest, if we knock down the towers, each one fills the
-space before the next tower. The result is a uniform height of 2 units,
-which shows that the average work per \java{put} is about 2 units. And
-that means that \java{put} is constant time on average.
+Como la flecha sugiere, si derribamos las torres, cada una llenará el
+espacio antes de la siguiente torre. El resultado es una altura uniforme
+de 2 unidades, que muestra que el trabajo promedio por \java{put} es de alrededor
+de 2 unidades. Y eso significa que \java{put} es de tiempo constante en promedio.
 
-This diagram also shows why it is important to double the number of
-sub-maps, $k$, when we rehash. If we only add to $k$
-instead of multiplying, the towers would be too close together and
-they would start piling up. And that would not be constant
-time.
+Este diagrama también muestra por qué es importante duplicar el número de
+sub-mapas, $k$, cuando recodificamos. Si solamente sumamos a $k$
+en lugar de multiplicar, las torres estarían demasiado cercanas entre sí
+y comenzarían a apilarse. Y eso no sería de tiempo constante.
 
 \index{constant time}
 
 
-\section{The tradeoffs}
+\section{Limitaciones}
 \label{the-tradeoffs}
 
-We've shown that \java{containsKey}, \java{get}, and \java{remove}
-are constant time, and \java{put} is constant time on average. We
-should take a minute to appreciate how remarkable that is. The
-performance of these operations is pretty much the same no matter how
-big the hash table is. Well, sort of.
+Hemos mostrado que \java{containsKey}, \java{get}, y \java{remove}
+son de tiempo constante y que \java{put} es de tiempo constante en
+promedio. Deberíamos tomarnos un minuto para apreciar cuán notable
+es eso. El rendimiento de estas operaciones es prácticamente el mismo
+sin importar qué tan grande sea la tabla hash. Bueno, en cierto modo.
 
 \index{containsKey}
 \index{get}
 \index{remove}
 \index{put}
 
-Remember that our analysis is based on a simple model of computation
-where each ``unit of work'' takes the same amount of time. Real
-computers are more complicated than that. In particular, they are
-usually fastest when working with data structures small enough to fit in
-cache; somewhat slower if the structure doesn't fit in cache but still
-fits in memory; and \emph{much} slower if the structure doesn't fit in
-memory.
+Recuerda que nuestro análisis se basa un un modelo simple de cálculo
+donde cada ``unidad de trabajo'' toma la misma cantidad de tiempo. En
+la vida real, las computadoras son más complicadas. En particular, 
+usualmente son más rápidas cuando trabajan con estructuras de datos lo
+suficientemente pequeñas para caber en la caché, un poco más lentas si
+la estructura de datos no cabe en caché pero sí en la memoria; y \emph{mucho}
+más lentas si la estructura no cabe en la memoria.
 
 \index{cache}
 \index{containsValue}
 
-Another limitation of this implementation is that hashing doesn't help
-if we are given a value rather than a key: \java{containsValue} is
-linear because it has to search all of the sub-maps. And there
-is no particularly efficient way to look up a value and find the
-corresponding key (or possibly keys).
+Otra limitación de esta implementación es que el hashing no nos ayuda
+si nos dan un valor en lugar de una clave: \java{containsValue} es
+lineal porque tiene que buscar todos los sub-mapas. Y no hay una forma
+particularmente eficiente de buscar un valor y encontrar la clave (o
+posiblemente, claves) correspondiente.
 
-\index{linear time}
+\index{tiempo lineal}
 
-And there's one more limitation: some of the methods that were constant
-time in \java{MyLinearMap} have become linear. For example:
+Y hay una limitación más: algunos de los métodos que eran de tiempo
+constante en \java{MyLinearMap} se han vuelto lineales. Por ejemplo:
 
 \begin{verbatim}
     public void clear() {
@@ -5133,15 +5134,15 @@ time in \java{MyLinearMap} have become linear. For example:
     }
 \end{verbatim}
 
-\java{clear} has to clear all of the sub-maps, and the number of
-sub-maps is proportional to $n$, so it's linear. Fortunately,
-this operation is not used very often, so for most applications this
-tradeoff is acceptable.
+\java{clear} tiene que limpiar todos los sub-mapas, y el número de
+sub-mapas es proporcional a $n$, así que es lineal. Afortunadamente,
+esta operación no se usa muy a menudo, así que para la mayoría de
+aplicaciones este sacrificio es aceptable.
 
 \index{clear}
 
 
-\section{Profiling \java{MyHashMap}}
+\section{Perfilado de \java{MyHashMap}}
 \label{profiling-myhashmap}
 
 Before we go on, we should check whether \java{MyHashMap.put} is really
