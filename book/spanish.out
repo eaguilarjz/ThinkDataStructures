@@ -57,10 +57,10 @@
 \BOOKMARK [0][-]{chapter.11}{11. HashMap}{}% 57
 \BOOKMARK [1][-]{section.11.1}{11.1. Ejercicio 9}{chapter.11}% 58
 \BOOKMARK [1][-]{section.11.2}{11.2. An\341lisis de MyHashMap}{chapter.11}% 59
-\BOOKMARK [1][-]{section.11.3}{11.3. The tradeoffs}{chapter.11}% 60
-\BOOKMARK [1][-]{section.11.4}{11.4. Profiling MyHashMap}{chapter.11}% 61
-\BOOKMARK [1][-]{section.11.5}{11.5. Fixing MyHashMap}{chapter.11}% 62
-\BOOKMARK [1][-]{section.11.6}{11.6. UML class diagrams}{chapter.11}% 63
+\BOOKMARK [1][-]{section.11.3}{11.3. Limitaciones}{chapter.11}% 60
+\BOOKMARK [1][-]{section.11.4}{11.4. Perfilado de MyHashMap}{chapter.11}% 61
+\BOOKMARK [1][-]{section.11.5}{11.5. Arreglando MyHashMap}{chapter.11}% 62
+\BOOKMARK [1][-]{section.11.6}{11.6. Diagramas de clases UML}{chapter.11}% 63
 \BOOKMARK [0][-]{chapter.12}{12. TreeMap}{}% 64
 \BOOKMARK [1][-]{section.12.1}{12.1. What's wrong with hashing?}{chapter.12}% 65
 \BOOKMARK [1][-]{section.12.2}{12.2. Binary search tree}{chapter.12}% 66

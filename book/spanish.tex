@@ -5145,46 +5145,47 @@ aplicaciones este sacrificio es aceptable.
 \section{Perfilado de \java{MyHashMap}}
 \label{profiling-myhashmap}
 
-Before we go on, we should check whether \java{MyHashMap.put} is really
-constant time.
+Antes de continuar, deberíamos comprobar si \java{MyHashMap.put} realmente
+es de tiempo constante.
 
 \index{MyHashMap}
-\index{profiling}
+\index{perfilado}
 \index{Ant}
 
-Run \java{ant build} to compile the source
-files. Then run \java{ant ProfileMapPut}. It measures the runtime of
-\java{HashMap.put} (provided by Java) with a range of problem sizes,
-and plots runtime versus problem size on a log-log scale. If this
-operation is constant time, the total time for $n$ operations
-should be linear, so the result should be a straight line with slope
-1. When I ran this code, the estimated slope was close to 1, which is
-consistent with our analysis. You should get something similar.
+Ejecuta \java{ant build} para compilar los archivos de código
+fuente. Luego ejecuta \java{ant ProfileMapPut}. Este programa mide el
+tiempo de ejecución de \java{HashMap.put} (proporcionado por Java) con un
+rango de tamaños de problemas y grafica el tiempo de ejecución versus el
+tamaño del problema en una escala log-log. Si esta operación es de
+tiempo constante, el tiempo total para $n$ operaciones debería ser
+lineal, así que el resultado debería ser una línea recta con pendiente
+de 1. Cuando ejecuté este código, la pendiente estimada era cercana a 1,
+lo que es consistente con nuestroo análisis. Deberías obtener algo similar.
 
-Modify \java{ProfileMapPut.java} so it profiles your implementation,
-\java{MyHashMap}, instead of Java's \java{HashMap}. Run the
-profiler again and see if the slope is near 1. You might have to
-adjust \java{startN} and \java{endMillis} to find a range of
-problem sizes where the runtimes are more than a few milliseconds, but
-not more than a few thousand.
+Modifica \java{ProfileMapPut.java} para perfilar tu implementación,
+\java{MyHashMap}, en lugar del \java{HashMap} de Java. Ejecuta el
+perfilador de nuevo y observa si la pendiente es cercana a 1. Podrías
+tener que ajustar \java{startN} y \java{endMillis} para encontrar un rango
+de tamaños del problema donde los tiempos de ejecución sean mayores a unos
+pocos milisegundos, pero no más de unos cuantos miles.
 
-When I ran this code, I got a surprise: the slope was about 1.7,
-which suggests that this implementation is not constant time after all.
-It contains a ``performance bug''. 
+Cuando ejecuté este código, me sorprendí: la pendiente era alrededor de 1.7,
+lo que sugiere que esta implementación no es de tiempo constante después de
+todo. Contiene un ``bug de rendimiento'. 
 
-\index{performance bug}
+\index{bug de rendimiento}
 
-Before you read the next section, you should track down the error, fix
-it, and confirm that \java{put} is now constant time, as expected.
+Antes de leer la siguiente sección, deberías rastrear el error, arreglarlo
+y confirmar que \java{put} es de tiempo constante, como se esperaba.
 
 
-\section{Fixing \java{MyHashMap}}
+\section{Arreglando \java{MyHashMap}}
 \label{fixing-myhashmap}
 
 \index{size}
 
-The problem with \java{MyHashMap} is in \java{size}, which is
-inherited from \java{MyBetterMap}:
+El problema con \java{MyHashMap} está en \java{size}, que se
+heredó de \java{MyBetterMap}:
 
 \begin{verbatim}
     public int size() {
@@ -5196,14 +5197,14 @@ inherited from \java{MyBetterMap}:
     }
 \end{verbatim}
 
-To add up the total size it has to iterate the sub-maps. Since we
-increase the number of sub-maps, $k$, as the number of entries,
-$n$, increases, $k$ is proportional to $n$, so
-\java{size} is linear.
+Para calcular el tamaño total tiene que iterar por todos los sub-mapas. 
+Dado que incrementamos el númeor de submapas, $k$, conforme el número
+de entradas, $n$, se incrementa, $k$ es proporcional a $n$, así que
+\java{size} es lineal.
 
-\index{linear time}
+\index{tiempo lineal}
 
-And that makes \java{put} linear, too, because it uses \java{size}:
+Y eso hace que \java{put} también sea lineal, porque usa a \java{size}:
 
 \begin{verbatim}
     public V put(K key, V value) {
@@ -5216,20 +5217,20 @@ And that makes \java{put} linear, too, because it uses \java{size}:
     }
 \end{verbatim}
 
-Everything we did to make \java{put} constant time is wasted if
-\java{size} is linear!
+¡Todo lo que hicimos para hacer a \java{put} de tiempo constante es un despercicio
+si \java{size} es lineal!
 
-\index{constant time}
-\index{linear time}
+\index{tiempo constante}
+\index{tiempo lineal}
 
-Fortunately, there is a simple solution, and we have seen it before: we
-have to keep the number of entries in an instance variable and update it
-whenever we call a method that changes it.
+Afortunadamente, hay una solución simple, y la hemos visto antes: tenemos
+que llevar la cuenta del número de entradas en una variable de instancia y
+actualizarla cada vez que llamemos a un método que la cambie.
 
 \index{MyFixedHashMap}
 
-You'll find my solution in the repository for this book, in
-\java{MyFixedHashMap.java}.  Here's the beginning of the class definition:
+Encontrarás esta solución en el repositorio para este libro, en
+\java{MyFixedHashMap.java}.  Aquí está el principio de la definición de la clase:
 
 \begin{verbatim}
 public class MyFixedHashMap<K, V> extends MyHashMap<K, V> implements Map<K, V> {
@@ -5242,20 +5243,19 @@ public class MyFixedHashMap<K, V> extends MyHashMap<K, V> implements Map<K, V> {
     }
 \end{verbatim}
 
-Rather than modify \java{MyHashMap}, I define a new class that
-extends it. It adds a new instance variable, \java{size}, which is
-initialized to zero.
+En lugar de modificar \java{MyHashMap}, defino una nueva clase que
+la extiende. Esta clase agrega una nueva variable de instancia, \java{size}, 
+que se inicializa en cero.
 
-Updating \java{clear} is straightforward; we invoke \java{clear} in
-the superclass (which clears the sub-maps), and then update
+Actualizar \java{clear} es directo; invocamos a \java{clear} en
+la superclase (lo que limpia los sub-mapas), y luego actualizamos
 \java{size}.
 
 \index{superclass}
 
-Updating \java{remove} and \java{put} is a little more difficult
-because when we invoke the method on the superclass, we can't tell
-whether the size of the sub-map changed. Here's how I worked around
-that:
+Actualizar \java{remove} y \java{put} es un poco más difícil
+porque cuando invocamos el método en la superclase, no podemos decir
+si el tamaño del sub-mapa cambió. Así es como superé esta limitante:
 
 \begin{verbatim}
     public V remove(Object key) {
@@ -5267,16 +5267,16 @@ that:
     }
 \end{verbatim}
 
-\java{remove} uses \java{chooseMap} to find the right sub-map, then
-subtracts away the size of the sub-map. It invokes \java{remove} on
-the sub-map, which may or may not change the size of the sub-map,
-depending on whether it finds the key. But either way, we add the new
-size of the sub-map back to \java{size}, so the final value of
-\java{size} is correct.
+\java{remove} usa a \java{chooseMap} para encontrar el sub-mapa correcto, luego
+sustrae el tamaño (size) del sub-mapa. Invoca a \java{remove} en el
+sub-mapa, que puede o no cambiar el tamaño del sub-mapa,
+dependiendo de si encuentra la clave. Pero de cualquier forma, agregamos
+el nuevo tamaño del sub-mapa a \java{size}, así que el valor final de
+\java{size} es correcto.
 
 \index{remove}
 
-The rewritten version of \java{put} is similar:
+La versión reescrita de \java{put} es similar:
 
 \begin{verbatim}
     public V put(K key, V value) {
@@ -5293,14 +5293,14 @@ The rewritten version of \java{put} is similar:
     }
 \end{verbatim}
 
-We have the same problem here: when we invoke \java{put} on the
-sub-map, we don't know whether it added a new entry. So we use the same
-solution, subtracting off the old size and then adding in the new size.
+Tenemos el mismo problema aquí: cuando invocamos a \java{put} en el
+sub-mapa, no sabemos si se agregó una nueva entrada. Así que usamos la misma
+solución, sustrayendo el tamaño (size) antiguo y luego sumando el nuevo.
 
 \index{put}
 \index{size}
 
-Now the implementation of the \java{size} method is simple:
+Ahora la implementación del método \java{size} es simple:
 
 \begin{verbatim}
     public int size() {
@@ -5308,93 +5308,93 @@ Now the implementation of the \java{size} method is simple:
     }
 \end{verbatim}
 
-And that's pretty clearly constant time.
+Y esta es claramente de tiempo constante.
 
-\index{constant time}
+\index{tiempo constante}
 
-When I profiled this solution, I found that the total time for putting
-$n$ keys is proportional to $n$, which means that each \java{put} is
-constant time, as it's supposed to be.
+Cuando perfilé esta solución, encontré que el tiempo total para poner
+$n$ claves es proporcional a $n$, lo que significa que cada \java{put} es
+de tiempo constante, como debe ser.
 
-\index{profiling}
+\index{perfilado}
 
 
-\section{UML class diagrams}
+\section{Diagramas de clases UML}
 \label{uml-class-diagrams}
 
 \index{UML}
-\index{class diagram}
+\index{diagrama de clase}
 
-One challenge of working with the code in this chapter is that we have
-several classes that depend on each other. Here are some of the
-relationships between the classes:
+Un desafío de trabajar con el código en este capítulo es que tenemos
+varias clases que dependen una de la otra. Aquí están algunas de las
+relaciones entre las clases:
 
 \begin{itemize}
 
 \item
-  \java{MyLinearMap} contains a \java{LinkedList} and implements
+  \java{MyLinearMap} contiene una \java{LinkedList} e implementa
   \java{Map}.
 \item
-  \java{MyBetterMap} contains many \java{MyLinearMap} objects and
-  implements \java{Map}.
+  \java{MyBetterMap} contiene muchos objetos \java{MyLinearMap} e
+  implementa \java{Map}.
 \item
-  \java{MyHashMap} extends \java{MyBetterMap}, so it also contains
-  \java{MyLinearMap} objects, and it implements \java{Map}.
+  \java{MyHashMap} extiende a \java{MyBetterMap}, así que también contiene
+  objetos \java{MyLinearMap} e implementa \java{Map}.
 \item
-  \java{MyFixedHashMap} extends \java{MyHashMap} and
-  implements \java{Map}.
+  \java{MyFixedHashMap} extiende a \java{MyHashMap} e
+  implementa \java{Map}.
 \end{itemize}
 
-To help keep track of relationships like these, software engineers
-often use {\bf UML class diagrams}. UML stands for Unified Modeling
-Language
-(see \url{http://thinkdast.com/uml}).
-A ``class diagram'' is one of several graphical standards defined by UML.
+Para llevar el control de relaciones como estas, los ingenieros de software
+a menudo usan {\bf diagramas de clases UML}. UML significa Unified Modeling
+Language (Lenguaje de Modelado Unificado)
+(véase \url{http://thinkdast.com/uml}).
+Un ``diagrama de clase'' es uno de varios estándares gráficos definidos por UML.
 
-In a class diagram, each class is represented by a box, and
-relationships between classes are represented by
-arrows. Figure~\ref{fig-uml} shows a UML class diagram for the classes
-from the previous exercise, generated using the online tool yUML at
+En un diagrama de clases, cada clase se representa con una caja y
+las relaciones entre clases se representan con flechas. La
+figura~\ref{fig-uml} muestra un diagrama de clases UML para las clases
+del ejercicio anterior, generado usando la herramienta en línea yUML en
 \url{http://yuml.me/}.
 
 \begin{figure}
 \centering
 \includegraphics[width=5in]{figs/yuml1.pdf}
-\caption{UML diagram for the classes in this chapter.}
+\caption{Diagrama UML para las clases de este capítulo.}
 \label{fig-uml}
 % Edit: http://yuml.me/edit/2aa18a2d
 \end{figure}
 
-\index{inheritance}
-\index{IS-A relationship}
-\index{HAS-A relationship}
+\index{herencia}
+\index{relación ES-UN(A)}
+\index{relación TIENE-UN(A)}
 
-Different relationships are represented by different arrows:
+Las relaciones diferentes se representan con flechas diferentes:
 
 \begin{itemize}
 
 \item
-  Arrows with a solid head indicate HAS-A relationships. For example,
-  each instance of \java{MyBetterMap} contains multiple instances of
-  \java{MyLinearMap}, so they are connected by a solid arrow.
+  Las flechas con una punta sólida indican una relación TIENE-UN(A). Por ejemplo,
+  cada instancia de \java{MyBetterMap} contiene múltiples instancias de
+  \java{MyLinearMap}, así que se conectan con una flecha sólida.
 
 \item
-  Arrows with a hollow head and a solid line indicate IS-A
-  relationships. For example, \java{MyHashMap} extends
-  \java{MyBetterMap}, so they are connected by an IS-A arrow.
+  Las flechas con una punta en blanco y una línea sólida indican relaciones
+  ES-UN(A). Por ejemplo, \java{MyHashMap} extiende a
+  \java{MyBetterMap}, así que se conectan con una flecha ES-UN(A).
 
 \item
-  Arrows with a hollow head and a dashed line indicate that a class
-  implements an interface; in this diagram, every class implements
+  Las flechas con una punta en blanco y una línea punteada indican que
+  una clase implementa una interfaz; en este diagram, cada clase implementa
   \java{Map}.
 
 \end{itemize}
 
-UML class diagrams provide a concise way to represent a lot of
-information about a collection of classes. They are used during design
-phases to communicate about alternative designs, during implementation
-phases to maintain a shared mental map of the project, and during
-deployment to document the design.
+Los diagramas de clase UML proveen una forma concisa de representar un
+montón de información sobre una colección de clases. Usualmente se usan
+durante las fases de diseño para comunicar diseños alternativos, durante
+las fases de implementación para mantener un mapa mental compartido del
+proyecto y durante el despliegue para documentar el diseño.
 
 
 \chapter{TreeMap}

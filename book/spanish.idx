@@ -374,28 +374,28 @@
 \indexentry{put|hyperpage}{103}
 \indexentry{cache|hyperpage}{103}
 \indexentry{containsValue|hyperpage}{103}
-\indexentry{linear time|hyperpage}{103}
+\indexentry{tiempo lineal|hyperpage}{103}
 \indexentry{clear|hyperpage}{103}
 \indexentry{MyHashMap|hyperpage}{103}
-\indexentry{profiling|hyperpage}{103}
+\indexentry{perfilado|hyperpage}{103}
 \indexentry{Ant|hyperpage}{103}
-\indexentry{performance bug|hyperpage}{104}
+\indexentry{bug de rendimiento|hyperpage}{104}
 \indexentry{size|hyperpage}{104}
-\indexentry{linear time|hyperpage}{104}
-\indexentry{constant time|hyperpage}{105}
-\indexentry{linear time|hyperpage}{105}
+\indexentry{tiempo lineal|hyperpage}{104}
+\indexentry{tiempo constante|hyperpage}{105}
+\indexentry{tiempo lineal|hyperpage}{105}
 \indexentry{MyFixedHashMap|hyperpage}{105}
 \indexentry{superclass|hyperpage}{105}
 \indexentry{remove|hyperpage}{106}
 \indexentry{put|hyperpage}{106}
 \indexentry{size|hyperpage}{106}
-\indexentry{constant time|hyperpage}{106}
-\indexentry{profiling|hyperpage}{106}
+\indexentry{tiempo constante|hyperpage}{106}
+\indexentry{perfilado|hyperpage}{106}
 \indexentry{UML|hyperpage}{107}
-\indexentry{class diagram|hyperpage}{107}
-\indexentry{inheritance|hyperpage}{107}
-\indexentry{IS-A relationship|hyperpage}{107}
-\indexentry{HAS-A relationship|hyperpage}{107}
+\indexentry{diagrama de clase|hyperpage}{107}
+\indexentry{herencia|hyperpage}{107}
+\indexentry{relaci\IeC {\'o}n ES-UN(A)|hyperpage}{107}
+\indexentry{relaci\IeC {\'o}n TIENE-UN(A)|hyperpage}{107}
 \indexentry{TreeMap|hyperpage}{109}
 \indexentry{Map|hyperpage}{109}
 \indexentry{constant time|hyperpage}{109}
