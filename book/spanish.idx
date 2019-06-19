@@ -345,13 +345,13 @@
 \indexentry{immutable|hyperpage}{96}
 \indexentry{SillyArray|hyperpage}{96}
 \indexentry{setChar|hyperpage}{96}
-\indexentry{hash code|hyperpage}{97}
+\indexentry{c\IeC {\'o}digo hash|hyperpage}{97}
 \indexentry{MyBetterMap|hyperpage}{97}
 \indexentry{Ant|hyperpage}{98}
 \indexentry{put|hyperpage}{98}
 \indexentry{get|hyperpage}{98}
 \indexentry{containsValue|hyperpage}{98}
-\indexentry{linear time|hyperpage}{98}
+\indexentry{tiempo lineal|hyperpage}{98}
 \indexentry{HashMap|hyperpage}{99}
 \indexentry{sub-map|hyperpage}{99}
 \indexentry{constant time|hyperpage}{99}

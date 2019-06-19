@@ -4845,71 +4845,70 @@ hash, podría ser aceptable. Pero probablemente es una buena idea evitarlo.
 
 \index{MyBetterMap}
 
-In this exercise, you will finish off the implementation of
-\java{MyBetterMap}.  In the repository for this book,
-you'll find the source files for this exercise:
+En este ejercicio, finalizarás la implementación de
+\java{MyBetterMap}.  En el repositorio para este libro,
+encontrarás los archivos de código fuente para este ejercicio:
 
 \begin{itemize}
 
 \item
-  \java{MyLinearMap.java} contains our solution to the previous exercise,
-  which we will build on in this exercise.
+  \java{MyLinearMap.java} contiene nuestra solución al ejercicio anterior,
+  sobre la que construiremos en este ejercicio.
+\item
+  \java{MyBetterMap.java} contiene el código del capítulo anterior con
+  algunos métodos que tendrás que llenar.
 
 \item
-  \java{MyBetterMap.java} contains the code from the previous chapter
-  with some methods you will fill in.
+  \java{MyHashMap.java} contiene un boceto de una tabla hash que
+  crece cuando se necesita, la cual completarás.
 
 \item
-  \java{MyHashMap.java} contains the outline of a hash table that
-  grows when needed, which you will complete.
-
-\item
-  \java{MyLinearMapTest.java} contains the unit tests for
+  \java{MyLinearMapTest.java} contiene los tests unitarios para
   \java{MyLinearMap}.
 
 \item
-  \java{MyBetterMapTest.java} contains the unit tests for
+  \java{MyBetterMapTest.java} contiene los tests unitarios para
   \java{MyBetterMap}.
 
 \item
-  \java{MyHashMapTest.java} contains the unit tests for
+  \java{MyHashMapTest.java} contiene los tests unitarios para
   \java{MyHashMap}.
 
 \item
-  \java{Profiler.java} contains code for measuring and plotting
-  runtime versus problem size.
+  \java{Profiler.java} contiene código para medir y graficar el
+  tiempo de ejecución versus el tamaño del problema.
 
 \item
-  \java{ProfileMapPut.java} contains code that profiles the
-  \java{Map.put} method.
+  \java{ProfileMapPut.java} contiene código que perfile el método
+  \java{Map.put}.
 \end{itemize}
 
-As usual, you should run \java{ant build} to compile the source
-files. Then run \java{ant MyBetterMapTest}. Several tests should fail,
-because you have some work to do!
+Como ya es costumbre, ejecutarás \java{ant build} para compilar los archivos
+de código fuente. Luego ejecuta \java{ant MyBetterMapTest}. Varios tests deberían
+fallar, ¡porque aún tienes trabajo por hacer!
 
 \index{Ant}
 
-Review the implementation of \java{put} and \java{get} from the
-previous chapter. Then fill in the body of \java{containsKey}. HINT:
-use \java{chooseMap}. Run \java{ant MyBetterMapTest} again and confirm
-that \java{testContainsKey} passes.
+Revisa la implementación de \java{put} y \java{get} del capítulo
+anterior. Luego llena el cuerpo de \java{containsKey}. PISTA:
+usa \java{chooseMap}. Ejecuta \java{ant MyBetterMapTest} de nuevo y
+confirma que pasa \java{testContainsKey}.
 
 \index{put}
 \index{get}
 \index{containsValue}
 
-Fill in the body of \java{containsValue}. HINT: \emph{don't} use
-\java{chooseMap}.  Run \java{ant MyBetterMapTest} again and confirm
-that \java{testContainsValue} passes. Notice that we have to do more
-work to find a value than to find a key.
+Llena el cuerpo de \java{containsValue}. PISTA: \emph{no} uses
+\java{chooseMap}.  Ejeecuta \java{ant MyBetterMapTest} de nuevo y confirma
+que pasa \java{testContainsValue}. Nota que tenemos que trabajar más
+para encontrar un valor que para encontrar una clave.
 
-Like \java{put} and \java{get}, this implementation of
-\java{containsKey} is linear, because it has to search one of the
-embedded sub-maps.  In the next chapter, we'll see how we can
-improve this implementation even more.
+Como \java{put} y \java{get}, esta implementación de
+\java{containsKey} es lineal, porque tiene que buscar uno de los
+sub-mapas embebidos. En el siguiente capítulo, veremos cómo podemos
+mejorar esta implementación aún más.
 
-\index{linear time}
+\index{tiempo lineal}
 
 
 \chapter{HashMap}
