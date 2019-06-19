@@ -62,10 +62,10 @@
 \BOOKMARK [1][-]{section.11.5}{11.5. Arreglando MyHashMap}{chapter.11}% 62
 \BOOKMARK [1][-]{section.11.6}{11.6. Diagramas de clases UML}{chapter.11}% 63
 \BOOKMARK [0][-]{chapter.12}{12. TreeMap}{}% 64
-\BOOKMARK [1][-]{section.12.1}{12.1. What's wrong with hashing?}{chapter.12}% 65
-\BOOKMARK [1][-]{section.12.2}{12.2. Binary search tree}{chapter.12}% 66
-\BOOKMARK [1][-]{section.12.3}{12.3. Exercise 10}{chapter.12}% 67
-\BOOKMARK [1][-]{section.12.4}{12.4. Implementing a TreeMap}{chapter.12}% 68
+\BOOKMARK [1][-]{section.12.1}{12.1. \277Qu\351 tiene de malo el hashing?}{chapter.12}% 65
+\BOOKMARK [1][-]{section.12.2}{12.2. \301rbol binario de b\372squeda}{chapter.12}% 66
+\BOOKMARK [1][-]{section.12.3}{12.3. Ejercicio 10}{chapter.12}% 67
+\BOOKMARK [1][-]{section.12.4}{12.4. Implementaci\363n de un TreeMap}{chapter.12}% 68
 \BOOKMARK [0][-]{chapter.13}{13. Binary search tree}{}% 69
 \BOOKMARK [1][-]{section.13.1}{13.1. A simple MyTreeMap}{chapter.13}% 70
 \BOOKMARK [1][-]{section.13.2}{13.2. Searching for values}{chapter.13}% 71

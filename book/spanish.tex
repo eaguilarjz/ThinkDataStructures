@@ -5402,94 +5402,91 @@ proyecto y durante el despliegue para documentar el diseño.
 \index{TreeMap}
 \index{Map}
 
-This chapter presents the binary search tree, which is an efficient
-implementation of the \java{Map} interface that is particularly useful
-if we want to keep the elements sorted.
+Este capítulo presenta el árbol binario de búsqueda, que es una implementación
+eficiente de la interfaz \java{Map} que es particularmente útil si queremos
+mantener los elementos ordenados.
 
+\section{¿Qué tiene de malo el hashing?}
 
-\section{What's wrong with hashing?}
+En este mometno, ya deberías estar familiarizado con la interfaz \java{Map} y
+la implementación \java{HashMap} provista por Java. Y al construir tu propio
+\java{Map} usando una tabla hash, deberías entender cómo funciona \java{HashMap}
+y por qué esperamos que sus métodos principales sean de tiempo lineal.
 
-At this point you should be familiar with the \java{Map} interface and
-the \java{HashMap} implementation provided by Java. And by making your
-own \java{Map} using a hash table, you should understand how
-\java{HashMap} works and why we expect its core methods to be constant
-time.
+\index{tiempo constante}
 
-\index{constant time}
-
-Because of this performance, \java{HashMap} is widely used, but it is
-not the only implementation of \java{Map}. There are a few reasons you
-might want another implementation:
+Debido a su desempeño, \java{HashMap} es ampliamente usado, pero no es la
+única implementación de \java{Map}. Hay una pocas razones por las que podrías
+querer otra implementación:
 
 \begin{enumerate}
 
 \item
-  Hashing can be slow, so even though \java{HashMap} operations are
-  constant time, the ``constant'' might be big.
+  El hashing puede ser lento, así que aunque las operaciones de \java{HashMap} sean
+  de tiempo constante, la ``constante'' podría ser grande.
 
 \item
-  Hashing works well if the hash function distributes the keys evenly
-  among the sub-maps.  But designing good hash functions is not easy,
-  and if too many keys end up in the same sub-map, the performance of
-  the \java{HashMap} may be poor.
+  El hashing funciona bien si la función hash distribuye las llaves de forma
+  equitativa entre los sub-mapas. Pero el diseño de buenas funciones hash no
+  es fácil y si demasiadas claves terminan en el mismo sub-mapa, el desempeño
+  de \java{HashMap} podría ser pobre.
 
 \item
-  The keys in a hash table are not stored in any particular order; in
-  fact, the order might change when the table grows and the keys are
-  rehashed. For some applications, it is necessary, or at least useful,
-  to keep the keys in order.
+  Las llaves en una tabla hash no se guardan en ningún orden particular; de
+  hecho, el orden podría cambiar cuando la tabla crezca y las llaves sean
+  recodificadas (rehashed). Para algunas aplicaciones, es necesario, o por
+  lo menos útil, mantener las clave en orden.
 
 \end{enumerate}
 
-It is hard to solve all of these problems at the same
-time, but Java provides an implementation called \java{TreeMap} that
-comes close:
+Es difícil resolver todos estos problemas a la vez, pero
+Java provee una implementación llamada \java{TreeMap} que se
+casi lo consigue:
 
 \begin{enumerate}
 
 \item
-  It doesn't use a hash function, so it avoids the cost of hashing
-  and the difficulty of choosing a hash function.
+  No usa una función hash, así que evita el costo del hashing
+  y la dificultad de elegir una función hash.
 
 \item
-  Inside the \java{TreeMap}, the keys are are stored in a
-  \textbf{binary search tree}, which makes it possible to traverse the
-  keys, in order, in linear time.
+  Dentro del \java{TreeMap}, las claves se guardan en un
+  \textbf{árbol binario de búsqueda}, lo que posibilita recorrer las
+  claves, en orden, en tiempo lineal.
 
 \item
-  The runtime of the core methods is proportional to $\log n$,
-  which is not quite as good as constant time, but it is still
-  very good.
+  El tiempo de ejecución de los métodos principales es proporcional a $\log n$,
+  que no tan bueno como tiempo constante, pero todavía es muy bueno.
 
 \end{enumerate}
 
-In the next section, I'll explain how binary search trees work and then you
-will use one to implement a \java{Map}. Along the way, we'll analyze
-the performance of the core map methods when implemented using a tree.
+En la siguiente sección, explicaré cómo funcionan los árboles binarios de búsqueda
+y usarás uno para implementar un \java{Map}. Durante el viaje, analizaremos el
+desempeño de los métodos principales de un mapa cuando se implementan con un árbol.
 
-\index{linear time}
+\index{tiempo lineal}
 
 
-\section{Binary search tree}
+\section{Árbol binario de búsqueda}
 \label{binary-search-tree}
 
-\index{binary search tree}
-\index{BST}
-\index{BST property}
+\index{árbol binario de búsqueda}
+\index{ABB}
+\index{propiedad ABB}
 \index{node}
 
-A binary search tree (BST) is a tree where each node contains a key, and
-every \java{node} has the ``BST property'':
+Un árbol binario de búsqueda (ABB) es un árbol donde cada nodo (node) contiene
+una clave y cada \java{node} tiene la ``propiedad ABB'':
 
 \begin{enumerate}
 
 \item
-  If \java{node} has a left child, all keys in the left subtree must
-  be less than the key in \java{node}.
+  Si \java{node} tiene un hijo izquierdo, todas las claves en el subárbol izquierdo deben
+  ser menores que la clave en \java{node}.
 
 \item
-  If \java{node} has a right child, all keys in the right subtree must
-  be greater than the key in \java{node}.
+  Si \java{node} tiene un hijo derecho, todas las claves en el subárbol derecho deben
+  ser mayores que la clave en el \java{node}.
 
 \end{enumerate}
 
@@ -5497,118 +5494,117 @@ every \java{node} has the ``BST property'':
 \centering
 \includegraphics[height=2.5in]{figs/Binary_search_tree_1229.png}
 %\includegraphics[height=2.5in]{figs/Binary_search_tree.svg}
-\caption{Example of a binary search tree.}
+\caption{Ejemplo de un árbol binario de búsqueda.}
 \label{fig-bst}
 \end{figure}
 
-Figure~\ref{fig-bst}
-shows a tree of integers that has this property.
-This figure is from the Wikipedia page on binary search trees at
-\url{http://thinkdast.com/bst}, which you
-might find useful while you work on this exercise.
+La figura~\ref{fig-bst} muestra un árbol de enteros que tiene esta propiedad.
+Esta figura es de la página de Wikipedia sobre árboles binarios de búsqueda en
+\url{http://thinkdast.com/bst}, que podrías
+encontrar útil mientras trabajas en este ejercicio.
 
-The key in the root is 8, and you can confirm that all keys to the left
-of the root are less than 8, and all keys to the right are greater. You
-can also check that the other nodes have this property.
+La clave en la raíz es 8 y puedes confirmar que todas las claves a la izquierda
+de la raíz son menores que 8 y todas las claves a la derecha son mayores.
+También puedes verificar que los otros nodos tienen esta propiedad.
 
-\index{key}
+\index{clave}
 
-Looking up a key in a binary search tree is fast because we don't have
-to search the entire tree. Starting at the root, we can use the
-following algorithm:
+Buscar una clave en un árbol binario de búsqueda es rápido porque no tenemos
+que buscar en el árbol entero. Comenzando en la raíz, podemos usar el
+siguiente algoritmo:
 
 \begin{enumerate}
 
 \item
-  Compare the key you are looking for, \java{target}, to the key in
-  the current node. If they are equal, you are done.
+  Compara la clave (key) que estás buscando, \java{target}, a la clave
+  en el nodo actual. Si son iguales, has terminado.
 
 \item
-  If \java{target} is less than the current key, search the left tree.
-  If there isn't one, \java{target} is not in the tree.
+  Si \java{target} es menor que la clave actual, busca en el árbol izquierdo.
+  Si no hay uno, \java{target} no está en el árbol.
 
 \item
-  If \java{target} is greater than the current key, search the right
-  tree. If there isn't one, \java{target} is not in the tree.
+  Si \java{target} es mayor que la clave actual, busca en el árbol derecho.
+  Si no hay uno, \java{target} no está en el árbol.
 
 \end{enumerate}
 
-At each level of the tree, you only have to search one child. For
-example, if you look for \java{target = 4} in the previous diagram,
-you start at the root, which contains the key \java{8}. Because
-\java{target} is less than \java{8}, you go left. Because
-\java{target} is greater than \java{3} you go right. Because
-\java{target} is less than \java{6}, you go left. And then you find
-the key you are looking for.
+En cada nivel del árbol, tienes que buscar sólo en un hijo. Por ejemplo,
+si buscar \java{target = 4} en el diagrama anterior, comienzas en la
+raíz, que contiene la clave \java{8}. Porque
+\java{target} es menor que \java{8}, te vas a la izquierda. Porque
+\java{target} es mayor que \java{3} te vas a la derecha. Porque
+\java{target} es menor que \java{6}, te vas a la izquierda. Y entonces
+encuentras la clave que estabas buscando.
 
-In this example, it takes four comparisons to find the target,
-even though the tree contains nine keys. In general, the number of
-comparisons is proportional to the height of the tree, not the number of
-keys in the tree.
+En este ejemplo, toma cuatro comparaciones encontrar el objetivo (target),
+aunque el árbol contiene nueve claves. En general, el número de
+comparaciones es proporcional a la altura del árbol, no al número de
+claves en el árbol.
 
-\index{height}
+\index{altura}
 
-So what can we say about the relationship between the height of the
-tree, \java{h}, and the number of nodes, $n$? Starting small
-and working up:
+Entonces, ¿qué podemos decir sobre la relación entre la altura del
+árbol, \java{h}, y el número de nodos, $n$? Comenzando con un número
+bajo e incrementándolo gradualmente:
 
 \begin{itemize}
 
 \item
-  If \java{h=1}, the tree only contains one node, so \java{n=1}.
+  If \java{h=1}, el árbol sólo contiene un nodo, así que \java{n=1}.
 
 \item
-  If \java{h=2}, we can add two more nodes, for a total of
+  If \java{h=2}, podemos agregar dos nodos más, para un total de
   \java{n=3}.
 
 \item
-  If \java{h=3}, we can add up to four more nodes, for a total
-  of \java{n=7}.
+  If \java{h=3}, podemos agregar hasta cuatro nodos más, para un total
+  de \java{n=7}.
 
 \item
-  If \java{h=4}, we can add up to eight more nodes, for a total
-  of \java{n=15}.
+  If \java{h=4}, podemos agregar hasta ocho nodos más, para un total
+  de \java{n=15}.
 
 \end{itemize}
 
-By now you might see the pattern. If we number the levels of the tree from
-\java{1} to \java{h}, the level with index \java{i} can have up to
-$2^{i-1}$ nodes. And the total number of nodes in \java{h} levels is $2^h-1$.
-If we have
+Por ahora puedes ver el patrón. Si numeramos los niveles del árbol desde
+\java{1} hasta \java{h}, el nivel con índice \java{i} puede tener hasta
+$2^{i-1}$ nodos. Y el número total de nodos en \java{h} niveles es $2^h-1$.
+Si tenemos
 
 \[ n = 2^h - 1 \]
 
-we can take the logarithm base 2 of both sides:
+podemos calcular el logaritmo base 2 de ambos lados:
 
 \[ log_2 n \approx h \]
 
-which means that the height of the tree is proportional to
-$\log n$, if the tree is full; that is, if each level contains the
-maximum number of nodes.
+lo que significa que la altura del árbol es proporcional a
+$\log n$, si el árbol está lleno; es decir, si cada nivel contiene el
+máximo número de nodos.
 
-So we expect that we can look up a key in a binary search tree in time
-proportional to $\log n$. This is true if the tree is full, and
-even if the tree is only partially full. But it is not always true, as
-we will see.
+Así que esperamos poder buscar una clave en un árbol binario de búsqueda
+en un tiempo proporcional a $\log n$. Esto es cierto si el árbol está lleno e
+incluso si el árbol está solo parcialmente lleno. Pero no siempre es cierto,
+como veremos.
 
-\index{log time}
-\index{logarithm}
-\index{order of growth}
+\index{tiempo logarítmico}
+\index{logaritmo}
+\index{orden de crecimiento}
 
-An algorithm that takes time proportional to $\log n$ is called
-``logarithmic'' or ``log time'', and it belongs to the order of growth
+Un algoritmo que toma tiempo proporcional a $\log n$ es llamado
+``logaritmico'' o de ``tiempo logarítmico'', y pertenece a la orden de crecimiento
 $O(\log n)$.
 
 
-\section{Exercise 10}
+\section{Ejercicio 10}
 \label{exercise10}
 
-For this exercise you will write an implementation of
-the \java{Map} interface using a binary search tree.
+Para este ejercicio escribirás una implementación de la
+interfaz \java{Map} usando un árbol binario de búsqueda.
 
 \index{Map}
 
-Here's the beginning of an implementation, called \java{MyTreeMap}:
+Aquí está el principio de una implementación, llamada \java{MyTreeMap}:
 
 \begin{verbatim}
 public class MyTreeMap<K, V> implements Map<K, V> {
@@ -5617,12 +5613,12 @@ public class MyTreeMap<K, V> implements Map<K, V> {
     private Node root = null;
 \end{verbatim}
 
-The instance variables are \java{size}, which keeps track of the
-number of keys, and \java{root}, which is a reference to the root node
-in the tree. When the tree is empty, \java{root} is \java{null} and
-\java{size} is 0.
+Las variables de instancia son \java{size}, que lleva el control del
+número de claves, y \java{root}, que es una referencia al nodo raíz
+del árbol. Cuando el árbol está vacío, \java{root} es \java{null} y
+\java{size} es 0.
 
-Here's the definition of \java{Node}, which is defined inside
+Aquí está la definición de \java{Node}, que se define dentro de
 \java{MyTreeMap}:
 
 \begin{verbatim}
@@ -5640,14 +5636,14 @@ Here's the definition of \java{Node}, which is defined inside
 \end{verbatim}
 
 \index{Node}
-\index{key-value pair}
+\index{par clave-valor}
 
-Each node contains a key-value pair and references to two child nodes,
-\java{left} and \java{right}. Either or both of the child nodes can
-be \java{null}.
+Cada nodo contiene un par clave-valor (key-value) y referencias a dos
+nodos hijos \java{left} (izquierdo) and \java{right} (derecho). Cualquiera
+o ambos de los nodos hijos pueden ser \java{null}.
 
-Some of the \java{Map} methods are easy to implement, like
-\java{size} and \java{clear}:
+Algunos de los métodos de \java{Map} methods son fáciles de implementar, como
+\java{size} y \java{clear}:
 
 \begin{verbatim}
     public int size() {
@@ -5660,49 +5656,49 @@ Some of the \java{Map} methods are easy to implement, like
     }
 \end{verbatim}
 
-\java{size} is clearly constant time.
+\java{size} es claramente de tiempo constante.
 
 \index{size}
-\index{constant time}
+\index{tiempo constante}
 
-\java{clear} appears to be constant time, but consider this: when
-\java{root} is set to \java{null}, the garbage collector reclaims
-the nodes in the tree, which takes linear time. Should work done by the
-garbage collector count? I think so.
+\java{clear} pareciera ser de tiempo constante, pero considera esto: cuando
+\java{root} se modifica a \java{null}, el recolector de basura reclama la memoria
+de los nodos en el árbol, lo que toma tiempo lineal. ¿Deberíamos contar el trabajo
+que realiza el recolector de basura? Pienso que sí.
 
 \index{clear}
-\index{linear time}
+\index{tiempo lineal}
 
-In the next section, you'll fill in some of the other methods, including
-the most important ones, \java{get} and \java{put}.
+En la siguiente sección, llenarás algunos de los otros métodos, incluyendo
+los más importantes, \java{get} y \java{put}.
 
-\section{Implementing a TreeMap}
+\section{Implementación de un TreeMap}
 
 \index{MyTreeMap}
 
-In the repository for this book, you'll find these source files:
+En el repositorio para este libro, encontrarás estos archivos de código fuente:
 
 \begin{itemize}
 
 \item
-  \java{MyTreeMap.java} contains the code from the previous section
-  with outlines for the missing methods.
+  \java{MyTreeMap.java} contiene el código de la sección anterior con un boceto
+  para los métodos faltantes.
 
 \item
-  \java{MyTreeMapTest.java} contains the unit tests for
+  \java{MyTreeMapTest.java} contiene los tests unitarios para
   \java{MyTreeMap}.
 
 \end{itemize}
 
-Run \java{ant build} to compile the source files. Then run \java{ant
-  MyTreeMapTest}.  Several tests should fail, because you have some
-work to do!
+Ejecuta \java{ant build} para compilar los archivos de código fuente. Luego ejecuta
+\java{ant MyTreeMapTest}.  Varios tests deberían fallar, ¡porque tienes trabajo por
+hacer!
 
 \index{Ant}
 
-I've provided outlines for \java{get} and \java{containsKey}.  Both of
-them use \java{findNode}, which is a private method I defined; it is
-not part of the \java{Map} interface. Here's how it starts:
+He provisto bocetos para \java{get} y \java{containsKey}.  Ambos usan
+\java{findNode}, que es un método privado que yo definí; no es parte
+de la interfaz \java{Map}. Así es como comienza:
 
 \begin{verbatim}
     private Node findNode(Object target) {
@@ -5722,55 +5718,55 @@ not part of the \java{Map} interface. Here's how it starts:
 \index{containsKey}
 \index{findNode}
 
-The parameter \java{target} is the key we're looking for. If
-\java{target} is \java{null}, \java{findNode} throws an exception.
-Some implementations of \java{Map} can handle \java{null} as a key,
-but in a binary search tree, we need to be able to compare keys, so
-dealing with \java{null} is problematic. To keep things simple,
-this implementation does not allow \java{null} as a key.
+El parámetro \java{target} es la clave que estamos buscando. Si
+\java{target} es \java{null}, \java{findNode} lanza una excepción.
+Algunas implementaciones de \java{Map} pueden manejar \java{null} como una clave,
+pero en un árbol binario de búsqueda, necesitamos ser capaces de comparar
+claves, así que lidiar con \java{null} es problemático. Para mantener las cosas
+simples, esta implementación no permite \java{null} como una clave.
 
-The next lines show how we can compare \java{target} to a key in the
-tree. From the signature of \java{get} and \java{containsKey}, the
-compiler considers \java{target} to be an \java{Object}. But we need
-to be able to compare keys, so we typecast \java{target} to
-\java{Comparable<? super K>}, which means that
-it is comparable to an instance of type \java{K}, or any superclass of
-\java{K}.  If you are not familiar with this use of ``type
-wildcards'', you can read more at
+Las siguientes líneas muestran cómo podemos comparar \java{target} a una clave
+en el árbol. De la firma de \java{get} y \java{containsKey}, el compilador
+considera a \java{target} como un \java{Object}. Pero necesitamos poder
+comparar claves, así que convertimos \java{target} a un
+\java{Comparable<? super K>}, lo que significa que
+es comparable a una instancia de tipo \java{K}, o cualquier superclase de
+\java{K}.  Si no estás familiarizado con este uso del ``tipo comodín'', 
+puedes leer más al respecto en
 \url{http://thinkdast.com/gentut}.
 
-\index{type wildcard}
-\index{superclass}
+\index{tipo comodín}
+\index{superclase}
 
-Fortunately, dealing with Java's type system is not the point of this
-exercise. Your job is to fill in the rest of \java{findNode}. If it
-finds a node that contains \java{target} as a key, it should return
-the node. Otherwise it should return \java{null}. When you get this
-working, the tests for \java{get} and \java{containsKey} should
-pass.
+Afortunadamente, lidiar con el sistema de tipos de Java no es el punto de
+este ejercicio. Tu trabajo es llenar el resto de \java{findNode}. Si
+encuentra un nodo que contiene \java{target} como una clave, debería devolver
+el nodo. De lo contrario, debería devolver \java{null}. Cuando logres que esto
+funcione, debería pasar los tests para \java{get} y \java{containsKey}.
 
-Note that your solution should only search one path through the tree, so
-it should take time proportional to the height of the tree. You should
-not search the whole tree!
+Nota que tu solución debería buscar únicamente una ruta a lo largo del árbol,
+así que debería tomar tiempo proporcional a la altura del árbol.  ¡No deberías
+buscar en todo el árbol!
 
-\index{height}
-\index{helper method}
+\index{altura}
+\index{método auxiliar}
 
-Your next task is to fill in \java{containsValue}. To get you started,
-I've provided a helper method, \java{equals}, that compares
-\java{target} and a given key. Note that the values in the tree (as
-opposed to the keys) are not necessarily comparable, so we can't use
-\java{compareTo}; we have to invoke \java{equals} on \java{target}.
+Tu siguiente tarea es llenar \java{containsValue}. Para comenzar,
+he provisto un método auxiliar, \java{equals}, que compara
+\java{target} y una clave dada. Nota que los valores en el árbol (a
+diferencia de las claves) no son necesariamente comparables, así que
+no podemos usar \java{compareTo}; tenemos que invocar \java{equals}
+en el \java{target}.
 
 \index{containsValue}
 
-Unlike your previous solution for \java{findNode}, your solution for
-\java{containsValue} \emph{does} have to search the whole tree, so its
-runtime is proportional to the number of keys, $n$, not the
-height of the tree, \java{h}.
+A diferencia de tu solución anterior para \java{findNode}, tu solución para
+\java{containsValue} \emph{tiene} que buscar en el árbol completo, así que
+su tiempo de ejecución es proporcional al número de claves, $n$, no a la
+altura del árbol, \java{h}.
 
-The next method you should fill in is \java{put}. I've provided
-  starter code that handles the simple cases:
+El siguiente método que deberías llenar es \java{put}. He provisto
+  un código inicial que maneja los casos más simples:
 
 \begin{verbatim}
     public V put(K key, V value) {
@@ -5790,50 +5786,50 @@ The next method you should fill in is \java{put}. I've provided
     }
 \end{verbatim}
 
-If you try to put \java{null} as a key, \java{put} throws an
-exception.
+Si tratas de poner \java{null} como una clave, \java{put} lanza una
+excepción.
 
-If the tree is empty, \java{put} creates a new node and initializes
-the instance variable \java{root}.
+Si el árbol está vacío, \java{put} crea un nuevo nodo e inicializa
+la variable de instancia \java{root}.
 
 \index{put}
-\index{helper method}
+\index{método auxiliar}
 
-Otherwise, it calls \java{putHelper}, which is a private method I
-defined; it is not part of the \java{Map} interface.
+De otra forma, llama a \java{putHelper}, que es un método privado que yo
+definí; no es parte de la interfaz \java{Map}.
 
-Fill in \java{putHelper} so it searches the tree and:
+Llena \java{putHelper} para que busque en el árbol y:
 
 \begin{enumerate}
 
 \item
-  If \java{key} is already in the tree, it replaces the old value with
-  the new, and returns the old value.
+  Si \java{key} ya está en el árbol, reemplace el valor antiguo con el
+  nuevo, y devuelva el valor antiguo.
 
 \item
-  If \java{key} is not in the tree, it creates a new node, finds the
-  right place to add it, and returns \java{null}.
+  Si \java{key} no está en el árbol, cree un nuevo nodo, encuentre el
+  lugar correcto para agregarlo y devuelva \java{null}.
 
 \end{enumerate}
 
-Your implementation of \java{put} should take time proportional to the
-height of the tree, $h$, not the number of elements, $n$. Ideally you
-should search the tree only once, but if you find it easier to search
-twice, you can do that; it will be slower, but it doesn't change the
-order of growth.
+Tu implementación de  \java{put} debería tomar tiempo proporcional a la
+altura del árbol, $h$, no al número de elementos, $n$. Idealmente
+debería buscar en el árbol solo una vez, pero si encuentras más fácil
+buscar dos veces, puedes hacerlo; será más lento, pero no cambia el
+orden de crecimiento.
 
 \index{keySet}
 
-Finally, you should fill in the body of \java{keySet}.  According to
-the documentation at \url{http://thinkdast.com/mapkeyset}, this method
-should return a \java{Set} that iterates the keys in order; that is,
-in increasing order according to the \java{compareTo} method.  The
-\java{HashSet} implementation of \java{Set}, which we used in
-Section~\ref{exercise6}, doesn't maintain the order of the keys, but
-the \java{LinkedHashSet} implementation does.  You can read about it
-at \url{http://thinkdast.com/linkedhashset}.
+Finalmente, deberías llenar el cuerpo de \java{keySet}.  De acuerdo con
+la documentación en \url{http://thinkdast.com/mapkeyset}, este método
+debería devolver un \java{Set} que itere por las claves en orden; es decir,
+en orden ascendente de acuerdo con el método \java{compareTo}.  La
+implementación \java{HashSet} de un \java{Set}, que usamos en la
+Sección~\ref{exercise6}, no mantiene el orden de las claves, pero
+la implementación \java{LinkedHashSet} sí lo hace.  Puedes leer sobre ella
+en \url{http://thinkdast.com/linkedhashset}.
 
-I've provided an outline of \java{keySet} that creates and returns a
+He provisto un boceto de \java{keySet} que crea y devuelve un
 \java{LinkedHashSet}:
 
 \begin{verbatim}
@@ -5843,22 +5839,23 @@ I've provided an outline of \java{keySet} that creates and returns a
     }
 \end{verbatim}
 
-\index{helper method}
-\index{recursion}
+\index{método auxiliar}
+\index{recursión}
 
-You should finish off this method so it adds the keys from the tree to
-\java{set} in ascending order. HINT: you might want to write a helper
-method; you might want to make it recursive; and you might want to
-read about in-order tree traversal at
+Deberías finalizar este método para que agregue las claves del árbol al
+\java{set} en orden ascendente. PISTA: podrías querer escribir un método
+auxiliar; podrías querer hacerlo recursivo; y podrías querer leer sobre
+el recorrido en orden de un árbol en
 \url{http://thinkdast.com/inorder}.
 
-\index{in-order} 
-\index{tree traversal}
+\index{en orden} 
+\index{recorrido de un árbol}
 
 % TODO: more help with recursion?
 
-When you are done, all tests should pass. In the next chapter, I'll go
-over my solutions and test the performance of the core methods.
+Cuando hayas finalizado, deberían pasar todos los tests. En el siguiente
+capítulo, presentaré mis soluciones y comprobaré el desempeño de los
+métodos principales.
 
 
 \chapter{Binary search tree}
