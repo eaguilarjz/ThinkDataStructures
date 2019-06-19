@@ -467,43 +467,43 @@
 \indexentry{\IeC {\'a}rbol rojo-negro|hyperpage}{128}
 \indexentry{tiempo logar\IeC {\'\i }tmico|hyperpage}{128}
 \indexentry{remove|hyperpage}{129}
-\indexentry{search engine|hyperpage}{131}
-\indexentry{crawler|hyperpage}{131}
-\indexentry{indexer|hyperpage}{131}
-\indexentry{retriever|hyperpage}{131}
-\indexentry{indexer|hyperpage}{131}
+\indexentry{motor de b\IeC {\'u}squeda|hyperpage}{131}
+\indexentry{rastreador|hyperpage}{131}
+\indexentry{indexador|hyperpage}{131}
+\indexentry{recuperador|hyperpage}{131}
+\indexentry{indexador|hyperpage}{131}
 \indexentry{Redis|hyperpage}{132}
-\indexentry{volatile|hyperpage}{132}
-\indexentry{persistent|hyperpage}{132}
+\indexentry{vol\IeC {\'a}til|hyperpage}{132}
+\indexentry{persistente|hyperpage}{132}
 \indexentry{JSON|hyperpage}{132}
-\indexentry{database|hyperpage}{132}
+\indexentry{base de datos|hyperpage}{132}
 \indexentry{DBMS|hyperpage}{132}
-\indexentry{Redis|hyperpage}{132}
-\indexentry{key-value database|hyperpage}{133}
-\indexentry{client|hyperpage}{133}
-\indexentry{server|hyperpage}{133}
+\indexentry{Redis|hyperpage}{133}
+\indexentry{base de datos clave-valor|hyperpage}{133}
+\indexentry{cliente|hyperpage}{133}
+\indexentry{servidor|hyperpage}{133}
 \indexentry{RedisToGo|hyperpage}{133}
 \indexentry{Jedis|hyperpage}{133}
-\indexentry{Redis instance|hyperpage}{134}
+\indexentry{instancia de Redis|hyperpage}{134}
 \indexentry{JedisMaker|hyperpage}{134}
 \indexentry{JedisIndex|hyperpage}{134}
 \indexentry{WikiFetcher|hyperpage}{134}
-\indexentry{helper class|hyperpage}{134}
+\indexentry{clase auxiliar|hyperpage}{135}
 \indexentry{Ant|hyperpage}{135}
-\indexentry{Redis set|hyperpage}{137}
-\indexentry{Redis get|hyperpage}{137}
-\indexentry{constant time|hyperpage}{137}
-\indexentry{Redis list|hyperpage}{137}
-\indexentry{Redis hash|hyperpage}{137}
-\indexentry{field|hyperpage}{137}
-\indexentry{constant time|hyperpage}{138}
-\indexentry{Redis data type|hyperpage}{138}
+\indexentry{set de Redis|hyperpage}{137}
+\indexentry{get de Redis|hyperpage}{137}
+\indexentry{tiempo constante|hyperpage}{137}
+\indexentry{list de Redis|hyperpage}{137}
+\indexentry{hash de Redis|hyperpage}{137}
+\indexentry{campo|hyperpage}{138}
+\indexentry{tiempo constante|hyperpage}{138}
+\indexentry{tipo de datos de Redis|hyperpage}{138}
 \indexentry{JedisIndex|hyperpage}{138}
 \indexentry{WikiFetcher|hyperpage}{139}
-\indexentry{URLSet|hyperpage}{139}
-\indexentry{TermCounter|hyperpage}{139}
-\indexentry{helper method|hyperpage}{139}
-\indexentry{server|hyperpage}{140}
+\indexentry{URLSet|hyperpage}{140}
+\indexentry{TermCounter|hyperpage}{140}
+\indexentry{m\IeC {\'e}todo auxiliar|hyperpage}{140}
+\indexentry{servidro|hyperpage}{141}
 \indexentry{Transaction|hyperpage}{141}
 \indexentry{Redis|hyperpage}{143}
 \indexentry{URLSet|hyperpage}{143}

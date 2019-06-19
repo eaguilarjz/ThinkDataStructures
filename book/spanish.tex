@@ -6379,183 +6379,184 @@ auto-balanceables.
 
 
 
-\chapter{Persistence}
+\chapter{Persistencia}
 
-In the next few exercises we will get back to building a web search
-engine. To review, the components of a search engine are:
+En los siguientes ejercicios regresaremos a la construcción de un motor
+de búsqueda web. Para recordar, los componentes de un motor de búsqueda son:
 
 \begin{itemize}
 
-\item
-  Crawling: We'll need a program that can download a web page, parse it,
-  and extract the text and any links to other pages.
+  \item
+  Rastrear: Necesitaremos un programa que pueda descargar una página, interpretarla
+  y extraer el texto y cualquier enlace a otras páginas.
 
-\item
-  Indexing: We'll need an index that makes it possible to look up a
-  search term and find the pages that contain it.
+  \item
+  Indexar: Necesitaremos un índice que haga posible buscar un término
+  de búsqueda y encontrar las páginas que lo contienen.
 
-\item
-  Retrieval: And we'll need a way to collect results from the index and
-  identify pages that are most relevant to the search terms.
+  \item
+  Recuperar: Y necesitaremos una forma de recolectar los resultados del Índice e identificar
+  las páginas que son más relevantes para los términos de búsqueda.
 
 \end{itemize}
 
-\index{search engine}
-\index{crawler}
-\index{indexer}
-\index{retriever}
+\index{motor de búsqueda}
+\index{rastreador}
+\index{indexador}
+\index{recuperador}
 
-If you did Exercise~\ref{exercise6}, you implemented an index
-using Java maps. In this exercise, we'll revisit the indexer and make
-a new version that stores the results in a database.
+Si hiciste el Ejercicio~\ref{exercise6}, implementaste un índice utilizando
+mapas de Java. En este ejercicio, vamos a revisar el indexador y haremos
+una nueva versión que guarde los resultados en una base de datos.
 
-\index{indexer}
+\index{indexador}
 
-If you did Exercise~\ref{exercise5}, you
-built a crawler that follows the first link it finds. In the next exercise,
-we'll make a more general version that stores every link it finds in a
-queue and explores them in order.
+Si hiciste el Ejercicio~\ref{exercise5}, construiste un rastreador
+que siga el primer enlace que encuentra. En el siguiente ejercicio,
+haremos una versión más general que guarde cada enlace que encuentra
+en una cola y los explore en orden.
 
-And then, finally, you will work on the retrieval problem.
+Y luego, finalmente, trabajaremos en el problema de la recuperación.
 
-In these exercises, I provide less starter code, and you will make more
-design decisions. These exercises are also more open-ended. I will suggest
-some minimal goals you should try to reach, but there are many ways you
-can go farther if you want to challenge yourself.
+En estos ejercicios, proveo menos código de inicio, y tendrás que hacer
+más decisiones de diseño. Estos ejercicios también son más abiertos. Sugeriré
+algunas metas mínimas que deberías tratar de alcanzar, pero hay muchas formas
+de lograr mejores resultados si quieres desafiarte a ti mismo.
 
-Now, let's get started on a new version of the indexer.
+Ahora, comencemos con la nueva versión del indexador.
 
 \section{Redis}
 \label{redis}
 
 \index{Redis}
 
-The previous version of the indexer stores the index in two data
-structures: a \java{TermCounter} that maps from a search term to the
-number of times it appears on a web page, and an \java{Index} that
-maps from a search term to the set of pages where it appears.
+La versión anterior del indexador guarda el índice en dos estructuras
+de datos: un \java{TermCounter} que mapea términos de búsqueda con el
+númerro de veces que aparecen en una página web y un \java{Index} que
+mapea un término de búsqueda con el conjunto de páginas donde aparece.
 
-These data structures are stored in the memory of a running Java
-program, which means that when the program stops running, the index is
-lost. Data stored only in the memory of a running program is called
-``volatile'', because it vaporizes when the program ends.
+Estas estructuras de datos se guardan en la memoria de un programa de
+Java en ejecución, lo que significa que cuando el programa se detiene, el
+índice se pierde. A los datos guardados sólo en la memoria de un programa
+en ejecución se les llama ``volátiles'', porque se vaporizan cuando el
+programa finaliza.
 
-\index{volatile}
-\index{persistent}
+\index{volátil}
+\index{persistente}
 
-Data that persists after the program that created it ends is called
-``persistent''. In general, files stored in a file system are
-persistent, as well as data stored in databases.
+Los datos que persisten después que el programa que los creó finaliza son
+llamados ``persistentes''. En general, los archivos guardados en un sistema de
+archivos son persistentes, así como los datos guardados en bases de datos.
 
 \index{JSON}
 
-A simple way to make data persistent is to store it in a file. Before
-the program ends, it could translate its data structures into a format
-like JSON (\url{http://thinkdast.com/json}) and then write them
-into a file. When it starts again, it could read the file and rebuild
-the data structures.
+Una forma simple de hacer un dato persistente es guardarlo en un archivo. Antes
+que el programa finalice, podría traducir sus estructuras de datos en un formato
+como JSON (\url{http://thinkdast.com/json}) y luego escribirlos en un
+archivo. Cuando inicia de nuevo, podría leer el archivo y reconstruir las
+estructuras de datos.
 
-But there are several problems with this solution:
+Pero hay varios problemas con esta solución:
 
 \begin{enumerate}
 \item
-  Reading and writing large data structures (like a Web index) would be
-  slow.
+  Leer y escribir estructuras de datos de gran tamaño (como un índice Web)
+  sería lento.
 
 \item
-  The entire data structure might not fit into the memory of a single
-  running program.
+  La estructura de datos completa podría no caber en la memoria de un
+  programa individual en ejecución.
 
 \item
-  If a program ends unexpectedly (for example, due to a power outage),
-  any changes made since the program last started would be lost.
+  Si un programa finaliza de forma inesperada (por ejemplo, debido a un apagón)
+  cualquier cambio hecho desde que el programa se inició por última vez se perdería.
 
 \end{enumerate}
 
-A better alternative is a database that provides persistent storage and
-the ability to read and write parts of the database without reading and
-writing the whole thing.
+Una mejor alternativa es usar una base de datos que provee almacenamiento
+persistente y la habilidad de leer y escribir partes de la base de datos sin
+tener que leer y escribir todo.
 
-\index{database}
+\index{base de datos}
 \index{DBMS}
 
-There are many kinds of database management systems (DBMS) that provide
-different capabilities. You can read an overview at
+Hay muchos tipos de sistemas de adminitración de bases de datos (DBMS) que proveen
+diferentes características. Puedes leer una introducción en
 \url{http://thinkdast.com/database}.
 
 \index{Redis}
 
-The database I recommend for this exercise is Redis, which provides
-persistent data structures that are similar to Java data structures.
-Specifically, it provides:
+La base de datos que recomiendo para este ejercicio es Redis, que provee
+estructuras de datos persistentes que son similares a las estructuras de
+datos de Java. Específicamente, provee:
 
 \begin{itemize}
 
 \item
-  Lists of strings, similar to Java \java{List}.
+  Lista de cadenas, similar a la \java{List} de Java.
 
 \item
-  Hashes, similar to Java \java{Map}.
+  Hashes, similar al \java{Map} de Java.
 
 \item
-  Sets of strings, similar to Java \java{Set}.
+  Conjunto de cadenas, similar al \java{Set} de Java.
 
 \end{itemize}
 
-Redis is a ``key-value database'', which means that the data structures
-it contains (the values) are identified by unique strings (the keys). A
-key in Redis plays the same role as a reference in Java: it identifies
-an object. We'll see some examples soon.
+Redis en una ``base de datos clave-valor'', que significa que las estructuras
+de datos que contiene (los valores) se identifican con cadenas únicas (las
+claves). Una clave en Redis juega el mismo rol que una referencia en Java:
+identifica un objeto. Veremos algunos ejemplos pronto.
 
-\index{key-value database}
+\index{base de datos clave-valor}
 
 
-\section{Redis clients and servers}
+\section{Clientes y servidores de Redis}
 \label{redis-clients-and-servers}
 
-\index{client}
-\index{server}
+\index{cliente}
+\index{servidor}
 
-Redis is usually run as a remote service; in fact, the name stands for
-``REmote DIctionary Server''. To use Redis, you have to run the Redis
-server somewhere and then connect to it using a Redis client. There are
-many ways to set up a server and many clients you could use. For this
-exercise, I recommend:
+Redis usualmente se ejecuta como un servicio remoto; de hecho, el nombre
+significa ``REmote DIctionary Server'' (``Servicio de DIccionario REmoto''). 
+Para usar Redis, tienes que ejecutar el servidor Redis en algún lugar y conectarte
+a él utilizando un cliente Redis. Hay muchas formas de configurar un servidor
+y muchos clientes que puedes usar. Para este ejercicio, recomiendo:
 
 \begin{enumerate}
 
 \item
-  Rather than install and run the server yourself, consider using a
-  service like RedisToGo (\url{http://thinkdast.com/redistogo}), which runs
-  Redis in the cloud. They offer a free plan with enough resources for
-  the exercise.
+  En lugar de instalar y ejecutar el servidor tú mismo, considera usar un
+  servicio como RedisToGo (\url{http://thinkdast.com/redistogo}), que ejecuta
+  Redis en la nube. Ellos ofrecen un plan gratuito con suficientes recursos
+  para este ejercicio.
 
 \item
-  For the client I recommend Jedis, which is a Java library that
-  provides classes and methods for working with Redis.
+  Para el cliente recomiendo Jedis, que es una biblioteca de Java que
+  provee clases y métodos para trabajar con Redis.
 
 \end{enumerate}
 
 \index{RedisToGo}
 \index{Jedis}
 
-Here are more detailed instructions to help you get started:
+Aquí hay instrucciones detalladas para ayudarte a comenzar:
 
 \begin{itemize}
 
-\item Create an account on RedisToGo, at
+\item Crear una cuenta en RedisToGo, en
   \url{http://thinkdast.com/redissign},
-  and select the plan you want (probably the free plan to get started).
+  y selecciona el plan que quieres (probablemente el plan gratuito para comenzar).
 
 \item
-  Create an ``instance'', which is a virtual machine running the Redis
-  server. If you click on the ``Instances'' tab, you should see your new
-  instance, identified by a host name and a port number. For example, I
-  have an instance named ``dory-10534''.
+  Crea una ``instancia'', que es una máquina virtual ejecutando el servidor
+  Redis. Si haces clic en la pestaña ``Instancias'', deberías ver tu nueva
+  instnacia, identificada con un nombre de host y un número de puerto. Por ejemplo,
+  yo tengo una instancia llamada ``dory-10534''.
 
 \item
-  Click on the instance name to get the configuration page. Make a note
-  of the URL near the top of the page, which looks like this:
+  Haz clic en el nombre de la instancia para ir a la página de configuración. Anota
+  la URL cerca de la página superior de la página, que se ve algo así:
 
   \begin{verbatim}
   redis://redistogo:1234567feedfacebeefa1e1234567@dory.redistogo.com:10534
@@ -6563,108 +6564,107 @@ Here are more detailed instructions to help you get started:
 
 \end{itemize}
 
-\index{Redis instance}
+\index{instancia de Redis}
 
-This URL contains the server's host name, \java{dory.redistogo.com},
-the port number, \java{10534}, and the password you will need to
-connect to the server, which is the long string of letters and numbers
-in the middle. You will need this information for the next step.
+Esta URL contiene el nombre de host del servidor, \java{dory.redistogo.com},
+el número de puerto, \java{10534}, y la constraseña que necesitarás para
+conectarte al servidor, que es la cadena larga de letras y números en el
+medio. Necesitarás esta información para el siguiente paso.
 
 
-\section{Making a Redis-backed index}
+\section{Hacer un índice respaldado por Redis}
 \label{hello-jedis}
 
 \index{JedisMaker}
 \index{JedisIndex}
 \index{WikiFetcher}
 
-In the repository for this book,
-you'll find the source files for this exercise:
+En el repositorio para esta libro,
+encontrarás el código fuente para este ejercicio:
 
 \begin{itemize}
 
 \item
-  \java{JedisMaker.java} contains example code for connecting to a
-  Redis server and running a few Jedis methods.
+  \java{JedisMaker.java} contiene código de ejemplo para conectarse a un
+  servidor Redis y ejecutar algunos métodos de Jedis.
 
 \item
-  \java{JedisIndex.java} contains starter code for this exercise.
+  \java{JedisIndex.java} contiene código inicial para este ejercicio.
 
 \item
-  \java{JedisIndexTest.java} contains test code for
+  \java{JedisIndexTest.java} contiene código de pruebas para
   \java{JedisIndex}.
 
 \item
-  \java{WikiFetcher.java} contains the code we saw in previous exercises to
-  read web pages and parse them using jsoup.
+  \java{WikiFetcher.java} contiene el código que vimos en los ejercicios anteriores para
+  ler páginas web e interpretarlas usando jsoup.
 
 \end{itemize}
 
-You will also need these files, which you worked on in previous
-exercises:
+También necesitarás estos archivos, en los que trabajaste en ejercicios
+anteriores:
 
 \begin{itemize}
 
 \item
-  \java{Index.java} implements an index using Java data structures.
+  \java{Index.java} implementa un índice usando estructuras de datos de Java.
 
 \item
-  \java{TermCounter.java} represents a map from terms to their
-  frequencies.
+  \java{TermCounter.java} representa un mapa de los términos con sus
+  frecuencias.
 
 \item
-  \java{WikiNodeIterable.java} iterates through the nodes in a DOM
-  tree produced by jsoup.
+  \java{WikiNodeIterable.java} itera por los nodos en un árbol DOM
+  producido por jsoup.
 
 \end{itemize}
 
-If you have working versions of these files, you can use them for
-this exercise.  If you didn't do the previous exercises, or you
-are not confident in your solutions, you can copy my solutions
-from the {\tt solutions} folder.
+Si tienes versiones funcionales de estos archivos, puedes usarlas para
+este ejercicio.  Si no hiciste los ejercicios anteriores, o si
+no confías en tus soluciones, puedes copiar mis soluciones desde el
+directorio {\tt solutions}.
 
-The first step is to use Jedis to connect to your Redis server.
-\java{RedisMaker.java} shows how to do this. It reads information
-about your Redis server from a file, connects to it and logs in using
-your password, then returns a \java{Jedis} object you can use to
-perform Redis operations.
+El primer paso es usar Jedis para conectarte a tu servidor Redis.
+\java{RedisMaker.java} muestra cómo hacer esto. Este archivo lee información
+sobre tu servidor Redis de un archivo, se conecta a él e inicia sesión
+usando tu contraseña, luego devuelve un objeto \java{Jedis} que puedes usar
+para realizar operaciones en Redis.
 
-\index{helper class}
+\index{clase auxiliar}
 
-If you open \java{JedisMaker.java}, you should see the
-\java{JedisMaker} class, which is a helper class that provides one
-static method, \java{make}, which creates a \java{Jedis} object. Once
-this object is authenticated, you can use it to communicate with your
-Redis database.
+Si abres \java{JedisMaker.java}, deberías ver la clase
+\java{JedisMaker}, que es una clase auxiliar que provee un método
+estático, \java{make}, la cual crea un objeto \java{Jedis} object. Una
+vez este objeto se ha autenticado, puedes usarlo para comunicarte con tu
+base de datos Redis.
 
-\java{JedisMaker} reads information about your Redis server from a
-file named \java{redis_url.txt}, which you should put in the
-directory \java{src/resources}:
+\java{JedisMaker} lee información sobre tu servidor redis de un archivo
+llamado \java{redis_url.txt}, que debes colocar en el directorio
+\java{src/resources}:
 
 \begin{itemize}
 
 \item
-  Use a text editor to create end edit
+  Usa un editor de texto para crear y editar
   \java{ThinkDataStructures/code/src/resources/redis_url.txt}.
 
 \item
-  Paste in the URL of your server. If you are using RedisToGo, the URL
-  will look like this:
+  Pega la URL de tu servidor. Si estás usando RedisToGo, la URL
+  se verá así:
 
 \java{redis://redistogo:1234567feedfacebeefa1e1234567@dory.redistogo.com:10534}
 
 \end{itemize}
 
-Because this file contains the password for your Redis server, you
-should not put this file in a public repository. To help you avoid
-doing that by accident, the repository contains a {\tt .gitignore}
-file that makes it harder (but not impossible) to put this file
-in your repo.
+Porque este archivo contiene la contraseña de tu servidor Redis, no
+deberías ponerlo en un repositorio publico. Para ayudarte a prevenir
+hacerlo por accidente, el repositorio contiene un archivo {\tt .gitignore}
+que hace más difícil (pero no imposible) poner este archivo en tu repo.
 
 \index{Ant}
 
-Now run \java{ant build} to compile the
-source files and \java{ant JedisMaker} to run the example code in
+Ahora ejecuta \java{ant build} para compilar los archivos de
+código fuente y \java{ant JedisMaker} para ejecutar el código de ejemplo en
 \java{main}:
 
 \begin{verbatim}
@@ -6699,8 +6699,8 @@ source files and \java{ant JedisMaker} to run the example code in
     }
 \end{verbatim}
 
-This example demonstrates the data types and methods you are most likely
-to use for this exercise. When you run it, the output should be:
+Este ejemplo demuestra los tipos de datos y métodos que probablemente uses
+en este ejercicio. Cuando lo ejecutes, la salida debería ser:
 
 \begin{verbatim}
 Got value: myvalue
@@ -6710,7 +6710,7 @@ frequency of word1: 2
 frequency of word2: 1
 \end{verbatim}
 
-In the next section, I'll explain how the code works.
+En la siguiente sección, explicaré cómo funciona el código.
 
 
 \newcommand{\redis}{\textit}
@@ -6718,31 +6718,30 @@ In the next section, I'll explain how the code works.
 \section{Redis data types}
 \label{redis-data-types}
 
-Redis is basically a map from keys, which are strings, to
-values, which can be one of several data types. The most basic Redis
-data type is a \redis{string}.  I will write Redis types in
-italics to distinguish them from Java types. 
+Redis es básicamente un mapa de las claves, que son cadenas, a
+valores, que pueden ser uno de varios tipos de datos. El tipo de
+datos más básico en Redis es una \redis{string}.  Escribiré los tipos
+de Redis en cursiva para distinguirlos de los tipos de Java.
 
-To add a \redis{string} to the database,
-use \java{jedis.set}, which is similar to \java{Map.put}; the
-parameters are the new key and the corresponding value. To look up a
-key and get its value, use \java{jedis.get}:
+Para agregar una \redis{string} a la base de datos,
+usaremos \java{jedis.set}, que es similar a \java{Map.put}; los
+parámetros son la nueva clave y el valor correspondiente. Para buscar
+una clave y obtener su valor, usamos \java{jedis.get}:
 
 \begin{verbatim}
         jedis.set("mykey", "myvalue");
         String value = jedis.get("mykey");
 \end{verbatim}
 
-In this example, the key is \java{"mykey"} and the value is
+En este ejemplo, la clave es \java{"mykey"} y el valor es
 \java{"myvalue"}.
 
-\index{Redis set}
-\index{Redis get}
+\index{set de Redis}
+\index{get de Redis}
 
-Redis provides a \redis{set} structure, which is
-similar to a Java
-\java{Set<String>}. To add elements to a Redis \redis{set},
-you choose a key to identify the \redis{set} and then use
+Redis provee una estructura \redis{set}, similar a un
+\java{Set<String>} de Java. Para añadir elementos a un \redis{set} de Redis,
+eliges una clave para identificar el \redis{set} y luego usas
 \java{jedis.sadd}:
 
 \begin{verbatim}
@@ -6750,20 +6749,19 @@ you choose a key to identify the \redis{set} and then use
         boolean flag = jedis.sismember("myset", "element2");
 \end{verbatim}
 
-You don't have to create the \redis{set} as a separate step. If it doesn't
-exist, Redis creates it. In this case, it creates a \redis{set} named
-\java{myset} that contains three elements.
+No tienes que crear el \redis{set} en un paso separado. Si no existe,
+Redis lo crea. En este caso, crea un \redis{set} llamado \java{myset}
+que contiene tres elementos.
 
-The method \java{jedis.sismember} checks whether an element is in a
-\redis{set}. Adding elements and checking membership are constant time
-operations.
+El método \java{jedis.sismember} comprueba si un elemento está en un
+\redis{set}. Agregar elementos y comprobar la membresía son operaciones
+de tiempo constante.
 
-\index{constant time}
+\index{tiempo constante}
 
-Redis also provides a \redis{list} structure, which is
-similar to a Java
-\java{List<String>}. The method
-\java{jedis.rpush} adds elements to the end (right side) of a
+Redis también provee una estructura \redis{list} similar a una
+\java{List<String>} de Java. El método
+\java{jedis.rpush} agrega elementos al final (lado derecho) de una
 \redis{list}:
 
 \begin{verbatim}
@@ -6771,100 +6769,100 @@ similar to a Java
         String element = jedis.lindex("mylist", 1);
 \end{verbatim}
 
-Again, you don't have to create the structure before you start
-adding elements. This example creates a \redis{list} named ``mylist'' that
-contains three elements.
+De nuevo, no tienes que crear la estrucutura antes de empeza a agregar
+elementos. Este ejemplo crea una \redis{list} llamada ``mylist'' que
+contiene tres elementos.
 
-\index{Redis list}
-\index{Redis hash}
+\index{list de Redis}
+\index{hash de Redis}
 
-The method \java{jedis.lindex} takes an integer index and returns the
-indicated element of a \redis{list}. Adding and accessing elements are
-constant time operations.
+El método \java{jedis.lindex} toma un índice entero y devuelve el
+elemento indicado de una \redis{list}. Agregar y acceder elementos son
+operaciones de tiempo constante.
 
-Finally, Redis provides a \redis{hash} structure, which is similar to a Java
-\java{Map<String, String>}. The method
-\java{jedis.hset} adds a new entry to the \redis{hash}:
+Finalmente, Redis provee una estructura \redis{hash}, similar a un
+\java{Map<String, String>} de Java. El método
+\java{jedis.hset} añade una nueva entrada al \redis{hash}:
 
 \begin{verbatim}
         jedis.hset("myhash", "word1", Integer.toString(2));
         String value = jedis.hget("myhash", "word1");
 \end{verbatim}
 
-This example creates a \redis{hash} named \java{myhash} that contains one
-entry, which maps from the key \java{word1} to the value \java{"2"}.
+Este ejemplo crea un \redis{hash} llamado \java{myhash} que contiene una
+entrada, la cual mapea la clave \java{word1} con el valor \java{"2"}.
 
-The keys and values are \redis{string}s, so if we want to store
-an \java{Integer}, we have to convert it to
-a \java{String} before we call \java{hset}. 
-And when we look up the value using \java{hget},
-the result is a \java{String}, so we might have to convert it back
-to \java{Integer}.
+Las claves y los valores son \redis{string}s, así que si queremos guardar
+un \java{Integer}, tenemos que convertirlo a una
+\java{String} antes de llamar a \java{hset}. 
+Y cuando busquemos el valor usando \java{hget},
+el resultado es un \java{String}, así que puede que tengamos que convertirlo
+de vuelta a un \java{Integer}.
 
-\index{field}
+\index{campo}
 
-Working with Redis \redis{hash}es can be confusing, because we use a key to
-identify which \redis{hash} we want, and then another key to identify a value in
-the \redis{hash}. In the context of Redis, the second key is called a ``field'',
-which might help keep things straight. So a ``key'' like \java{myhash}
-identifies a particular \redis{hash}, and then a ``field'' like \java{word1}
-identifies a value in the \redis{hash}.
+Trabajar con los \redis{hash}es de Redis puede ser confuso, porque usamos una clave para
+identificar el \redis{hash} que queremos, y luego otra clave para identificar un valor en
+el \redis{hash}. En el contexto de Redis, la segunda clave es llamada un ``campo'',
+que podría ayudarnos a mantener las cosas en orden. Así que una ``clave'' como \java{myhash}
+identifica un \redis{hash} particular, y luego un ``campo'' como \java{word1}
+identifica un valor en el \redis{hash}.
 
-For many applications, the values in a Redis \redis{hash} are integers, so Redis
-provides a few special methods, like \java{hincrby}, that treat the
-values as numbers:
+Para muchas aplicaciones, los valores en un \redis{hash} de Redis son enteror, por lo que Redis
+provee unos cuantos métodos especiales, como \java{hincrby}, que tratan a los valores como
+números:
 
 \begin{verbatim}
         jedis.hincrBy("myhash", "word2", 1);
 \end{verbatim}
 
-This method accesses \java{myhash}, gets the current value associated
-with \java{word2} (or 0 if it doesn't already exist), increments it by
-1, and writes the result back to the \redis{hash}.
+Este método accede a \java{myhash}, obtiene el valor actual asociado
+con \java{word2} (o 0 si no existe), lo incrementa en
+1, y escribe el resultado de regreso en el \redis{hash}.
 
-Setting, getting, and incrementing entries in a \redis{hash} are constant time
-operations.
+Actualizar, obtener e incrementar entradas en un \redis{hash} son operaciones de
+tiempo constante.
 
-\index{constant time}
-\index{Redis data type}
+\index{tiempo constante}
+\index{tipo de datos de Redis}
 
-You can read more about Redis data types at
+Puedes leer más sobre los tipos de datos de Redis en
 \url{http://thinkdast.com/redistypes}.
 
 
-\section{Exercise 11}
+\section{Ejercicio 11}
 \label{exercise11}
 
-At this point you have the information you need to make a web search
-index that stores results in a Redis database.
+En este punto, ya tienes la información que necesitas para hacer un índice
+de búsqueda web que guarde los resultados en una base de datos Redis.
 
 \index{JedisIndex}
 
-Now run \java{ant JedisIndexTest}. It should
-fail, because you have some work to do!
+Ahora ejecuta \java{ant JedisIndexTest}. Debería
+fallar, ¡porque tienes algo de trabajo por hacer!
 
-\java{JedisIndexTest} tests these methods:
+\java{JedisIndexTest} prueba estos métodos:
 
 \begin{itemize}
 
 \item
-  \java{JedisIndex}, which is the constructor that takes a
-  \java{Jedis} object as a parameter.
+  \java{JedisIndex}, que es el constructor que toma un
+  objeto \java{Jedis} como parámetro.
 
 \item
-  \java{indexPage}, which adds a Web page to the index; it takes a
-  \java{String} URL and a jsoup \java{Elements} object that contains the
-  elements of the page that should be indexed.
+  \java{indexPage}, que agrega una página Web al índice; toma una URL de
+  tipo \java{String} y un objeto \java{Elements} de jsoup que contiene los
+  elementos de la página que deberían ser indexados.
 
 \item
-  \java{getCounts}, which takes a search term and returns a
-  \java{Map<String, Integer>} that maps from
-  each URL that contains the search term to the number of times it
-  appears on that page.
+  \java{getCounts}, que toma un término de búsqueda y devuelve un
+  \java{Map<String, Integer>} que mapea cada
+  URL que contiene el término de búsqueda con el número de veces que
+  éste aparece en dicha página.
 
 \end{itemize}
 
-Here's an example of how these methods are used:
+Aquí está un ejemplo de cómo usar estos métodos:
 
 \begin{verbatim}
         WikiFetcher wf = new WikiFetcher();
@@ -6878,91 +6876,89 @@ Here's an example of how these methods are used:
         Map<String, Integer> map = index.getCounts("the");
 \end{verbatim}
 
-If we look up \java{url1} in the result, \java{map}, we should get
-339, which is the number of times the word ``the'' appears
-on the Java Wikipedia page (that is, the version we saved).
+Si buscamos \java{url1} en el resultado, \java{map}, deberíamos obtener
+339, que es el número de veces que la palabra ``the'' aparece en la
+página de Wikipedia para Java (es decir, en la versión que guardamos).
 
 \index{WikiFetcher}
 
-If we index the same page again, the new results should replace the old
-ones.
+Si indexamos la misma página de nuevo, los nuevos resultados deberían
+reemplazar a los antiguos.
 
-One suggestion for translating data structures from Java to Redis:
-remember that each object in a Redis database is identified by a unique
-key, which is a \redis{string}. If you have two kinds of objects in the same
-database, you might want to add a prefix to the keys to distinguish
-between them. For example, in our solution, we have two kinds of
-objects:
+Una sugerencia para traducir estructuras de datos de Java a Redis:
+recuerda que cada objeto en una base de datos Redis se identifica con una
+clave única, que es una \redis{string}. Si tienes dos clases de objetos en la
+misma base de datos, podrías querer agregar un prefijo a las claves para
+distinguirlos. Por ejemplo, en nuestra solución, tenemos dos clases de
+objetos:
 
 \begin{itemize}
 
 \item
-  We define a \java{URLSet} to be a Redis \redis{set} that contains
-  the URLs that contain a given search term. The key for each
-  \java{URLSet} starts with \java{"URLSet:"}, so to get the URLs
-  that contain the word ``the'', we access the \redis{set} with the key
-  \java{"URLSet:the"}.
+  Definimos un \java{URLSet} como un \redis{set} de Redis que contiene
+  las URLs que contienen un término de búsqueda dado. La clave para cada
+  \java{URLSet} comienza con \java{"URLSet:"}, así que para obtener las
+  URLs que contienen la palabra ``the'', accedemos al \redis{set} con la
+  clave \java{"URLSet:the"}.
 
 \item
-  We define a \java{TermCounter} to be a Redis \redis{hash} that maps
-  from each term that appears on a page to the number of times it
-  appears. The key for each \java{TermCounter} starts with
-  \java{"TermCounter:"} and ends with the URL of the page we're
-  looking up.
+  Definimos un \java{TermCounter} como un \redis{hash} de Redis que mapea
+  cada término que aparece en una página con el número de veces que
+  aparece. La clave para cada \java{TermCounter} comienza con
+  \java{"TermCounter:"} y finaliza con la URL de la página que buscamos.
 
 \end{itemize}
 
 \index{URLSet}
 \index{TermCounter}
 
-In my implementation,  there is one \java{URLSet} for each term and one
-\java{TermCounter} for each indexed page. I provide two helper
-methods, \java{urlSetKey} and \java{termCounterKey}, to assemble
-these keys.
+En mi implementación,  hay un \java{URLSet} para cada término y un
+\java{TermCounter} para cada página indexada. Proveo dos métodos
+auxiliares, \java{urlSetKey} y \java{termCounterKey}, para juntar
+estas claves.
 
-\index{helper method}
+\index{método auxiliar}
 
 
-\section{More suggestions if you want them}
+\section{Más sugerencias si las quieres}
 \label{more-suggestions-if-you-want-them}
 
-At this point you have all the information you need to do the exercise, so
-you can get started if you are ready. But I have a few suggestions you
-might want to read first:
+Llegados a este punto tienes toda la información que necesitas para hacer el
+ejercicio, así que puedes iniciar si estás listo. Pero tengo unas cuantas
+sugerencias que podrías querer leer primero:
 
 \begin{itemize}
 
 \item
-  For this exercise I provide less guidance than in previous
-  exercises.  You will have to make some design decisions; in
-  particular, you will have to figure out how to divide the problem
-  into pieces that you can test one at a time, and then assemble the
-  pieces into a complete solution. If you try to write the whole thing
-  at once, without testing smaller pieces, it might take a very long
-  time to debug.
+  Para este ejercicio proveo menos guía que para los ejercicios
+  precios. Tendrás que tomar algunas decisiones de diseño, en
+  particular, tendrás que ingeniártelas para dividir el problema
+  en partes que puedes probar una por una, y luego ensamblar las
+  piezas en una solución completa. Si tratas de escribir todo de
+  una sola vez, sin probar fragmentos pequeños, la depuración
+  podría tomarte un largo tiempo.
 
 \item
-  One of the challenges of working with persistent data is that it is
-  persistent. The structures stored in the database might change every
-  time you run the program. If you mess something up in the database,
-  you will have to fix it or start over before you can proceed. To help
-  you keep things under control, I've provided methods called
-  \java{deleteURLSets}, \java{deleteTermCounters}, and
-  \java{deleteAllKeys}, which you can use to clean out the database
-  and start fresh. You can also use \java{printIndex} to print the
-  contents of the index.
+  Uno de los desafíos de trabajar con datos persistentes es que son
+  persistentes. Las estructuras guardadas en la base de datos podrían
+  cambiar cada vez que ejecutes el programa. Si arruinas algo en la base de
+  datos, tendrás que arreglarlo o comenzar de cero antes de proceder. Para 
+  ayudarte a mantener las cosas bajo control, he provisto métodos llamados
+  \java{deleteURLSets}, \java{deleteTermCounters}, y
+  \java{deleteAllKeys}, que puedes usar para limpiar la base de datos y
+  comenzar de nuevo. También puedes usar \java{printIndex} para imprimir los
+  contenidos de un índice.
 
 \item
-  Each time you invoke a \java{Jedis} method, your client sends a
-  message to the server, then the server performs the action you
-  requested and sends back a message. If you perform many small
-  operations, it will probably take a long time. You can improve
-  performance by grouping a series of operations into a
-  \java{Transaction}.
+  Cada vez que invoques un método de \java{Jedis}, tu cliente envía un
+  mensaje al servidor, luego el servidor realiza la acción que le pediste
+  y envía un mensaje de vuelta. Si realizas muchas operaciones pequeñas,
+  probablemente se demore mucho. Puedes mejorar el desempeño al agrupar
+  un serie de operaciones en una \java{Transaction}.
 
 \end{itemize}
 
-For example, here's a simple version of \java{deleteAllKeys}:
+Por ejemplo, aquí está una versión simple de \java{deleteAllKeys}:
 
 \begin{verbatim}
     public void deleteAllKeys() {
@@ -6973,12 +6969,12 @@ For example, here's a simple version of \java{deleteAllKeys}:
     }
 \end{verbatim}
 
-Each time you invoke \java{del} requires a round-trip from the client
-to the server and back. If the index contains more than a few pages,
-this method would take a long time to run. We can speed it up with a
-\java{Transaction} object:
+Cada vez que invocas a \java{del} se requiere un viaje de ida y vuelta del cliente
+al servidor. Si el índice contiene más que unas cuantas páginas, este método
+utilizará una larga cantidad de tiempo para ejecutarse. Podemos acelerarlo con
+un objeto \java{Transaction}:
 
-\index{server}
+\index{servidro}
 
 \begin{verbatim}
     public void deleteAllKeys() {
@@ -6991,62 +6987,62 @@ this method would take a long time to run. We can speed it up with a
     }
 \end{verbatim}
 
-\java{jedis.multi} returns a \java{Transaction} object, which
-provides all the methods of a \java{Jedis} object. But when you invoke
-a method on a \java{Transaction}, it doesn't run the operation
-immediately, and it doesn't communicate with the server. It saves up a
-batch of operations until you invoke \java{exec}. Then it sends all of
-the saved operations to the server at the same time, which is usually
-much faster.
+\java{jedis.multi} devuelve un objeto \java{Transaction}, que provee
+todos los métodos de un objeto \java{Jedis}. Pero cuando invocas un
+método en una \java{Transaction}, la operación no se ejecuta de inmediato
+y no se comunica con el servidor. En su lugar, almacena un lote de operaciones
+hasta que invocas \java{exec}. Luego envía todas las operaciones almacenadas
+al servidor al mismo tiempo, lo que usualmente es mucho más rápido.
 
 \index{Transaction}
 
 
 
-\section{A few design hints}
+\section{Unos cuantos tips de diseño}
 \label{a-few-design-hints}
 
-Now you \emph{really} have all the information you need; you should
-start working on the exercise. But if you get stuck, or if you really don't
-know how to get started, you can come back for a few more hints.
+Ahora sí \emph{realmente} tienes todas la información que necesitas; deberías
+comenzar a trabajar en el ejercico. Pero si te atascas, o si de verdad no sabes
+cómo comenzar, puedes regresar por más pistas.
 
-\textbf{Don't read the following until you have run the test code, tried
-out some basic Redis commands, and written a few methods in
+\textbf{No leas lo siguientes hasta que hayas ejecutado el código de pruebas, 
+probado algunos comandos básicos de Redis y escrito unos cuantos métodos en
 \java{JedisIndex.java}}.
 
-OK, if you are really stuck, here are some methods you might want to
-work on:
+OK, si realmente estás atascado, aquí están algunos métodos en los que podrías
+querer trabajar:
 
 \begin{verbatim}
     /**
-     * Adds a URL to the set associated with term.
+     * Agrega una URL al set asociado con el término.
      */
     public void add(String term, TermCounter tc) {}
 
     /**
-     * Looks up a search term and returns a set of URLs.
+     * Busca un término de búsqeuda y devuelve un set de URLs.
      */
     public Set<String> getURLs(String term) {}
 
     /**
-     * Returns the number of times the given term appears at the given URL.
+     * Devuelve el número de veces que el término dado
+     * aparece en la URL proporcionada.
      */
     public Integer getCount(String url, String term) {}
 
     /**
-     * Pushes the contents of the TermCounter to Redis.
+     * Agrega los contenidos del TermCounter a Redis.
      */
     public List<Object> pushTermCounterToRedis(TermCounter tc) {}
 \end{verbatim}
 
-These are the methods I used in my solution, but they are certainly
-not the only way to divide things up. So please take these suggestions
-if they help, but ignore them if they don't.
+Estos son los métodos que usé en mi solución, pero ciertamente no
+son la única manera de dividir el trabajo. Así que por favor toma
+estas sugerencias si te sirven, pero ignóralas si no.
 
-For each method, consider writing the tests first. When you figure out
-how to test a method, you often get ideas about how to write it.
+Para cada método, considera escribir los tests primero. Cuando decides
+cómo probar un método, muchas veces se te ocurren ideas para escribirlo.
 
-Good luck!
+¡Buena suerte!
 
 
 
