@@ -4913,54 +4913,54 @@ mejorar esta implementación aún más.
 
 \chapter{HashMap}
 
-In the previous chapter, we wrote an implementation of the
-\java{Map} interface that uses hashing.  We expect this version
-to be faster, because the lists it searches are shorter, but
-the order of growth is still linear.
+En el capítulo anterior, escribimos una implementación de la
+interfaz \java{Map} que usa hashing.  Esperamos que esta versión
+sea más rápida, porque las listas en las busca son más cortas, pero
+el orden de crecimiento todavía es lineal.
 
 \index{HashMap}
-\index{sub-map}
+\index{sub-mapa}
 
-If there are $n$ entries and $k$ sub-maps, the size of the sub-maps is
-$n/k$ on average, which is still proportional to $n$.  But if we
-increase $k$ along with $n$, we can limit the size of $n/k$.
+Si hay $n$ entradas y $k$ sub-mapas, el tamaño de los sub-mapas es
+$n/k$ en promedio, que aún es proporcional a $n$.  Pero si
+incrementamos $k$ junto con $n$, podemos limitar el tamaño de $n/k$.
 
-For example, suppose we double $k$ every
-time $n$ exceeds $k$; in that case the number of entries
-per map would be less than 1 on average, and pretty much always less
-than 10, as long as the hash function spreads out the keys reasonably
-well.
+Por ejemplo, supón que duplicamos $k$ cada vez que
+$n$ excede $k$; en ese caso el número de entradas por
+mapa sería menor a 1 en promedio, y prácticamente menor
+que 10 todo el tiempo, siempre que la función hash distribuya
+las claves razonablemente bien.
 
-\index{constant time}
+\index{tiempo constante}
 
-If the number of entries per sub-map is constant, we can search a single
-sub-map in constant time. And computing the hash function is generally
-constant time (it might depend on the size of the key, but does not
-depend on the number of keys). That makes the core \java{Map} methods,
-\java{put} and \java{get}, constant time.
+Si el número de entradas por sub-mapa es constante, podemos buscar en un
+único sub-mapa en tiempo constante. Y calcular la función hash generalmente
+requiere tiempo constante (podría depender del tamaño de la clave, pero no
+depende del número de claves). Eso hace a los métodos principales de
+\java{Map},\java{put} y \java{get}, de tiempo constante.
 
-In the next exercise, you'll see the details.
+En el siguiente ejercicio, verás los detalles.
 
 
-\section{Exercise 9}
+\section{Ejercicio 9}
 \label{implementing-myhashmap}
 
 \index{MyHashMap}
 
-In \java{MyHashMap.java}, I provide the outline of a hash table that
-grows when needed. Here's the beginning of the definition:
+En \java{MyHashMap.java}, proveo el código base de una tabla hash que
+crece cuanod se necesita. Aquí está el principio de la definición:
 
 \begin{verbatim}
 public class MyHashMap<K, V> extends MyBetterMap<K, V> implements Map<K, V> {
 
-    // average number of entries per sub-map before we rehash
+    // número promedio de entradas por sub-mapa antes de recodificar (rehash)
     private static final double FACTOR = 1.0;
 
     @Override
     public V put(K key, V value) {
         V oldValue = super.put(key, value);
 
-        // check if the number of elements per sub-map exceeds the threshold
+        // comprueba si el número de elementos por sub-mapa excede el umbral
         if (size() > maps.size() * FACTOR) {
             rehash();
         }
@@ -4969,37 +4969,37 @@ public class MyHashMap<K, V> extends MyBetterMap<K, V> implements Map<K, V> {
 }
 \end{verbatim}
 
-\java{MyHashMap} extends \java{MyBetterMap}, so it inherits the
-methods defined there. The only method it overrides is \java{put}
-which calls \java{put} in the superclass --- that is, it calls the
-version of \java{put} in \java{MyBetterMap} --- and then it checks
-whether it has to rehash. Calling \java{size} returns the total number
-of entries, $n$. Calling \java{maps.size} returns the number of
-embedded maps, $k$.
+\java{MyHashMap} extiende \java{MyBetterMap}, así que hereda los
+métodos definidos ahí. El único método que sobreescribe es \java{put}
+que llama a \java{put} en la superclase --- es decir,  llama a la
+versión de \java{put} en \java{MyBetterMap} --- y luego comprueba
+si tienen que recodificar (rehash). La llamada a \java{size} devuelve el
+número total de entradas, $n$. La llamada a \java{maps.size} devuelve el
+número de mapas embebidos, $k$.
 
-\index{superclass}
-\index{load factor}
+\index{superclase}
+\index{factor de carga}
 \index{MyBetterMap}
 
-The constant \java{FACTOR}, which is called the \textbf{load factor},
-determines the maximum number of entries per sub-map, on average. If
-\java{n > k * FACTOR}, that means
-\java{n/k > FACTOR}, which means the number of entries
-per sub-map exceeds the threshold, so we call \java{rehash}.
+La contante \java{FACTOR}, que se conoce como \textbf{factor de carga},
+determina el número máximo de entradas por sub-mapa, en promedio. Si
+\java{n > k * FACTOR}, significa que
+\java{n/k > FACTOR}, lo que implica que el número de entradas
+por sub-mapa excede el umbral, así que llamamos a \java{rehash}.
 
 \index{Ant}
 
-Run \java{ant build} to compile the source files. Then run \java{ant
-  MyHashMapTest}.  It should fail because the implementation of
-\java{rehash} throws an exception. Your job is to fill it in.
+Ejecuta \java{ant build} para compilar los archivos de código fuente. Luego ejecuta \java{ant
+  MyHashMapTest}.  Debería fallar porque la implementación de
+\java{rehash} lanza una excepción. Tu trabajo es completarlo.
 
 \index{rehash}
 
-Fill in the body of \java{rehash} to collect the entries in the table,
-resize the table, and then put the entries back in. I provide two
-methods that might come in handy: \java{MyBetterMap.makeMaps} and
-\java{MyLinearMap.getEntries}. Your solution should double the number
-of maps, $k$, each time it is called.
+Llena el cuerpo de \java{rehash} para recopilar las entradas en la tabla,
+redimensionar la tabla y luego poner las entradas de regreso. Proveo dos
+métodos que podrían servirte: \java{MyBetterMap.makeMaps} y
+\java{MyLinearMap.getEntries}. Tu solución debería duplicar el número
+de mapas, $k$, cada vez que es llamada.
 
 
 \section{Analyzing \java{MyHashMap}}
