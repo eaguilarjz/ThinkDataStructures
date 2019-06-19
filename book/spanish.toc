@@ -51,8 +51,8 @@
 \contentsline {section}{\numberline {9.3}An\IeC {\'a}lisis de \lstinline {MyLinearMap}}{87}{section.9.3}
 \contentsline {chapter}{\numberline {10}Hashing}{91}{chapter.10}
 \contentsline {section}{\numberline {10.1}Hashing}{91}{section.10.1}
-\contentsline {section}{\numberline {10.2}How does hashing work?}{94}{section.10.2}
-\contentsline {section}{\numberline {10.3}Hashing and mutation}{95}{section.10.3}
+\contentsline {section}{\numberline {10.2}\IeC {\textquestiondown }C\IeC {\'o}mo funciona el hashing?}{94}{section.10.2}
+\contentsline {section}{\numberline {10.3}Hashing y mutaci\IeC {\'o}n}{95}{section.10.3}
 \contentsline {section}{\numberline {10.4}Exercise 8}{97}{section.10.4}
 \contentsline {chapter}{\numberline {11}HashMap}{99}{chapter.11}
 \contentsline {section}{\numberline {11.1}Exercise 9}{99}{section.11.1}

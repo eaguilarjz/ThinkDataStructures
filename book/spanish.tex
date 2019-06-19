@@ -4597,10 +4597,10 @@ En java, cada \java{Object} provee un método llamado
 método es diferente para diferentes objetos; veremos un ejemplo
 pronto.
 
-\index{helper method}
+\index{método auxiliar}
 
-Here's a helper method that chooses the right sub-map for a
-given key:
+Aquí está un método auxiliar que elige el sub-mapa correcto para
+una clave dada:
 
 \begin{verbatim}
 protected MyLinearMap<K, V> chooseMap(Object key) {
@@ -4612,24 +4612,24 @@ protected MyLinearMap<K, V> chooseMap(Object key) {
 }
 \end{verbatim}
 
-If \java{key} is \java{null}, we choose the sub-map with index 0,
-arbitrarily. Otherwise we use \java{hashCode} to get an integer,
-apply \java{Math.abs} to make sure it is non-negative,
-then use the remainder operator, \java{\%}, which guarantees that the
-result is between 0 and \java{maps.size()-1}. So \java{index} is
-always a valid index into \java{maps}. Then \java{chooseMap} returns
-a reference to the map it chose.
+Si \java{key} es \java{null}, elegirmos el sub-mapa con el índice 0,
+de forma arbitraria. De lo contrario usamos \java{hashCode} para obtener un entero,
+aplicamos \java{Math.abs} para asegurarnos que es no negativo,
+y luego usamos el operador de residuo, \java{\%}, que nos garantiza que el
+resultado está entre 0 y \java{maps.size()-1}. Así que \java{index} siempre
+es un índice válido en \java{maps}. Luego \java{chooseMap} devuelve una
+referencia al mapa que eligió.
 
 \index{chooseMap}
 \index{put}
 \index{get}
 
-We use \java{chooseMap} in both \java{put} and \java{get}, so when
-we look up a key, we get the same map we chose when we added the key. At
-least, we should --- I'll explain a little later why this might not
-work.
+Usamos \java{chooseMap} tanto en \java{put} como en \java{get}, para que
+cuando busquemos una clave, obtengamos el mismo mapa que elegimos cuando
+agregamos la clave. Por lo menos, deberíamos --- explicaré después por
+qué esto podría no funcionar.
 
-Here's my implementation of \java{put} and \java{get}:
+Aquí está mi implementación de \java{put} y \java{get}:
 
 \begin{verbatim}
 public V put(K key, V value) {
@@ -4643,39 +4643,39 @@ public V get(Object key) {
 }
 \end{verbatim}
 
-Pretty simple, right? In both methods, we use \java{chooseMap} to find
-the right sub-map and then invoke a method on the sub-map. 
-That's how it works; now let's think about performance.
+Bastante simple, ¿verdad? En ambos métodos, usamos \java{chooseMap} para encontrar
+el sub-mapa correcto y luego invocamos un método en el sub-mapa.
+Así es como funiona, ahora pensemos en el desempeño.
 
-\index{sub-map}
+\index{sub-mapa}
 
-If there are $n$ entries split up among $k$ sub-maps,
-there will be $n/k$ entries per map, on average. When we look up
-a key, we have to compute its hash code, which takes some time, then we
-search the corresponding sub-map.
+Si hay $n$ entradas distribuidas entre $k$ sub-mapas,
+habrán $n/k$ entradas por mapa, en promedio. Cuando busquemos
+una clave, tendremos que calcular su código hash, lo que toma algún
+tiempo, entonces podemos buscar el sub-mapa correspondiente.
 
-Because the entry lists in
-\java{MyBetterMap} are $k$ times shorter than the entry list in
-\java{MyLinearMap}, we expect the search to be $k$ times
-faster. But the runtime is still proportional to $n$, so
-\java{MyBetterMap} is still linear. In the next exercise, you'll see how we
-can fix that.
+Porque las listas de entradas en
+\java{MyBetterMap} son $k$ veces más cortas que la lista de entradas en
+\java{MyLinearMap}, esperaríamos que la búsqueda sea $k$ veces
+más rápida. Pero el tiempo de ejecución aún es proporcional a $n$, así
+que \java{MyBetterMap} todavía es lineal. En el siguiente ejercicio, verás
+cómo podemos arreglar eso.
 
-\index{linear time}
+\index{tiempo lineal}
 
 
-\section{How does hashing work?}
+\section{¿Cómo funciona el hashing?}
 \label{how-does-hashing-work}
 
-The fundamental requirement for a hash function is that the same object
-should produce the same hash code every time. For immutable objects,
-that's relatively easy. For objects with mutable state, we have to think
-harder.
+El requisito fundamental para una función hash es que el mismo objeto
+debería producir el mismo código hash cada vez. Para objetos inmutables,
+eso es relativamente sencillo. Para objetos con un estado mutable,
+tenemos que pensar un poco más.
 
 \index{SillyString}
 
-As an example of an immutable object, I'll define a class called
-\java{SillyString} that encapsulates a \java{String}:
+Como un ejemplo de un objeto inmutable, definiré una clase llamada
+\java{SillyString} que encapsula a una \java{String}:
 
 \begin{verbatim}
 public class SillyString {
@@ -4690,9 +4690,8 @@ public class SillyString {
     }
 \end{verbatim}
 
-This class is not very useful, which is why it's called
-\java{SillyString}, but I'll use it to show how a class can define
-its own hash function:
+Esta clase no es muy útil, y es por eso que se llama \java{SillyString} (cadena tonta),
+pero la usaré para mostrar cómo una clase puede definir su propia función hash:
 
 \begin{verbatim}
     @Override
@@ -4710,69 +4709,69 @@ its own hash function:
     }
 \end{verbatim}
 
-Notice that \java{SillyString} overrides both \java{equals} and
-\java{hashCode}. This is important. In order to work properly,
-\java{equals} has to be consistent with \java{hashCode}, which means
-that if two objects are considered equal --- that is, \java{equals}
-returns \java{true} --- they should have the same hash code. But this
-requirement only works one way; if two objects have the same hash code,
-they don't necessarily have to be equal.
+Nota que \java{SillyString} sobreescribe tanto \java{equals} como
+\java{hashCode}. Esto es importante. Para funcionar correctamente,
+\java{equals} tiene que ser consistente con \java{hashCode}, lo que significa
+que si dos objetos son considerados iguales --- es decir, \java{equals}
+devuelve \java{true} --- deberían tener el mismo código hash. Pero este
+requerimiento sólo funciona en una vía; si dos objetos tienen el mismo
+hash code, no necesariamente tienen que ser iguales.
 
 \index{equals}
 \index{toString}
 
-\java{equals} works by invoking \java{toString}, which returns
-\java{innerString}. So two \java{SillyString} objects are equal if
-their \java{innerString} instance variables are equal.
+\java{equals} funciona invocando \java{toString}, que devuelve
+\java{innerString}. Así que dos objetos \java{SillyString} son iguales si
+sus variables de instancia \java{innerString} son iguales.
 
 \index{hashCode}
 
-\java{hashCode} works by iterating through the characters in the
-\java{String} and adding them up. When you add a character to an \java{int},
-Java converts the character to an integer using its Unicode code point.
-You don't need to know anything about Unicode to understand this
-example, but if you are curious, you can read more at 
+\java{hashCode} funciona iterando por los caracteres de la cadena (\java{String})
+y sumándolos. Cuando sumas un carácter a un \java{int} Java convierte el
+caracter a un entero usando su punto de código Unicode.  No necesitas
+saber nada sobre Unicode para entender este ejemplo, pero si sientes
+curiosidad, puedes leer más en
 \url{http://thinkdast.com/codepoint}.
 
 \index{Unicode}
-\index{code point}
+\index{punto de código}
 
-This hash function satisfies the requirement: if two
-\java{SillyString} objects contain embedded strings that are equal,
-they will get the same hash code.
+Esta función hash satisface el requisito: si dos objetos
+\java{SillyString} contienen cadenas embebidas que son iguales,
+obtendrán el mismo código hash.
 
-This works correctly, but it might not yield good performance,
-because it returns the same hash code for many different strings. If two
-strings contain the same letters in any order, they will have the same
-hash code. And even if they don't contain the same letters, they might
-yield the same total, like \java{"ac"} and \java{"bb"}.
+Esto funciona correctamente, pero podría no tener un buen desempeño,
+porque devuelve el mismo código hash para muchas cadenas diferentes. Si
+dos cadenas contienen las mismas letras en cualquier orden, tendrán el
+mismo código hash. E incluso si no contienen las mismas letras, podrían
+producir el mismo total, como \java{"ac"} y \java{"bb"}.
 
-If many objects have the same hash code, they end up in the same
-sub-map.  If some sub-maps have more entries than others, the speedup
-when we have $k$ maps might be much less than $k$. So one of the goals
-of a hash function is to be uniform; that is, it should be equally
-likely to produce any value in the range.  You can read more about
-designing good hash functions at
+Si muchos objetos tienen el mismo código hash, terminan en el mismo
+sub-mapa. Si algunos sub-mapas tienen más entradas que otros, el incremento
+en velocidad cuando tenemos $k$ mapas podría ser mucho menor que $k$. Así
+que una de las metas de una función hash es ser uniforme; es decir, debería
+ser igualmente probable que producirá un valor dentro del rango.  Puedes leer
+más sobre el diseño de buenas funciones hash en
 \url{http://thinkdast.com/hash}.
 
-\index{sub-map}
+\index{sub-mapa}
 
-\section{Hashing and mutation}
+\section{Hashing y mutación}
 \label{hashing-and-mutation}
 
-\java{String}s are immutable, and \java{SillyString} is also immutable
-because \java{innerString} is declared to be \java{final}. Once you
-create a \java{SillyString}, you can't make \java{innerString} refer
-to a different \java{String}, and you can't modify the \java{String} it
-refers to. Therefore, it will always have the same hash code.
+Las cadenas (\java{String}s) son inmutables y \java{SillyString} también es
+inmutable porque \java{innerString} se declara como \java{final}. Una vez
+crees una \java{SillyString}, no puedes hacer que \java{innerString} haga
+referencia a una \java{String} diferente, y no puedes modificar la \java{String} a
+la que se refiere. Por lo tanto, siempre tendrá el mismo código hash.
 
 \index{mutable}
 \index{immutable}
 \index{SillyArray}
 
-But let's see what happens with a mutable object. Here's a definition
-for \java{SillyArray}, which is identical to \java{SillyString},
-except that it uses an array of characters instead of a \java{String}:
+Pero veamos lo que ocurre con un objeto mutable. Aquí está una definición
+para \java{SillyArray}, que es idéntica a \java{SillyString},
+excepto que usa un arreglo de caracteres en lugar de una \java{String}:
 
 \begin{verbatim}
 public class SillyArray {
@@ -4804,8 +4803,8 @@ public class SillyArray {
 
 \index{setChar}
 
-\java{SillyArray} also provides \java{setChar}, which makes it
-possible to modify the characters in the array:
+\java{SillyArray} también provee \java{setChar}, lo que hace posible
+modificar los caracteres en el arreglo:
 
 \begin{verbatim}
 public void setChar(int i, char c) {
@@ -4813,36 +4812,36 @@ public void setChar(int i, char c) {
 }
 \end{verbatim}
 
-Now suppose we create a \java{SillyArray} and add it to a map:
+Ahora supón que creamos un \java{SillyArray} y lo agregamos a un mapa:
 
 \begin{verbatim}
 SillyArray array1 = new SillyArray("Word1".toCharArray());
 map.put(array1, 1);
 \end{verbatim}
 
-The hash code for this array is 461. Now if we modify the contents of
-the array and then try to look it up, like this:
+El código hash para este arreglo es 461. Ahora si modificamos el contenido
+del arreglo y luego tratamos de ubicarlo, así:
 
 \begin{verbatim}
 array1.setChar(0, 'C');
 Integer value = map.get(array1);
 \end{verbatim}
 
-the hash code after the mutation is 441. With a different hash code,
-there's a good chance we'll go looking in the wrong sub-map. In that
-case, we won't find the key, even though it is in the map. And that's
-bad.
+El código hash tras la mutación es 441. Con un código hash diferente,
+hay una probabilidad alta de que buscaremos en el sub-mapa equivocado. En
+ese caso, no encontraremos la clave, incluso si está en el mapa. Y eso
+es malo.
 
-\index{hash code}
+\index{código hash}
 
-In general, it is dangerous to use mutable objects as keys in data
-structures that use hashing, which includes \java{MyBetterMap} and
-\java{HashMap}. If you can guarantee that the keys won't be modified
-while they are in the map, or that any changes won't affect the hash
-code, it might be OK. But it is probably a good idea to avoid it.
+En general, es peligroso usar objetos mutables como claves en
+estructuras de datos que usan hashing, lo que incluye a \java{MyBetterMap} 
+y a \java{HashMap}. Si puedes garantizar que las claves no se modificarán
+mientras están en el mapa, o que cualquier cambio no afectará el código
+hash, podría ser aceptable. Pero probablemente es una buena idea evitarlo.
 
 
-\section{Exercise 8}
+\section{Ejercicio 8}
 
 \index{MyBetterMap}
 

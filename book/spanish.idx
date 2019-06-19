@@ -328,22 +328,22 @@
 \indexentry{Map|hyperpage}{92}
 \indexentry{funci\IeC {\'o}n hash|hyperpage}{92}
 \indexentry{c\IeC {\'o}digo hash|hyperpage}{92}
-\indexentry{helper method|hyperpage}{92}
+\indexentry{m\IeC {\'e}todo auxiliar|hyperpage}{92}
 \indexentry{chooseMap|hyperpage}{93}
 \indexentry{put|hyperpage}{93}
 \indexentry{get|hyperpage}{93}
-\indexentry{sub-map|hyperpage}{93}
-\indexentry{linear time|hyperpage}{93}
+\indexentry{sub-mapa|hyperpage}{93}
+\indexentry{tiempo lineal|hyperpage}{93}
 \indexentry{SillyString|hyperpage}{94}
 \indexentry{equals|hyperpage}{95}
 \indexentry{toString|hyperpage}{95}
 \indexentry{hashCode|hyperpage}{95}
 \indexentry{Unicode|hyperpage}{95}
-\indexentry{code point|hyperpage}{95}
-\indexentry{sub-map|hyperpage}{95}
-\indexentry{mutable|hyperpage}{95}
-\indexentry{immutable|hyperpage}{95}
-\indexentry{SillyArray|hyperpage}{95}
+\indexentry{punto de c\IeC {\'o}digo|hyperpage}{95}
+\indexentry{sub-mapa|hyperpage}{95}
+\indexentry{mutable|hyperpage}{96}
+\indexentry{immutable|hyperpage}{96}
+\indexentry{SillyArray|hyperpage}{96}
 \indexentry{setChar|hyperpage}{96}
 \indexentry{hash code|hyperpage}{97}
 \indexentry{MyBetterMap|hyperpage}{97}
