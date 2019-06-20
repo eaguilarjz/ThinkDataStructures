@@ -7718,142 +7718,142 @@ Eso es todo. Este ejercició no tenía mucho material nuevo; era mayormente
 para combinar todas las piezas del rompecabezas.
 
 
-\section{Information retrieval}
+\section{Recuperación de información}
 \label{information-retrieval}
 
-\index{information retrieval}
+\index{recuperación de información}
 
-The next phase of this project is to implement a search tool. The pieces
-we'll need include:
+La siguiente fase de este proyecto es implementar una herramienta de búsqueda.
+Las partes que necesitaremos incluir son:
 
 \begin{enumerate}
 
 \item
-  An interface where users can provide search terms and view results.
+  Una interfaz donde los usuarios puedan proveer términos de búsqueda y ver los resultados.
 
 \item
-  A lookup mechanism that takes each search term and returns the pages
-  that contain it.
+  Un mecanismo de búsqueda que tome cada término de búsqueda y devuelva las páginas
+  que lo contienen.
 
 \item
-  Mechanisms for combining search results from multiple search terms.
+  Mecanismos para combinar los resultados de búsqueda de múltiples términos de búsqueda.
 
 \item
-  Algorithms for ranking and sorting search results.
+  Algoritmos para clasificar y ordenar los resultados de búsqueda.
 
 \end{enumerate}
 
-The general term for processes like this is ``information retrieval'',
-which you can read more about at 
+El término general para procesos como este es ``recuperación de información'',
+sobre el que puedes más en
 \url{http://thinkdast.com/infret}.
 
-In this exercise, we'll focus on steps 3 and 4. We've already built a simple
-version of 2. If you are interested in building Web applications, you
-might consider working on step 1.
+En este ejercicio, nos enfocaremos en los pasos 3 y 4. Ya hemos construido una
+versión simple del 2. Si estás interesado en construir aplicaciones Web,
+podrías considerar trabajar en el paso 1.
 
 
-\section{Boolean search}
+\section{Búsqueda boolena}
 \label{boolean-search}
 
-\index{boolean search}
+\index{búsqueda booleana}
 
-Most search engines can perform ``boolean searches'', which means you
-can combine the results from multiple search terms using boolean logic.
-For example:
-
-\begin{itemize}
-
-\item
-  The search ``java AND programming'' might return only pages that
-  contain both search terms: ``java'' and ``programming''.
-
-\item
-  ``java OR programming'' might return pages that contain either term
-  but not necessarily both.
-
-\item
-  ``java -indonesia'' might return pages that contain ``java'' and do
-  not contain ``indonesia''.
-
-\end{itemize}
-
-Expressions like these that contain search terms and operators are
-called ``queries''.
-
-\index{query}
-
-When applied to search results, the boolean operators \java{AND},
-\java{OR}, and \java{-} correspond to the set operations
-\java{intersection}, \java{union}, and \java{difference}. For
-example, suppose
+La mayoría de los motores de búsqueda pueden realizar ``búsquedas booleanas'',
+lo que significa que puedes combinar los resultados de múltiples términos de
+búsqueda usando lógica booleana. Por ejemplo:
 
 \begin{itemize}
 
 \item
-  \java{s1} is the set of pages containing ``java'',
+  La búsqueda ``java AND programación'' podría devolver sólo las páginas que
+  contienen ambos términos de búsqueda: ``java'' y ``programación''.
 
 \item
-  \java{s2} is the set of pages containing ``programming'', and
+  ``java OR programación'' podría devolver páginas que contienen cualquiera de
+  los términos, pero no necesariamente ambos.
 
 \item
-  \java{s3} is the set of pages containing ``indonesia''.
+  ``java -indonesia'' podría devolver las páginas que contienen ``java'' y no
+  contienen ``indonesia''.
 
 \end{itemize}
 
-In that case:
+Las expresiones como estas que contienen términos de búsqueda y operadores se
+conocen como ``consultas''.
+
+\index{consulta}
+
+Cuando se aplican a resultados de búsqueda, los operadores booleanos
+\java{AND}, \java{OR}, y \java{-} corresponden a las operaciones de
+conjuntos \java{intersection} (intersección), \java{union} (unión), 
+y \java{difference} (diferencia). Por ejemplo, supón:
 
 \begin{itemize}
 
 \item
-  The intersection of \java{s1} and \java{s2} is the set of pages
-  containing ``java'' AND ``programming''.
+  \java{s1} es el conjunto de páginas que contienen ``java'',
 
 \item
-  The union of \java{s1} and \java{s2} is the set of pages
-  containing ``java'' OR ``programming''.
+  \java{s2} es el conjunto de páginas que contienen ``programación'', y
 
 \item
-  The difference of \java{s1} and \java{s2} is the set of pages
-  containing ``java'' and not ``indonesia''.
+  \java{s3} es el conjunto de páginas que contienen ``indonesia''.
+
 \end{itemize}
 
-In the next section you will write a method to implement these operations.
+En ese caso:
 
-\index{intersection}
-\index{union}
-\index{difference}
-\index{set operations}
+\begin{itemize}
+
+\item
+  La intersección de \java{s1} y \java{s2} es el conjunto de páginas
+  que contienen ``java'' AND ``programación''.
+
+\item
+  La unión de \java{s1} y \java{s2} es el conjunto de páginas que
+  contienen ``java'' OR ``programación''.
+
+\item
+  La diferencia de \java{s1} y \java{s2} es el conjunto de páginas que
+  contienen ``java'' y no ``indonesia''.
+\end{itemize}
+
+En la siguiente sección escribirás un método para implementar estas operaciones.
+
+\index{intersección}
+\index{unión}
+\index{diferencia}
+\index{operaciones de conjuntos}
 
 
-\section{Exercise 13}
+\section{Ejercicio 13}
 \label{exercise13}
 
-In the repository for this book
-you'll find the source files for this exercise:
+En el repositorio para este libro
+encontrarás los archivos de código fuente para este ejercicio:
 
 \begin{itemize}
 
 \item
-  \java{WikiSearch.java}, which defines an object that contains search
-  results and performs operations on them.
+  \java{WikiSearch.java}, que define un objeto que contiene resultados de
+  búsqueda y realiza operaciones en ellos.
 
 \item
-  \java{WikiSearchTest.java}, which contains test code for
+  \java{WikiSearchTest.java}, que contiene código de pruebas para
   \java{WikiSearch}.
 
 \item
-  \java{Card.java}, which demonstrates how to use the \java{sort}
-  method in \java{java.util.Collections}.
+  \java{Card.java}, que demuestra cómo usar el método \java{sort}
+  en \java{java.util.Collections}.
 
 \end{itemize}
 
-You will also find some of the helper classes we've used in previous
-exercises.
+También encontrarás algunas de las clases auxiliares que hemos usado en
+los ejercicios anteriores.
 
 \index{WikiSearch}
 \index{helper class}
 
-Here's the beginning of the \java{WikiSearch} class definition:
+Aquí está el principio de la definición de la clase \java{WikiSearch}:
 
 \begin{verbatim}
 public class WikiSearch {
@@ -7872,64 +7872,64 @@ public class WikiSearch {
 }
 \end{verbatim}
 
-A \java{WikiSearch} object contains a map from URLs to their relevance
-score. In the context of information retrieval, a ``relevance score'' is
-a number intended to indicate how well a page meets the needs of the
-user as inferred from the query. There are many ways to construct a
-relevance score, but most of them are based on ``term frequency'', which
-is the number of times the search terms appear on the page. A common
-relevance score is called TF-IDF, which stands for ``term frequency --
-inverse document frequency''.  You can read more about it at
-\url{http://thinkdast.com/tfidf}.
+Un objeto \java{WikiSearch} contiene un mapap de URLs con su puntaje de
+relevancia. En el contexto de la recuperación de información, un ``puntaje
+de relevancia'' que pretende indicar qué tan bien una página satisface las
+necesidades de un usuario como se infieren de la consulta. Hay muchas formas de
+construir un puntaje de relevancia, pero la mayoría de ellos están basadas en
+la ``frecuencia de término'', que es el número de veces que los términos de
+búsqueda aparecen en la página. Un puntaje de relevancia común es llamado
+TF-IDF, que significa ``frecuencia de término -- frecuencia inversa de
+documento''(``term frequency -- inverse document frequency'').  Puedes leer más
+sobre al respecto en \url{http://thinkdast.com/tfidf}.
 
-\index{relevance}
-\index{term frequency}
-\index{inverse document frequency}
+\index{relevancia}
+\index{frecuencia de término}
+\index{frecuencia inversa de documento}
 \index{TF-IDF}
 
-You'll have the option to implement TF-IDF later, but we'll start with
-something even simpler, TF:
+Tendrás la opción de implementar TF-IDF más tarde, pero comenzaremos con algo
+incluso más simple, TF:
 
 \begin{itemize}
 
 \item
-  If a query contains a single search term, the relevance of a page is
-  its term frequency; that is, the number of time the term appears on
-  the page.
+  Si una consulta contiene un único término de búsqueda, la relevancia de una
+  página es su frecuencia de término, es decir, el número de veces que el término
+  aparece en la página.
 
 \item
-  For queries with multiple terms, the relevance of a page is the sum of
-  the term frequencies; that is, the total number of times any of the
-  search terms appear.
+  Para consultas con múltiples términos, la relevancia de una página es la
+  suma de las frecuencias de término; es decir, el número total de veces que
+  cualquiera de los términos de búsqueda aparece.
 
 \end{itemize}
 
-Now you're ready to start the exercise.
-Run \java{ant build} to compile the source files, then run
-\java{ant WikiSearchTest}. As usual, it should
-fail, because you have work to do.
+Ahora estás listo para comenzar el ejercicio.
+Ejecuta \java{ant build} para compilar los archivos fuentes, luego ejecuta
+\java{ant WikiSearchTest}. Como es usual, debería fallar, porque tienes
+trabajo por hacer.
 
 \index{Ant}
 
-In \java{WikiSearch.java}, fill in the bodies of \java{and},
-\java{or}, and \java{minus} so that the relevant tests pass. You
-don't have to worry about \java{testSort} yet.
+En \java{WikiSearch.java}, llena el cuerpo de \java{and},
+\java{or}, y \java{minus} para que pasen los tests relevantes. No
+tienes que preocuparte por \java{testSort} todavía.
 
 \index{and}
 \index{or}
 \index{minus}
 
-You can run \java{WikiSearchTest} without using Jedis because it
-doesn't depend on the index in your Redis database. But if you want to
-run a query against your index, you have to provide a file with
-information about your Redis server.  See Section~\ref{hello-jedis}
-for details.
+Puedes ejecutar \java{WikiSearchTest} sin usar Jedis porque no depende
+del índice en tu base de datos Redis. Pero si quieres ejecutar una consulta
+contra tu índice, tienes que proveer un archivo con información sobre tu
+servidor Redis. Mira la Sección~\ref{hello-jedis} para más detalles.
 
 \index{JedisMaker}
 
-Run \java{ant JedisMaker} to make sure it is configured to connect to
-your Redis server. Then run \java{WikiSearch}, which prints results
-from three queries:
+Ejecuta \java{ant JedisMaker} para asegurarte que está configurado para
+conectarse a tu servidor Redis. Luego ejecuta \java{WikiSearch}, que imprime los
+resultados de tres consultas (los términos de búsqueda están en inglés):
 
 \begin{itemize}
 
@@ -7944,49 +7944,49 @@ from three queries:
 
 \end{itemize}
 
-Initially the results will be in no particular order, because
-\java{WikiSearch.sort} is incomplete.
+Inicialmente los resultados no estarán en ningun orden particular, porque
+\java{WikiSearch.sort} está incompleto.
 
 \index{sort}
 \index{Collections}
 
-Fill in the body of \java{sort} so the results are returned in
-increasing order of relevance. I suggest you use the \java{sort}
-method provided by \java{java.util.Collections}, which sorts any kind of
-\java{List}. You can read the documentation at
+Llena el cuerpo de \java{sort} para que los resultados se devuelvan en
+orden ascendente de relevancia. Sugiero que uses el método \java{sort}
+provisto por \java{java.util.Collections}, que ordena cualquier clase de
+\java{List}. Puedes leer la documentación en
 \url{http://thinkdast.com/collections}.
 
-There are two versions of \java{sort}:
+Hay dos versiones de \java{sort}:
 
 \begin{itemize}
 
 \item
-  The one-parameter version takes a list and sorts the elements using
-  the \java{compareTo} method, so the elements have to be
+  La versión con un parámetro toma una lista y ordena los elementos usando
+  el método \java{compareTo}, así que los elementos tienen que ser
   \java{Comparable}.
 
 \item
-  The two-parameter version takes a list of any object type and a
-  \java{Comparator}, which is an object that provides a
-  \java{compare} method that compares elements.
+  La versión con dos parámetros toma una lista de cualquier tipo de objeto
+  y un \java{Comparator}, que es un objeto que provee un método
+  \java{compare} que compara elementos.
 
 \end{itemize}
 
 \index{Comparable}
 \index{Comparator}
 
-If you are not familiar with the \java{Comparable} and
-\java{Comparator} interfaces, I explain them in the next section.
+Si no estás familiarizado con las interfaces \java{Comparable} y
+\java{Comparator}, las explicaré en la siguiente sección.
 
 
-\section{{\tt Comparable} and {\tt Comparator}}
+\section{{\tt Comparable} y {\tt Comparator}}
 \label{comparable-and-comparator}
 
 \index{Card}
 
-The repository for this book includes \java{Card.java}, which
-demonstrates two ways to sort a list of \java{Card} objects. Here's
-the beginning of the class definition:
+El repositorio para este libro incluye \java{Card.java}, que demuestra
+dos formas de ordenar una lista de objetos \java{Card}. Aquí está el
+principio de la definición de la clase:
 
 \begin{verbatim}
 public class Card implements Comparable<Card> {
@@ -8000,10 +8000,10 @@ public class Card implements Comparable<Card> {
     }
 \end{verbatim}
 
-A \java{Card} object has two integer fields, \java{rank} and
-\java{suit}. \java{Card} implements
-\java{Comparable<Card>}, which means that it
-provides \java{compareTo}:
+Un objeto \java{Card} tiene dos campos enteros, \java{rank} y
+\java{suit}. \java{Card} implementa
+\java{Comparable<Card>}, lo que significa que
+provee \java{compareTo}:
 
 \begin{verbatim}
     public int compareTo(Card that) {
@@ -8025,14 +8025,14 @@ provides \java{compareTo}:
 
 \index{compareTo}
 
-The specification of \java{compareTo} indicates that it should return
-a negative number if \java{this} is considered less than
-\java{that}, a positive number if it is considered greater, and 0 if
-they are considered equal.
+La especificación de \java{compareTo} indica que debería devolver
+un número negativo si \java{this} se considera menor que
+\java{that}, un número positivo si se considera mayor y 0 si
+se consideran iguales.
 
-If you use the one-parameter version of \java{Collections.sort}, it
-uses the \java{compareTo} method provided by the elements to sort
-them. To demonstrate, we can make a list of 52 cards like this:
+Si usas la versión con un parámetro de \java{Collections.sort}, se
+usa el método \java{compareTo} provisto por los elementos para ordenarlos.
+Para demostrarlo, podemos hacer una lista de 52 cartas como esta:
 
 \begin{verbatim}
     public static List<Card> makeDeck() {
@@ -8047,24 +8047,24 @@ them. To demonstrate, we can make a list of 52 cards like this:
     }
 \end{verbatim}
 
-And sort them like this:
+Y ordenarla de esta forma:
 
 \begin{verbatim}
         Collections.sort(cards);
 \end{verbatim}
 
-This version of \java{sort} puts the elements in what's called their
-``natural order'' because it's determined by the objects themselves.
+Esta versión de \java{sort} pone los elementos en lo que se llama su
+``orden natural'' porque lo determinan los mismos objetos.
 
-\index{natural order}
+\index{orden natural}
 \index{Comparator}
 \index{compare}
 
-But it is possible to impose a different ordering by providing a
-\java{Comparator} object. For example, the natural order of
-\java{Card} objects treats Aces as the lowest rank, but in some card
-games they have the highest rank. We can define a \java{Comparator}
-that considers ``Aces high'', like this:
+Pero es posible imponer un orden diferente al proveer un objeto
+\java{Comparator}. Por ejemplo, el orden natural de los objetos
+\java{Card} trate los Ases como las cartas de menor rango, pero en algunos
+juegos tienen el rango más alto. Podemos definir un \java{Comparator}
+que considere a los ``Ases con un rango alto'', como este:
 
 \begin{verbatim}
         Comparator<Card> comparator = new Comparator<Card>() {
@@ -8099,31 +8099,31 @@ that considers ``Aces high'', like this:
         };
 \end{verbatim}
 
-This code defines an anonymous class that implements \java{compare},
-as required. Then it creates an instance of the newly-defined, unnamed
-class. If you are not familiar with anonymous classes in Java, you can
-read about them at \url{http://thinkdast.com/anonclass}.
+Este código define una clase anónima que implementa \java{compare},
+como se requiere. Luego crea una intancia de la clase recién definida
+e innombrada. Si no estás familiarizado con las clases anónimas en
+java, puedes leer sobre ellas en \url{http://thinkdast.com/anonclass}.
 
-\index{anonymous class}
+\index{clase anónima}
 
-Using this \java{Comparator}, we can invoke \java{sort} like this:
+Al usar este \java{Comparator}, podemos invocar \java{sort} así:
 
 \begin{verbatim}
         Collections.sort(cards, comparator);
 \end{verbatim}
 
-In this ordering, the Ace of Spades is considered the highest class in
-the deck; the two of Clubs is the lowest.
+En este ordenamiento, el As de Espadas (Ace of Spades) es considerado como
+el de mayor rango en el mazo; el dos de Tréboles (two of Clubs) es el menor.
 
-\index{ordering}
+\index{ordenamiento}
 
-The code in this section is in \java{Card.java} if you want to
-experiment with it. As an exercise, you might want to write a comparator
-that sorts by \java{rank} first and then by \java{suit}, so all the
-Aces should be together, and all the twos, etc.
+El código en esta sección está en \java{Card.java} si quieres experiementar
+con él. Como un ejercicio podrías querer escribir un comparador que ordene
+por \java{rank} primero y luego por \java{suit}, así todos loa Ases
+estarían juntos y todos los dos, etc.
 
 
-\section{Extensions}
+\section{Extensiones}
 \label{extensions}
 
 \index{TF-IDF}
@@ -8131,28 +8131,28 @@ Aces should be together, and all the twos, etc.
 \index{snippet}
 \index{Heroku}
 
-If you get a basic version of this exercise working, you might want to work
-on these optional exercises:
+Si logras que funcione una versión básica de este ejercicio, podrías querer
+trabajar en estos ejercicios opcionales:
 
 \begin{itemize}
 
-\item Read about TF-IDF at \url{http://thinkdast.com/tfidf}
-  and implement it. You might have to modify \java{JavaIndex} to
-  compute document frequencies; that is, the total number of times
-  each term appears on all pages in the index.
+\item Lee sobre TF-IDF en \url{http://thinkdast.com/tfidf} e
+  impleméntalo. Podrías tener que modificar \java{JavaIndex} para
+  calcular frecuencias de documento; es decir, el número total de veces
+  que cada término aparece en todas las páginas en el índice.
 
-\item For queries with more than one search term, the total relevance for
-  each page is currently the sum of the relevance for each term. Think
-  about when this simple version might not work well, and try out some
-  alternatives.
+\item Para consultas con más de un término de búsqueda, la relevancia total para
+  cada página es actualmente la suma de la relevancia para cada término. Piensa
+  sobre cuándo esta versión simple podría no funcionar bien, y prueba algunas
+  alternativas.
 
-\item Build a user interface that allows users to enter queries with
-  boolean operators. Parse the queries, generate the results, then
-  sort them by relevance and display the highest-scoring
-  URLs. Consider generating ``snippets'' that show where the search
-  terms appeared on the page. If you want to make a Web application
-  for your user interface, consider using Heroku as a simple option
-  for developing and deploying Web applications using Java.  See
+\item Construye una interfaz de usuario que permita a los usuarios ingresar
+  consultas con operadores booleanos. Interpreta las consultas, genera los
+  resultados, luego ordénalos por relevacia y muestra las URLs con los puntajes
+  más altos. Considera generar ``fragmentos'' que muestren dónde aparecieron los
+  términos de búsqueda en la página. Si quieres hacer una aplicación Web para
+  tu interfaz de usuario, considera usar Heroku como una opción simple para
+  desarrollar y desplegar aplicaciones Web usando Java.  Ver
   \url{http://thinkdast.com/heroku}.
 
 \end{itemize}

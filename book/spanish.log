@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6745 64-bit) (preloaded format=pdflatex 2018.8.21)  19 JUN 2019 18:27
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6745 64-bit) (preloaded format=pdflatex 2018.8.21)  20 JUN 2019 09:04
 entering extended mode
 **./spanish.tex
 (spanish.tex
@@ -1643,34 +1643,57 @@ Overfull \hbox (0.70532pt too wide) in paragraph at lines 7568--7571
  or-denar-los de acuerdo
  []
 
-[153] [154] [155] [156]
-Overfull \hbox (84.80118pt too wide) in paragraph at lines 7845--7847
-[][][][][][]\OT1/cmr/m/n/12 , which demon-strates how to use the [][][] method 
-in [][][][][][][]. 
+[153] [154] [155]
+Overfull \hbox (1.19283pt too wide) in paragraph at lines 7726--7728
+\OT1/cmr/m/n/12 La sigu-iente fase de este proyecto es im-ple-men-tar una her-r
+amienta de busqueda.
+ []
+
+
+Overfull \hbox (15.91072pt too wide) in paragraph at lines 7739--7740
+[]\OT1/cmr/m/n/12 Mecanismos para com-bi-nar los re-sul-ta-dos de busqueda de 
+multiples terminos
+ []
+
+
+Overfull \hbox (0.93172pt too wide) in paragraph at lines 7760--7763
+\OT1/cmr/m/n/12 La mayora de los mo-tores de busqueda pueden re-alizar ``bu
+squedas booleanas'',
+ []
+
+
+Overfull \hbox (6.15259pt too wide) in paragraph at lines 7771--7773
+[]\OT1/cmr/m/n/12 ``java OR pro-gra-macion'' podra de-volver paginas que co
+n-tienen cualquiera
+ []
+
+[156]
+Overfull \hbox (16.43394pt too wide) in paragraph at lines 7837--7839
+[][][][][][]\OT1/cmr/m/n/12 , que de-fine un ob-jeto que con-tiene re-sul-ta-do
+s de busqueda
+ []
+
+
+Overfull \hbox (3.20586pt too wide) in paragraph at lines 7841--7843
+[][][][][][]\OT1/cmr/m/n/12 , que con-tiene codigo de prue-bas para [][][]. 
+ []
+
+
+Overfull \hbox (49.48627pt too wide) in paragraph at lines 7845--7847
+[][][][][][]\OT1/cmr/m/n/12 , que de-mues-tra como usar el metodo [][][] en [
+][][][][][][]. 
  []
 
 [157] [158]
-Overfull \hbox (8.2885pt too wide) in paragraph at lines 7953--7958
-\OT1/cmr/m/n/12 vance. I sug-gest you use the [][][] method pro-vided by [][][]
-[][][][],
- []
-
-
-Overfull \hbox (13.36697pt too wide) in paragraph at lines 7969--7972
-[]\OT1/cmr/m/n/12 The two-parameter ver-sion takes a list of any ob-ject type a
-nd a [][][],
+Overfull \hbox (66.39058pt too wide) in paragraph at lines 7953--7958
+\OT1/cmr/m/n/12 dente de rel-e-van-cia. Sug-iero que uses el metodo [][][] pro
+-visto por [][][][][][][],
  []
 
 [159]
-Overfull \hbox (57.97595pt too wide) in paragraph at lines 8003--8007
-[]\OT1/cmr/m/n/12 A [][][] ob-ject has two in-te-ger fields, [][][] and [][][].
- [][][] im-ple-ments [][][][][][],
- []
-
-
-Overfull \hbox (12.31522pt too wide) in paragraph at lines 8033--8036
-[]\OT1/cmr/m/n/12 If you use the one-parameter ver-sion of [][][][][], it uses 
-the [][][]
+Overfull \hbox (15.41478pt too wide) in paragraph at lines 7964--7967
+\OT1/cmr/m/n/12 ando el metodo [][][], as que los el-e-men-tos tienen que se
+r [][][]. 
  []
 
 [160] [161] [162] [163] [164
@@ -1761,7 +1784,7 @@ Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 8885.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 8885.
 
 Package rerunfilecheck Info: File `spanish.out' has not changed.
-(rerunfilecheck)             Checksum: FE3924F77B0050FFCCBE4DB013622A35;7669.
+(rerunfilecheck)             Checksum: 771BC8F551E9BF045A78E06652501AF8;7686.
  ) 
 Here is how much of TeX's memory you used:
  11285 strings out of 492973
@@ -1784,7 +1807,7 @@ nts/cm/cmss12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/c
 msy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb
 ><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Pro
 gram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on spanish.pdf (194 pages, 975168 bytes).
+Output written on spanish.pdf (194 pages, 975757 bytes).
 PDF statistics:
  1992 PDF objects out of 2073 (max. 8388607)
  427 named destinations out of 1000 (max. 500000)

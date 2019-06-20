@@ -543,19 +543,19 @@
 \indexentry{Index|hyperpage}{155}
 \indexentry{Element|hyperpage}{155}
 \indexentry{Wikipedia|hyperpage}{156}
-\indexentry{information retrieval|hyperpage}{156}
-\indexentry{boolean search|hyperpage}{156}
-\indexentry{query|hyperpage}{157}
-\indexentry{intersection|hyperpage}{157}
-\indexentry{union|hyperpage}{157}
-\indexentry{difference|hyperpage}{157}
-\indexentry{set operations|hyperpage}{157}
+\indexentry{recuperaci\IeC {\'o}n de informaci\IeC {\'o}n|hyperpage}{156}
+\indexentry{b\IeC {\'u}squeda booleana|hyperpage}{156}
+\indexentry{consulta|hyperpage}{157}
+\indexentry{intersecci\IeC {\'o}n|hyperpage}{157}
+\indexentry{uni\IeC {\'o}n|hyperpage}{157}
+\indexentry{diferencia|hyperpage}{157}
+\indexentry{operaciones de conjuntos|hyperpage}{157}
 \indexentry{WikiSearch|hyperpage}{158}
 \indexentry{helper class|hyperpage}{158}
-\indexentry{relevance|hyperpage}{158}
-\indexentry{term frequency|hyperpage}{158}
-\indexentry{inverse document frequency|hyperpage}{158}
-\indexentry{TF-IDF|hyperpage}{158}
+\indexentry{relevancia|hyperpage}{159}
+\indexentry{frecuencia de t\IeC {\'e}rmino|hyperpage}{159}
+\indexentry{frecuencia inversa de documento|hyperpage}{159}
+\indexentry{TF-IDF|hyperpage}{159}
 \indexentry{Ant|hyperpage}{159}
 \indexentry{and|hyperpage}{159}
 \indexentry{or|hyperpage}{159}
@@ -563,19 +563,19 @@
 \indexentry{JedisMaker|hyperpage}{159}
 \indexentry{sort|hyperpage}{159}
 \indexentry{Collections|hyperpage}{159}
-\indexentry{Comparable|hyperpage}{159}
-\indexentry{Comparator|hyperpage}{159}
+\indexentry{Comparable|hyperpage}{160}
+\indexentry{Comparator|hyperpage}{160}
 \indexentry{Card|hyperpage}{160}
-\indexentry{compareTo|hyperpage}{160}
-\indexentry{natural order|hyperpage}{161}
-\indexentry{Comparator|hyperpage}{161}
-\indexentry{compare|hyperpage}{161}
-\indexentry{anonymous class|hyperpage}{162}
-\indexentry{ordering|hyperpage}{162}
-\indexentry{TF-IDF|hyperpage}{162}
-\indexentry{relevance|hyperpage}{162}
-\indexentry{snippet|hyperpage}{162}
-\indexentry{Heroku|hyperpage}{162}
+\indexentry{compareTo|hyperpage}{161}
+\indexentry{orden natural|hyperpage}{162}
+\indexentry{Comparator|hyperpage}{162}
+\indexentry{compare|hyperpage}{162}
+\indexentry{clase an\IeC {\'o}nima|hyperpage}{163}
+\indexentry{ordenamiento|hyperpage}{163}
+\indexentry{TF-IDF|hyperpage}{163}
+\indexentry{relevance|hyperpage}{163}
+\indexentry{snippet|hyperpage}{163}
+\indexentry{Heroku|hyperpage}{163}
 \indexentry{sorting|hyperpage}{165}
 \indexentry{divide-conquer-glue|hyperpage}{166}
 \indexentry{linearithmic time|hyperpage}{166}
