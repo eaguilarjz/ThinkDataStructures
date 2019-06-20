@@ -103,4 +103,4 @@
 \contentsline {section}{\numberline {17.5}Ordenamiento por mont\IeC {\'\i }culos}{174}{section.17.5}
 \contentsline {section}{\numberline {17.6}Mont\IeC {\'\i }culo acotado}{176}{section.17.6}
 \contentsline {section}{\numberline {17.7}Complejidad espacial}{177}{section.17.7}
-\contentsline {chapter}{Index}{179}{chapter*.5}
+\contentsline {chapter}{\IeC {\'I}ndice}{179}{chapter*.5}

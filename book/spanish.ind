@@ -49,7 +49,6 @@
   \item base de datos, \hyperpage{132}
   \item base de datos clave-valor, \hyperpage{133}
   \item booleano, \hyperpage{16}
-  \item bubble sort, \hyperpage{172}
   \item bug de rendimiento, \hyperpage{31}, \hyperpage{104}
 
   \indexspace
@@ -267,6 +266,7 @@
 		\hyperpage{52}, \hyperpage{112}
   \item orden natural, \hyperpage{162}
   \item ordenamiento, \hyperpage{11}, \hyperpage{163}, \hyperpage{165}
+  \item ordenamiento de burbuja, \hyperpage{172}
   \item ordenamiento de no comparaci\IeC {\'o}n, \hyperpage{173}
   \item ordenamiento externo, \hyperpage{175}
   \item ordenamiento por comparaci\IeC {\'o}n, \hyperpage{172}

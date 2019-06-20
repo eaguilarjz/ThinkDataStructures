@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6745 64-bit) (preloaded format=pdflatex 2018.8.21)  20 JUN 2019 15:52
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6745 64-bit) (preloaded format=pdflatex 2018.8.21)  20 JUN 2019 16:13
 entering extended mode
 **./spanish.tex
 (spanish.tex
@@ -1776,12 +1776,12 @@ Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 8894.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 8894.
 
 Package rerunfilecheck Info: File `spanish.out' has not changed.
-(rerunfilecheck)             Checksum: E7097A16EEBF3DAAC72781787E61B35D;7809.
+(rerunfilecheck)             Checksum: B5A135865A4B026E91E25E41957626B6;7813.
  ) 
 Here is how much of TeX's memory you used:
  11294 strings out of 492973
  157074 string characters out of 3135920
- 376308 words of memory out of 3000000
+ 374310 words of memory out of 3000000
  14566 multiletter control sequences out of 15000+200000
  10366 words of font info for 38 fonts, out of 3000000 for 9000
  1144 hyphenation exceptions out of 8191
@@ -1799,7 +1799,7 @@ nts/cm/cmss12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/c
 msy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb
 ><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Pro
 gram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on spanish.pdf (199 pages, 1101230 bytes).
+Output written on spanish.pdf (199 pages, 1101010 bytes).
 PDF statistics:
  2648 PDF objects out of 2984 (max. 8388607)
  433 named destinations out of 1000 (max. 500000)
