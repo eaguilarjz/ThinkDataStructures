@@ -5,7 +5,6 @@
 \indexentry{interfaz|hyperpage}{xiii}
 \indexentry{interface|hyperpage}{xiii}
 \indexentry{interfaz de programaci\IeC {\'o}n de aplicaciones|hyperpage}{xiii}
-\indexentry{application programming interface|hyperpage}{xiii}
 \indexentry{API|hyperpage}{xiii}
 \indexentry{type parameter|hyperpage}{xiii}
 \indexentry{Java Collections Framework|hyperpage}{xiii}
@@ -297,8 +296,8 @@
 \indexentry{URL|hyperpage}{82}
 \indexentry{Ant|hyperpage}{83}
 \indexentry{indexPage|hyperpage}{83}
-\indexentry{map|hyperpage}{85}
-\indexentry{hash table|hyperpage}{85}
+\indexentry{mapa|hyperpage}{85}
+\indexentry{tabla hash|hyperpage}{85}
 \indexentry{MyLinearMap|hyperpage}{85}
 \indexentry{par\IeC {\'a}metro de tipo|hyperpage}{85}
 \indexentry{ArrayList|hyperpage}{85}
@@ -412,8 +411,8 @@
 \indexentry{Map|hyperpage}{112}
 \indexentry{Node|hyperpage}{113}
 \indexentry{par clave-valor|hyperpage}{113}
-\indexentry{size|hyperpage}{114}
-\indexentry{tiempo constante|hyperpage}{114}
+\indexentry{size|hyperpage}{113}
+\indexentry{tiempo constante|hyperpage}{113}
 \indexentry{clear|hyperpage}{114}
 \indexentry{tiempo lineal|hyperpage}{114}
 \indexentry{MyTreeMap|hyperpage}{114}
@@ -573,65 +572,65 @@
 \indexentry{clase an\IeC {\'o}nima|hyperpage}{163}
 \indexentry{ordenamiento|hyperpage}{163}
 \indexentry{TF-IDF|hyperpage}{163}
-\indexentry{relevance|hyperpage}{163}
+\indexentry{relevancia|hyperpage}{163}
 \indexentry{snippet|hyperpage}{163}
 \indexentry{Heroku|hyperpage}{163}
-\indexentry{sorting|hyperpage}{165}
-\indexentry{divide-conquer-glue|hyperpage}{166}
-\indexentry{linearithmic time|hyperpage}{166}
+\indexentry{ordenamiento|hyperpage}{165}
+\indexentry{divide-conquista-pega|hyperpage}{166}
+\indexentry{tiempo linear\IeC {\'\i }tmico|hyperpage}{166}
 \indexentry{insertion sort|hyperpage}{166}
-\indexentry{ListSorter|hyperpage}{166}
-\indexentry{type parameter|hyperpage}{166}
+\indexentry{ListSorter|hyperpage}{167}
+\indexentry{par\IeC {\'a}metro de tipo|hyperpage}{167}
 \indexentry{List|hyperpage}{167}
-\indexentry{linear time|hyperpage}{167}
-\indexentry{quadratic time|hyperpage}{167}
-\indexentry{linear time|hyperpage}{167}
-\indexentry{merge sort|hyperpage}{168}
-\indexentry{quadratic time|hyperpage}{168}
-\indexentry{Ant|hyperpage}{168}
-\indexentry{ListSorter|hyperpage}{168}
+\indexentry{tiempo lineal|hyperpage}{167}
+\indexentry{tiempo cuadr\IeC {\'a}tico|hyperpage}{168}
+\indexentry{tiempo lineal|hyperpage}{168}
+\indexentry{ordenamiento por mezcla|hyperpage}{168}
+\indexentry{tiempo cuadr\IeC {\'a}tico|hyperpage}{168}
+\indexentry{Ant|hyperpage}{169}
+\indexentry{ListSorter|hyperpage}{169}
 \indexentry{mergeSort|hyperpage}{169}
-\indexentry{base case|hyperpage}{169}
-\indexentry{recursion|hyperpage}{169}
-\indexentry{analysis|hyperpage}{169}
-\indexentry{linear time|hyperpage}{170}
-\indexentry{logarithm|hyperpage}{171}
-\indexentry{linearithmic time|hyperpage}{171}
-\indexentry{n log n|hyperpage}{171}
-\indexentry{comparison sort|hyperpage}{171}
-\indexentry{linear time|hyperpage}{171}
-\indexentry{radix sort|hyperpage}{172}
+\indexentry{caso base|hyperpage}{169}
+\indexentry{recursi\IeC {\'o}n|hyperpage}{169}
+\indexentry{an\IeC {\'a}lisis|hyperpage}{170}
+\indexentry{tiempo lineal|hyperpage}{170}
+\indexentry{logaritmo|hyperpage}{172}
+\indexentry{tiempo linear\IeC {\'\i }tmico|hyperpage}{172}
+\indexentry{n log n|hyperpage}{172}
+\indexentry{ordenamiento por comparaci\IeC {\'o}n|hyperpage}{172}
+\indexentry{tiempo lineal|hyperpage}{172}
+\indexentry{ordenamiento radix|hyperpage}{172}
 \indexentry{Obama, Barack|hyperpage}{172}
 \indexentry{Schmidt, Eric|hyperpage}{172}
 \indexentry{Google|hyperpage}{172}
-\indexentry{bubble sort|hyperpage}{172}
-\indexentry{quadratic time|hyperpage}{172}
-\indexentry{non-comparison sort|hyperpage}{172}
-\indexentry{constant time|hyperpage}{173}
-\indexentry{linear time|hyperpage}{173}
-\indexentry{heap sort|hyperpage}{173}
-\indexentry{bounded heap|hyperpage}{173}
-\indexentry{out of core algorithm|hyperpage}{174}
-\indexentry{external sorting|hyperpage}{174}
-\indexentry{heap|hyperpage}{174}
-\indexentry{binary search tree|hyperpage}{174}
-\indexentry{BST|hyperpage}{174}
-\indexentry{heap property|hyperpage}{174}
-\indexentry{constant time|hyperpage}{174}
-\indexentry{logarithmic time|hyperpage}{174}
-\indexentry{PriorityQueue|hyperpage}{174}
-\indexentry{offer|hyperpage}{174}
-\indexentry{poll|hyperpage}{174}
-\indexentry{Queue|hyperpage}{174}
-\indexentry{heap sort|hyperpage}{175}
-\indexentry{linearithmic|hyperpage}{175}
-\indexentry{n log n|hyperpage}{175}
-\indexentry{ListSorter|hyperpage}{175}
-\indexentry{bounded heap|hyperpage}{175}
-\indexentry{k largest elements|hyperpage}{175}
-\indexentry{linear time|hyperpage}{176}
-\indexentry{Comparator|hyperpage}{176}
-\indexentry{space complexity|hyperpage}{176}
-\indexentry{analysis|hyperpage}{176}
-\indexentry{cache|hyperpage}{177}
-\indexentry{server|hyperpage}{177}
+\indexentry{ordenamiento de burbuja|hyperpage}{172}
+\indexentry{tiempo cuadr\IeC {\'a}tico|hyperpage}{173}
+\indexentry{ordenamiento de no comparaci\IeC {\'o}n|hyperpage}{173}
+\indexentry{tiempo constante|hyperpage}{173}
+\indexentry{tiempo lineal|hyperpage}{173}
+\indexentry{ordenamiento por mont\IeC {\'\i }culos|hyperpage}{174}
+\indexentry{mont\IeC {\'\i }culo acotado|hyperpage}{174}
+\indexentry{algoritmo de memoria externa|hyperpage}{175}
+\indexentry{ordenamiento externo|hyperpage}{175}
+\indexentry{mont\IeC {\'\i }culo|hyperpage}{175}
+\indexentry{\IeC {\'a}rbol binario de b\IeC {\'u}squeda|hyperpage}{175}
+\indexentry{ABB|hyperpage}{175}
+\indexentry{propiedad mont\IeC {\'\i }culo|hyperpage}{175}
+\indexentry{tiempo constante|hyperpage}{175}
+\indexentry{tiempo logar\IeC {\'\i }tmico|hyperpage}{175}
+\indexentry{PriorityQueue|hyperpage}{175}
+\indexentry{offer|hyperpage}{175}
+\indexentry{poll|hyperpage}{175}
+\indexentry{Queue|hyperpage}{175}
+\indexentry{ordenamiento por mont\IeC {\'\i }culos|hyperpage}{176}
+\indexentry{linear\IeC {\'\i }tmico|hyperpage}{176}
+\indexentry{n log n|hyperpage}{176}
+\indexentry{ListSorter|hyperpage}{176}
+\indexentry{mont\IeC {\'\i }culo acotado|hyperpage}{176}
+\indexentry{k elementos mayores|hyperpage}{177}
+\indexentry{tiempo lineal|hyperpage}{177}
+\indexentry{Comparator|hyperpage}{177}
+\indexentry{complejidad espacial|hyperpage}{177}
+\indexentry{an\IeC {\'a}lisis|hyperpage}{177}
+\indexentry{cach\IeC {\'e}|hyperpage}{178}
+\indexentry{servidor|hyperpage}{178}

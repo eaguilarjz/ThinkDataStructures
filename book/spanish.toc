@@ -82,7 +82,7 @@
 \contentsline {section}{\numberline {14.5}Ejercicio 11}{138}{section.14.5}
 \contentsline {section}{\numberline {14.6}M\IeC {\'a}s sugerencias si las quieres}{140}{section.14.6}
 \contentsline {section}{\numberline {14.7}Unos cuantos tips de dise\IeC {\~n}o}{141}{section.14.7}
-\contentsline {chapter}{\numberline {15}Rastreando Wikipedia}{143}{chapter.15}
+\contentsline {chapter}{\numberline {15}Rastreo de Wikipedia}{143}{chapter.15}
 \contentsline {section}{\numberline {15.1}El indexador respaldado por Redis}{143}{section.15.1}
 \contentsline {section}{\numberline {15.2}An\IeC {\'a}lisis de la b\IeC {\'u}squeda}{146}{section.15.2}
 \contentsline {section}{\numberline {15.3}An\IeC {\'a}lisis de la indexaci\IeC {\'o}n}{147}{section.15.3}
@@ -95,11 +95,12 @@
 \contentsline {section}{\numberline {16.4}Ejercicio 13}{158}{section.16.4}
 \contentsline {section}{\numberline {16.5}{\tt Comparable} y {\tt Comparator}}{160}{section.16.5}
 \contentsline {section}{\numberline {16.6}Extensiones}{163}{section.16.6}
-\contentsline {chapter}{\numberline {17}Sorting}{165}{chapter.17}
-\contentsline {section}{\numberline {17.1}Insertion sort}{166}{section.17.1}
-\contentsline {section}{\numberline {17.2}Exercise 14}{168}{section.17.2}
-\contentsline {section}{\numberline {17.3}Analysis of merge sort}{169}{section.17.3}
-\contentsline {section}{\numberline {17.4}Radix sort}{172}{section.17.4}
-\contentsline {section}{\numberline {17.5}Heap sort}{173}{section.17.5}
-\contentsline {section}{\numberline {17.6}Bounded heap}{175}{section.17.6}
-\contentsline {section}{\numberline {17.7}Space complexity}{176}{section.17.7}
+\contentsline {chapter}{\numberline {17}Ordenamiento}{165}{chapter.17}
+\contentsline {section}{\numberline {17.1}Ordenamiento por inserci\IeC {\'o}n}{166}{section.17.1}
+\contentsline {section}{\numberline {17.2}Ejercicio 14}{168}{section.17.2}
+\contentsline {section}{\numberline {17.3}An\IeC {\'a}lisis del ordenamiento por mezcla}{170}{section.17.3}
+\contentsline {section}{\numberline {17.4}Ordenamiento radix}{172}{section.17.4}
+\contentsline {section}{\numberline {17.5}Ordenamiento por mont\IeC {\'\i }culos}{174}{section.17.5}
+\contentsline {section}{\numberline {17.6}Mont\IeC {\'\i }culo acotado}{176}{section.17.6}
+\contentsline {section}{\numberline {17.7}Complejidad espacial}{177}{section.17.7}
+\contentsline {chapter}{Index}{179}{chapter*.5}

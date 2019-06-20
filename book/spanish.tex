@@ -321,13 +321,12 @@ confusa. En el contexto de una {\bf interfaz de programación de aplicaciones} (
 que proveen ciertas funcionalidades.
 
 \index{interfaz de programación de aplicaciones}
-\index{application programming interface}
 \index{API}
 
 En el caso de Java, también se refiere a una característica del lenguaje,
 similar a una clase, que especifica un conjunto de métodos. Para evitar
 confusiones, usaré ``interfaz'' en un tipo de fuente normal y en español, para la
-idea general de una interfaz, e \java{interface} in una fuente monoespaciada y en inglés,
+idea general de una interfaz, e \java{interface} en una fuente monoespaciada y en inglés,
 para la característica del lenguaje Java.
 
 También deberías estar familiarizado con los parámetros de tipo y los tipos genéricos.
@@ -346,7 +345,7 @@ y las clases \java{ArrayList} y \java{LinkedList}.
 \index{Java Collections Framework}
 \index{JCF}
 
-Idealmente deberías estar familiarizado con Apache Ant, una herramienta autormatizada de
+Idealmente deberías estar familiarizado con Apache Ant, una herramienta automatizada de
 de construcción para Java.  Puedes leer más sobre Ant en \url{http://thinkdast.com/anttut}.
 
 \index{Apache Ant}
@@ -456,7 +455,7 @@ Este libro presenta tres temas:
 
 \item Estructuras de datos: Iniciando con las estructuras en el Java
 Collections Framework (JCF), aprenderás cómo usar estructuras de datos
-como listas and mapas y verás cómo trabajan.
+como listas y mapas y verás cómo trabajan.
 
 \index{estructuras de datos}
 
@@ -539,7 +538,7 @@ implementan y presentará la idea de ``programar para una interfaz''.
 
 \index{interface}
 
-En los primeros ejercicos a continuación, implementarás clases similares 
+En los primeros ejercicios a continuación, implementarás clases similares 
 a \java{ArrayList} y \java{LinkedList}, para entender cómo funcionan
 y veremos que cada una de ellas tiene pros y contras. Algunas operaciones
 son más rápidas o usan menos espacio con una \java{ArrayList}; otras
@@ -672,7 +671,7 @@ trabajarás con ella en el primer ejercicio.
 
 \index{instanciar}
 
-El constructor \java{ListClientExample} initializa una \java{list} al
+El constructor \java{ListClientExample} inicializa una \java{list} al
 {\bf instanciar} (es decir, crear) una nueva \java{LinkedList}; el
 método getter \java{getList} devuelve una referencia al objeto
 interno \java{List}; y \java{main} contiene unas pocas líneas
@@ -693,7 +692,7 @@ adicional.
 
 Este estilo es llamado {\bf programación basada en interfaces},
 o de forma más casual, ``programar para una interfaz''
-(see \url{http://thinkdast.com/interbaseprog}).
+(véase \url{http://thinkdast.com/interbaseprog}).
 De lo que hablamos es de la idea general de una interfaz, no de
 una \java{interface} de Java.
 
@@ -704,7 +703,7 @@ cambia en el futuro, el código que la usa seguirá funcionando.
 
 Por otro lado, si la interfaz cambia, el código que depende de ella también
 tiene que cambiar. Es por eso que los desarrolladores de bibliotecas
-evitan cambiar las interfaces a menos que sea absolutemente necesario.
+evitan cambiar las interfaces a menos que sea absolutamente necesario.
 
 
 \section{Ejercicio 1}
@@ -729,7 +728,7 @@ incompatibilidades.
 \index{IDE}
 
 Recomiendo usar un entorno de desarrollo integrado (IDE) que
-provea comprobación de sintaxis, autocompletado y refactorización
+provea comprobación de sintaxis, auto-completado y caracterización
 de código fuente. Estas características te ayudan a prevenir errores o
 a encontrarlos rápidamente. Sin embargo, si estás preparándote para
 una entrevista técnica, recuerda que no tendrás a tu disposición estas
@@ -817,11 +816,11 @@ el constructor; no tuviste que cambiar nada en el resto de lugares donde
 \java{List} aparece. ¿Qué sucedería si lo haces?  Adelante, reemplaza una
 o más apariciones de \java{List} con \java{ArrayList}. El programa
 debería seguir funcionando correctamente, pero ahora está
-``sobreespecificado''. Si cambias de idea en el futuro y quieres intercambiar
-la interfaz de neuvo, tendrías que cambiar más código.
+``sobre especificado''. Si cambias de idea en el futuro y quieres intercambiar
+la interfaz de nuevo, tendrías que cambiar más código.
 
 En el constructor de \java{ListClientExample}, ¿qué sucede si reemplazas
-\java{ArrayList} con \java{List}? ¿Por qué no puedes instanciar una \java{List}?
+\java{ArrayList} con \java{List}? ¿por qué no puedes instanciar una \java{List}?
 
 \index{constructor}
 
@@ -879,7 +878,7 @@ asumir algunos supuestos:
 
 \end{enumerate}
 
-Esta clase de análisis concude a una clasificación simple de los
+Esta clase de análisis conduce a una clasificación simple de los
 algoritmos. Por ejemplo, si sabemos que el tiempo de ejecución del Algoritmo
 A tiende a ser proporcional al tamaño de las entradas, $n$, y el Algoritmo
 B tiende a ser proporcional a $n^2$, esperaríamos que A sea más rápido que B,
@@ -984,7 +983,7 @@ contemos el número de comparaciones.
 \begin{enumerate}
 
 \item Si \java{start} es 0, \java{indexLowest} recorre el arreglo
-  completo, y el número total de comparacioones es la longitud del
+  completo, y el número total de comparaciones es la longitud del
   arreglo, a la que llamaré $n$.
 
 \item Si \java{start} es 1, el número de comparaciones es $n-1$.
@@ -994,7 +993,7 @@ contemos el número de comparaciones.
 
 \end{enumerate}
 
-El tercer método, \java{selectionSort}, orderna el arreglo. Se repite desde
+El tercer método, \java{selectionSort}, ordena el arreglo. Se repite desde
 0 hasta $n-1$, así que el bucle se ejecuta $n$ veces. Cada vez, llama
 a \java{indexLowest} y luego realiza una operación de tiempo constante,
 \java{swapElements}.
@@ -1048,7 +1047,7 @@ Si se llevan a cabo dos operaciones lineales, el total sigue siendo lineal.
 Si $f \in O(n)$ y $g \in O(n)$, $f+g \in O(n)$.
 
 De hecho, si se lleva a cabo una operación lineal cualquier número
-de veces, $k$, el total es lineal, siempre qye $k$ sea una constante
+de veces, $k$, el total es lineal, siempre que $k$ sea una constante
 que no dependa de $n$.
 
 Si $f \in O(n)$ y $k$ es una constante, $kf \in O(n)$.
@@ -1315,7 +1314,7 @@ ejercicio anterior:
 \end{verbatim}
 
 Una parte ligeramente astuta de esta solución es que no comprueba los
-límites del arreglo de forma explítica, sino que se aprovecha de \java{get},
+límites del arreglo de forma explícita, sino que se aprovecha de \java{get},
 que lanza una excepción si el índice es inválido.
 
 \index{excepción}
@@ -1421,7 +1420,7 @@ Aquí está una versión de \java{add} que toma un índice y un elemento como pa
 \end{verbatim}
 
 Esta versión con dos parámetros, llamada \java{add(int, E)}, usa a
-la versión con un parámettros, llamada \java{add(E)}, que agrega un
+la versión con un parámetros, llamada \java{add(E)}, que agrega un
 nuevo elemento al final. Luego desplaza los otros elementos a la derecha,
 y coloca el nuevo elemento en el lugar correcto.
 
@@ -1494,13 +1493,13 @@ Y así sucesivamente. Juntando todo:
 \begin{itemize}
 
 \item
-  Tras 4 llamados a add, hemos guardado 4 elementos and copiado 2.
+  Tras 4 llamados a add, hemos guardado 4 elementos y copiado 2.
 
 \item
-  Tras 8 llamados a add, hemos guardado 8 elementos and copiado 6.
+  Tras 8 llamados a add, hemos guardado 8 elementos y copiado 6.
 
 \item
-  Tras 16 llamados a add, hemos guardado 16 elementos and copiado 14.
+  Tras 16 llamados a add, hemos guardado 16 elementos y copiado 14.
 
 \end{itemize}
 
@@ -1613,7 +1612,7 @@ pero esta sección provee una breve introducción.
 \index{estructuras de datos enlazadas}
 \index{nodo}
 
-Una estructura de datos está ``linked'' si está formada por objetos, muchas veces llamados
+Una estructura de datos está ``enlazada'' si está formada por objetos, muchas veces llamados
 ``nodos'', que contienen referencias a los otros nodos. En una \emph{lista} enlazada,
 cada nodo contiene una referencia al siguiente nodo en la lista. Otras estructuras enlazadas
 incluyen árboles y grafos, en los cuales los nodos pueden contener referencias a más de
@@ -1892,7 +1891,7 @@ recolector de basura inmediatamente.
 
 \index{clear}
 
-Aquí está mi implmenetación del método \java{clear}:
+Aquí está mi implementación del método \java{clear}:
 
 \begin{verbatim}
     public void clear() {
@@ -2083,7 +2082,7 @@ Así, ¿cuál es la orden de crecimiento para \java{remove}? Todo en
 \java{getNode}, que son lineales. Así que \java{remove} es lineal.
 
 Cuando las personas ven dos operaciones lineales, a veces creen que el resultado
-es cuadrático, pero eso solo aplica si una operación está anidadad dentro de
+es cuadrático, pero eso solo aplica si una operación está anidada dentro de
 la otra. Si invocas una operación después de la otra, los tiempos de ejecución
 se suman. Si ambas están en $O(n)$, la suma también está en
 $O(n)$.
@@ -2191,7 +2190,7 @@ el código y luego mostraré los resultados.
 \index{add}
 
 Para usar el \java{Profiler}, necesitamos crear un objeto \java{Timeable}
-que provee dos métodos: \java{setup} and \java{timeMe}.
+que provee dos métodos: \java{setup} y \java{timeMe}.
 El método \java{setup} hace lo que sea que se necesite hacer antes de iniciar
 el cronómetro; en este caso crea una lista vacía. Luego \java{timeMe}
 realiza cualquier operación que estemos tratando de medir; en este caso
@@ -2216,7 +2215,7 @@ objeto \java{Timeable} y un título como parámetros.
 
 El \java{Profiler} provee \java{timingLoop} que usa el objeto
 \java{Timeable} guardado como una variable de instancia. Éste invoca al
-métoodo \java{timeMe} en el objeto \java{Timeable} varias veces
+método \java{timeMe} en el objeto \java{Timeable} varias veces
 con un rango de valores de $n$. \java{timingLoop} toma dos
 parámetros:
 
@@ -2357,7 +2356,7 @@ es lineal, así que cada add es de tiempo constante, tal como esperábamos.
 \index{tiempo constante}
 
 Un punto importante: si ves una línea recta en una gráfica como esta,
-eso \textbf{no} significa que el algoritmo es lineal. Si el tiempo de ejecuión
+eso \textbf{no} significa que el algoritmo es lineal. Si el tiempo de ejecución
 es proporcional a $n^k$ para cualquier exponente $k$, esperaríamos ver
 una línea recta con pendiente $k$. Si la pendiente es cercana a 1, eso
 sugiere que el algoritmo es lineal. Si es cercana a 2, probablemente sea
@@ -2469,7 +2468,7 @@ El ejercicio te pedía llenar el cuerpo de
 \java{profileArrayListAddBeginning}, que prueba el desempeño de
 agregar nuevos elementos al principio de una \java{ArrayList}. Con base en
 nuestro análisis, esperábamos que add fuera lineal, porque tiene que desplazar
-los otros elementos a la derecha; así que esperíamos que $n$ llamadas a add
+los otros elementos a la derecha; así que esperaríamos que $n$ llamadas a add
 sean cuadráticas.
 
 \index{tiempo cuadrático}
@@ -2878,7 +2877,7 @@ Los componentes esenciales de un motor de búsqueda son:
 
 \end{itemize}
 
-Comenzaremos con el rastreador. La meta de un rastreador es descubir y
+Comenzaremos con el rastreador. La meta de un rastreador es descubrir y
 descargar un conjunto de páginas web. Para motores de búsqueda como Google
 y Bing, la meta es encontrar \emph{todas} las páginas web, pero muchas veces los
 rastreadores están limitados a un dominio más pequeño. En nuestro caso, sólo leeremos
@@ -3020,11 +3019,11 @@ DOM. Aquí está un ejemplo:
 \begin{verbatim}
     String url = "http://en.wikipedia.org/wiki/Java_(programming_language)";
 
-    // download and parse the document
+    // descarga e interpreta el documento
     Connection conn = Jsoup.connect(url);
     Document doc = conn.get();
 
-    // select the content text and pull out the paragraphs.
+    // selecciona el texto del contenido y extráelo de los párrafos.
     Element content = doc.getElementById("mw-content-text");
     Elements paragraphs = content.select("p");
 \end{verbatim}
@@ -3074,7 +3073,7 @@ que sepas lo que pueden hacer. Las clases más importantes son
 \url{http://thinkdast.com/jsoupnode}.
 
 \java{Node} representa un nodo en el árbol DOM; hay varias
-subclases que extienden \java{Node}, incluyeno 
+subclases que extienden \java{Node}, incluyendo 
 \java{Element}, \java{TextNode}, \java{DataNode} y \java{Comment}.
 \java{Elements} es una \java{Collection} de objetos \java{Element}.
 
@@ -3282,7 +3281,7 @@ Para implementar una pila en Java, tienes tres opciones:
 \item
   Adelante, usa  \java{ArrayList} o \java{LinkedList}. Si usas
   \java{ArrayList}, asegúrate de agregar y remover desde el \emph{final},
-  que es una operación de tiepo constante. Y ten el cuidado de no agregar
+  que es una operación de tiempo constante. Y ten el cuidado de no agregar
   elementos en el lugar equivocado o removerlos en el orden equivocado,
 
 \item
@@ -3603,8 +3602,8 @@ public class WikiFetcher {
     private long minInterval = 1000;
 
     /**
-     * Fetches and parses a URL string, 
-     * returning a list of paragraph elements.
+     * Recupera e interpreta una cadena URL, 
+     * devuelve una lista de elementos del párrafo.
      *
      * @param url
      * @return
@@ -3672,7 +3671,7 @@ intervalo mínimo entre solicitudes.
 \index{singleton}
 
 NOTA: Mi implementación de \java{WikiFetcher} es simple, pero sería
-fácil para alguien utilizarla incorrectamenta al crear múltiples instancias.
+fácil para alguien utilizarla incorrectamente al crear múltiples instancias.
 Puedes evitar este problema haciendo a \java{WikiFetcher} un ``singleton'',
 sobre el que puedes leer más en
 \url{http://thinkdast.com/singleton}.
@@ -3692,15 +3691,15 @@ este código, tu trabajo es escribir un rastreador que:
 
 \item
   Debería recorrer el árbol resultante para encontrar el primer
-  enlace \emph{válido} link. Explicaré lo que significa ``válido'' a continuación.
+  enlace \emph{válido}. Explicaré lo que significa ``válido'' a continuación.
 
 \item
   Si la página no tiene enlaces, o si el primer enlace es una página que ya
-  hemos visto, el program debería indicar fracaso y salir.
+  hemos visto, el programa debería indicar que fracasó y salir.
 
 \item
   Si el enlace coincide con la URL de la página de Wikipedia sobre filosofía,
-  el programa debería indicar éxito y salir.
+  el programa debería indicar que tuvo éxito y salir.
 
 \item
   De otra manera debería regresar al Paso 1.
@@ -3764,7 +3763,7 @@ O podrías querer leer estas pistas:
 \item
   Si comienzas desde la página de Java, deberías llegar a la Filosofía
   después de seguir siete enlaces, a menos que algo haya cambiado desde
-  que ejecuteé el código.
+  que ejecuté el código.
 
 \end{enumerate}
 
@@ -3805,7 +3804,7 @@ específicamente, necesitamos la habilidad de buscar un término y encontrar
 todas las páginas que lo contengan. La implementación más simple sería una
 colección de páginas. Dado un término de búsqueda, podríamos iterar a través
 de los contenidos de las páginas y seleccionar las que contengan el término
-de búsqeuda. Pero el tiempo de ejecución sería proporcional al número total
+de búsqueda Pero el tiempo de ejecución sería proporcional al número total
 de palabras en todas las páginas, lo que sería súper lento.
 
 \index{búsqueda}
@@ -3842,9 +3841,9 @@ Java provee varias implementaciones de \java{Map}, incluyendo las dos en
 la que nos enfocaremos, \java{HashMap} y \java{TreeMap}. En capítulos
 posteriores, examinaremos estas implementaciones y analizaremos su desempeño.
 
-Además del \java{TermCounter}, que mapeo términos de búsqueda a conteos,
-definiremos una clase llamda \java{Index}, que mapeo de un término de
-búsqueda a una colección de las páginas donde aparece. Y eso hace surgir
+Además del \java{TermCounter}, que mapea términos de búsqueda a conteos,
+definiremos una clase llamada \java{Index}, que mapea un término de
+búsqueda con una colección de las páginas donde aparece. Y eso hace surgir
 la siguiente pregunta, que es cómo representar una colección de páginas.
 De nuevo, si pensamos en las operaciones que queremos realizar, eso guía
 nuestra decisión.
@@ -4109,12 +4108,12 @@ public class Index {
     public void add(String term, TermCounter tc) {
         Set<TermCounter> set = get(term);
 
-        // if we're seeing a term for the first time, make a new Set
+        // si vemos un término por primera vez, creamos un nuevo Set
         if (set == null) {
             set = new HashSet<TermCounter>();
             index.put(term, set);
         }
-        // otherwise we can modify an existing Set
+        // de lo contrario modificamos un Set existente
         set.add(tc);
     }
 
@@ -4137,8 +4136,8 @@ nuevo término.
 
 \index{add}
 \index{get}
-Finalmaente, el método \java{get} toma un término de búsqueda y devuelve el set
-correspndiente de objetos \java{TermCounter}.
+Finalmente, el método \java{get} toma un término de búsqueda y devuelve el set
+correspondiente de objetos \java{TermCounter}.
 
 Esta estructura de datos es moderadamente más complicada. Para repasar,
 un \java{Index} contiene un \java{Map} de cada término de búsqueda con un
@@ -4172,11 +4171,12 @@ desempaquetar esta estructura de datos:
 
 \begin{verbatim}
     public void printIndex() {
-        // loop through the search terms
+        // itera por los términos de búsqueda
         for (String term: keySet()) {
             System.out.println(term);
 
-            // for each term, print pages where it appears and frequencies
+            // para cada término, imprime las páginas en
+            // las que aparece y sus frecuencias
             Set<TermCounter> tcs = get(term);
             for (TermCounter tc: tcs) {
                 Integer count = tc.get(term);
@@ -4192,7 +4192,7 @@ los objetos \java{TermCounter}.
 \index{Ant}
 
 Ejecuta \java{ant build} para asegurarte que tu código fuente está compilado y
-entonces ejecuta \java{ant Index}. Éste descarga dos páginas de Wikipedia pages, las
+entonces ejecuta \java{ant Index}. Éste descarga dos páginas de Wikipedia, las
 index e imprime los resultados; pero cuando lo ejecutes no verás ninguna
 salida porque hemos dejado vacío uno de los métodos.
 
@@ -4241,8 +4241,8 @@ inventada. Otra, que es similar a \java{TreeMap}, no es tan mágica,
 pero tiene la capacidad adicional de permitir iterar por los
 elementos en orden.
 
-\index{map}
-\index{hash table}
+\index{mapa}
+\index{tabla hash}
 
 Tendrás una oportunidad de implementar estas estructuras de datos, y entonces
 analizaremos su desempeño.
@@ -4353,7 +4353,7 @@ no está completo.
 
 Llena \java{put}. Deberías leer la documentación de
 \java{Map.put} en \url{http://thinkdast.com/listput} para que sepas lo que
-se supone que haga. Podrías querer inicar con una versión de
+se supone que haga. Podrías querer iniciar con una versión de
 \java{put} que siempre agregue una nueva entrada y no modifique una entrada
 existente; de esa forma puedes probar el caso más simple primero. O si
 te sientes con más confianza, puedes escribir todo el método de una vez.
@@ -4404,7 +4404,7 @@ private boolean equals(Object target, Object obj) {
 \end{verbatim}
 
 El tiempo de ejecución de \java{equals} podría depender del tamaño del
-\java{target} (objetivo) y las claves, per generalmente no depende del
+\java{target} (objetivo) y las claves, pero generalmente no depende del
 número de entradas, $n$. Así que \java{equals} es de tiempo constante.
 
 \index{tiempo constante}
@@ -4459,7 +4459,7 @@ public V remove(Object key) {
 \end{verbatim}
 
 Después que \java{put} llama a \java{findEntry}, todo lo demás es de tiempo
-constante. Recuera que \java{entries} es una \java{ArrayList}, así que
+constante. Recuerda que \java{entries} es una \java{ArrayList}, así que
 agregar un elemento \emph{al final} es de tiempo constante, en promedio. Si la clave ya
 está en el mapa, no tenemos que agregar una entrada, pero tenemos que llamar a
 \java{entry.getValue} y \java{entry.setValue}, y ambos son de
@@ -4496,7 +4496,7 @@ Explicaré cómo funciona en dos pasos:
 \begin{enumerate}
 
 \item
-  En lugar de guardar las entradas en una gran \java{List}, las dividieremos
+  En lugar de guardar las entradas en una gran \java{List}, las dividiremos
   en muchas listas pequeñas. Para cada clave, usaremos un \textbf{código
   hash} (se explica en la siguiente sección) para determinar qué lista usar.
 
@@ -4612,7 +4612,7 @@ protected MyLinearMap<K, V> chooseMap(Object key) {
 }
 \end{verbatim}
 
-Si \java{key} es \java{null}, elegirmos el sub-mapa con el índice 0,
+Si \java{key} es \java{null}, elegimos el sub-mapa con el índice 0,
 de forma arbitraria. De lo contrario usamos \java{hashCode} para obtener un entero,
 aplicamos \java{Math.abs} para asegurarnos que es no negativo,
 y luego usamos el operador de residuo, \java{\%}, que nos garantiza que el
@@ -4645,7 +4645,7 @@ public V get(Object key) {
 
 Bastante simple, ¿verdad? En ambos métodos, usamos \java{chooseMap} para encontrar
 el sub-mapa correcto y luego invocamos un método en el sub-mapa.
-Así es como funiona, ahora pensemos en el desempeño.
+Así es como funciona, ahora pensemos en el desempeño.
 
 \index{sub-mapa}
 
@@ -4709,7 +4709,7 @@ pero la usaré para mostrar cómo una clase puede definir su propia función has
     }
 \end{verbatim}
 
-Nota que \java{SillyString} sobreescribe tanto \java{equals} como
+Nota que \java{SillyString} sobrescribe tanto \java{equals} como
 \java{hashCode}. Esto es importante. Para funcionar correctamente,
 \java{equals} tiene que ser consistente con \java{hashCode}, lo que significa
 que si dos objetos son considerados iguales --- es decir, \java{equals}
@@ -4728,7 +4728,7 @@ sus variables de instancia \java{innerString} son iguales.
 
 \java{hashCode} funciona iterando por los caracteres de la cadena (\java{String})
 y sumándolos. Cuando sumas un carácter a un \java{int} Java convierte el
-caracter a un entero usando su punto de código Unicode.  No necesitas
+carácter a un entero usando su punto de código Unicode.  No necesitas
 saber nada sobre Unicode para entender este ejemplo, pero si sientes
 curiosidad, puedes leer más en
 \url{http://thinkdast.com/codepoint}.
@@ -4899,7 +4899,7 @@ confirma que pasa \java{testContainsKey}.
 \index{containsValue}
 
 Llena el cuerpo de \java{containsValue}. PISTA: \emph{no} uses
-\java{chooseMap}.  Ejeecuta \java{ant MyBetterMapTest} de nuevo y confirma
+\java{chooseMap}.  Ejecuta \java{ant MyBetterMapTest} de nuevo y confirma
 que pasa \java{testContainsValue}. Nota que tenemos que trabajar más
 para encontrar un valor que para encontrar una clave.
 
@@ -4948,7 +4948,7 @@ En el siguiente ejercicio, verás los detalles.
 \index{MyHashMap}
 
 En \java{MyHashMap.java}, proveo el código base de una tabla hash que
-crece cuanod se necesita. Aquí está el principio de la definición:
+crece cuando se necesita. Aquí está el principio de la definición:
 
 \begin{verbatim}
 public class MyHashMap<K, V> extends MyBetterMap<K, V> implements Map<K, V> {
@@ -4970,7 +4970,7 @@ public class MyHashMap<K, V> extends MyBetterMap<K, V> implements Map<K, V> {
 \end{verbatim}
 
 \java{MyHashMap} extiende \java{MyBetterMap}, así que hereda los
-métodos definidos ahí. El único método que sobreescribe es \java{put}
+métodos definidos ahí. El único método que sobrescribe es \java{put}
 que llama a \java{put} en la superclase --- es decir,  llama a la
 versión de \java{put} en \java{MyBetterMap} --- y luego comprueba
 si tienen que recodificar (rehash). La llamada a \java{size} devuelve el
@@ -5042,7 +5042,7 @@ a \java{ArrayList.add}, que analizamos en la Sección~\ref{classifying-add}.
 \index{tiempo lineal}
 
 Por la misma razón, \java{MyHashMap.put} resulta ser de
-tiempo constante si promediamos una serie de invoaciones.
+tiempo constante si promediamos una serie de invocaciones
 De nuevo, el argumento se base en el análisis amortizado
 (ver la Sección~\ref{classifying-add}).
 
@@ -5087,7 +5087,7 @@ sub-mapas, $k$, cuando recodificamos. Si solamente sumamos a $k$
 en lugar de multiplicar, las torres estarían demasiado cercanas entre sí
 y comenzarían a apilarse. Y eso no sería de tiempo constante.
 
-\index{constant time}
+\index{tiempo constante}
 
 
 \section{Limitaciones}
@@ -5160,7 +5160,7 @@ tamaño del problema en una escala log-log. Si esta operación es de
 tiempo constante, el tiempo total para $n$ operaciones debería ser
 lineal, así que el resultado debería ser una línea recta con pendiente
 de 1. Cuando ejecuté este código, la pendiente estimada era cercana a 1,
-lo que es consistente con nuestroo análisis. Deberías obtener algo similar.
+lo que es consistente con nuestro análisis. Deberías obtener algo similar.
 
 Modifica \java{ProfileMapPut.java} para perfilar tu implementación,
 \java{MyHashMap}, en lugar del \java{HashMap} de Java. Ejecuta el
@@ -5198,7 +5198,7 @@ heredó de \java{MyBetterMap}:
 \end{verbatim}
 
 Para calcular el tamaño total tiene que iterar por todos los sub-mapas. 
-Dado que incrementamos el númeor de submapas, $k$, conforme el número
+Dado que incrementamos el número de submapas, $k$, conforme el número
 de entradas, $n$, se incrementa, $k$ es proporcional a $n$, así que
 \java{size} es lineal.
 
@@ -5217,7 +5217,7 @@ Y eso hace que \java{put} también sea lineal, porque usa a \java{size}:
     }
 \end{verbatim}
 
-¡Todo lo que hicimos para hacer a \java{put} de tiempo constante es un despercicio
+¡Todo lo que hicimos para hacer a \java{put} de tiempo constante es un desperdicio
 si \java{size} es lineal!
 
 \index{tiempo constante}
@@ -5385,7 +5385,7 @@ Las relaciones diferentes se representan con flechas diferentes:
 
 \item
   Las flechas con una punta en blanco y una línea punteada indican que
-  una clase implementa una interfaz; en este diagram, cada clase implementa
+  una clase implementa una interfaz; en este diagrama, cada clase implementa
   \java{Map}.
 
 \end{itemize}
@@ -5408,7 +5408,7 @@ mantener los elementos ordenados.
 
 \section{¿Qué tiene de malo el hashing?}
 
-En este mometno, ya deberías estar familiarizado con la interfaz \java{Map} y
+En este momento, ya deberías estar familiarizado con la interfaz \java{Map} y
 la implementación \java{HashMap} provista por Java. Y al construir tu propio
 \java{Map} usando una tabla hash, deberías entender cómo funciona \java{HashMap}
 y por qué esperamos que sus métodos principales sean de tiempo lineal.
@@ -5551,18 +5551,18 @@ bajo e incrementándolo gradualmente:
 \begin{itemize}
 
 \item
-  If \java{h=1}, el árbol sólo contiene un nodo, así que \java{n=1}.
+  Si \java{h=1}, el árbol sólo contiene un nodo, así que \java{n=1}.
 
 \item
-  If \java{h=2}, podemos agregar dos nodos más, para un total de
+  Si \java{h=2}, podemos agregar dos nodos más, para un total de
   \java{n=3}.
 
 \item
-  If \java{h=3}, podemos agregar hasta cuatro nodos más, para un total
+  Si \java{h=3}, podemos agregar hasta cuatro nodos más, para un total
   de \java{n=7}.
 
 \item
-  If \java{h=4}, podemos agregar hasta ocho nodos más, para un total
+  Si \java{h=4}, podemos agregar hasta ocho nodos más, para un total
   de \java{n=15}.
 
 \end{itemize}
@@ -5592,7 +5592,7 @@ como veremos.
 \index{orden de crecimiento}
 
 Un algoritmo que toma tiempo proporcional a $\log n$ es llamado
-``logaritmico'' o de ``tiempo logarítmico'', y pertenece a la orden de crecimiento
+``logarítmico'' o de ``tiempo logarítmico'', y pertenece a la orden de crecimiento
 $O(\log n)$.
 
 
@@ -5639,10 +5639,10 @@ Aquí está la definición de \java{Node}, que se define dentro de
 \index{par clave-valor}
 
 Cada nodo contiene un par clave-valor (key-value) y referencias a dos
-nodos hijos \java{left} (izquierdo) and \java{right} (derecho). Cualquiera
+nodos hijos \java{left} (izquierdo) y \java{right} (derecho). Cualquiera
 o ambos de los nodos hijos pueden ser \java{null}.
 
-Algunos de los métodos de \java{Map} methods son fáciles de implementar, como
+Algunos de los métodos de \java{Map} son fáciles de implementar, como
 \java{size} y \java{clear}:
 
 \begin{verbatim}
@@ -5861,7 +5861,7 @@ métodos principales.
 \chapter{Árbol binario de búsqueda}
 
 Este capítulo presenta las soluciones al ejercicio anterior, luego prueba
-el desemepeño del mapa basado en un árbol. Presento un problema con la
+el desempeño del mapa basado en un árbol. Presento un problema con la
 implementación y explico cómo el \java{TreeMap} de Java lo resuelve.
 
 
@@ -5902,7 +5902,7 @@ private Node findNode(Object target) {
 \end{verbatim}
 
 \java{findNode} es un método privado usado por \java{containsKey} y
-\java{get}; no es parte de la interfaz \java{Map} El parámero
+\java{get}; no es parte de la interfaz \java{Map} El parámetro
 \java{target} es la clave que buscamos. Expliqué la primera parte
 de este método en el ejercicio previo:
 
@@ -6395,7 +6395,7 @@ de búsqueda web. Para recordar, los componentes de un motor de búsqueda son:
   de búsqueda y encontrar las páginas que lo contienen.
 
   \item
-  Recuperar: Y necesitaremos una forma de recolectar los resultados del Índice e identificar
+  Recuperar: Y necesitaremos una forma de recolectar los resultados del Index e identificar
   las páginas que son más relevantes para los términos de búsqueda.
 
 \end{itemize}
@@ -7046,7 +7046,7 @@ cómo probar un método, muchas veces se te ocurren ideas para escribirlo.
 
 
 
-\chapter{Rastreando Wikipedia}
+\chapter{Rastreo de Wikipedia}
 
 En este capítulo, presento una solución al ejercicio previo y
 analizo el desempeño de los algoritmos de indexación Web. Luego
@@ -8127,7 +8127,7 @@ estarían juntos y todos los dos, etc.
 \label{extensions}
 
 \index{TF-IDF}
-\index{relevance}
+\index{relevancia}
 \index{snippet}
 \index{Heroku}
 
@@ -8159,71 +8159,72 @@ trabajar en estos ejercicios opcionales:
 
 
 
-\chapter{Sorting}
+\chapter{Ordenamiento}
 
-Computer science departments have an unhealthy obsession with sort
-algorithms. Based on the amount of time CS students spend on the topic,
-you would think that choosing sort algorithms is the cornerstone of
-modern software engineering. Of course, the reality is that software
-developers can go years, or entire careers, without thinking about how
-sorting works. For almost all applications, they use whatever
-general-purpose algorithm is provided by the language or libraries they
-use. And usually that's just fine.
+Los departamentos de ciencias de la computación tienen una obsesión poco
+saludable con los algoritmos de ordenamiento. Con base en la cantida de
+tiempo que los estudiantes de CC dedican al tema, podrías pensar que la
+elección de un algoritmo de ordenamiento es la piedra fundamental de la
+ingeniería de software moderna. Por supuesto, la realidad que los
+desarrolladores de software pueden pasar años, o incluso carreras, sin
+pensar sobre cómo funciona el ordenamiento. Para casi todas las aplicaciones,
+ellos utilizan cualquier algoritmo de propósito general que provea el lenguaje
+o las bibliotecas que usan. Y usualmente eso está bien.
 
-\index{sorting}
+\index{ordenamiento}
 
-So if you skip this chapter and learn nothing about sort algorithms,
-you can still be an excellent developer. But there are a few reasons
-you might want to do it anyway:
+Así que si te saltas este capítulo y no aprendes nada sobre algoritmos de
+ordenamiento todavía puedes ser un excelente desarrollador. Pero hay unas
+cuantas razones por las que podrías querer hacerlo de todas maneras:
 
 \begin{enumerate}
 
 \item
-  Although there are general-purpose algorithms that work well for the
-  vast majority of applications, there are two special-purpose
-  algorithms you might need to know about: radix sort and bounded heap
-  sort.
+  Aunque hay muchos algoritmos de propósito general que funcionan bien para la
+  vasta mayoría de aplicaciones, hay dos algoritmos de propósito espcial sobre
+  los que podrías querer saber: ordenamiento radix y el ordenamiento por
+  montículos acotado.
 
 \item
-  One sort algorithm, merge sort, makes an excellent teaching example
-  because it demonstrates an important and useful strategy for
-  algorithm design, called ``divide-conquer-glue''. Also, when we
-  analyze its performance, you will learn about an order of growth we
-  have not seen before, {\bf linearithmic}. Finally, some of the most
-  widely-used algorithms are hybrids that include elements of merge
-  sort.
+  Un algoritmo de ordenamiento, el ordenamiento por mezcla, es un excelente
+  ejemplo para la enseñanza porque demuesra una estrategia importante y
+  útil para el diseño de algoritmos, llamada ``divide-conquista-pega''. También,
+  cuando analizamos su rendimiento, aprenderás sobre una orden de crecimiento
+  que no hemos visto antes, {\bf linearítmica}. Finalmente, algunos de los
+  algoritmos más ampliamente utilizados son híbridos que incluyen elementos
+  del ordenamiento por mezcla.
 
 \item
-  One other reason to learn about sort algorithms is that technical
-  interviewers love to ask about them. If you want to get hired, it
-  helps if you can demonstrate CS cultural literacy.
+  Una razón más para aprender sobre algoritmos de ordenamiento es que a los
+  entrevistadores técnicos les fascina preguntar sobre ellos. Si quieres que
+  te contraten, ayuda si puedes demostrar formación cultural en CC.
 
 \end{enumerate}
 
-So, in this chapter we'll analyze insertion sort, you will implement merge
-sort, I'll tell you about radix sort, and you will write a simple
-version of a bounded heap sort.
+Así, en este capítulo analizaremos el ordenamiento por inserción, implementarás
+el ordenamiento por mezcla, te contaré sobre el ordenamiento radix y escribirás
+una versión simple del ordenamiento por montículos acotado.
 
-\index{divide-conquer-glue}
-\index{linearithmic time}
+\index{divide-conquista-pega}
+\index{tiempo linearítmico}
 
 
-\section{Insertion sort}
+\section{Ordenamiento por inserción}
 \label{insertion-sort}
 
-We'll start with insertion sort, mostly because it is simple to describe
-and implement. It is not very efficient, but it has some redeeming
-qualities, as we'll see.
+Comenzaremos con el ordenamiento por inserción,mayormente porque es sencillo de
+describir e implementar. No es muy eficiente, pero tiene algunas características
+que lo redimen, como veremos.
 
 \index{insertion sort}
 
-Rather than explain the algorithm here, I suggest you read the
-insertion sort Wikipedia page at
-\url{http://thinkdast.com/insertsort}, which includes
-pseudocode and animated examples. Come back when you get the general
-idea.
+En lugar de explicar el algoritmo aquí, sugiero que leas la página
+de Wikipedia sobre el ordenamiento por inserción en
+\url{http://thinkdast.com/insertsort}, que incluye
+pseudocódigo y ejemplos animados. Regresa cuando hayas captado la idea
+general.
 
-Here's an implementation of insertion sort in Java:
+Aquí está una implementación del ordenamiento por inserción en Java:
 
 \begin{verbatim}
 public class ListSorter<T> {
@@ -8247,22 +8248,22 @@ public class ListSorter<T> {
 }
 \end{verbatim}
 
-I define a class, \java{ListSorter}, as a container for sort
-algorithms. By using the type parameter, \java{T}, we can write
-methods that work on lists containing any object type.
+Defino una clase, \java{ListSorter}, como un contenedor para algoritmos
+de ordenamiento. Al usar el parámetro de tipo, \java{T}, podemos escribir
+métodos que funcionen en listas que contengan cualquier tipo de objeto.
 
 \index{ListSorter}
-\index{type parameter}
+\index{parámetro de tipo}
 
-\java{insertionSort} takes two parameters, a \java{List} of any kind
-and a \java{Comparator} that knows how to compare type \java{T}
-objects. It sorts the list ``in place'', which means it modifies the
-existing list and does not have to allocate any new space.
+\java{insertionSort} toma dos parámetros, una \java{List} de cualquier tipo
+y un \java{Comparator} que sabe cómo comparar dos objetos de tipo \java{T}.  
+Éste ordena la lista ``en sitio'', lo que significa que modifica la lista
+existente y no tiene que reservar nuevo espacio.
 
 \index{List}
 
-The following example shows how to call this method with a \java{List} of
-\java{Integer} objects:
+El siguiente ejemplo muestra cómo llamar a este método con una \java{List}
+de objetos \java{Integer}:
 
 \begin{verbatim}
         List<Integer> list = new ArrayList<Integer>(
@@ -8280,81 +8281,82 @@ The following example shows how to call this method with a \java{List} of
         System.out.println(list);
 \end{verbatim}
 
-\java{insertionSort} has two nested loops, so you might guess that
-its runtime is quadratic. In this case, that turns out to be correct,
-but before you jump to that conclusion, you have to check that the
-number of times each loop runs is proportional to $n$, the size
-of the array.
+\java{insertionSort} tienen dos bucles anidados, así que podrías asumir que
+su tiempo de ejecución es cuadrático. En este caso, eso es correcto, pero
+antes de saltar a esa conclusión, tienes que comprobar que el número de
+veces que se ejecuta cada bucle es proporcional a $n$, el tamaño
+del arreglo.
 
-\index{linear time}
+\index{tiempo lineal}
 
-The outer loop iterates from 1 to \java{list.size()}, so it is linear
-in the size of the list, $n$.
-The inner loop iterates from \java{i} to 0, so it is also linear in $n$.
-Therefore, the total number of times the inner loop runs is quadratic.
+El bucle externo itera desde 1 hasta \java{list.size()}, así que es lineal 
+con respecto al tamaño de la lista, $n$.
+El bucle interno itera desde \java{i} hasta 0, así que también es lineal con
+respecto a $n$.  Por lo tanto, el número total de veces que el bucle interno
+se ejecuta es cuadrático.
 
-\index{quadratic time}
+\index{tiempo cuadrático}
 
-If you are not sure about that, here's the argument:
+Si no estás seguro de ello, aquí está el argumento:
 
 \begin{itemize}
 
 \item
-  The first time through, $i=1$ and the inner loop runs at most
-  once.
+  La primera vez, $i=1$ y el bucle interior se ejecuta al menos
+  una vez.
 
 \item
-  The second time, $i=2$ and the inner loop runs at most twice.
+  La segunda vez, $i=2$ y el bucle interior se ejecua al menos dos veces.
 
 \item
-  The last time, $i=n-1$ and the inner loop runs at most
-  $n-1$ times.
+  La última vez, $i=n-1$ y el bucle interior se ejecuta al menos
+  $n-1$ veces.
 
 \end{itemize}
 
-So the total number of times the inner loop runs is the sum of the
-series $1, 2, \ldots , n-1$, which is $n (n-1) / 2$. And the
-leading term of that expression (the one with the highest exponent) is
+Así que el número total de veces que el bucle interior se ejecuta es la
+suma de la serie $1, 2, \ldots , n-1$, que es $n (n-1) / 2$. Y el término
+principal de esa expresión (el que tiene el exponente más alto) es
 $n^2$.
 
-\index{linear time}
+\index{tiempo lineal}
 
-In the worst case, insertion sort is quadratic. However:
+En el peor escenario, el ordenamiento por inserción es cuadrático. Sin embargo:
 
 \begin{enumerate}
 
 \item
-  If the elements are already sorted, or nearly so, insertion sort is
-  linear. Specifically, if each element is no more than $k$
-  locations away from where it should be, the inner loop never runs more
-  than $k$ times, and the total runtime is $O(kn)$.
+  Si los elementos ya están ordenados, o casi, el ordenamiento por inserción
+  es lineal. Específicamente, si cada elemento no está a más de $k$
+  posiciones de donde debería estar, el bucle interior nunca se ejecuta más
+  de $k$ veces, y el tiempo de ejecución total es $O(kn)$.
 
 \item
-  Because the implementation is simple, the overhead is low; that is,
-  although the runtime is $a n^2$, the coefficient of the leading
-  term, $a$, is probably small.
+  Porque la implementación es simple, la sobrecarga es menor, es decir,
+  aunque el tiempo de ejecución es $a n^2$, el coeficiente del término
+  principal, $a$, probablemente es pequeño.
 
 \end{enumerate}
 
-So if we know that the array is nearly sorted, or is not very big,
-insertion sort might be a good choice. But for large arrays, we can
-do better. In fact, much better.
+Así que si sabemos que el arreglo está casi ordenado, o no es muy grande,
+el ordenamiento por inserción podría ser una buena elección. Pero para
+arreglos más grandes, podemos hacerlo mejor. De hecho, mucho mejor.
 
 
-\section{Exercise 14}
+\section{Ejercicio 14}
 \label{exercise14}
 
-Merge sort is one of several algorithms whose runtime is better than
-quadratic. Again, rather than explaining the algorithm here, I suggest
-you read about it on Wikipedia at
-\url{http://thinkdast.com/mergesort}.  Once you get the idea, come
-back and you can test your understanding by writing an implementation.
+El ordenamiento por mezcla (mergesort) es uno de varios algoritmos de ordenamiento cuyo
+tiempo de ejecución es mejor que el cuadrático. De nuevo, en lugar de explicar
+el algoritmo aquí, sugiero que leas sobre él en Wikipedia en
+\url{http://thinkdast.com/mergesort}.  Una vez captes la idea, regresa y puedes
+probar su comprensión escribiendo una implementación.
 
-\index{merge sort}
-\index{quadratic time}
+\index{ordenamiento por mezcla}
+\index{tiempo cuadrático}
 
-In the repository for this book, you'll find the source files for this
-exercise:
+En el repositorio para este libro, encontrarás los archivos de código fuente para
+este ejercicio:
 
 \begin{itemize}
 
@@ -8366,15 +8368,15 @@ exercise:
 
 \end{itemize}
 
-Run \java{ant build} to compile the source files, then run
-\java{ant ListSorterTest}. As usual, it should
-fail, because you have work to do.
+Ejecuta \java{ant build} para compilar los archivos de código fuente, luego ejecuta
+\java{ant ListSorterTest}. Como es lo usual, debería fallar,
+porque tienes trabajo por hacer.
 
 \index{Ant}
 \index{ListSorter}
 
-In \java{ListSorter.java}, I've provided an outline of two methods,
-\java{mergeSortInPlace} and \java{mergeSort}:
+En \java{ListSorter.java}, he provisto un boceto de dos métodos,
+\java{mergeSortInPlace} y \java{mergeSort}:
 
 \begin{verbatim}
     public void mergeSortInPlace(List<T> list, Comparator<T> comparator) {
@@ -8389,492 +8391,499 @@ In \java{ListSorter.java}, I've provided an outline of two methods,
     }
 \end{verbatim}
 
-These two methods do the same thing but provide different interfaces.
-\java{mergeSort} takes a list and returns a new list with the same
-elements sorted in ascending order. \java{mergeSortInPlace} is a
-\java{void} method that modifies an existing list.
+Estos dos métodos hacen lo mismo pero proveen interfaces diferentes.
+\java{mergeSort} toma una lista y devuelve una nueva lista con los mismos
+elementos ordenados de forma ascendente. \java{mergeSortInPlace} es un
+método \java{void} que modifica una lista existente.
 
 \index{mergeSort}
 
-Your job is to fill in \java{mergeSort}. Before you write a fully
-recursive version of merge sort, start with something like this:
+Tu trabajo es llenar \java{mergeSort}. Antes de escribir una versión
+completamente recursiva del ordenamiento por mezcla, comienza con algo
+como esto:
 
 \begin{enumerate}
 
 \item
-  Split the list in half.
+  Divide la lista en dos.
 
 \item
-  Sort the halves using \java{Collections.sort} or
+  Ordena (sort) las mitades usando \java{Collections.sort} o
   \java{insertionSort}.
 
 \item
-  Merge the sorted halves into a complete sorted list.
+  Combina (merge) las mitades ordenadas en una lista completa ordenada.
 
 \end{enumerate}
 
-This will give you a chance to debug the merge code without dealing with
-the complexity of a recursive method.
+Esto te dará una oportunidad de depurar el código para combinar sin lidiar
+con la complejidad de un método recursivo.
 
-\index{base case}
-\index{recursion}
+\index{caso base}
+\index{recursión}
 
-Next, add a base case (see
-\url{http://thinkdast.com/basecase}). If you are
-given a list with only one element, you could return it immediately,
-since it is already sorted, sort of. Or if the length of the list is
-below some threshold, you could sort it using \java{Collections.sort}
-or \java{insertionSort}. Test the base case before you proceed.
+A continuación, agrega un caso base (er
+\url{http://thinkdast.com/basecase}). Si te dan una lista
+con solo un elemento, puedes devolverla inmediatamente, dado que
+ya está ordenada, en cierto modo. O si la longitud de la lista está
+por debajo de algún umbral, podrías ordenarla usando \java{Collections.sort}
+o \java{insertionSort}. Prueba el caso base antes de continuar.
 
-Finally, modify your solution so it makes two recursive calls to sort
-the halves of the array. When you get it working, \java{testMergeSort}
-and \java{testMergeSortInPlace} should pass.
+Finalmente, modifica tu solución para que realice dos llamadas recursivas
+para ordenar las mitades del arreglo. Cuando logres que funcionen, deberían
+pasar \java{testMergeSort} y \java{testMergeSortInPlace}.
 
 
-\section{Analysis of merge sort}
+\section{Análisis del ordenamiento por mezcla}
 \label{analysis-of-merge-sort}
 
-\index{analysis}
+\index{análisis}
 
-To classify the runtime of merge sort, it helps to think in terms of
-levels of recursion and how much work is done on each level. Suppose
-we start with a list that contains $n$ elements. Here are the steps of
-the algorithm:
+Para clasificar el tiempo de ejecución del ordenamiento por mezcla, sirve
+pensar en términos de niveles de recursión y de cuánto trabajo se realiza
+en cada nivel. Supón que comenzamos con una lista que contiene $n$ elementos. 
+Aquí están los pasos del algoritmo:
 
 \begin{enumerate}
 
 \item
-  Make two new arrays and copy half of the elements into each.
+  Crea dos nuevos arreglos y copia la mitad de los elementos en cada uno.
 
 \item
-  Sort the two halves.
+  Ordena las dos mitades.
 
 \item
-  Merge the halves.
+  Combina las mitades.
 
 \end{enumerate}
 
-Figure~\ref{fig-sort1}
-shows these steps.
+La figura~\ref{fig-sort1}
+muestra estos pasos.
 
 \begin{figure}
 \centering
 \includegraphics[height=2.5in]{figs/merge_sort1.pdf}
-\caption{Representation of merge sort showing one level of recursion.}
+\caption{Representación del ordenamiento por mezcla mostrando un nivel de recursión.}
 \label{fig-sort1}
 \end{figure}
 
-\index{linear time}
+\index{tiempo lineal}
 
-The first step copies each of the elements once, so it is linear. The
-third step also copies each element once, so it is also linear. Now we
-need to figure out the complexity of step 2. To do that, it helps to
-looks at a different picture of the computation, which shows the levels
-of recursion, as in Figure~\ref{fig-sort2}.
+El primer paso copia cada uno de los elementos una vez, así que es lineal. El
+tercer paso también copia cada elemento una vez, así que también es lineal.
+Ahora necesitamos determinar la complejidad del paso 2. Para hacerlo, ayuda
+una mirada a una parte diferente de cálculo, que muestra los niveles de la
+recursión, como en la figura~\ref{fig-sort2}.
 
 \begin{figure}
 \centering
 \includegraphics[height=2in]{figs/merge_sort2.pdf}
-\caption{Representation of merge sort showing all levels of recursion.}
+\caption{Representación del ordenamiento por mezcla mostrando todos los niveles de recursión.}
 \label{fig-sort2}
 \end{figure}
 
-At the top level, we have $1$ list with $n$ elements. 
-For simplicity, let's assume $n$ is a power of 2.
-At the next level there are $2$ lists with $n/2$ elements.
-Then $4$ lists with $n/4$ elements, and so on until we get
-to $n$ lists with $1$ element.
+En el nivel superior, tenemos $1$ lista con $n$ elementos. 
+Por simplicidad, asumamos que $n$ es una potencia de 2.
+En el siguiente nivel hay $2$ listas con $n/2$ elementos.
+Luego $4$ listas con $n/4$ elementos, y así sucesivamente
+hasta que tenemos $n$ con $1$ elemento.
 
-On every level we have a total of $n$ elements. On the way down,
-we have to split the arrays in half, which takes time proportional to
-$n$ on every level. On the way back up, we have to merge a total
-of $n$ elements, which is also linear.
+En cada nivel tenemos un total de $n$ elementos. Hacia abajo, tenemos
+que dividir (split) los arreglos por la mitad, lo que toma tiempo
+proporcional a $n$ en cada nivel. Hacia arriba, tenemos que combinar (merge)
+un total de $n$ elementos, lo que también es lineal.
 
-If the number of levels is $h$, the total amount of work for the
-algorithm is $O(nh)$. So how many levels are there? There are two
-ways to think about that:
+Si el número de niveles es $h$, la cantidad total de trabajo para el
+algoritmo es $O(nh)$. Así que, ¿cuántos niveles hay? Hay dos formas de
+pensar sobre eso:
 
 \begin{enumerate}
 
 \item
-  How many times do we have to cut $n$ in half to get to 1?
+  ¿Cuántas veces tenemos que dividir $n$ por la mitad para obtener 1?
 
 \item
-   Or, how many times do we have to double $1$ before we get to $n$?
+   O, ¿cuántas veces tenemos que duplicar $1$ para obtener $n$?
 
 \end{enumerate}
 
-Another way to ask the second question is ``What power of 2 is
+Otra forma de formular la segunda pregunta es ``¿Qué potencia de 2 es
 $n$?''
 
 $2^h = n$
 
-Taking the $\log_2$ of both sides yields
+Aplicando $\log_2$ a ambos lados se tiene:
 
 $h = \log_2 n$
 
-So the total time is $O(n \log n)$. I didn't bother to write the
-base of the logarithm because logarithms with different bases differ by
-a constant factor, so all logarithms are in the same order of growth.
+Así que el tiempo total es $O(n \log n)$. No me preocupé por escribir la
+base del logaritmo porque logaritmos con diferentes bases difieren por un
+factor constante, así que todos los logaritmos están en la misma orden de
+crecimiento.
 
-\index{logarithm}
-\index{linearithmic time}
+\index{logaritmo}
+\index{tiempo linearítmico}
 \index{n log n}
 
-Algorithms in $O(n \log n)$ are sometimes called
-``linearithmic'', but most people just say ``n log n''.
+Los algoritmos en $O(n \log n)$ a veces son llamados
+``linearítmicos'', pero la mayoría de personas solo dicen ``n log n''.
 
-\index{comparison sort}
+\index{ordenamiento por comparación}
 
-It turns out that $O(n \log n)$ is the theoretical lower bound for
-sort algorithms that work by comparing elements to each other. That
-means there is no ``comparison sort'' whose order of growth is better
-than $n \log n$.  See \url{http://thinkdast.com/compsort}.
+Resulta que $O(n \log n)$ es el límite inferior teórico para los
+algoritmos de ordenamiento que trabajan comparando elementos entre sí. Eso
+significa que no hay un ``ordenamiento por comparación'' cuya orden de
+crrecimiento sea mejor que $n \log n$.  Véase \url{http://thinkdast.com/compsort}.
 
-But as we'll see in the next section, there are non-comparison sorts
-that take linear time!
+Pero como veremos en la siguiente sección, ¡hay ordenamientos de no
+comparación que toman tiempo lineal!
 
-\index{linear time}
+\index{tiempo lineal}
 
 
-\section{Radix sort}
+\section{Ordenamiento radix}
 \label{radix-sort}
 
-\index{radix sort}
+\index{ordenamiento radix}
 \index{Obama, Barack}
 \index{Schmidt, Eric}
 \index{Google}
-\index{bubble sort}
+\index{ordenamiento de burbuja}
 
-During the 2008 United States Presidential Campaign, candidate Barack
-Obama was asked to perform an impromptu algorithm analysis when he
-visited Google. Chief executive Eric Schmidt jokingly asked him for
-``the most efficient way to sort a million 32-bit integers.'' Obama
-had apparently been tipped off, because he quickly replied, ``I think
-the bubble sort would be the wrong way to go.'' You can watch the
-video at \url{http://thinkdast.com/obama}.
+Durante la Campaña Presidencial de Estados Unidos en 2008, al candidato
+Barack Obama se le pidió que realizara un análisis de algoritmos
+improvisado cuando visitó Google. El director ejecutivo Eric Schmidt en
+broma le preguntó sobre ``la forma más eficiente de ordenar un millón
+de enteros de 32 bits.'' Al parecer a Obama lo habían puesto sobre aviso,
+porque rápidamente replicó, ``Creo que el ordenamiento de burbuja sería
+la forma equivocada de hacerlo.'' Puedes ver el video en
+\url{http://thinkdast.com/obama}.
 
-Obama was right: bubble sort is conceptually simple but its runtime is
-quadratic; and even among quadratic sort algorithms, its performance
-is not very good.  See \url{http://thinkdast.com/bubble}.
+Obama tenía razón. el ordenamiento de burbuja es conceptualmente más
+sencillo pero su tiempo de ejecución es cuadrático; e incluso entre los
+algoritmos de ordenamiento cuadráticos, su desemepeño no es muy bueno.
+Véase \url{http://thinkdast.com/bubble}.
 
-\index{quadratic time}
+\index{tiempo cuadrático}
 
-The answer Schmidt was probably looking for is ``radix sort'', which is
-a {\bf non-comparison} sort algorithm that works if the size of the
-elements is bounded, like a 32-bit integer or a 20-character string.
+La respuesta que Schmidt probablemente buscaba es ``ordenamiento radix'', que es
+un algoritmo de ordenamiento de {\bf no comparación} que funciona si el tamaño de
+los elementos está acotado, como un entero de 32-bits o una cadena de 20 caracteres.
 
-\index{non-comparison sort}
+\index{ordenamiento de no comparación}
 
-To see how this works, imagine you have a stack of index cards where
-each card contains a three-letter word. Here's how you could sort the
-cards:
+Para ver cómo funciona esto, imagina que tienes una pila de fichas donde
+cada ficha contiene una palabra de tres letras. Así es como podrías ordenar
+las fichas:
 
 \begin{enumerate}
 
 \item
-  Make one pass through the cards and divide them into buckets based on
-  the first letter. So words starting with \java{a} should be
-  in one bucket, followed by words starting with \java{b}, and so on.
+  Realiza un pase por las fichas y divídelas en contenedores con base en
+  la primer letra. Así que las palabras que comienzan con \java{a} deberían
+  ir en un contenedor, seguidas por las palabras que comienzan con \java{b},
+  y así sucesivamente.
 
 \item
-  Divide each bucket again based on the second letter. So words starting
-  with \java{aa} should be together, followed by words starting with
-  \java{ab}, and so on. Of course, not all buckets will be full, but
-  that's OK.
+  Divide cada contenedor de nuevo con base en la segunda letra. Así que las
+  palabras que comienzan con \java{aa} irían juntas, seguidas por las palabras
+  que comienzan con \java{ab}, y así. Por supeuesto, no todos los contenedores
+  se llenarían, pero eso está bien.
 
 \item
-  Divide each bucket again based on the third letter.
+  Divide cada contenedor de nuevo con base en la tercera letra.
 
 \end{enumerate}
 
-At this point each bucket contains one element, and the buckets are
-sorted in ascending order. Figure~\ref{fig-sort3}
-shows an example with
-three-letter words.
+Llegados a este punto cada contenedor contiene un elemento y los contenedores
+están ordenados de forma ascendente. La figura~\ref{fig-sort3} muestra un
+ejemplo con palabras de tres letras.
 
 \begin{figure}
 \centering
 \includegraphics[height=2.0in]{figs/radix_sort1.pdf}
-\caption{Example of radix sort with three-letter words.}
+\caption{Ejemplo del ordenamiento radix con palabras de tres letras.}
 \label{fig-sort3}
 \end{figure}
 
-The top row shows the unsorted words. The second row shows what the
-buckets look like after the first pass. The words in each bucket begin
-with the same letter.
+La fila superior muestra las palabras desordenadas. La segunda fila muestra
+cómo quedan los contenedores tras el primer pase. Las palabras en cada
+contenedor comienzan con la misma letra.
 
-After the second pass, the words in each bucket begin with the same two
-letters. After the third pass, there can be only one word in each
-bucket, and the buckets are in order.
+Tras el segundo pase, las palabras en cada contenedor comienzan con las mismas
+dos leras. Tras el tercer pase, solo puede haber una palabra en cada contenedor,
+y los contenedores están en orden.
 
-During each pass, we iterate through the elements and add them to
-buckets. As long as the buckets allow addition in constant time, each
-pass is linear.
+Durante cada pase, iteramos por los elementos y los agregamos a
+contenedores. Siempre que los contenedores permitan agregar en
+tiempo constante, cada pase es lineal.
 
-\index{constant time}
-\index{linear time}
+\index{tiempo constante}
+\index{tiempo lineal}
 
-The number of passes, which I'll call $w$, depends on the ``width''
-of the words, but it doesn't depend on the number of words, $n$.
-So the order of growth is $O(wn)$, which is linear in $n$.
+El número de pases, al que llamaré $w$, dependen del ``ancho'' (``width'')
+de las palabras, pero no depende del número de palabras, $n$. Así que
+el orden de crecimiento es $O(wn)$, que es lineal con respecto a $n$.
 
-There are many variations on radix sort, and many ways to implement
-each one. You can read more about them at
-\url{http://thinkdast.com/radix}. As an optional
-exercise, consider writing a version of radix sort.
+Hay muchas variantes del ordenamiento radix, y muchas formas de implementar
+cada una. Puedes leer más sobre ellas en
+\url{http://thinkdast.com/radix}. Como un ejercicio opcional, 
+considera escribir una versión del ordenamiento radix.
 
 
-\section{Heap sort}
+\section{Ordenamiento por montículos}
 \label{heap-sort}
 
-\index{heap sort}
-\index{bounded heap}
+\index{ordenamiento por montículos}
+\index{montículo acotado}
 
-In addition to radix sort, which applies when the things you want to
-sort are bounded in size, there is one other special-purpose sorting
-algorithm you might encounter: bounded heap sort. Bounded heap sort is
-useful if you are working with a very large dataset and you want to
-report the ``Top 10'' or ``Top k'' for some value of $k$ much
-smaller than $n$.
+Además del ordenamiento radix, que se aplica cuando las cosas que quieres
+ordenar tienen un tamaño fijo, hay otro ordenamiento de propósitos
+especiales con el que podrías encontrarte: ordenamiento por montículos
+acotados. El ordenamiento por montículos acotados es útil si estás trabajando
+con un conjunto de datos muy grande y quieres reportar el ``Top 10'' o el
+``Top k'' para algún valor $k$ mucho más pequeño que $n$.
 
-For example, suppose you are monitoring a Web service that handles a
-billion transactions per day. At the end of each day, you want to
-report the $k$ biggest transactions (or slowest, or any other
-superlative). One option is to store all transactions, sort them at
-the end of the day, and select the top $k$. That would take time
-proportional to $n \log n$, and it would be very slow because we
-probably can't fit a billion transactions in the memory of a single
-program. We would have to use an ``out of core'' sort algorithm. You
-can read about external sorting at \url{http://thinkdast.com/extsort}.
+Por ejemplo, supón que estás monitoreando un servicio Web que maneja
+mil millones de transacciones por día. Al final de cada día, quieres
+reportar las $k$ transacciones más grandes (o las más lentas, o cualquier
+otro superlativo). Una opción es guardar todas las transacciones, ordenarlas
+al final del día, y seleccionar el top $k$. Eso tomaría tiempo proporcional a
+$n \log n$, y sería muy lento porque probablemente mil millones de transacciones
+no quepan en la memoria de un programa. Tendríamos que usar un algoritmo de
+memoria externa. Puedes leer sobre el ordenamiento externo en
+\url{http://thinkdast.com/extsort}.
 
-\index{out of core algorithm}
-\index{external sorting}
+\index{algoritmo de memoria externa}
+\index{ordenamiento externo}
 
-Using a bounded heap, we can do much better! Here's how we will
-proceed:
+Al usar un montículo acotado, ¡podemos obtener mejores resultados! Así
+es como procederemos:
 
 \begin{enumerate}
 
 \item
-  I'll explain (unbounded) heap sort.
+  Explicaré el ordenamiento por montículos (no acotado)
 
 \item
-  You'll implement it.
+  Lo implementarás.
 
 \item
-  I'll explain bounded heap sort and analyze it.
+  Explicaré el ordenamiento por montículos acotado y lo analizaré.
 
 \end{enumerate}
 
-\index{heap}
-\index{binary search tree}
-\index{BST}
+\index{montículo}
+\index{árbol binario de búsqueda}
+\index{ABB}
 
-To understand heap sort, you have to understand a heap, which is a data
-structure similar to a binary search tree (BST). Here are the differences:
+Para entender el ordenamiento por montículos, tienes que entender qué es un
+montículo, que es una estructura de datos similar a un árbol binario de
+búsqueda (ABB). Aquí están las diferencias:
 
 \begin{itemize}
 
 \item
-  In a BST, every node, \java{x}, has the ``BST property'': all nodes
-  in the left subtree of \java{x} are less than \java{x} and all
-  nodes in the right subtree are greater than \java{x}.
+  En un ABB, cada nodo, \java{x}, tiene la ``propiedad ABB'': todos los nodos
+  en el subárbol izquierdo de \java{x} son menores que \java{x} y todos
+  los nodos en el subárbol derecho son mayores que \java{x}.
 
 \item
-  In a heap, every node, \java{x}, has the ``heap property'': all
-  nodes in both subtrees of \java{x} are greater than \java{x}.
+  En un montículo, cada nodo, \java{x}, tiene la ``propiedad montículo'': todos
+  los nodos en ámbos subárboles de \java{x} son mayores que \java{x}.
 
 \item
-  Heaps are like balanced BSTs; when you add or remove elements, they
-  do some extra work to rebalance the tree.  As a result, they can
-  be implemented efficiently using an array of elements.
+  Los montículos son como ABBs balanceados; cuando agregas o remueves
+  elementos, ellas realizan algún trabajo adicional para volver a balancear
+  el árbol. Como resultado, pueden ser implementadas de forma eficiente
+  usando un arrreglo de elementos.
 
 \end{itemize}
 
-The smallest element in a heap is always at the root, so we can find
-it in constant time. Adding and removing elements from a heap takes
-time proportional to the height of the tree $h$. And because the heap
-is always balanced, $h$ is proportional to $\log n$.  You can read
-more about heaps at \url{http://thinkdast.com/heap}.
+El elemento más pequeño en un montículo siempre está en la raíz, así que
+podemos encontrarlo en tiempo constante. Agregar y remover elementos de
+un montículo toma tiempo proporcional a la altura del árbol $h$. Y como
+el montículo siempre está balanceado, $h$ es proporcional a $\log n$.
+Puedes leer más sobre los montículos en \url{http://thinkdast.com/heap}.
 
-\index{heap property}
-\index{constant time}
-\index{logarithmic time}
+\index{propiedad montículo}
+\index{tiempo constante}
+\index{tiempo logarítmico}
 \index{PriorityQueue}
 \index{offer}
 \index{poll}
 \index{Queue}
 
-The Java \java{PriorityQueue} is implemented using a heap.
-\java{PriorityQueue} provides the methods specified in the
-\java{Queue} interface, including \java{offer} and \java{poll}:
+La \java{PriorityQueue} de Java se implementa usando un montículo.
+\java{PriorityQueue} provee los métodos especificados en la
+interfaz \java{Queue}, incluyendo \java{offer} y \java{poll}:
 
 \begin{itemize}
 
 \item
-  \java{offer}: Adds an element to the queue, updating the heap so
-  that every node has the ``heap property''. Takes $\log n$ time.
+  \java{offer}: Agrega un elemento a la cola, actualizando el montículo para
+  que cada nodo tenga la ``propiedad montículo''. Toma un tiempo de $\log n$.
 
 \item
-  \java{poll}: Removes the smallest element in the queue from the root
-  and updates the heap. Takes $\log n$ time.
+  \java{poll}: Remueve el elemento más pequeño en la cola de la raíz y actualiza
+  el montículo. Toma un tiempo de $\log n$.
 
 \end{itemize}
 
-Given a \java{PriorityQueue}, you can easily sort of a collection of
-$n$ elements like this:
+Dada una \java{PriorityQueue}, puedes ordenar fácilmente una colección de
+$n$ elementos de la siguiente manera:
 
 \begin{enumerate}
 
 \item
-  Add all elements of the collection to a \java{PriorityQueue} using
+  Agrega todos los elementos de la colección a una \java{PriorityQueue} usando
   \java{offer}.
 
 \item
-  Remove the elements from the queue using \java{poll} and add them to
-  a \java{List}.
+  Remueve los elementos de la cola usando \java{poll} y agrégalos a
+  una \java{List}.
 
 \end{enumerate}
 
-Because \java{poll} returns the smallest element remaining in the
-queue, the elements are added to the \java{List} in ascending order.
-This way of sorting is called {\bf heap sort}
-(see \url{http://thinkdast.com/heapsort}).
+Porque \java{poll} devuelve el elemento más pequeño que queda en la
+cola, los elementos se agregan a la \java{List} en orden ascendente.
+A esta forma de ordenar se la llama {\bf ordenamiento por montículos}
+(véase \url{http://thinkdast.com/heapsort}).
 
-\index{heap sort}
-\index{linearithmic}
+\index{ordenamiento por montículos}
+\index{linearítmico}
 \index{n log n}
 
-Adding $n$ elements to the queue takes $n \log n$ time. So
-does removing $n$ elements. So the runtime for heap sort is
-$O(n \log n)$.
+Agregar $n$ elementos a la cola toma un tiempo de $n \log n$. Al
+igual que remover $n$ elementos. Así que el tiempo de ejecución
+para el ordenamiento por montículos es $O(n \log n)$.
 
 \index{ListSorter}
 
-In the repository for this book, in \java{ListSorter.java} you'll find
-the outline of a method called \java{heapSort}. Fill it in and then
-run \java{ant ListSorterTest} to confirm that it works.
+En el repositorio para este libro, en \java{ListSorter.java} encontrarás
+el boceto de un método llamado \java{heapSort}. Llénalo y luego ejecuta
+\java{ant ListSorterTest} para confirmar que funciona.
 
 
-\section{Bounded heap}
+\section{Montículo acotado}
 \label{bounded-heap}
 
-\index{bounded heap}
+\index{montículo acotado}
 
-A bounded heap is a heap that is limited to contain at most $k$
-elements. If you have $n$ elements, you can keep track of the
-$k$ largest elements like this:
+Un montículo acotado es un montículo que está limitado a contener
+como máximo $k$ elementos. Si tienes $n$ elementos, puedes llevar el
+control de los $k$ elementos mayores así:
 
-Initially, the heap is empty.  For each element, \java{x}:
-
-\begin{itemize}
-
-\item
-  Branch 1: If the heap is not full, add \java{x} to the heap.
-
-\item
-  Branch 2: If the heap is full, compare \java{x} to the
-  \emph{smallest} element in the heap. If \java{x} is smaller, it
-  cannot be one of the largest $k$ elements, so you can discard
-  it.
-
-\item
-  Branch 3: If the heap is full and \java{x} is greater than the
-  smallest element in the heap, remove the smallest element from the
-  heap and add \java{x}.
-
-\end{itemize}
-
-\index{k largest elements}
-
-Using a heap with the smallest element at the top, we can keep track of
-the largest $k$ elements. Let's analyze the performance of this
-algorithm. For each element, we perform one of:
+Inicialmente, el montículo está vacío.  Para cada elemento, \java{x}:
 
 \begin{itemize}
 
 \item
-  Branch 1: Adding an element to the heap is $O(\log k)$.
+  Caso 1: Si el montículo no está lleno, agrega a \java{x} al montículo.
 
 \item
-  Branch 2: Finding the smallest element in the heap is $O(1)$.
+  Caso 2: Si el montículo está lleno, compara \java{x} con el elemento
+  \emph{menor} del montículo. Si \java{x} es más pequeño, no
+  puede ser uno de los $k$ elementos mayores, así que puedes descartarlo.
 
 \item
-  Branch 3: Removing the smallest element is $O(\log k)$. Adding
-  \java{x} is also $O(\log k)$.
+  Caso 3: Si el montículo está lleno y \java{x} es mayor que el elemento
+  menor en el montículo, remueve el elemento menor del montículo y
+  agrega a \java{x}.
 
 \end{itemize}
 
-In the worst case, if the elements appear in ascending order, we always
-run Branch 3. In that case, the total time to process $n$
-elements is $O(n \log k)$, which is linear in $n$.
+\index{k elementos mayores}
 
-\index{linear time}
+Al usar un montículo con el elemento menor en la parte superior, podemos
+llevar el control de los $k$ elementos mayores. Analicemos el desempeño
+de este algoritmo. Para cada elemento, realizamos una de las siguientes
+operaciones:
 
-In \java{ListSorter.java} you'll find the outline of a method called
-\java{topK} that takes a \java{List}, a \java{Comparator}, and an
-integer $k$. It should return the $k$ largest elements in the
-\java{List} in ascending order. Fill it in and then run \java{ant
-  ListSorterTest} to confirm that it works.
+\begin{itemize}
+
+\item
+  Caso 1: Agregar un elemento al montículo es $O(\log k)$.
+
+\item
+  Caso 2: Encontrar el elemento más pequeño en el montículo es $O(1)$.
+
+\item
+  Caso 3: Remover el elemento más pequeño es $O(\log k)$. Agregar
+  \java{x} también es $O(\log k)$.
+
+\end{itemize}
+
+En el peor escenario, si los elementos aparecen en orden ascendente, siempre
+ejecutamos el caso 3. De ser así, el tiempo total para procesar $n$
+elementos es $O(n \log k)$, que es lineal con respecto a $n$.
+
+\index{tiempo lineal}
+
+En \java{ListSorter.java} encontrarás el boceto de un método llamado
+\java{topK} que toma una \java{List}, un \java{Comparator}, y un
+entero $k$. Debería devolver los $k$ elementos mayores en la \java{List}
+en orden ascendente. Llénalo y luego ejecuta \java{ant ListSorterTest}
+para confirmar que funciona.
 
 \index{Comparator}
 
 
-\section{Space complexity}
+\section{Complejidad espacial}
 \label{space-complexity}
 
-\index{space complexity}
-\index{analysis}
+\index{complejidad espacial}
+\index{análisis}
 
-Until now we have talked a lot about runtime analysis, but for many
-algorithms we are also concerned about space. For example, one of the
-drawbacks of merge sort is that it makes copies of the data. In our
-implementation, the total amount of space it allocates is
-$O(n \log n)$. With a more clever implementation, you can get the
-space requirement down to $O(n)$.
+Hasta este momento hemos hablando mucho sobre análisis del tiempo de
+ejecución, pero para muchos algoritmos también nos preocupa el espacio.
+Por ejemplo, una de las desventajas del ordenamiento por mezcla es que
+copia todos los datos. En nuestra implementación, la cantidad total de
+espacio que se reserva es $O(n \log n)$. Con una implementación un poco
+más ingeniosa, puedes reducir el requerimiento de espacio a $O(n)$.
 
-In contrast, insertion sort doesn't copy the data because it sorts the
-elements in place. It uses temporary variables to compare two elements
-at a time, and it uses a few other local variables. But its space use
-doesn't depend on $n$.
+Por el contrario, el ordenamiento por inserción no copia los datos porque
+ordena los elementos en sitio. Usa variables temporales para comparar dos
+elementos a la vez y usa unas cuantas variables locales adicionales. Pero
+su uso del espacio no depende de $n$.
 
-Our implementation of heap sort creates a new \java{PriorityQueue} to
-store the elements, so the space is $O(n)$; but if you are
-allowed to sort the list in place, you can run heap sort with
-$O(1)$ space.
+Nuestra implementación del ordenamiento por montículos crea una nueva
+\java{PriorityQueue} para guardar los elementos, así que es espacio es
+$O(n)$; pero si se te permitiera ordenar la lista en sitio, podrías
+ejecutar el ordenamiento por montículos con un espacio de $O(1)$.
 
-One of the benefits of the bounded heap algorithm you just implemented
-is that it only needs space proportional to $k$ (the number of
-elements we want to keep), and $k$ is often much smaller than
-$n$.
+Uno de los beneficios del algoritmo de ordenamiento por montículos acotados
+que acabas de implementar es que sólo necesita espacio proporcional a $k$
+(el número de elemento que queremos conservar), y $k$ a menudo es mucho
+menor que $n$.
 
-Software developers tend to pay more attention to runtime than space, and
-for many applications, that's appropriate. But for large datasets, space
-can be just as important or more so. For example:
+Los desarrolladores de software tienden a prestar más atención al tiempo de
+ejecución que al espacio, y para muchas aplicaciones, eso es lo apropiado. Pero
+para conjuntos de datos grandes, el espacio puede ser igual de importante o
+incluso más. Por ejemplo:
 
 \begin{enumerate}
 
-\item If a dataset doesn't fit into the memory of one program, the run
-  time often increases dramatically, or it might not run at all. If you
-  choose an algorithm that needs less space, and that makes it possible
-  to fit the computation into memory, it might run much faster. In the
-  same vein, a program that uses less space might make better use of
-  CPU caches and run
-  faster (see \url{http://thinkdast.com/cache}).
+\item Si un conjunto de datos no cabe en la memoria de un programa, el tiempo
+  de ejecución muchas veces se incrementa dramáticamente, o puede que ni
+  siquiera se ejecute. Si eliges un algoritmo que necesita menos espacio,
+  y eso hace posible que el cálculo quepa en la memoria, podría ejecutarse
+  mucho más rápido. En el mismo sentido, un programa que usa menos espacio
+  podría hacer mejor uso de la caché de la CPU y ejecutarse más rápido
+  (véase \url{http://thinkdast.com/cache}).
 
-\item On a server that runs many programs at the same time, if you can
-  reduce the space needed for each program, you might be able to run
-  more programs on the same server, which reduces hardware and energy
-  costs.
+\item En un servidor que ejecuta muchos programas al mismo tiempo, si puedes
+  reducir el espacio que cada programa necesita, podrías ser capaz de
+  ejecutar más programas en el mismo servidor, lo que reduce los costos de
+  hardware y energía.
 
 \end{enumerate}
 
-So those are some reasons you should know at least a little bit about
-the space needs of algorithms.
+Así que esas son algunas razones por las que deberías saber al menos un
+poquito sobre las necesidades de espacio de los algoritmos.
 
-\index{cache}
-\index{server}
+\index{caché}
+\index{servidor}
 
 
 \backmatter

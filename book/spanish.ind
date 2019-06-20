@@ -1,0 +1,452 @@
+\begin{theindex}
+
+  \item \IeC {\'\i }ndice, \hyperpage{75}
+  \item \IeC {\'a}rbol, \hyperpage{1}
+  \item \IeC {\'a}rbol AVL, \hyperpage{128}
+  \item \IeC {\'a}rbol DOM, \hyperpage{57}, \hyperpage{79}, 
+		\hyperpage{147}
+  \item \IeC {\'a}rbol balanceado, \hyperpage{127}
+  \item \IeC {\'a}rbol binario de b\IeC {\'u}squeda, \hyperpage{2}, 
+		\hyperpage{110}, \hyperpage{175}
+  \item \IeC {\'a}rbol desbalanceado, \hyperpage{127}
+  \item \IeC {\'a}rbol rojo-negro, \hyperpage{128}
+  \item \IeC {\'a}rboles auto-balanceables, \hyperpage{128}
+
+  \indexspace
+
+  \item ABB, \hyperpage{110}, \hyperpage{175}
+  \item add, \hyperpage{17}, \hyperpage{22}, \hyperpage{29, 30}, 
+		\hyperpage{34}, \hyperpage{38}, \hyperpage{45}, 
+		\hyperpage{49}, \hyperpage{77}, \hyperpage{82}
+  \item algoritmo de memoria externa, \hyperpage{175}
+  \item altura, \hyperpage{111}, \hyperpage{115}
+  \item an\IeC {\'a}lisis, \hyperpage{146, 147}, \hyperpage{170}, 
+		\hyperpage{177}
+  \item an\IeC {\'a}lisis amortizado, \hyperpage{19}, \hyperpage{24}, 
+		\hyperpage{101}
+  \item an\IeC {\'a}lisis de algoritmos, \hyperpage{1}, \hyperpage{9}, 
+		\hyperpage{88}
+  \item and, \hyperpage{159}
+  \item Ant, \hyperpage{xiii}, \hyperpage{6}, \hyperpage{14}, 
+		\hyperpage{67}, \hyperpage{80}, \hyperpage{83}, 
+		\hyperpage{87}, \hyperpage{98}, \hyperpage{100}, 
+		\hyperpage{103}, \hyperpage{114}, \hyperpage{135}, 
+		\hyperpage{150}, \hyperpage{159}, \hyperpage{169}
+  \item Apache Ant, \hyperpage{xiii}
+  \item API, \hyperpage{xiii}
+  \item ArrayDeque, \hyperpage{65}
+  \item ArrayList, \hyperpage{1, 2}, \hyperpage{4}, \hyperpage{19}, 
+		\hyperpage{40}, \hyperpage{85}, \hyperpage{92}
+
+  \indexspace
+
+  \item b\IeC {\'u}squeda, \hyperpage{76}
+  \item b\IeC {\'u}squeda booleana, \hyperpage{156}
+  \item b\IeC {\'u}squeda en profundidad, \hyperpage{61}, 
+		\hyperpage{69}
+  \item b\IeC {\'u}squeda lineal, \hyperpage{126}
+  \item b\IeC {\'u}squeda web, \hyperpage{xii}, \hyperpage{2}
+  \item base de datos, \hyperpage{132}
+  \item base de datos clave-valor, \hyperpage{133}
+  \item booleano, \hyperpage{16}
+  \item bubble sort, \hyperpage{172}
+  \item bug de rendimiento, \hyperpage{31}, \hyperpage{104}
+
+  \indexspace
+
+  \item c\IeC {\'o}digo hash, \hyperpage{90}, \hyperpage{92}, 
+		\hyperpage{97}
+  \item cach\IeC {\'e}, \hyperpage{178}
+  \item cache, \hyperpage{103}
+  \item campo, \hyperpage{138}
+  \item Card, \hyperpage{160}
+  \item caso base, \hyperpage{121}, \hyperpage{125}, \hyperpage{169}
+  \item caso especial, \hyperpage{29}
+  \item chooseMap, \hyperpage{93}
+  \item clase an\IeC {\'o}nima, \hyperpage{38}, \hyperpage{163}
+  \item clase auxiliar, \hyperpage{135}, \hyperpage{149}
+  \item clave, \hyperpage{76}, \hyperpage{111}
+  \item clear, \hyperpage{30}, \hyperpage{103}, \hyperpage{114}
+  \item cliente, \hyperpage{133}
+  \item clone, \hyperpage{xiv}
+  \item cola, \hyperpage{63}, \hyperpage{149}
+  \item Collections, \hyperpage{159}
+  \item Comparable, \hyperpage{2, 3}, \hyperpage{160}
+  \item Comparator, \hyperpage{160}, \hyperpage{162}, \hyperpage{177}
+  \item compare, \hyperpage{162}
+  \item compareTo, \hyperpage{3}, \hyperpage{161}
+  \item complejidad espacial, \hyperpage{177}
+  \item constant time, \hyperpage{102}
+  \item constructor, \hyperpage{7}, \hyperpage{15}
+  \item consulta, \hyperpage{157}
+  \item contains, \hyperpage{77}
+  \item containsKey, \hyperpage{87}, \hyperpage{103}, \hyperpage{115}
+  \item containsValue, \hyperpage{98}, \hyperpage{103}, \hyperpage{115}
+  \item control de versiones, \hyperpage{xii, xiii}
+  \item crawl, \hyperpage{151}
+
+  \indexspace
+
+  \item DBMS, \hyperpage{132}
+  \item Deque, \hyperpage{55}, \hyperpage{62}
+  \item deque, \hyperpage{64}
+  \item DFS, \hyperpage{61}, \hyperpage{69}
+  \item DFS iterativa, \hyperpage{65}
+  \item diagrama de clase, \hyperpage{107}
+  \item diagrama de objeto, \hyperpage{27}, \hyperpage{82}
+  \item diagrama UML, \hyperpage{60}
+  \item diferencia, \hyperpage{157}
+  \item divide-conquista-pega, \hyperpage{166}
+  \item Document, \hyperpage{59}
+
+  \indexspace
+
+  \item elecci\IeC {\'o}n de una estructura de datos, \hyperpage{52}
+  \item Element, \hyperpage{60}, \hyperpage{79}, \hyperpage{155}
+  \item elemento, \hyperpage{15}, \hyperpage{58}
+  \item Elements, \hyperpage{71}
+  \item en orden, \hyperpage{62}, \hyperpage{117}, \hyperpage{124}
+  \item encapsular, \hyperpage{4}
+  \item entorno de desarrollo integrado, \hyperpage{5}
+  \item Entry, \hyperpage{86}
+  \item equals, \hyperpage{17}, \hyperpage{20}, \hyperpage{87}, 
+		\hyperpage{95}
+  \item escala log-log, \hyperpage{41}
+  \item estructuras de datos, \hyperpage{1}
+  \item estructuras de datos enlazadas, \hyperpage{25}
+  \item etiqueta, \hyperpage{57}
+  \item excepci\IeC {\'o}n, \hyperpage{20}
+  \item expresi\IeC {\'o}n regular, \hyperpage{79}
+
+  \indexspace
+
+  \item factor de carga, \hyperpage{100}
+  \item findEntry, \hyperpage{87, 88}
+  \item findNode, \hyperpage{115}, \hyperpage{119}
+  \item fork, \hyperpage{xiv}
+  \item frecuencia, \hyperpage{76}
+  \item frecuencia de t\IeC {\'e}rmino, \hyperpage{159}
+  \item frecuencia inversa de documento, \hyperpage{159}
+  \item funci\IeC {\'o}n hash, \hyperpage{92}
+
+  \indexspace
+
+  \item get, \hyperpage{16}, \hyperpage{19}, \hyperpage{78}, 
+		\hyperpage{82}, \hyperpage{87}, \hyperpage{89}, 
+		\hyperpage{92, 93}, \hyperpage{98}, \hyperpage{103}, 
+		\hyperpage{115}, \hyperpage{125}
+  \item get de Redis, \hyperpage{137}
+  \item getCounts, \hyperpage{145}
+  \item getNode, \hyperpage{35}
+  \item Git, \hyperpage{xiii}
+  \item GitHub, \hyperpage{xiii}
+  \item Google, \hyperpage{172}
+  \item grafo, \hyperpage{149}
+
+  \indexspace
+
+  \item hash de Redis, \hyperpage{137}
+  \item hashCode, \hyperpage{95}
+  \item hashing, \hyperpage{91}, \hyperpage{102}
+  \item HashMap, \hyperpage{2}, \hyperpage{77}, \hyperpage{99}, 
+		\hyperpage{147}
+  \item helper class, \hyperpage{158}
+  \item helper method, \hyperpage{145}
+  \item herencia, \hyperpage{107}
+  \item Heroku, \hyperpage{163}
+  \item HTML, \hyperpage{57}
+
+  \indexspace
+
+  \item IDE, \hyperpage{5}
+  \item immutable, \hyperpage{96}
+  \item implementaci\IeC {\'o}n, \hyperpage{7}
+  \item Index, \hyperpage{81}, \hyperpage{155}
+  \item indexador, \hyperpage{2}, \hyperpage{55}, \hyperpage{131}
+  \item indexOf, \hyperpage{17}, \hyperpage{20}, \hyperpage{34}
+  \item indexPage, \hyperpage{83}
+  \item insertion sort, \hyperpage{166}
+  \item inspecci\IeC {\'o}n del DOM, \hyperpage{57}
+  \item instancia de Redis, \hyperpage{134}
+  \item instanciar, \hyperpage{4}
+  \item Integer, \hyperpage{3}
+  \item interface, \hyperpage{xiii}, \hyperpage{2}
+  \item interfaz, \hyperpage{xiii}, \hyperpage{7}
+  \item interfaz de programaci\IeC {\'o}n de aplicaciones, 
+		\hyperpage{xiii}
+  \item interpretaci\IeC {\'o}n, \hyperpage{57}
+  \item intersecci\IeC {\'o}n, \hyperpage{157}
+  \item intersecci\IeC {\'o}n de conjuntos, \hyperpage{76}
+  \item isEmpty, \hyperpage{63}, \hyperpage{70}
+  \item Iterable, \hyperpage{68}
+  \item iterativo, \hyperpage{124}
+  \item Iterator, \hyperpage{68}
+
+  \indexspace
+
+  \item Java Collections Framework, \hyperpage{xiii}
+  \item Java SDK, \hyperpage{xiv}, \hyperpage{5}
+  \item JCF, \hyperpage{xiii}
+  \item Jedis, \hyperpage{133}
+  \item JedisIndex, \hyperpage{134}, \hyperpage{138}, \hyperpage{143}, 
+		\hyperpage{149}
+  \item JedisMaker, \hyperpage{134}, \hyperpage{150}, \hyperpage{159}
+  \item JSON, \hyperpage{132}
+  \item jsoup, \hyperpage{57}, \hyperpage{59}
+  \item JUnit, \hyperpage{xiii}
+
+  \indexspace
+
+  \item k elementos mayores, \hyperpage{177}
+  \item keySet, \hyperpage{116}, \hyperpage{124}
+
+  \indexspace
+
+  \item linear\IeC {\'\i }tmico, \hyperpage{176}
+  \item LinkedHashSet, \hyperpage{124}
+  \item LinkedList, \hyperpage{1, 2}, \hyperpage{4}, \hyperpage{43}, 
+		\hyperpage{47}, \hyperpage{49}, \hyperpage{51}, 
+		\hyperpage{65}, \hyperpage{154}
+  \item List, \hyperpage{1, 2}, \hyperpage{4}, \hyperpage{167}
+  \item list de Redis, \hyperpage{137}
+  \item lista de enlace doble, \hyperpage{51}
+  \item lista enlazada, \hyperpage{27}
+  \item ListClientExample, \hyperpage{4}
+  \item ListNode, \hyperpage{26}
+  \item ListSorter, \hyperpage{167}, \hyperpage{169}, \hyperpage{176}
+  \item Llegar a la Filosof\IeC {\'\i }a, \hyperpage{1}, \hyperpage{67}, 
+		\hyperpage{73}
+  \item Llegar a la filosof\IeC {\'\i }a, \hyperpage{56}
+  \item logaritmo, \hyperpage{41}, \hyperpage{112}, \hyperpage{172}
+
+  \indexspace
+
+  \item m\IeC {\'e}todo auxiliar, \hyperpage{17}, \hyperpage{30}, 
+		\hyperpage{34}, \hyperpage{87}, \hyperpage{92}, 
+		\hyperpage{115--117}, \hyperpage{140}
+  \item m\IeC {\'e}todo envoltorio, \hyperpage{78}
+  \item Map, \hyperpage{2}, \hyperpage{77}, \hyperpage{92}, 
+		\hyperpage{109}, \hyperpage{112}
+  \item mapa, \hyperpage{76}, \hyperpage{85}
+  \item mergeSort, \hyperpage{169}
+  \item minus, \hyperpage{159}
+  \item mont\IeC {\'\i }culo, \hyperpage{175}
+  \item mont\IeC {\'\i }culo acotado, \hyperpage{174}, \hyperpage{176}
+  \item motor de b\IeC {\'u}squeda, \hyperpage{1}, \hyperpage{55}, 
+		\hyperpage{131}
+  \item mutable, \hyperpage{96}
+  \item MyArrayList, \hyperpage{14}, \hyperpage{36}
+  \item MyBetterMap, \hyperpage{91}, \hyperpage{97}, \hyperpage{100}
+  \item MyFixedHashMap, \hyperpage{105}
+  \item MyHashMap, \hyperpage{99}, \hyperpage{103}
+  \item MyLinearMap, \hyperpage{85}
+  \item MyLinkedList, \hyperpage{27, 28}, \hyperpage{36}
+  \item MyTreeMap, \hyperpage{114}, \hyperpage{119}
+
+  \indexspace
+
+  \item n log n, \hyperpage{172}, \hyperpage{176}
+  \item next, \hyperpage{70}
+  \item Node, \hyperpage{29}, \hyperpage{60}, \hyperpage{113}
+  \item node, \hyperpage{110}
+  \item nodo, \hyperpage{25}
+  \item nodo hijo, \hyperpage{57}
+  \item nodo padre, \hyperpage{57}
+  \item notaci\IeC {\'o}n Big O, \hyperpage{13}
+  \item null, \hyperpage{26}
+  \item Number, \hyperpage{3}
+
+  \indexspace
+
+  \item Obama, Barack, \hyperpage{172}
+  \item offer, \hyperpage{175}
+  \item operaciones de conjuntos, \hyperpage{157}
+  \item operador ternario, \hyperpage{3}
+  \item or, \hyperpage{159}
+  \item orden de crecimiento, \hyperpage{14}, \hyperpage{37}, 
+		\hyperpage{52}, \hyperpage{112}
+  \item orden natural, \hyperpage{162}
+  \item ordenamiento, \hyperpage{11}, \hyperpage{163}, \hyperpage{165}
+  \item ordenamiento de no comparaci\IeC {\'o}n, \hyperpage{173}
+  \item ordenamiento externo, \hyperpage{175}
+  \item ordenamiento por comparaci\IeC {\'o}n, \hyperpage{172}
+  \item ordenamiento por mezcla, \hyperpage{168}
+  \item ordenamiento por mont\IeC {\'\i }culos, \hyperpage{174}, 
+		\hyperpage{176}
+  \item ordenamiento por selecci\IeC {\'o}n, \hyperpage{11}
+  \item ordenamiento radix, \hyperpage{172}
+
+  \indexspace
+
+  \item pajar, \hyperpage{89}
+  \item palabras vac\IeC {\'\i }as, \hyperpage{148}
+  \item par clave-valor, \hyperpage{76}, \hyperpage{113}
+  \item par\IeC {\'a}metro de tipo, \hyperpage{15}, \hyperpage{28}, 
+		\hyperpage{85}, \hyperpage{167}
+  \item peek, \hyperpage{63}
+  \item pendiente, \hyperpage{41}
+  \item PEPS, \hyperpage{63}, \hyperpage{149}
+  \item perfilado, \hyperpage{9}, \hyperpage{37}, \hyperpage{45}, 
+		\hyperpage{47}, \hyperpage{50}, \hyperpage{103}, 
+		\hyperpage{106}, \hyperpage{125}
+  \item persistente, \hyperpage{132}
+  \item pila, \hyperpage{63}, \hyperpage{149}
+  \item pila de llamadas, \hyperpage{62}
+  \item poll, \hyperpage{175}
+  \item pop, \hyperpage{63}
+  \item post orden, \hyperpage{62}
+  \item pre orden, \hyperpage{62}
+  \item PriorityQueue, \hyperpage{175}
+  \item problem size, \hyperpage{47}
+  \item ProfileListAdd, \hyperpage{42}
+  \item Profiler, \hyperpage{38}, \hyperpage{45}
+  \item programaci\IeC {\'o}n basada en interfaces, \hyperpage{5}
+  \item programar para una interfaz, \hyperpage{5}
+  \item propiedad ABB, \hyperpage{110}, \hyperpage{125}
+  \item propiedad mont\IeC {\'\i }culo, \hyperpage{175}
+  \item pruebas unitarias, \hyperpage{xii}
+  \item punto de c\IeC {\'o}digo, \hyperpage{95}
+  \item push, \hyperpage{63}
+  \item put, \hyperpage{78}, \hyperpage{87}, \hyperpage{89}, 
+		\hyperpage{93}, \hyperpage{98}, \hyperpage{101}, 
+		\hyperpage{103}, \hyperpage{106}, \hyperpage{116}, 
+		\hyperpage{122}, \hyperpage{125}
+
+  \indexspace
+
+  \item Queue, \hyperpage{175}
+  \item queue, \hyperpage{154}
+
+  \indexspace
+
+  \item ra\IeC {\'\i }z, \hyperpage{57}
+  \item rastreador, \hyperpage{2}, \hyperpage{55}, \hyperpage{131}
+  \item raw type, \hyperpage{6}
+  \item recolecci\IeC {\'o}n de basura, \hyperpage{30}
+  \item recorrido, \hyperpage{149}
+  \item recorrido de \IeC {\'a}rboles, \hyperpage{124}
+  \item recorrido de un \IeC {\'a}rbol, \hyperpage{62}, \hyperpage{117}
+  \item recuperaci\IeC {\'o}n de informaci\IeC {\'o}n, \hyperpage{1}, 
+		\hyperpage{156}
+  \item recuperador, \hyperpage{2}, \hyperpage{55}, \hyperpage{131}
+  \item recursi\IeC {\'o}, \hyperpage{121}
+  \item recursi\IeC {\'o}n, \hyperpage{61}, \hyperpage{117}, 
+		\hyperpage{121}, \hyperpage{125}, \hyperpage{169}
+  \item Redis, \hyperpage{xii}, \hyperpage{132, 133}, \hyperpage{143}
+  \item RedisToGo, \hyperpage{133}
+  \item rehash, \hyperpage{100}
+  \item relaci\IeC {\'o}n ES-UN(A), \hyperpage{107}
+  \item relaci\IeC {\'o}n TIENE-UN(A), \hyperpage{107}
+  \item relevancia, \hyperpage{159}, \hyperpage{163}
+  \item remove, \hyperpage{17}, \hyperpage{21}, \hyperpage{30}, 
+		\hyperpage{35}, \hyperpage{87}, \hyperpage{103}, 
+		\hyperpage{106}, \hyperpage{129}
+  \item removeAll, \hyperpage{25}
+  \item repositorio, \hyperpage{xiii}
+
+  \indexspace
+
+  \item Schmidt, Eric, \hyperpage{172}
+  \item selecci\IeC {\'o}n de una estructura de datos, \hyperpage{52}
+  \item select, \hyperpage{60}
+  \item servidor, \hyperpage{133}, \hyperpage{178}
+  \item servidro, \hyperpage{141}
+  \item Set, \hyperpage{76}
+  \item set, \hyperpage{16}, \hyperpage{20}
+  \item set de Redis, \hyperpage{137}
+  \item setChar, \hyperpage{96}
+  \item SillyArray, \hyperpage{96}
+  \item SillyString, \hyperpage{94}
+  \item singleton, \hyperpage{72}
+  \item size, \hyperpage{28}, \hyperpage{81}, \hyperpage{104}, 
+		\hyperpage{106}, \hyperpage{113}
+  \item snippet, \hyperpage{163}
+  \item sort, \hyperpage{159}
+  \item Stack, \hyperpage{62}
+  \item stop words, \hyperpage{148}
+  \item sub-mapa, \hyperpage{93}, \hyperpage{95}, \hyperpage{99}
+  \item sub\IeC {\'a}rbol, \hyperpage{123}
+  \item subclase, \hyperpage{60}
+  \item superclase, \hyperpage{100}, \hyperpage{115}
+  \item superclass, \hyperpage{105}
+
+  \indexspace
+
+  \item t\IeC {\'e}rmino de b\IeC {\'u}squeda, \hyperpage{55}, 
+		\hyperpage{75}
+  \item tabla hash, \hyperpage{2}, \hyperpage{85}
+  \item tama\IeC {\~n}o del problema, \hyperpage{25}
+  \item TermCounter, \hyperpage{77}, \hyperpage{140}, \hyperpage{143}, 
+		\hyperpage{148}
+  \item TextNode, \hyperpage{61}
+  \item TF-IDF, \hyperpage{159}, \hyperpage{163}
+  \item tiempo constante, \hyperpage{10}, \hyperpage{12}, 
+		\hyperpage{16}, \hyperpage{19, 20}, \hyperpage{22, 23}, 
+		\hyperpage{25}, \hyperpage{28}, \hyperpage{31}, 
+		\hyperpage{34, 35}, \hyperpage{40}, \hyperpage{42}, 
+		\hyperpage{45}, \hyperpage{47, 48}, \hyperpage{51, 52}, 
+		\hyperpage{63}, \hyperpage{88, 89}, \hyperpage{99}, 
+		\hyperpage{101}, \hyperpage{105, 106}, \hyperpage{109}, 
+		\hyperpage{113}, \hyperpage{126}, \hyperpage{137, 138}, 
+		\hyperpage{147}, \hyperpage{154}, \hyperpage{173}, 
+		\hyperpage{175}
+  \item tiempo cuadr\IeC {\'a}tico, \hyperpage{10}, \hyperpage{24}, 
+		\hyperpage{36}, \hyperpage{41--43}, \hyperpage{46}, 
+		\hyperpage{49}, \hyperpage{168}, \hyperpage{173}
+  \item tiempo lineal, \hyperpage{10}, \hyperpage{12}, \hyperpage{16}, 
+		\hyperpage{20}, \hyperpage{22--24}, \hyperpage{28}, 
+		\hyperpage{31}, \hyperpage{35, 36}, \hyperpage{40}, 
+		\hyperpage{42, 43}, \hyperpage{46, 47}, \hyperpage{49}, 
+		\hyperpage{52}, \hyperpage{88, 89}, \hyperpage{93}, 
+		\hyperpage{98}, \hyperpage{101}, \hyperpage{103--105}, 
+		\hyperpage{110}, \hyperpage{114}, \hyperpage{122}, 
+		\hyperpage{127}, \hyperpage{147}, \hyperpage{167, 168}, 
+		\hyperpage{170}, \hyperpage{172, 173}, \hyperpage{177}
+  \item tiempo linear\IeC {\'\i }tmico, \hyperpage{166}, 
+		\hyperpage{172}
+  \item tiempo logar\IeC {\'\i }tmico, \hyperpage{112}, 
+		\hyperpage{125, 126}, \hyperpage{128}, \hyperpage{175}
+  \item tiempo promedio, \hyperpage{24}, \hyperpage{45}
+  \item Timeable, \hyperpage{38}
+  \item timestamp, \hyperpage{126}
+  \item tipo comod\IeC {\'\i }n, \hyperpage{115}, \hyperpage{120}
+  \item tipo de datos de Redis, \hyperpage{138}
+  \item tipo gen\IeC {\'e}rico, \hyperpage{3}
+  \item toString, \hyperpage{95}
+  \item Transaction, \hyperpage{141}, \hyperpage{145}, \hyperpage{147}
+  \item TreeMap, \hyperpage{109}
+  \item type parameter, \hyperpage{xiii}
+
+  \indexspace
+
+  \item UEPS, \hyperpage{63}, \hyperpage{149}
+  \item UML, \hyperpage{107}
+  \item uni\IeC {\'o}n, \hyperpage{157}
+  \item Unicode, \hyperpage{95}
+  \item unidad de trabajo, \hyperpage{101}
+  \item URL, \hyperpage{77}, \hyperpage{82}
+  \item URLSet, \hyperpage{140}, \hyperpage{143}
+  \item UUID, \hyperpage{126}
+
+  \indexspace
+
+  \item valor, \hyperpage{76}
+  \item variable de instancia, \hyperpage{15}
+  \item vol\IeC {\'a}til, \hyperpage{132}
+
+  \indexspace
+
+  \item WikiCrawler, \hyperpage{149}, \hyperpage{153}
+  \item WikiFetcher, \hyperpage{70}, \hyperpage{80}, \hyperpage{134}, 
+		\hyperpage{139}
+  \item WikiNodeIterable, \hyperpage{60}, \hyperpage{68}
+  \item WikiNodeIterator, \hyperpage{69}
+  \item Wikipedia, \hyperpage{56}, \hyperpage{156}
+  \item WikiPhilosophy, \hyperpage{67}
+  \item WikiSearch, \hyperpage{158}
+
+  \indexspace
+
+  \item XYSeries, \hyperpage{40}
+
+\end{theindex}
