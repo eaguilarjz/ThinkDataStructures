@@ -6715,7 +6715,7 @@ En la siguiente sección, explicaré cómo funciona el código.
 
 \newcommand{\redis}{\textit}
 
-\section{Redis data types}
+\section{Tipos de datos de Redis}
 \label{redis-data-types}
 
 Redis es básicamente un mapa de las claves, que son cadenas, a
@@ -7046,40 +7046,40 @@ cómo probar un método, muchas veces se te ocurren ideas para escribirlo.
 
 
 
-\chapter{Crawling Wikipedia}
+\chapter{Rastreando Wikipedia}
 
-In this chapter, I present a solution to the previous exercise and
-analyze the performance of Web indexing algorithms. Then we build a
-simple Web crawler.
+En este capítulo, presento una solución al ejercicio previo y
+analizo el desempeño de los algoritmos de indexación Web. Luego
+construimos un rastreador Web simple.
 
-\section{The Redis-backed indexer}
+\section{El indexador respaldado por Redis}
 \label{redis-indexer}
 
 \index{Redis}
 \index{URLSet}
 \index{TermCounter}
 
-In my solution, we store two kinds of structures in Redis:
+En mi solución, guardamos dos clases de estructuras en Redis:
 
 \begin{itemize}
 
 \item
-  For each search term, we have a \java{URLSet}, which is a Redis \redis{set}
-  of URLs that contain the search term.
+  Para cada término de búsqueda, tenemos un \java{URLSet}, que es un \redis{set} de Redis
+  de URLs que contienen el término de búsqueda.
 
 \item
-  For each URL, we have a \java{TermCounter}, which is a Redis \redis{hash}
-  that maps each search term to the number of times it appears.
+  Para cada URL, tenemos un \java{TermCounter}, que es un \redis{hash} de Redis
+  que mapea cada término de búsqueda con el número de veces que aparece.
 
 \end{itemize}
 
-We discussed these data types in the previous chapter. You can also
-read about Redis structures at \url{http://thinkdast.com/redistypes}
+Discutimos estos tipos de datos en el capítulo previo. También puedes
+leer sobre la estructuras de Redis en \url{http://thinkdast.com/redistypes}
 
 \index{JedisIndex}
 
-In \java{JedisIndex}, I provide a method that takes a search term
-and returns the Redis key of its \java{URLSet}:
+En \java{JedisIndex}, proveo métodos que toman un término de búsqueda y
+devuelven la clave Redis de su \java{URLSet}:
 
 \begin{verbatim}
 private String urlSetKey(String term) {
@@ -7087,7 +7087,7 @@ private String urlSetKey(String term) {
 }
 \end{verbatim}
 
-And a method that takes a URL and returns the Redis key of its
+Y un método que toma una URL y devuelve la clave Redis de su
 \java{TermCounter}:
 
 \begin{verbatim}
@@ -7096,9 +7096,8 @@ private String termCounterKey(String url) {
 }
 \end{verbatim}
 
-Here's the implementation of \java{indexPage}, which takes a URL and a
-jsoup \java{Elements} object that contains the DOM tree of the
-paragraphs we want to index:
+Aquí está la implementación de \java{indexPage}, que toma una URL y un objeto which takes a URL and a
+\java{Elements} de jsoup que contiene el árbol DOM de los párrafos que queremos indexar:
 
 \begin{verbatim}
 public void indexPage(String url, Elements paragraphs) {
@@ -7113,20 +7112,20 @@ public void indexPage(String url, Elements paragraphs) {
 }
 \end{verbatim}
 
-To index a page, we
+Para indexar una página,
 
 \begin{enumerate}
 
 \item
-  Make a Java \java{TermCounter} for the contents of the page, using
-  code from a previous exercise.
+  Creamos un \java{TermCounter} de Java para los contenidos de la página, usando
+  el código del ejercicio anterior.
 
 \item
-  Push the contents of the \java{TermCounter} to Redis.
+  Agregamos los contenidos del \java{TermCounter} a Redis.
 
 \end{enumerate}
 
-Here's the new code that pushes a \java{TermCounter} to Redis:
+Aquí está el nuevo código que agrega un \java{TermCounter} a Redis:
 
 \begin{verbatim}
 public List<Object> pushTermCounterToRedis(TermCounter tc) {
@@ -7135,11 +7134,11 @@ public List<Object> pushTermCounterToRedis(TermCounter tc) {
     String url = tc.getLabel();
     String hashname = termCounterKey(url);
 
-    // if this page has already been indexed, delete the old hash
+    // si esta página ya fue indexada, borra el hash anterior
     t.del(hashname);
 
-    // for each term, add an entry in the TermCounter and a new
-    // member of the index
+    // para cada término de búsqueda, agrega una entrada en el TermCounter
+    // y un nuevo miembro del índice
     for (String term: tc.keySet()) {
         Integer count = tc.get(term);
         t.hset(hashname, term, count.toString());
@@ -7150,36 +7149,35 @@ public List<Object> pushTermCounterToRedis(TermCounter tc) {
 }
 \end{verbatim}
 
-This method uses a \java{Transaction} to collect the operations and
-send them to the server all at once, which is much faster than sending a
-series of small operations.
+Este método usa una \java{Transaction} para recolectar las operaciones y
+enviarlos al servidor a la vez, que es mucho más rápido que enviar una
+serie de operaciones pequeñas.
 
 \index{Transaction}
 
-It loops through the terms in the \java{TermCounter}. For each one it
+El método itera por los término del \java{TermCounter}. Para cada uno
 
 \begin{enumerate}
 
 \item
-  Finds or creates a \java{TermCounter} on Redis, then adds a field
-  for the new term.
+  Encuentra o crea un \java{TermCounter} en Redis, luego agrega un campo
+  para el nuevo término.
 
 \item
-  Finds or creates a \java{URLSet} on Redis, then adds the current
-  URL.
+  Encuentra o crea un \java{URLSet} en Redis, luego agrega la URL actual.
 
 \end{enumerate}
 
-If the page has already been indexed, we delete its old
-\java{TermCounter} before pushing the new contents.
+Si la página ya ha sido indexada, borramos su \java{TermCounter}
+antes de agregar los nuevos contenidos..
 
-That's it for indexing new pages.
+Eso es todo lo relacionado con la indexación de nuevas páginas.
 
 \index{getCounts}
 
-The second part of the exercise asked you to write \java{getCounts}, which
-takes a search term and returns a map from each URL where the term
-appears to the number of times it appears there. Here is my solution:
+La segunda parte del ejercicio te pedía escribir \java{getCounts}, que toma
+un término de búsqueda y devuelve un mapa de cada URL donde el término
+aparece con el número de veces que aparece ahí. Aquí está mi solución:
 
 \begin{verbatim}
     public Map<String, Integer> getCounts(String term) {
@@ -7194,21 +7192,21 @@ appears to the number of times it appears there. Here is my solution:
 \end{verbatim}
 
 \index{helper method}
-This method uses two helper methods:
+Este método usa dos métodos auxiliares:
 
 \begin{itemize}
 
 \item
-  \java{getURLs} takes a search term and returns the Set of URLs where
-  the term appears.
+  \java{getURLs} toma un término de búsqueda y devuelve el Set de URLs donde el
+  término aparece.
 
 \item
-  \java{getCount} takes a URL and a term and returns the number of
-  times the term appears at the given URL.
+  \java{getCount} toma una URL y un término y devuelve el número de veces que el
+  término aparece en la URL dada.
 
 \end{itemize}
 
-Here are the implementations:
+Aquí están las implementaciones:
 
 \begin{verbatim}
     public Set<String> getURLs(String term) {
@@ -7223,216 +7221,214 @@ Here are the implementations:
     }
 \end{verbatim}
 
-Because of the way we designed the index, these methods are simple and
-efficient.
+Debido a la manera en que diseñamos el índice, estos métodos son simples y
+eficientes.
 
 
-\section{Analysis of lookup}
+\section{Análisis de la búsqueda}
 \label{analysis-of-lookup}
 
-Suppose we have indexed $N$ pages and discovered $M$
-unique search terms. How long will it take to look up a search term?
-Think about your answer before you continue.
+Supón que hemos indexado $N$ páginas y descubierto $M$
+términos de búsqueda únicos. ¿Cuánto tiempo requerirá la búsqueda de un término
+de búsqueda? Piensa en tu respuesta antes de continuar.
 
-\index{analysis}
+\index{análisis}
 
-To look up a search term, we run \java{getCounts}, which
+Para buscar un término de búsqueda, ejecutamos \java{getCounts}, que
 
 \begin{enumerate}
 
 \item
-  Creates a map.
+  Crea un mapa.
 
 \item
-  Runs \java{getURLs} to get a Set of URLs.
+  Ejecuta \java{getURLs} para obtener un Set de URLs.
 
 \item
-  For each URL in the Set, runs \java{getCount} and adds an entry
-  to a \java{HashMap}.
+  Para cada URL en el Set, ejecuta \java{getCount} y agrega una entrada
+  a la \java{HashMap}.
 
 \end{enumerate}
 
-\java{getURLs} takes time proportional to the number of URLs that
-contain the search term. For rare terms, that might be a small number,
-but for common terms it might be as large as $N$.
+\java{getURLs} toma tiempo proporcinal al número de URLs que contiene
+el término de búsqueda. Para términos raros, podría ser un número pequeño,
+pero para términos comunes podría ser tan grande como $N$.
 
-Inside the loop, we run \java{getCount}, which finds a
-\java{TermCounter} on Redis, looks up a term, and adds an entry to a
-HashMap. Those are all constant time operations, so the overall
-complexity of \java{getCounts} is $O(N)$ in the worst case. However, in
-practice the runtime is proportional to the number of pages that contain
-the term, which is normally much less than $N$.
+Dentro del bucle, ejecutamos \java{getCount}, que encuentra un
+\java{TermCounter} en Redis, busca un término y agrega una entrada a un
+HashMap. Estos son todas operaciones de tiempo constante, así que la complejidad
+global de \java{getCounts} es $O(N)$ en el peor caso. Sin embargo, en la práctica
+el tiempo de ejecución es proporcional al número de páginas que contienen
+el término, que normalmente es mucho menor que $N$.
 
-\index{constant time}
-\index{linear time}
+\index{tiempo constante}
+\index{tiempo lineal}
 
-This algorithm is as efficient as it can be, in terms of
-algorithmic complexity, but it is very slow because it sends many small
-operations to Redis. You can make it faster using a
-\java{Transaction}. You might want to do that as an exercise, or you
-can see my solution in \java{RedisIndex.java}.
+Este algoritmo es tan eficiente como puede ser, en términos de la
+complejidad algorítmica, pero es muy lento porque envía muchas operaciones
+pequeñas a Redis. Puedes hacerlo más rápido usando una
+\java{Transaction}. Podrías querer hacerlo como ejercicio, o puedes
+ver mi solución in \java{RedisIndex.java}.
 
 \index{Transaction}
 
 
-\section{Analysis of indexing}
+\section{Análisis de la indexación}
 \label{analysis-of-indexing}
 
-Using the data structures we designed, how long will it take to index a
-page? Again, think about your answer before you continue.
+Usando las estructuras de datos que diseñamos, ¿cuánto tiempo tomaría
+indexar una página? De nuevo, piensa en tu respuesta antes de continuar.
 
-\index{analysis}
-\index{DOM tree}
+\index{análisis}
+\index{árbol DOM}
 
-To index a page, we traverse its DOM tree, find all the
-\java{TextNode} objects, and split up the strings into search terms.
-That all takes time proportional to the number of words on the page.
+Para indexar una página, recorremos su árbol DOM, encontramos todos los
+objetos \java{TextNode}, y separamos las cadenas en términos de búsqueda.
+Todo eso toma tiempo proporcional al número de palabras en la página.
 
 \index{HashMap}
 
-For each term, we increment a counter in a HashMap, which is a constant
-time operation. So making the \java{TermCounter} takes time
-proportional to the number of words on the page.
+Para cada término, incrementamos un contador en un HashMap, que es una
+operación de tiempo constante. Así que hacer el \java{TermCounter} toma
+tiempo proporcional al número de palabras en la página.
 
-\index{linear time}
+\index{tiempo lineal}
 
-Pushing the \java{TermCounter} to Redis requires deleting a
-\java{TermCounter}, which is linear in the number of unique terms.
-Then for each term we have to
+Agregar el \java{TermCounter} a Redis requiere borrar un
+\java{TermCounter}, que es lineal en el número de términos únicos.
+Luego para cada término tenemos que
 
 \begin{enumerate}
 
 \item
-  Add an element to a \java{URLSet}, and
+  Agregar un elemento a un \java{URLSet}, y
 
 \item
-  Add an element to a Redis \java{TermCounter}.
+  Agrega un elemento a un \java{TermCounter} de Redis.
 
 \end{enumerate}
 
-Both of these are constant time operations, so the total time to push
-the \java{TermCounter} is linear in the number of unique search terms.
+Ambas son operaciones de tiempo constante, así que el tiempo total para
+agregar el \java{TermCounter} es lineal en el número de términos de búsqueda únicos.
 
-\index{constant time}
+\index{tiempo constante}
 
-In summary, making the \java{TermCounter} is proportional to the
-number of words on the page. Pushing the \java{TermCounter} to Redis
-is proportional to the number of unique terms.
+En resumen, hacer el \java{TermCounter} es proporcional al número
+de palabras en la página. Agregar el \java{TermCounter} a Redis
+es proporcional al número de términos únicos.
 
 \index{TermCounter}
 
-Since the number of words on the page usually exceeds the number of
-unique search terms, the overall complexity is proportional to the
-number of words on the page. In theory a page might contain all search
-terms in the index, so the worst case performance is $O(M)$, but we don't
-expect to see the worse case in practice.
+Dado que el número de palabras en la página usualmente excede el número de
+términos de búsqueda únicos, la complejidad global es proporcional al
+número de palabras en la página. En teoría una página podría contener
+todos los términos de búsqueda en el índice, así que el peor escenario de
+desempeño es $O(M)$, pero no esperamos ver el peor escenario en la práctica.
 
-This analysis suggests a way to improve performance: we should probably
-avoid indexing very common words. First of all, they take up a lot of
-time and space, because they appear in almost every \java{URLSet} and
-\java{TermCounter}. Furthermore, they are not very useful because they
-don't help identify relevant pages.
+Este análisis sugiere una forma de mejorar el desempeño: deberíamos probablemente
+evitar indexar palabras muy comunes. Primero, toman mucho tiempo y espacio,
+porque aparecen en cada \java{URLSet} y \java{TermCounter}. Además, no son
+muy útiles porque no ayudan a identificar páginas relevantes.
 
+\index{palabras vacías}
 \index{stop words}
 
-Most search engines avoid indexing common words, which are known in this
-context as stop words (\url{http://thinkdast.com/stopword}).
+La mayoría de motores de búsqueda evitan indexar palabras comunes, que se
+conocen en este contexto como palabras vacías o stop words 
+(\url{http://thinkdast.com/stopword}).
 
 
-\section{Graph traversal}
+\section{Recorrido de grafos}
 \label{graph-traversal}
 
-If you did the ``Getting to Philosophy'' exercise in
-Chapter~\ref{getphilo}, you already have a program that reads a Wikipedia
-page, finds the first link, uses the link to load the next page, and
-repeats. This program is a specialized kind of crawler, but when
-people say ``Web crawler'' they usually mean a program that
+Si hiciste el ejercicio ``Llegar a la Filosofía'' en el Capítulo~\ref{getphilo}, 
+ya tienes un programa que lee una páginas de Wikipedia, encuentra el primer
+enlace, usa el enlace para cargar la siguiente páginas y repite el proceso. Este
+programa es un tipo especializado de rastreador, pero cuando las personas
+dicen ``rastreador Web`` (o Web crawler), usualmente se refieren a un programa que
 
 \begin{itemize}
 
 \item
-  Loads a starting page and indexes the contents,
+  Carga una página inicial e indexa los contenidos,
 
 \item
-  Finds all the links on the page and adds the linked URLs to a collection,
-  and
+  Encuentra todos los enlaces en la página y agrega las URLs enlazadas a una
+  colección y
 
 \item
-  Works its way through the collection, loading pages, indexing them, and
-  adding new URLs.
+  Navega por la colección, carga las páginas, las indexa y agrega
+  nuevas URLs.
 
 \item
-  If it finds a URL that has already been indexed, it skips
-  it.
+  Si encuentra una URL que ya ha sido indexada, la omite.
 
 \end{itemize}
 
-You can think of the Web as a graph
-where each page is a node and each link is a directed edge from one node
-to another. If you are not familiar with graphs, you can read about
-them at \url{http://thinkdast.com/graph}.
+Puedes pensar en la Web como un grafo
+donde cada página es un nodo y cada enlace es una arista dirigida de un nodo
+a otro. Si no estás familiarizado con los grafos, puedes leer sobre ellos
+en \url{http://thinkdast.com/graph}.
 
-\index{graph}
-\index{traversal}
+\index{grafo}
+\index{recorrido}
 
-Starting from a source node, a crawler traverses this graph,
-visiting each reachable node once.
+Comenzando con un nodo origen, un rastreador recorre este grafo
+visitando cada nodo alcanzable una vez.
 
-\index{queue}
-\index{stack}
-\index{FIFO}
-\index{LIFO}
+\index{cola}
+\index{pila}
+\index{PEPS}
+\index{UEPS}
 
-The collection we use to store the URLs determines what kind of
-traversal the crawler performs:
+La colección que usamos para guardar las URLs determina qué clase de
+recorrido realiza el rastreador:
 
 \begin{itemize}
 
 \item
-  If it's a first-in-first-out (FIFO) queue, the crawler performs a
-  breadth-first traversal.
+  Si es una cola primero en entrar, primero en salir (PEPs), el rastreador
+  realiza un recorrido en anchura.
 
 \item
-  If it's a last-in-first-out (LIFO) stack, the crawler performs a
-  depth-first traversal.
+  Si es una pila último en entrar, primero en salir (UEPS), el rastreador
+  realiza un recorrido en profundidad.
 
 \item
-  More generally, the items in the collection might be prioritized. For
-  example, we might want to give higher priority to pages that have not
-  been indexed for a long time.
+  De forma más general, los elementos en la colección podrían ser priorizados.
+  Por ejemplo, podríamos querer dar una prioridad mayor a las páginas que no
+  han sido indexadas por un largo tiempo.
 
 \end{itemize}
 
-You can read more about graph traversal at
+Puedes leer más sobre el recorrido de grafos en
 \url{http://thinkdast.com/graphtrav}.
 
 
-\section{Exercise 12}
+\section{Ejercicio 12}
 \label{exercise12}
 
 \index{WikiCrawler}
 \index{JedisIndex}
 
-Now it's time to write the crawler.  In the repository for this book,
-you'll find the source files for this exercise:
+Ahora es el momento de escribir el rastreador. En el repositorio para este libro,
+encontrarás los archivos de código fuente para este ejercicio:
 
 \begin{itemize}
 
-\item \java{WikiCrawler.java}, which contains starter code for your
-  crawler.
+\item \java{WikiCrawler.java}, que contiene código inicial para tu rastreador.
 
-\item \java{WikiCrawlerTest.java}, which contains test code for
+\item \java{WikiCrawlerTest.java}, que contiene código de pruebas para
   \java{WikiCrawler}.
 
-\item \java{JedisIndex.java}, which is my solution to the previous
-  exercise.
+\item \java{JedisIndex.java}, que es mi solución al ejercicio previo.
 
 \end{itemize}
 
-\index{helper class}
+\index{clase auxiliar}
 
-You'll also need some of the helper classes we've used in previous
-exercises:
+También necesitarás algunas de las clases auxiliares que hemos usado en
+ejercicios previos:
 
 \begin{itemize}
 \item  \java{JedisMaker.java}
@@ -7441,22 +7437,22 @@ exercises:
 \item  \java{WikiNodeIterable.java}
 \end{itemize}
 
-Before you run \java{JedisMaker}, you have to provide a file with
-information about your Redis server. If you did this in the previous
-exercise, you should be all set. Otherwise you can find instructions in
-Section~\ref{hello-jedis}.
+Antes de ejecutar \java{JedisMaker}, debes proveer un archivo con información
+sobre tu servidor Redis. Si hiciste esto en el ejercicio previo, deberías
+estar listo. De lo contrario puedes encontrar instrucciones en la
+Sección~\ref{hello-jedis}.
 
 \index{JedisMaker}
 \index{Ant}
 
-Run \java{ant build} to compile the source files, then run
-\java{ant JedisMaker} to make sure it is configured to connect to your
-Redis server.
+Ejecuta \java{ant build} para compilar el código fuente, luego ejecuta
+\java{ant JedisMaker} para asegurarte que está configurado para conectarse
+a tu servidor Redis.
 
-Now run \java{ant WikiCrawlerTest}. It should
-fail, because you have work to do!
+Ahora ejecuta \java{ant WikiCrawlerTest}. Debería
+fallar, ¡porque tienes trabajo por hacer!
 
-Here's the beginning of the \java{WikiCrawler} class I provided:
+Aquí está el principio de la clase \java{WikiCrawler} que proveí:
 
 \begin{verbatim}
 public class WikiCrawler {
@@ -7478,27 +7474,27 @@ public class WikiCrawler {
 }
 \end{verbatim}
 
-The instance variables are
+Las variables de instancia son
 
 \begin{itemize}
 
 \item
-  \java{source} is the URL where we start crawling.
+  \java{source} es la URL desde donde comenzamos el rastreo.
 
 \item
-  \java{index} is the \java{JedisIndex} where the results should go.
+  \java{index} es el \java{JedisIndex} adonde van los resultados.
 
 \item
-  \java{queue} is a \java{LinkedList} where we keep track of URLs
-  that have been discovered but not yet indexed.
+  \java{queue} es una \java{LinkedList} donde llevamos el control de las URLs
+  que hemos descubierto pero aún no hemos indexado.
 
 \item
-  \java{wf} is the \java{WikiFetcher} we'll use to read and parse
-  Web pages.
+  \java{wf} es el \java{WikiFetcher} que usaremos para leer e interpretar
+  páginas Web.
 
 \end{itemize}
 
-Your job is to fill in \java{crawl}. Here's the prototype:
+Tu trabajo es llenar \java{crawl}. Aquí está el prototipo:
 
 \index{crawl}
 
@@ -7506,64 +7502,64 @@ Your job is to fill in \java{crawl}. Here's the prototype:
     public String crawl(boolean testing) throws IOException {}
 \end{verbatim}
 
-The parameter \java{testing} will be \java{true} when this method is
-called from \java{WikiCrawlerTest} and should be \java{false}
-otherwise.
+El parámetro \java{testing} será \java{true} cuando este método sea
+llamado desde \java{WikiCrawlerTest} y debería ser \java{false}
+en caso contrario.
 
-When \java{testing} is \java{true}, the \java{crawl} method should:
-
-\begin{itemize}
-
-\item
-  Choose and remove a URL from the queue in FIFO order.
-
-\item
-  Read the contents of the page using
-  \java{WikiFetcher.readWikipedia}, which reads cached copies of pages
-  included in the repository for testing purposes (to avoid
-  problems if the Wikipedia version changes).
-
-\item
-  It should index pages regardless of whether they are already indexed.
-
-\item
-  It should find all the internal links on the page and add them to the
-  queue in the order they appear. ``Internal links'' are links to other
-  Wikipedia pages.
-
-\item
-  And it should return the URL of the page it indexed.
-
-\end{itemize}
-
-When \java{testing} is \java{false}, this method should:
+Cuando \java{testing} es \java{true}, el método \java{crawl} debería:
 
 \begin{itemize}
 
 \item
-  Choose and remove a URL from the queue in FIFO order.
+  Elegir y remover una URL de la cola en orden PEPS.
 
 \item
-  If the URL is already indexed, it should not index it again, and
-  should return \java{null}.
+  Leer los contenidos de la página usando
+  \java{WikiFetcher.readWikipedia}, que lee copias en caché de páginas
+  incluidad en el repositorio para propósitos de pruebas (para evitar
+  problemas si la versión de Wikipedia cambia).
 
 \item
-  Otherwise it should read the contents of the page using
-  \java{WikiFetcher.fetchWikipedia}, which reads current content from
-  the Web.
+  Debería indexar pagínas sin importar si ya han sido indexadas.
 
 \item
-  Then it should index the page, add links to the queue, and return the
-  URL of the page it indexed.
+  Debería encontrar todos los enlaces internos en la página y agregarlos a la
+  cola en el orden en que aparecen. Los ``enlaces internos'' son enlaces
+  a otras páginas de Wikipedia.
+
+\item
+  Y debería devolver la URL de la página que indexó.
 
 \end{itemize}
 
-\java{WikiCrawlerTest} loads the queue with about 200 links and then
-invokes \java{crawl} three times. After each invocation, it checks the
-return value and the new length of the queue.
+Cuando \java{testing} es \java{false}, este método debería:
 
-When your crawler is working as specified, this test should pass. Good
-luck!
+\begin{itemize}
+
+\item
+  Elegir y remover una URL de la cola en orden PEPS.
+
+\item
+  Si la URL ya está indexada, no debería indexarla de nuevo, y
+  debería devolver \java{null}.
+
+\item
+  De lo contrarior debería leer los contenidos de la página usando
+  \java{WikiFetcher.fetchWikipedia}, que lee el contenido actual de
+  la Web.
+
+\item
+  Luego debería indexar la página, agregar los enlaces a la cola y devolver
+  la URL de la página que indexó.
+
+\end{itemize}
+
+\java{WikiCrawlerTest} carga la cola con alrededor de 200 enlaces y luego
+invoca a \java{crawl} tres veces. Después de cada invoación, comprueba el
+valor de retorno y la nueva longitud de la cola.
+
+Cuando tu rastreador trabaje como se especificó, este test debería pasarse.
+¡Buena suerte!
 
 
 

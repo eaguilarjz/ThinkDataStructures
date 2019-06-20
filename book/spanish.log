@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6745 64-bit) (preloaded format=pdflatex 2018.8.21)  19 JUN 2019 17:05
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6745 64-bit) (preloaded format=pdflatex 2018.8.21)  19 JUN 2019 18:13
 entering extended mode
 **./spanish.tex
 (spanish.tex
@@ -1587,38 +1587,50 @@ Cap\IeC {\'\i }tulo 15.
 [143
 
 ]
-Overfull \hbox (3.89021pt too wide) in paragraph at lines 7151--7151
-[]    \OT1/cmtt/m/n/12 // if this page has already been indexed, delete the old
- hash[] 
+Overfull \hbox (59.46524pt too wide) in paragraph at lines 7150--7150
+[]    \OT1/cmtt/m/n/12 // para cada termino de busqueda, agrega una entrada e
+n el TermCounter[] 
  []
 
 [144]
-Overfull \hbox (10.06522pt too wide) in paragraph at lines 7194--7194
+Overfull \hbox (10.06522pt too wide) in paragraph at lines 7192--7192
 []        \OT1/cmtt/m/n/12 Map<String, Integer> map = new HashMap<String, Integ
 er>();[] 
  []
 
 [145] [146] [147] [148]
-Overfull \hbox (11.0739pt too wide) in paragraph at lines 7406--7408
-[]\OT1/cmr/m/n/12 You can read more about graph traver-sal at [][]$\OT1/cmtt/m/
-n/12 http : / / thinkdast . com / graphtrav$[][]\OT1/cmr/m/n/12 . 
+Overfull \hbox (24.16405pt too wide) in paragraph at lines 7404--7406
+[]\OT1/cmr/m/n/12 Puedes leer mas so-bre el recor-rido de grafos en [][]$\OT1/
+cmtt/m/n/12 http : / / thinkdast . com / graphtrav$[][]\OT1/cmr/m/n/12 . 
+ []
+
+
+Overfull \hbox (15.55586pt too wide) in paragraph at lines 7421--7423
+[][][][][][]\OT1/cmr/m/n/12 , que con-tiene codigo de prue-bas para [][][]. 
  []
 
 [149]
-Overfull \hbox (42.90802pt too wide) in paragraph at lines 7509--7512
-[]\OT1/cmr/m/n/12 The pa-ram-e-ter [][][] will be [][][] when this method is ca
-lled from [][][]
+Overfull \hbox (13.25119pt too wide) in paragraph at lines 7448--7451
+[]\OT1/cmr/m/n/12 Ejecuta [][][][][] para com-pi-lar el codigo fuente, luego e
+je-cuta [][][][][]
  []
 
 [150]
-Overfull \hbox (1.57922pt too wide) in paragraph at lines 7521--7525
-[]\OT1/cmr/m/n/12 Read the con-tents of the page us-ing [][][][][], which
+Overfull \hbox (54.94957pt too wide) in paragraph at lines 7505--7508
+[]\OT1/cmr/m/n/12 El parametro [][][] sera [][][] cuando este metodo sea lla
+-mado desde [][][]
  []
 
 
-Overfull \hbox (71.7605pt too wide) in paragraph at lines 7551--7554
-[]\OT1/cmr/m/n/12 Otherwise it should read the con-tents of the page us-ing [][
-][][][],
+Overfull \hbox (13.10797pt too wide) in paragraph at lines 7517--7521
+\OT1/cmr/m/n/12 que lee copias en cache de paginas in-clu-idad en el repos-i-
+to-rio para propositos
+ []
+
+
+Overfull \hbox (112.65453pt too wide) in paragraph at lines 7547--7550
+[]\OT1/cmr/m/n/12 De lo con-trar-ior de-bera leer los con-tenidos de la pagi
+na us-ando [][][][][],
  []
 
 [151] [152
@@ -1626,31 +1638,31 @@ Overfull \hbox (71.7605pt too wide) in paragraph at lines 7551--7554
 ]
 Cap\IeC {\'\i }tulo 16.
 [153] [154] [155] [156]
-Overfull \hbox (84.80118pt too wide) in paragraph at lines 7850--7852
+Overfull \hbox (84.80118pt too wide) in paragraph at lines 7846--7848
 [][][][][][]\OT1/cmr/m/n/12 , which demon-strates how to use the [][][] method 
 in [][][][][][][]. 
  []
 
 [157] [158]
-Overfull \hbox (8.2885pt too wide) in paragraph at lines 7958--7963
+Overfull \hbox (8.2885pt too wide) in paragraph at lines 7954--7959
 \OT1/cmr/m/n/12 vance. I sug-gest you use the [][][] method pro-vided by [][][]
 [][][][],
  []
 
 
-Overfull \hbox (13.36697pt too wide) in paragraph at lines 7974--7977
+Overfull \hbox (13.36697pt too wide) in paragraph at lines 7970--7973
 []\OT1/cmr/m/n/12 The two-parameter ver-sion takes a list of any ob-ject type a
 nd a [][][],
  []
 
 [159]
-Overfull \hbox (57.97595pt too wide) in paragraph at lines 8008--8012
+Overfull \hbox (57.97595pt too wide) in paragraph at lines 8004--8008
 []\OT1/cmr/m/n/12 A [][][] ob-ject has two in-te-ger fields, [][][] and [][][].
  [][][] im-ple-ments [][][][][][],
  []
 
 
-Overfull \hbox (12.31522pt too wide) in paragraph at lines 8038--8041
+Overfull \hbox (12.31522pt too wide) in paragraph at lines 8034--8037
 []\OT1/cmr/m/n/12 If you use the one-parameter ver-sion of [][][][][], it uses 
 the [][][]
  []
@@ -1660,90 +1672,90 @@ the [][][]
 ]
 Cap\IeC {\'\i }tulo 17.
 [165]
-Overfull \hbox (40.94023pt too wide) in paragraph at lines 8253--8253
+Overfull \hbox (40.94023pt too wide) in paragraph at lines 8249--8249
 []    \OT1/cmtt/m/n/12 public void insertionSort(List<T> list, Comparator<T> co
 mparator) {[] 
  []
 
 [166]
-Overfull \hbox (22.41522pt too wide) in paragraph at lines 8286--8286
+Overfull \hbox (22.41522pt too wide) in paragraph at lines 8282--8282
 []        \OT1/cmtt/m/n/12 Comparator<Integer> comparator = new Comparator<Inte
 ger>() {[] 
  []
 
 [167]
-Overfull \hbox (17.11418pt too wide) in paragraph at lines 8381--8383
+Overfull \hbox (17.11418pt too wide) in paragraph at lines 8377--8379
 []\OT1/cmr/m/n/12 In [][][][][], I've pro-vided an out-line of two meth-ods, []
 [][]
  []
 
 
-Overfull \hbox (59.46524pt too wide) in paragraph at lines 8395--8395
+Overfull \hbox (59.46524pt too wide) in paragraph at lines 8391--8391
 []    \OT1/cmtt/m/n/12 public void mergeSortInPlace(List<T> list, Comparator<T>
  comparator) {[] 
  []
 
 
-Overfull \hbox (40.94023pt too wide) in paragraph at lines 8395--8395
+Overfull \hbox (40.94023pt too wide) in paragraph at lines 8391--8391
 []    \OT1/cmtt/m/n/12 private List<T> mergeSort(List<T> list, Comparator<T> co
 mparator) {[] 
  []
 
 
-Overfull \hbox (11.39146pt too wide) in paragraph at lines 8397--8401
+Overfull \hbox (11.39146pt too wide) in paragraph at lines 8393--8397
 []\OT1/cmr/m/n/12 These two meth-ods do the same thing but pro-vide dif-fer-ent
  in-ter-faces. [][][]
  []
 
 [168]
-Overfull \hbox (12.38751pt too wide) in paragraph at lines 8434--8437
+Overfull \hbox (12.38751pt too wide) in paragraph at lines 8430--8433
 \OT1/cmr/m/n/12 the ar-ray. When you get it work-ing, [][][] and [][][]
  []
 
-<figs/merge_sort1.pdf, id=1753, 325.215pt x 271.0125pt>
+<figs/merge_sort1.pdf, id=1754, 325.215pt x 271.0125pt>
 File: figs/merge_sort1.pdf Graphic file (type pdf)
 <use figs/merge_sort1.pdf>
-Package pdftex.def Info: figs/merge_sort1.pdf  used on input line 8467.
+Package pdftex.def Info: figs/merge_sort1.pdf  used on input line 8463.
 (pdftex.def)             Requested size: 216.81607pt x 180.67499pt.
 [169]
-<figs/merge_sort2.pdf, id=1763, 433.62pt x 180.675pt>
+<figs/merge_sort2.pdf, id=1764, 433.62pt x 180.675pt>
 File: figs/merge_sort2.pdf Graphic file (type pdf)
 <use figs/merge_sort2.pdf>
-Package pdftex.def Info: figs/merge_sort2.pdf  used on input line 8482.
+Package pdftex.def Info: figs/merge_sort2.pdf  used on input line 8478.
 (pdftex.def)             Requested size: 346.89647pt x 144.54pt.
  [170 <./figs/merge_sort1.pdf> <./figs/merge_sort2.pdf
 
 pdfTeX warning: pdflatex.exe (file ./figs/merge_sort2.pdf): PDF inclusion: mult
 iple pdfs with page group included in a single page
 >]
-Overfull \hbox (6.79834pt too wide) in paragraph at lines 8554--8561
+Overfull \hbox (6.79834pt too wide) in paragraph at lines 8550--8557
 \OT1/cmr/m/n/12 During the 2008 United States Pres-i-den-tial Cam-paign, can-di
 -date Barack Obama
  []
 
 [171]
-Overfull \hbox (8.60385pt too wide) in paragraph at lines 8562--8565
+Overfull \hbox (8.60385pt too wide) in paragraph at lines 8558--8561
 []\OT1/cmr/m/n/12 Obama was right: bub-ble sort is con-cep-tu-ally sim-ple but 
 its run-time is quadratic;
  []
 
-<figs/radix_sort1.pdf, id=1797, 433.62pt x 180.675pt>
+<figs/radix_sort1.pdf, id=1798, 433.62pt x 180.675pt>
 File: figs/radix_sort1.pdf Graphic file (type pdf)
 <use figs/radix_sort1.pdf>
-Package pdftex.def Info: figs/radix_sort1.pdf  used on input line 8603.
+Package pdftex.def Info: figs/radix_sort1.pdf  used on input line 8599.
 (pdftex.def)             Requested size: 346.89647pt x 144.54pt.
 [172] [173 <./figs/radix_sort1.pdf>] [174] [175] [176] [177] [178
 
 ]
 No file spanish.ind.
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 8890.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 8890.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 8886.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 8886.
 (spanish.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 8890.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 8890.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 8886.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 8886.
 
 Package rerunfilecheck Info: File `spanish.out' has not changed.
-(rerunfilecheck)             Checksum: 8DF32A25F9BA6E3DDD6EB486B318ED77;7608.
+(rerunfilecheck)             Checksum: C2AA68BD65276FF032C8A564B64BD14A;7653.
  ) 
 Here is how much of TeX's memory you used:
  11285 strings out of 492973
@@ -1766,9 +1778,9 @@ nts/cm/cmss12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/c
 msy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb
 ><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Pro
 gram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on spanish.pdf (194 pages, 973858 bytes).
+Output written on spanish.pdf (194 pages, 974781 bytes).
 PDF statistics:
- 1991 PDF objects out of 2073 (max. 8388607)
+ 1992 PDF objects out of 2073 (max. 8388607)
  427 named destinations out of 1000 (max. 500000)
  921 words of extra memory for PDF output out of 10000 (max. 10000000)
 

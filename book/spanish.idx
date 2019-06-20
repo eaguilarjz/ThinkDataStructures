@@ -512,29 +512,30 @@
 \indexentry{Transaction|hyperpage}{145}
 \indexentry{getCounts|hyperpage}{145}
 \indexentry{helper method|hyperpage}{145}
-\indexentry{analysis|hyperpage}{146}
-\indexentry{constant time|hyperpage}{147}
-\indexentry{linear time|hyperpage}{147}
+\indexentry{an\IeC {\'a}lisis|hyperpage}{146}
+\indexentry{tiempo constante|hyperpage}{147}
+\indexentry{tiempo lineal|hyperpage}{147}
 \indexentry{Transaction|hyperpage}{147}
-\indexentry{analysis|hyperpage}{147}
-\indexentry{DOM tree|hyperpage}{147}
+\indexentry{an\IeC {\'a}lisis|hyperpage}{147}
+\indexentry{\IeC {\'a}rbol DOM|hyperpage}{147}
 \indexentry{HashMap|hyperpage}{147}
-\indexentry{linear time|hyperpage}{147}
-\indexentry{constant time|hyperpage}{147}
+\indexentry{tiempo lineal|hyperpage}{147}
+\indexentry{tiempo constante|hyperpage}{147}
 \indexentry{TermCounter|hyperpage}{148}
+\indexentry{palabras vac\IeC {\'\i }as|hyperpage}{148}
 \indexentry{stop words|hyperpage}{148}
-\indexentry{graph|hyperpage}{148}
-\indexentry{traversal|hyperpage}{148}
-\indexentry{queue|hyperpage}{149}
-\indexentry{stack|hyperpage}{149}
-\indexentry{FIFO|hyperpage}{149}
-\indexentry{LIFO|hyperpage}{149}
+\indexentry{grafo|hyperpage}{149}
+\indexentry{recorrido|hyperpage}{149}
+\indexentry{cola|hyperpage}{149}
+\indexentry{pila|hyperpage}{149}
+\indexentry{PEPS|hyperpage}{149}
+\indexentry{UEPS|hyperpage}{149}
 \indexentry{WikiCrawler|hyperpage}{149}
 \indexentry{JedisIndex|hyperpage}{149}
-\indexentry{helper class|hyperpage}{149}
+\indexentry{clase auxiliar|hyperpage}{149}
 \indexentry{JedisMaker|hyperpage}{150}
 \indexentry{Ant|hyperpage}{150}
-\indexentry{crawl|hyperpage}{150}
+\indexentry{crawl|hyperpage}{151}
 \indexentry{WikiCrawler|hyperpage}{153}
 \indexentry{queue|hyperpage}{154}
 \indexentry{LinkedList|hyperpage}{154}
