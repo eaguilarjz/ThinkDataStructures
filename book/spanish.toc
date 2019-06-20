@@ -88,8 +88,8 @@
 \contentsline {section}{\numberline {15.3}An\IeC {\'a}lisis de la indexaci\IeC {\'o}n}{147}{section.15.3}
 \contentsline {section}{\numberline {15.4}Recorrido de grafos}{148}{section.15.4}
 \contentsline {section}{\numberline {15.5}Ejercicio 12}{149}{section.15.5}
-\contentsline {chapter}{\numberline {16}Boolean search}{153}{chapter.16}
-\contentsline {section}{\numberline {16.1}Crawler solution}{153}{section.16.1}
+\contentsline {chapter}{\numberline {16}B\IeC {\'u}squeda booleana}{153}{chapter.16}
+\contentsline {section}{\numberline {16.1}Soluci\IeC {\'o}n del rastreador}{153}{section.16.1}
 \contentsline {section}{\numberline {16.2}Information retrieval}{156}{section.16.2}
 \contentsline {section}{\numberline {16.3}Boolean search}{156}{section.16.3}
 \contentsline {section}{\numberline {16.4}Exercise 13}{157}{section.16.4}

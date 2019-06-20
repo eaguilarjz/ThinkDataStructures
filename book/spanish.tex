@@ -7563,19 +7563,19 @@ Cuando tu rastreador trabaje como se especificó, este test debería pasarse.
 
 
 
-\chapter{Boolean search}
+\chapter{Búsqueda booleana}
 
-In this chapter I present a solution to the previous exercise. Then
-you will write code to combine multiple search results and sort them
-by their relevance to the search terms.
+En este capítulo presento una solución al ejercicio previo. Luego escribirás
+código para combinar múltiples resultados de búsqueda y ordenarlos de acuerdo
+a su relevancia con respecto a los términos de búsqueda.
 
 
-\section{Crawler solution}
+\section{Solución del rastreador}
 \label{crawler-solution}
 
-First, let's go over our solution to the previous exercise. I provided an
-outline of \java{WikiCrawler}; your job was to fill in \java{crawl}.
-As a reminder, here are the fields in the \java{WikiCrawler} class:
+Primero, revisemos nuestra solución al ejercicio anterior. Proveí un
+boceto de un \java{WikiCrawler}; tu trabajo era llenar \java{crawl}.
+Como recordatorio, aquí están los campos de la clase \java{WikiCrawler}:
 
 \index{WikiCrawler}
 
@@ -7595,24 +7595,24 @@ public class WikiCrawler {
 }
 \end{verbatim}
 
-When we create a \java{WikiCrawler}, we provide \java{source} and
-\java{index}. Initially, \java{queue} contains only one element,
+Cuando creamos un \java{WikiCrawler}, proveemos \java{source} e
+\java{index}. Inicialmente, \java{queue} contiene solo un elemento,
 \java{source}.
 
 \index{queue}
 \index{LinkedList}
 
-Notice that the implementation of \java{queue} is a
-\java{LinkedList}, so we can add elements at the end --- and remove
-them from the beginning --- in constant time. By assigning a
-\java{LinkedList} object to a \java{Queue} variable, we limit
-ourselves to using methods in the \java{Queue} interface; specifically,
-we'll use \java{offer} to add elements and \java{poll} to remove
-them.
+Nota que la implementación de \java{queue} es una
+\java{LinkedList}, así que podemos agregar elementos al final --- y 
+removerlos del principio --- en tiempo constante. Al asignar un objeto
+\java{LinkedList} a una variable de tipo \java{Queue}, nos limitamos a
+usuar los métodos en la interfaz \java{Queue}; específicamente,
+usaremos \java{offer} para agregar elementos y \java{poll} para
+removerlos.
 
-\index{constant time}
+\index{tiempo constante}
 
-Here's my implementation of \java{WikiCrawler.crawl}:
+Aquí está mi implementación de \java{WikiCrawler.crawl}:
 
 \begin{verbatim}
     public String crawl(boolean testing) throws IOException {
@@ -7639,52 +7639,51 @@ Here's my implementation of \java{WikiCrawler.crawl}:
     }
 \end{verbatim}
 
-Most of the complexity in this method is there to make it easier to
-test. Here's the logic:
+La mayoría de la complejidad de este método está ahí para hacerlo
+más fácil de probar. Aquí está la lógica:
 
 \begin{itemize}
 
 \item
-  If the queue is empty, it returns \java{null} to indicate that it
-  did not index a page.
+  Si la cola (queue) está vacía, devuelve \java{null} para indicar que
+  no indexó una página.
 
 \item
-  Otherwise it removes and stores the next URL from the queue.
+  De lo contrario remueve y guarda la siguiente URL de la cola.
 
 \item
-  If the URL has already been indexed, \java{crawl} doesn't index it
-  again, unless it's in testing mode.
+  Si la URL ya ha sido indexada, \java{crawl} no la indexa de nuevo,
+  a menos que esté en modo de pruebas.
 
 \item
-  Next it reads the contents of the page: if it's in testing mode, it
-  reads from a file; otherwise it reads from the Web.
+  A continuación lee los contenidos de la página: si está en modo de
+  pruebas, los lee de un archivo; de lo contrario, los lee de la Web.
 
 \item
-  It indexes the page.
+  Indexa la página.
 
 \item
-  It parses the page and adds internal links to the queue.
+  Intepreta la página y agrega los enlaces internos a la cola.
 
 \item
-  Finally, it returns the URL of the page it indexed.
+  Finalmente, devuelve la URL de la página que indexó.
 
 \end{itemize}
 
-I presented an implementation of \java{Index.indexPage} in
-Section~\ref{redis-indexer}. So the only new method is
+Presenté una implementación de \java{Index.indexPage} en la
+Sección~\ref{redis-indexer}. Así que el único método nuevo es
 \java{WikiCrawler.queueInternalLinks}.
 
 \index{Index}
 
-I wrote two versions of this method with different parameters: one
-takes an \java{Elements} object containing one DOM tree per
-paragraph; the other takes an \java{Element} object that contains a
-single paragraph.
+Escribí dos versiones de este método con diferentes parámetros: uno
+toma un objeto \java{Elements} conteniendo un árbol DOM por párrafo;
+el otro toma un objeto \java{Element} que contiene un único párrafo.
 
 \index{Element}
 
-The first version just loops through the paragraphs. The second version
-does the real work.
+La primera versión solo itera por los párrafos. La segunda versión es
+la que hace realmente el trabajo.
 
 \begin{verbatim}
     void queueInternalLinks(Elements paragraphs) {
@@ -7707,16 +7706,16 @@ does the real work.
 \end{verbatim}
 
 
-To determine whether a link is ``internal,'' we check whether the URL
-starts with ``/wiki/''. This might include some pages we don't want to
-index, like meta-pages about Wikipedia. And it might exclude some pages
-we want, like links to pages in non-English languages. But this simple
-test is good enough to get started.
+Para determinar si un enlace es ``interno,'' comprobamos si la URL
+comienza con ``/wiki/''. Esto podría incluir algunas páginas que no queremos
+indexa, como meta-páginas sobre Wikipedia. Y podría exluir algunas páginas
+que queremos, como enlaces a páginas en idiomas diferentes al inglés. Pero esta
+prueba simple es lo suficientemente buena para empezar.
 
 \index{Wikipedia}
 
-That's all there is to it. This exercise doesn't have a lot of new material;
-it is mostly a chance to bring the pieces together.
+Eso es todo. Este ejercició no tenía mucho material nuevo; era mayormente
+para combinar todas las piezas del rompecabezas.
 
 
 \section{Information retrieval}
